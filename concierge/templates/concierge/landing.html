@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="csrf-token" content="{{ csrf_token }}">
+<title>BioLens Concierge — Lunartree</title>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="su ru ou lu hu init Au Fu Eu Pu Nu zl Ru ju Tu Uu Wu Vu capture getExtension Ou iu Qu calculateEventProperties Zu register register_once register_for_session unregister unregister_for_session Xu Mu Ju getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync th identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset eh shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ku zu createPersonProfile setInternalOrTestUser Yu cu du opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Bu debug Ul $s getPageViewId captureTraceFeedback captureTraceMetric Su".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_thfJAqnyFFTSrsmaeXmCearK4ieqgh9gGTVR5HzDJp6c', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+  :root{
+    --ink:#f2f3f5;
+    --ink-dim:#9a9ea6;
+    --ink-faint:#65686f;
+    --bg:#000000;
+    --panel:#0c0c0e;
+    --panel-hover:#131316;
+    --line:rgba(255,255,255,0.08);
+    --line-strong:rgba(255,255,255,0.16);
+    --accent:#4066ff;
+    --accent-bright:#7590ff;
+    --accent-soft:rgba(64,102,255,0.14);
+    --error:#ff6b6b;
+    --radius:16px;
+    --radius-sm:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    min-height:100vh;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#ffffff;}
+
+  .app{
+    max-width:1120px;
+    margin:0 auto;
+    min-height:100vh;
+    padding:40px 28px 80px;
+    display:flex;
+    flex-direction:column;
+  }
+  .narrow{max-width:480px;width:100%;margin:0 auto;}
+  .medium{max-width:720px;width:100%;margin:0 auto;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    row-gap:10px;
+    margin-bottom:56px;
+  }
+  .topbar .brand-left{
+    display:flex;align-items:center;gap:10px;
+  }
+  .topbar img.logo{
+    width:26px;height:26px;
+    border-radius:7px;
+    display:block;
+  }
+  .topbar .brand-name{
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .topbar .pill{
+    font-size:11px;
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px 14px;
+    letter-spacing:.02em;
+  }
+
+  /* ---------- Screens ---------- */
+  .screen{display:none;flex:1;flex-direction:column;animation:fade .5s ease;}
+  .screen.active{display:flex;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent-bright);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  h1.title{
+    font-weight:700;
+    font-size:30px;
+    margin:0 0 14px;
+    color:var(--ink);
+    letter-spacing:-0.02em;
+  }
+  p.lede{
+    color:var(--ink-dim);
+    font-size:15.5px;
+    max-width:52ch;
+    margin:0 0 32px;
+  }
+
+  /* ---------- Splash ---------- */
+  #screen-splash{align-items:center;justify-content:center;text-align:center;}
+  #screen-splash .rings{
+    width:56px;height:56px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:28px;
+    position:relative;
+  }
+  #screen-splash .rings::before{
+    content:"";
+    position:absolute;inset:-1px;
+    border-radius:50%;
+    border:1px solid transparent;
+    border-top-color:var(--accent);
+    animation:spin 1.4s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  #screen-splash .status{
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
+  }
+
+  /* ---------- Intake ---------- */
+  .field{margin-bottom:22px;}
+  .field label{
+    display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:10px;
+  }
+  input[type=text], input[type=email], input[type=number], select, textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:17px;
+    padding:10px 2px;
+    outline:none;
+    -webkit-appearance:none;
+    appearance:none;
+    transition:border-color .2s ease;
+  }
+  textarea{resize:vertical;min-height:70px;font-size:15px;}
+  input::placeholder, textarea::placeholder{color:var(--ink-faint);}
+  input:focus, select:focus, textarea:focus{border-bottom-color:var(--accent);}
+  select{
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:linear-gradient(45deg, transparent 50%, var(--accent) 50%), linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+    background-position: calc(100% - 6px) 18px, calc(100% - 1px) 18px;
+    background-size:6px 6px, 6px 6px;
+    background-repeat:no-repeat;
+    padding-right:20px;
+  }
+  select option{background:#0c0c0e;color:var(--ink);}
+
+  .radio-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .chip{
+    border:1px solid var(--line);
+    padding:9px 18px;
+    font-size:14px;
+    border-radius:999px;
+    cursor:pointer;
+    color:var(--ink-dim);
+    transition:all .15s ease;
+    user-select:none;
+  }
+  .chip:hover{border-color:var(--accent);color:var(--ink);}
+  .chip.selected{background:var(--accent);border-color:var(--accent);color:#ffffff;font-weight:500;}
+
+  .actions{margin-top:auto;padding-top:28px;display:flex;gap:14px;align-items:center;}
+  button{
+    font-family:'Inter',sans-serif;
+    cursor:pointer;
+  }
+  .btn{
+    background:transparent;
+    border:1px solid var(--line-strong);
+    color:var(--ink);
+    padding:13px 28px;
+    font-size:13px;
+    letter-spacing:.08em;
+    border-radius:999px;
+    transition:all .2s ease;
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent-bright);}
+  .btn:disabled{opacity:.35;cursor:not-allowed;}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#ffffff;font-weight:500;}
+  .btn.primary:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:#ffffff;}
+  .btn-text{
+    background:none;border:none;color:var(--ink-faint);
+    font-size:13px;letter-spacing:.04em;
+    padding:8px 4px;
+  }
+  .btn-text:hover{color:var(--accent-bright);}
+  .error-msg{color:var(--error);font-size:13px;margin-top:-10px;margin-bottom:18px;display:none;}
+
+  /* ---------- Menu grid ---------- */
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+  }
+  @media(max-width:900px){.menu-grid{grid-template-columns:repeat(2, 1fr);}}
+  @media(max-width:520px){.menu-grid{grid-template-columns:1fr;}}
+
+  a.menu-card{
+    color:inherit;
+    text-decoration:none;
+  }
+  .menu-card{
+    position:relative;
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:26px 20px 22px;
+    border-radius:var(--radius);
+    cursor:pointer;
+    transition:transform .4s cubic-bezier(.16,1,.3,1), border-color .35s ease, background-color .35s ease, box-shadow .4s ease;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .menu-card::before{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(140px 100px at 24% 0%, var(--accent-soft), transparent 70%);
+    opacity:0;
+    transition:opacity .4s ease;
+    z-index:-1;
+  }
+  .menu-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--line-strong);
+    background:var(--panel-hover);
+    box-shadow:0 20px 44px -18px rgba(0,0,0,.7);
+  }
+  .menu-card:hover::before{opacity:1;}
+  .menu-card:active{transform:translateY(-2px);}
+
+  .menu-card .icon-wrap{
+    width:46px;height:46px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.02);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-dim);
+    transition:transform .45s cubic-bezier(.16,1,.3,1), border-color .3s ease, background-color .3s ease;
+  }
+  .menu-card:hover .icon-wrap{
+    transform:scale(1.14) rotate(-6deg);
+    border-color:rgba(64,102,255,.4);
+    background:var(--accent-soft);
+  }
+  .menu-card .icon-img{
+    width:30px;height:30px;
+    object-fit:contain;
+    display:block;
+  }
+  .menu-card .label{
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .menu-card .sub{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    line-height:1.45;
+  }
+  .menu-hero{margin-bottom:32px;}
+  .menu-title{font-size:34px;margin-bottom:6px;}
+
+  /* ---------- Dining image ---------- */
+  .dining-image{
+    width:100%;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    display:block;
+  }
+
+  /* ---------- Confirmation ---------- */
+  #screen-confirm{align-items:center;text-align:center;justify-content:center;}
+  .check{
+    width:52px;height:52px;border-radius:50%;
+    border:1px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+    color:var(--accent-bright);
+  }
+  .confirm-detail{
+    color:var(--ink-faint);
+    font-size:14px;
+    margin-top:6px;
+  }
+
+  .back-row{margin-bottom:20px;}
+
+  footer.app-footer{
+    text-align:center;
+    color:var(--ink-faint);
+    font-size:11.5px;
+    letter-spacing:.08em;
+    margin-top:40px;
+  }
+
+  /* ---------- Trusted by ---------- */
+  .trusted-section{margin-top:56px;}
+  .trusted-label{
+    text-align:center;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    margin:0 0 28px;
+  }
+  .trusted-logos{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:18px 20px;
+  }
+  .trusted-logo{
+    height:80px;
+    padding:0 30px;
+    border-radius:14px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:.9;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .trusted-logo:hover{
+    opacity:1;
+    transform:translateY(-2px);
+  }
+  .trusted-logo img{
+    height:42px;
+    width:auto;
+    max-width:150px;
+    object-fit:contain;
+    display:block;
+  }
+
+  /* ---------- Video ---------- */
+  .video-section{margin-top:56px;}
+  .video-wrap{
+    position:relative;
+    width:100%;
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:#000;
+    aspect-ratio:16/9;
+  }
+  .video-wrap video{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+  }
+  .video-mute-btn{
+    position:absolute;
+    right:16px;
+    bottom:16px;
+    width:42px;height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(10,10,12,0.6);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:transform .25s cubic-bezier(.16,1,.3,1), background-color .25s ease, border-color .25s ease;
+  }
+  .video-mute-btn:hover{
+    transform:scale(1.08);
+    background:rgba(64,102,255,0.35);
+    border-color:rgba(64,102,255,.5);
+  }
+  .video-mute-btn svg{width:18px;height:18px;}
+
+  /* ---------- Workspace modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,0.72);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease;
+    z-index:100;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:auto;}
+  .modal-panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px 32px 32px;
+    max-width:440px;
+    width:100%;
+    position:relative;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.8);
+    transform:translateY(14px) scale(.98);
+    transition:transform .35s cubic-bezier(.16,1,.3,1);
+    max-height:88vh;
+    overflow-y:auto;
+  }
+  .modal-overlay.open .modal-panel{transform:translateY(0) scale(1);}
+  .modal-close{
+    position:absolute;top:16px;right:16px;
+    background:none;border:none;color:var(--ink-faint);
+    font-size:20px;line-height:1;cursor:pointer;
+    width:30px;height:30px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:8px;
+    transition:all .2s ease;
+  }
+  .modal-close:hover{color:var(--ink);background:rgba(255,255,255,.06);}
+
+  .modal-dial{
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    width:64px;height:64px;
+    margin:0 auto 22px;
+  }
+  .modal-dial svg circle{transition:stroke-dashoffset .5s cubic-bezier(.16,1,.3,1);}
+  .modal-dial-label{
+    position:absolute;
+    font-size:12px;font-weight:600;color:var(--ink-dim);
+    letter-spacing:.02em;
+  }
+
+  .modal-step{display:none;}
+  .modal-step.active{display:block;animation:fade .4s ease;}
+  .modal-title{
+    font-weight:700;font-size:20px;letter-spacing:-0.01em;
+    margin:0 0 22px;text-align:center;color:var(--ink);
+  }
+  .modal-actions{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+
+  .challenge-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:6px;}
+  .challenge-card{
+    display:flex;align-items:center;gap:14px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.015);
+    padding:13px 15px;
+    border-radius:var(--radius-sm);
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .challenge-card:hover{border-color:var(--line-strong);background:var(--panel-hover);}
+  .challenge-card.selected{border-color:var(--accent);background:var(--accent-soft);}
+  .challenge-card .icon-wrap{
+    width:34px;height:34px;
+    border-radius:9px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,0.02);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-dim);
+    flex-shrink:0;
+    transition:all .25s ease;
+  }
+  .challenge-card .icon-wrap svg{width:16px;height:16px;}
+  .challenge-card.selected .icon-wrap{
+    color:var(--accent-bright);
+    border-color:rgba(64,102,255,.4);
+    background:var(--accent-soft);
+  }
+  .challenge-card .label{font-size:14px;font-weight:500;color:var(--ink);}
+
+  /* ---------- Mobile ---------- */
+  @media(max-width:600px){
+    .app{padding:28px 18px 60px;}
+    .topbar{margin-bottom:36px;}
+    .menu-title{font-size:26px;}
+    h1.title{font-size:24px;}
+    p.lede{font-size:14.5px;}
+    .menu-card{padding:20px 16px 18px;}
+    .modal-panel{padding:28px 20px 24px;max-height:85vh;}
+    .modal-title{font-size:18px;}
+    .modal-actions{flex-wrap:wrap;gap:10px;}
+    .trusted-section{margin-top:40px;}
+    .video-section{margin-top:40px;}
+    .trusted-logos{gap:14px 14px;}
+    .trusted-logo{height:60px;padding:0 20px;}
+    .trusted-logo img{height:30px;max-width:110px;}
+    .video-mute-btn{width:38px;height:38px;right:12px;bottom:12px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="brand-left">
+      <img class="logo" src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="Lunartree">
+      <span class="brand-name">BioLens · Lunartree</span>
+    </div>
+    <span class="pill">Concierge desk</span>
+  </div>
+
+  <!-- SPLASH -->
+  <section id="screen-splash" class="screen active">
+    <div class="rings"></div>
+    <div class="status">Preparing your visit</div>
+  </section>
+
+  <!-- MENU -->
+  <section id="screen-menu" class="screen">
+    <div class="menu-hero">
+      <p class="eyebrow">Concierge</p>
+      <h1 class="title menu-title">How may we assist you?</h1>
+      <p class="lede" style="margin-bottom:0;">Select an option below — we'll take it from there.</p>
+    </div>
+
+    <div class="menu-grid">
+      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20coffee%20for%20my%20booth." target="_blank" rel="noopener">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Hot%20beverage/3D/hot_beverage_3d.png" alt=""></div>
+        <div class="label">Ask for a coffee</div>
+        <div class="sub">Brewed to order, brought to you</div>
+      </a>
+      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20bagels%20for%20my%20booth." target="_blank" rel="noopener">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Bagel/3D/bagel_3d.png" alt=""></div>
+        <div class="label">Ask for bagels</div>
+        <div class="sub">A morning bite, your way</div>
+      </a>
+      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20book%20a%20seat%20at%20Eddie%20Merlot%27s." target="_blank" rel="noopener">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Fork%20and%20knife%20with%20plate/3D/fork_and_knife_with_plate_3d.png" alt=""></div>
+        <div class="label">Book a seat at Eddie Merlot's</div>
+        <div class="sub">Reserve a table nearby</div>
+      </a>
+      <div class="menu-card" onclick="goTo('screen-dining')">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Compass/3D/compass_3d.png" alt=""></div>
+        <div class="label">Dining recommendations</div>
+        <div class="sub">Curated picks near the venue</div>
+      </div>
+      <a class="menu-card" href="https://www.lunartree.bio/biolens" target="_blank" rel="noopener">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Microscope/3D/microscope_3d.png" alt=""></div>
+        <div class="label">View BioLens</div>
+        <div class="sub">An overview of the platform</div>
+      </a>
+      <div class="menu-card" onclick="goTo('screen-experience')">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Desktop%20computer/3D/desktop_computer_3d.png" alt=""></div>
+        <div class="label">Experience BioLens</div>
+        <div class="sub">See it running, live</div>
+      </div>
+      <div class="menu-card" onclick="openWorkspaceModal()">
+        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Briefcase/3D/briefcase_3d.png" alt=""></div>
+        <div class="label">Request your workspace</div>
+        <div class="sub">A desk, set up before you arrive</div>
+      </div>
+    </div>
+
+    <div class="trusted-section">
+      <p class="trusted-label">Trusted by</p>
+      <div class="trusted-logos">
+        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEPg0H4eWg4ePInN0ovTpjAu65ac4ZEFGqXFsoxkZx2A&s=10" alt="Synthego" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://download.logo.wine/logo/Lonza_Group/Lonza_Group-Logo.wine.png" alt="Lonza" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://www.cphi-online.com/company/instapill-private-limited/c476395th_S44209741.jpg" alt="InstaPill" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSup99wxCfe6YYhNd1FlGs-IhvZy54Z8PaVvXQeG7ihtA&s=10" alt="Resilience" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEFYCfSRW8nU6KYQgY5vadNHi3dk7MEqKDHXiRinB7xI1LC1Pk81G9AlMm&s=10" alt="Optima" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7rAtWxMl1UBtiZI141IkeiyKpxKacvexvdHxu6Qz2kA&s=10" alt="Stevanato Group" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://shilpabio.com/wp-content/uploads/2021/10/shilpabio_logo_color_@2x-1.png" alt="Shilpa Biologicals" loading="lazy"></div>
+        <div class="trusted-logo"><img src="https://companieslogo.com/img/orig/NEULANDLAB.NS_BIG-37c34c1e.png?t=1747366439" alt="Neuland" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="video-section">
+      <div class="video-wrap">
+        <video id="biolens-video" src="https://res.cloudinary.com/dnscrocre/video/upload/v1789250226/biolens-video-v1_1_1_na7gg9.mp4" autoplay muted loop playsinline webkit-playsinline="true" disablepictureinpicture disableremoteplayback></video>
+        <button class="video-mute-btn" onclick="toggleVideoMute()" aria-label="Unmute video" id="video-mute-btn">
+          <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m16 9 4 6M20 9l-4 6"/></svg>
+          <svg id="icon-unmuted" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <footer class="app-footer">BioLens · Lunartree — concierge desk is staffed on site</footer>
+  </section>
+
+  <!-- DINING RECOMMENDATIONS -->
+  <section id="screen-dining" class="screen">
+    <div class="medium">
+      <div class="back-row"><button class="btn-text" onclick="goTo('screen-menu')">&larr; Back to menu</button></div>
+      <p class="eyebrow">Dining</p>
+      <h1 class="title">Recommendations near the venue</h1>
+      <p class="lede">A short list, curated by the concierge desk.</p>
+      <img class="dining-image" src="https://res.cloudinary.com/dnscrocre/image/upload/v1786534287/ChatGPT_Image_Aug_12_2026_02_00_16_AM_lkk3uz.png" alt="Dining recommendations near the venue">
+    </div>
+  </section>
+
+  <!-- EXPERIENCE BIOLENS -->
+  <section id="screen-experience" class="screen">
+    <div class="narrow">
+      <div class="back-row"><button class="btn-text" onclick="goTo('screen-menu')">&larr; Back to menu</button></div>
+      <p class="eyebrow">BioLens</p>
+      <h1 class="title">Experience BioLens</h1>
+      <p class="lede">Have a member of our team walk you through a live workspace at the booth, using your own sample data if you'd like.</p>
+      <div class="field">
+        <label>When works best?</label>
+        <div class="radio-row" data-chipgroup="experience-time">
+          <div class="chip" data-value="Now">Right now</div>
+          <div class="chip" data-value="In 30 minutes">In 30 minutes</div>
+          <div class="chip" data-value="Later today">Later today</div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="experience-notes">Anything specific you'd like to see?</label>
+        <textarea id="experience-notes" placeholder="e.g. imaging pipeline, collaboration features, API access..."></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn primary" onclick="submitAction('experience_biolens', {
+          when: getChipValue('experience-time'),
+          interest: valOf('experience-notes')
+        }, 'A BioLens specialist has been notified and will find you shortly.')">Request a walkthrough</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIRMATION -->
+  <section id="screen-confirm" class="screen">
+    <div class="check">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg>
+    </div>
+    <h1 class="title" id="confirm-title">Request received</h1>
+    <p class="lede" id="confirm-detail" style="margin:0 auto 28px;text-align:center;">We'll be right with you.</p>
+    <div class="actions" style="margin:0;">
+      <button class="btn" onclick="goTo('screen-menu')">Back to menu</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- WORKSPACE REQUEST MODAL -->
+<div class="modal-overlay" id="workspace-overlay">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="closeWorkspaceModal()" aria-label="Close">&times;</button>
+
+    <div class="modal-dial">
+      <svg width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="28" fill="none" stroke="var(--line)" stroke-width="4"/>
+        <circle id="dial-progress" cx="32" cy="32" r="28" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+      </svg>
+      <span class="modal-dial-label" id="dial-label">1/3</span>
+    </div>
+
+    <div class="modal-step active" data-step="1">
+      <h2 class="modal-title">Who do we have the pleasure of assisting?</h2>
+      <div class="field">
+        <label for="ws-name">Your name</label>
+        <input type="text" id="ws-name" placeholder="e.g. Jordan Ellis" autocomplete="name">
+      </div>
+      <div class="error-msg" id="ws-err-name">Please tell us your name to continue.</div>
+      <div class="field">
+        <label for="ws-email">Your email</label>
+        <input type="email" id="ws-email" placeholder="e.g. jordan@lunartree.bio" autocomplete="email">
+      </div>
+      <div class="error-msg" id="ws-err-email">Please enter a valid email to continue.</div>
+      <div class="modal-actions">
+        <span></span>
+        <button class="btn primary" onclick="wsNext(1)">Continue</button>
+      </div>
+    </div>
+
+    <div class="modal-step" data-step="2">
+      <h2 class="modal-title">Which company do you represent?</h2>
+      <div class="field">
+        <label for="ws-company">Company / organization</label>
+        <input type="text" id="ws-company" placeholder="e.g. Lunartree Bio" autocomplete="organization">
+      </div>
+      <div class="error-msg" id="ws-err-company">Please tell us your company to continue.</div>
+      <div class="modal-actions">
+        <button class="btn-text" onclick="wsBack(2)">Back</button>
+        <button class="btn primary" onclick="wsNext(2)">Continue</button>
+      </div>
+    </div>
+
+    <div class="modal-step" data-step="3">
+      <h2 class="modal-title">What's your biggest commercial challenge right now?</h2>
+      <div class="challenge-grid" id="challenge-grid">
+        <div class="challenge-card" data-value="Finding New RFPs">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><circle cx="11" cy="14" r="3"/><path d="m15 18-1.5-1.5"/></svg></div>
+          <div class="label">Finding New RFPs</div>
+        </div>
+        <div class="challenge-card" data-value="Asset R&D">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 14h9"/></svg></div>
+          <div class="label">Asset R&D</div>
+        </div>
+        <div class="challenge-card" data-value="Program Tracking">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="4" width="17" height="17" rx="2"/><path d="m7.5 12.5 2.5 2.5 6-6"/></svg></div>
+          <div class="label">Program Tracking</div>
+        </div>
+        <div class="challenge-card" data-value="Conference Intelligence">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="m7 12 3-3 2.5 2.5L17 7"/></svg></div>
+          <div class="label">Conference Intelligence</div>
+        </div>
+        <div class="challenge-card" data-value="GTM & Outreach">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11 20 4l-6 17-3-7-8-3Z"/></svg></div>
+          <div class="label">GTM &amp; Outreach</div>
+        </div>
+      </div>
+      <div class="error-msg" id="ws-err-challenge">Please choose one to continue.</div>
+      <div class="modal-actions">
+        <button class="btn-text" onclick="wsBack(3)">Back</button>
+        <button class="btn primary" onclick="wsSubmit()">Submit request</button>
+      </div>
+    </div>
+
+    <div class="modal-step" data-step="done">
+      <div class="check" style="margin:0 auto 18px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg>
+      </div>
+      <h2 class="modal-title">Your workspace is being prepared</h2>
+      <p class="lede" style="text-align:center;margin:0 auto 8px;">Someone from our team will have it ready shortly.</p>
+      <div class="modal-actions" style="justify-content:center;">
+        <button class="btn" onclick="closeWorkspaceModal()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_ENDPOINT = '{% url "concierge:submit_request" %}';
+  const EMAILJS_PUBLIC_KEY = '0ocTm7GezyqScofEq';
+  const EMAILJS_SERVICE_ID = 'service_3pw84b6';
+  const EMAILJS_TEMPLATE_ID = 'template_gink26n';
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  async function sendEmailNotification(subject, fields){
+    const detailsSummary = Object.entries(fields.details || {})
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(', ');
+    try{
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        subject: subject,
+        guest_name: fields.guest_name || '',
+        guest_email: fields.email || '',
+        organization: fields.organization || '',
+        details_summary: detailsSummary
+      });
+    }catch(err){
+      console.log('Email notification failed (non-blocking):', err);
+    }
+  }
+
+  function goTo(id){
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  // PostHog: track which concierge option people pick
+  document.querySelectorAll('.menu-grid .menu-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const label = card.querySelector('.label');
+      posthog.capture('menu_card_click', {
+        card: label ? label.textContent.trim() : null,
+        href: card.tagName === 'A' ? card.href : null
+      });
+    });
+  });
+
+  // chip selection (single-select per group) — used by the Experience BioLens screen
+  document.querySelectorAll('[data-chipgroup]').forEach(group => {
+    group.addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if(!chip) return;
+      group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+    });
+  });
+
+  function getChipValue(groupName){
+    const group = document.querySelector(`[data-chipgroup="${groupName}"]`);
+    const sel = group ? group.querySelector('.chip.selected') : null;
+    return sel ? sel.dataset.value : '';
+  }
+
+  function valOf(id){
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  async function submitAction(type, details, confirmMessage, guest){
+    guest = guest || {};
+    const payload = {
+      type: type,
+      guest_name: guest.name || '',
+      organization: guest.organization || '',
+      role: guest.role || '',
+      details: details
+    };
+    posthog.capture('request_submitted', { type: type, ...details });
+    try{
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+      const headers = {'Content-Type':'application/json'};
+      if(csrfToken){ headers['X-CSRFToken'] = csrfToken; }
+      await fetch(API_ENDPOINT, {
+        method:'POST',
+        headers: headers,
+        body: JSON.stringify(payload)
+      });
+    }catch(err){
+      // No backend attached (e.g. standalone preview) — proceed silently.
+      console.log('Concierge request (offline preview):', payload);
+    }
+    sendEmailNotification(`BioLens Concierge — ${type.replace(/_/g, ' ')}`, {
+      guest_name: payload.guest_name,
+      organization: payload.organization,
+      details: details
+    });
+    document.getElementById('confirm-title').textContent = 'Request received';
+    document.getElementById('confirm-detail').textContent = confirmMessage;
+    goTo('screen-confirm');
+  }
+
+  // splash -> menu, no gating questions
+  window.addEventListener('load', () => {
+    setTimeout(() => goTo('screen-menu'), 900);
+  });
+
+  /* ---------- Video ---------- */
+  const biolensVideo = document.getElementById('biolens-video');
+  function toggleVideoMute(){
+    biolensVideo.muted = !biolensVideo.muted;
+    document.getElementById('icon-muted').hidden = !biolensVideo.muted;
+    document.getElementById('icon-unmuted').hidden = biolensVideo.muted;
+    document.getElementById('video-mute-btn').setAttribute(
+      'aria-label', biolensVideo.muted ? 'Unmute video' : 'Mute video'
+    );
+    posthog.capture('video_mute_toggled', { muted: biolensVideo.muted });
+  }
+  biolensVideo.addEventListener('loadeddata', () => {
+    biolensVideo.play().catch(() => {});
+  });
+
+  /* ---------- Workspace request modal ---------- */
+  const WS_TOTAL_STEPS = 3;
+  let wsChallenge = '';
+  const wsOverlay = document.getElementById('workspace-overlay');
+  const wsDialCircumference = 2 * Math.PI * 28;
+
+  function isValidEmail(value){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function openWorkspaceModal(){
+    posthog.capture('workspace_modal_opened');
+    wsChallenge = '';
+    document.getElementById('ws-name').value = '';
+    document.getElementById('ws-email').value = '';
+    document.getElementById('ws-company').value = '';
+    document.getElementById('ws-err-name').style.display = 'none';
+    document.getElementById('ws-err-email').style.display = 'none';
+    document.getElementById('ws-err-company').style.display = 'none';
+    document.getElementById('ws-err-challenge').style.display = 'none';
+    document.querySelectorAll('.challenge-card').forEach(c => c.classList.remove('selected'));
+    showWsStep(1);
+    wsOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('ws-name').focus(), 300);
+  }
+
+  function closeWorkspaceModal(){
+    wsOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function showWsStep(step){
+    document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.modal-step[data-step="${step}"]`).classList.add('active');
+    updateWsDial(step);
+  }
+
+  function updateWsDial(step){
+    const circle = document.getElementById('dial-progress');
+    const label = document.getElementById('dial-label');
+    circle.style.strokeDasharray = wsDialCircumference;
+    if(step === 'done'){
+      circle.style.strokeDashoffset = 0;
+      label.textContent = '';
+      return;
+    }
+    const progress = step / WS_TOTAL_STEPS;
+    circle.style.strokeDashoffset = wsDialCircumference * (1 - progress);
+    label.textContent = `${step}/${WS_TOTAL_STEPS}`;
+  }
+
+  function wsNext(fromStep){
+    if(fromStep === 1){
+      let valid = true;
+      if(!valOf('ws-name')){
+        document.getElementById('ws-err-name').style.display = 'block';
+        valid = false;
+      }else{
+        document.getElementById('ws-err-name').style.display = 'none';
+      }
+      if(!isValidEmail(valOf('ws-email'))){
+        document.getElementById('ws-err-email').style.display = 'block';
+        valid = false;
+      }else{
+        document.getElementById('ws-err-email').style.display = 'none';
+      }
+      if(!valid) return;
+      showWsStep(2);
+      setTimeout(() => document.getElementById('ws-company').focus(), 300);
+    }else if(fromStep === 2){
+      if(!valOf('ws-company')){
+        document.getElementById('ws-err-company').style.display = 'block';
+        return;
+      }
+      document.getElementById('ws-err-company').style.display = 'none';
+      showWsStep(3);
+    }
+  }
+
+  function wsBack(fromStep){
+    showWsStep(fromStep - 1);
+  }
+
+  document.querySelectorAll('.challenge-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.challenge-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      wsChallenge = card.dataset.value;
+      document.getElementById('ws-err-challenge').style.display = 'none';
+    });
+  });
+
+  async function wsSubmit(){
+    if(!wsChallenge){
+      document.getElementById('ws-err-challenge').style.display = 'block';
+      return;
+    }
+    const guest = { name: valOf('ws-name'), email: valOf('ws-email'), organization: valOf('ws-company'), role: '' };
+    const payload = {
+      type: 'workspace_request',
+      guest_name: guest.name,
+      email: guest.email,
+      organization: guest.organization,
+      role: guest.role,
+      details: { challenge: wsChallenge }
+    };
+    posthog.capture('workspace_request_submitted', { challenge: wsChallenge });
+    try{
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+      const headers = {'Content-Type':'application/json'};
+      if(csrfToken){ headers['X-CSRFToken'] = csrfToken; }
+      await fetch(API_ENDPOINT, { method:'POST', headers, body: JSON.stringify(payload) });
+    }catch(err){
+      console.log('Concierge request (offline preview):', payload);
+    }
+    sendEmailNotification('BioLens Concierge — Workspace request', {
+      guest_name: guest.name,
+      email: guest.email,
+      organization: guest.organization,
+      details: { challenge: wsChallenge }
+    });
+    showWsStep('done');
+  }
+
+  document.getElementById('ws-name').addEventListener('keydown', e => { if(e.key === 'Enter') wsNext(1); });
+  document.getElementById('ws-email').addEventListener('keydown', e => { if(e.key === 'Enter') wsNext(1); });
+  document.getElementById('ws-company').addEventListener('keydown', e => { if(e.key === 'Enter') wsNext(2); });
+
+  wsOverlay.addEventListener('click', e => {
+    if(e.target === wsOverlay) closeWorkspaceModal();
+  });
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && wsOverlay.classList.contains('open')) closeWorkspaceModal();
+  });
+</script>
+</body>
+</html>
