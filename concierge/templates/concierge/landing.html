@@ -37,6 +37,7 @@
     --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
   }
   *{box-sizing:border-box;}
+  [hidden]{display:none;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--bg);
@@ -417,9 +418,19 @@
     display:block;
     object-fit:cover;
   }
-  .video-mute-btn{
+  .video-wrap:fullscreen{
+    width:100vw;height:100vh;border-radius:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .video-wrap:-webkit-full-screen{
+    width:100vw;height:100vh;border-radius:0;
+  }
+  .video-wrap:fullscreen video,
+  .video-wrap:-webkit-full-screen video{
+    object-fit:contain;
+  }
+  .video-mute-btn, .video-fullscreen-btn, .video-play-btn{
     position:absolute;
-    right:16px;
     bottom:16px;
     width:42px;height:42px;
     border-radius:50%;
@@ -432,12 +443,15 @@
     cursor:pointer;
     transition:transform .25s cubic-bezier(.16,1,.3,1), background-color .25s ease, border-color .25s ease;
   }
-  .video-mute-btn:hover{
+  .video-mute-btn{right:16px;}
+  .video-fullscreen-btn{right:66px;}
+  .video-play-btn{left:16px;}
+  .video-mute-btn:hover, .video-fullscreen-btn:hover, .video-play-btn:hover{
     transform:scale(1.08);
     background:rgba(54,84,224,0.45);
     border-color:rgba(54,84,224,.6);
   }
-  .video-mute-btn svg{width:18px;height:18px;}
+  .video-mute-btn svg, .video-fullscreen-btn svg, .video-play-btn svg{width:18px;height:18px;}
 
   /* ---------- Workspace modal ---------- */
   .modal-overlay{
@@ -546,7 +560,10 @@
     .trusted-logos{gap:14px 14px;}
     .trusted-logo{height:60px;padding:0 20px;}
     .trusted-logo img{height:30px;max-width:110px;}
-    .video-mute-btn{width:38px;height:38px;right:12px;bottom:12px;}
+    .video-mute-btn, .video-fullscreen-btn, .video-play-btn{width:38px;height:38px;bottom:12px;}
+    .video-mute-btn{right:12px;}
+    .video-fullscreen-btn{right:58px;}
+    .video-play-btn{left:12px;}
     .conference-logo{height:48px;padding:0 16px;}
     .conference-logo img{height:28px;max-width:130px;}
   }
@@ -619,6 +636,24 @@
       </div>
     </div>
 
+    <div class="video-section">
+      <div class="video-wrap">
+        <video id="biolens-video" src="https://res.cloudinary.com/dnscrocre/video/upload/v1789250226/biolens-video-v1_1_1_na7gg9.mp4" autoplay muted loop playsinline webkit-playsinline="true" disablepictureinpicture disableremoteplayback></video>
+        <button class="video-play-btn" onclick="toggleVideoPlay()" aria-label="Pause video" id="video-play-btn">
+          <svg id="icon-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+          <svg id="icon-play" style="display:none" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5-13-7.5Z" fill="currentColor"/></svg>
+        </button>
+        <button class="video-mute-btn" onclick="toggleVideoMute()" aria-label="Unmute video" id="video-mute-btn">
+          <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m16 9 4 6M20 9l-4 6"/></svg>
+          <svg id="icon-unmuted" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"/></svg>
+        </button>
+        <button class="video-fullscreen-btn" onclick="toggleVideoFullscreen()" aria-label="Expand to fullscreen" id="video-fullscreen-btn">
+          <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          <svg id="icon-collapse" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3v3a2 2 0 0 1-2 2H4"/><path d="M15 3v3a2 2 0 0 0 2 2h3"/><path d="M4 15h3a2 2 0 0 1 2 2v3"/><path d="M20 15h-3a2 2 0 0 0-2 2v3"/></svg>
+        </button>
+      </div>
+    </div>
+
     <div class="trusted-section">
       <p class="trusted-label">Trusted by</p>
       <div class="trusted-logos">
@@ -629,17 +664,6 @@
         <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEFYCfSRW8nU6KYQgY5vadNHi3dk7MEqKDHXiRinB7xI1LC1Pk81G9AlMm&s=10" alt="Optima" loading="lazy"></div>
         <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7rAtWxMl1UBtiZI141IkeiyKpxKacvexvdHxu6Qz2kA&s=10" alt="Stevanato Group" loading="lazy"></div>
         <div class="trusted-logo"><img src="https://shilpabio.com/wp-content/uploads/2021/10/shilpabio_logo_color_@2x-1.png" alt="Shilpa Biologicals" loading="lazy"></div>
-        <div class="trusted-logo"><img src="https://companieslogo.com/img/orig/NEULANDLAB.NS_BIG-37c34c1e.png?t=1747366439" alt="Neuland" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="video-section">
-      <div class="video-wrap">
-        <video id="biolens-video" src="https://res.cloudinary.com/dnscrocre/video/upload/v1789250226/biolens-video-v1_1_1_na7gg9.mp4" autoplay muted loop playsinline webkit-playsinline="true" disablepictureinpicture disableremoteplayback></video>
-        <button class="video-mute-btn" onclick="toggleVideoMute()" aria-label="Unmute video" id="video-mute-btn">
-          <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m16 9 4 6M20 9l-4 6"/></svg>
-          <svg id="icon-unmuted" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"/></svg>
-        </button>
       </div>
     </div>
 
@@ -713,7 +737,7 @@
     </div>
 
     <div class="modal-step active" data-step="1">
-      <h2 class="modal-title">Who do we have the pleasure of assisting?</h2>
+      <h2 class="modal-title">Let's predict your next RFP</h2>
       <div class="field">
         <label for="ws-name">Your name</label>
         <input type="text" id="ws-name" placeholder="e.g. Jordan Ellis" autocomplete="name">
@@ -731,7 +755,7 @@
     </div>
 
     <div class="modal-step" data-step="2">
-      <h2 class="modal-title">Which company do you represent?</h2>
+      <h2 class="modal-title">Let's predict your next RFP</h2>
       <div class="field">
         <label for="ws-company">Company / organization</label>
         <input type="text" id="ws-company" placeholder="e.g. Lunartree Bio" autocomplete="organization">
@@ -744,7 +768,7 @@
     </div>
 
     <div class="modal-step" data-step="3">
-      <h2 class="modal-title">What's your biggest commercial challenge right now?</h2>
+      <h2 class="modal-title">Let's predict your next RFP</h2>
       <div class="challenge-grid" id="challenge-grid">
         <div class="challenge-card" data-value="Finding New RFPs">
           <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><circle cx="11" cy="14" r="3"/><path d="m15 18-1.5-1.5"/></svg></div>
@@ -889,18 +913,95 @@
 
   /* ---------- Video ---------- */
   const biolensVideo = document.getElementById('biolens-video');
-  function toggleVideoMute(){
-    biolensVideo.muted = !biolensVideo.muted;
-    document.getElementById('icon-muted').hidden = !biolensVideo.muted;
-    document.getElementById('icon-unmuted').hidden = biolensVideo.muted;
+  const videoWrap = document.querySelector('.video-wrap');
+
+  // Some browsers don't reliably reflect the `hidden` attribute on <svg>
+  // elements via the `.hidden` property, so toggle display explicitly.
+  function showIcon(id, show){
+    document.getElementById(id).style.display = show ? '' : 'none';
+  }
+
+  function updateMuteIcons(){
+    showIcon('icon-muted', !biolensVideo.muted);
+    showIcon('icon-unmuted', biolensVideo.muted);
     document.getElementById('video-mute-btn').setAttribute(
       'aria-label', biolensVideo.muted ? 'Unmute video' : 'Mute video'
     );
+  }
+
+  function toggleVideoMute(){
+    biolensVideo.muted = !biolensVideo.muted;
+    updateMuteIcons();
     posthog.capture('video_mute_toggled', { muted: biolensVideo.muted });
   }
+
   biolensVideo.addEventListener('loadeddata', () => {
     biolensVideo.play().catch(() => {});
   });
+
+  function updatePlayIcons(){
+    showIcon('icon-pause', !biolensVideo.paused);
+    showIcon('icon-play', biolensVideo.paused);
+    document.getElementById('video-play-btn').setAttribute(
+      'aria-label', biolensVideo.paused ? 'Play video' : 'Pause video'
+    );
+  }
+
+  function toggleVideoPlay(){
+    if(biolensVideo.paused){
+      biolensVideo.play().catch(() => {});
+    }else{
+      biolensVideo.pause();
+    }
+    posthog.capture('video_play_toggled', { paused: biolensVideo.paused });
+  }
+
+  biolensVideo.addEventListener('play', updatePlayIcons);
+  biolensVideo.addEventListener('pause', updatePlayIcons);
+
+  function isVideoFullscreen(){
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+
+  function updateFullscreenIcon(){
+    const fs = isVideoFullscreen();
+    showIcon('icon-expand', !fs);
+    showIcon('icon-collapse', fs);
+    document.getElementById('video-fullscreen-btn').setAttribute(
+      'aria-label', fs ? 'Exit fullscreen' : 'Expand to fullscreen'
+    );
+  }
+
+  function toggleVideoFullscreen(){
+    if(!isVideoFullscreen()){
+      const request = videoWrap.requestFullscreen || videoWrap.webkitRequestFullscreen;
+      if(request){
+        request.call(videoWrap).catch(() => {});
+      }else if(biolensVideo.webkitEnterFullscreen){
+        // iOS Safari only supports fullscreen on the <video> element itself.
+        biolensVideo.webkitEnterFullscreen();
+      }
+      biolensVideo.muted = false;
+      updateMuteIcons();
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('landscape').catch(() => {});
+      }
+      posthog.capture('video_fullscreen_toggled', { fullscreen: true });
+    }else{
+      if(document.exitFullscreen){ document.exitFullscreen(); }
+      else if(document.webkitExitFullscreen){ document.webkitExitFullscreen(); }
+      posthog.capture('video_fullscreen_toggled', { fullscreen: false });
+    }
+  }
+
+  function handleFullscreenChange(){
+    updateFullscreenIcon();
+    if(!isVideoFullscreen() && screen.orientation && screen.orientation.unlock){
+      try{ screen.orientation.unlock(); }catch(err){}
+    }
+  }
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 
   /* ---------- Workspace request modal ---------- */
   const WS_TOTAL_STEPS = 3;
