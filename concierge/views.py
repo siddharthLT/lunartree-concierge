@@ -14,6 +14,10 @@ def landing(request):
     return render(request, 'concierge/landing.html')
 
 
+def ddf_intel(request):
+    return render(request, 'concierge/ddf_intel.html')
+
+
 @require_POST
 def submit_request(request):
     try:

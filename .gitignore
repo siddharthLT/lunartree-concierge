@@ -4,3 +4,8 @@ db.sqlite3
 .venv/
 venv/
 .env
+
+# Internal-only, contains real contact PII — never publish to the public repo/site
+Boston Events Hitlist*.xlsx
+DDF Summit*.xlsx
+ddf-summit-hitlist.html
