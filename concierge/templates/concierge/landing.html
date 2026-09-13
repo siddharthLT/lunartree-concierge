@@ -19,20 +19,22 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root{
-    --ink:#f2f3f5;
-    --ink-dim:#9a9ea6;
-    --ink-faint:#65686f;
-    --bg:#000000;
-    --panel:#0c0c0e;
-    --panel-hover:#131316;
-    --line:rgba(255,255,255,0.08);
-    --line-strong:rgba(255,255,255,0.16);
-    --accent:#4066ff;
-    --accent-bright:#7590ff;
-    --accent-soft:rgba(64,102,255,0.14);
-    --error:#ff6b6b;
+    --ink:#18170f;
+    --ink-dim:#68665c;
+    --ink-faint:#8f8c80;
+    --bg:#f0eee8;
+    --panel:#ffffff;
+    --panel-hover:#fbfaf7;
+    --line:rgba(24,23,15,0.10);
+    --line-strong:rgba(24,23,15,0.18);
+    --accent:#3654e0;
+    --accent-bright:#2643c2;
+    --accent-soft:rgba(54,84,224,0.08);
+    --error:#c23b34;
     --radius:16px;
     --radius-sm:10px;
+    --shadow-card:0 1px 2px rgba(24,23,15,.04), 0 10px 28px -14px rgba(24,23,15,.14);
+    --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -87,7 +89,8 @@
     border:1px solid var(--line);
     border-radius:999px;
     padding:6px 14px;
-    letter-spacing:.02em;
+    letter-spacing:.06em;
+    text-transform:uppercase;
   }
 
   /* ---------- Screens ---------- */
@@ -104,11 +107,11 @@
     font-weight:600;
   }
   h1.title{
-    font-weight:700;
+    font-weight:800;
     font-size:30px;
     margin:0 0 14px;
     color:var(--ink);
-    letter-spacing:-0.02em;
+    letter-spacing:-0.03em;
   }
   p.lede{
     color:var(--ink-dim);
@@ -172,7 +175,7 @@
     background-repeat:no-repeat;
     padding-right:20px;
   }
-  select option{background:#0c0c0e;color:var(--ink);}
+  select option{background:#ffffff;color:var(--ink);}
 
   .radio-row{display:flex;gap:10px;flex-wrap:wrap;}
   .chip{
@@ -223,17 +226,20 @@
   }
   @media(max-width:900px){.menu-grid{grid-template-columns:repeat(2, 1fr);}}
 
+  .menu-card.hidden-card{display:none;}
+
   a.menu-card{
     color:inherit;
     text-decoration:none;
   }
   .menu-card{
     position:relative;
-    border:1px solid var(--line);
+    border:1px solid var(--line-strong);
     background:var(--panel);
     padding:26px 20px 22px;
     border-radius:var(--radius);
     cursor:pointer;
+    box-shadow:var(--shadow-card);
     transition:transform .4s cubic-bezier(.16,1,.3,1), border-color .35s ease, background-color .35s ease, box-shadow .4s ease;
     text-align:left;
     display:flex;
@@ -252,9 +258,9 @@
   }
   .menu-card:hover{
     transform:translateY(-5px);
-    border-color:var(--line-strong);
+    border-color:var(--accent);
     background:var(--panel-hover);
-    box-shadow:0 20px 44px -18px rgba(0,0,0,.7);
+    box-shadow:var(--shadow-card-hover);
   }
   .menu-card:hover::before{opacity:1;}
   .menu-card:active{transform:translateY(-2px);}
@@ -263,14 +269,14 @@
     width:46px;height:46px;
     border-radius:12px;
     border:1px solid var(--line);
-    background:rgba(255,255,255,0.02);
+    background:#f5f3ee;
     display:flex;align-items:center;justify-content:center;
     color:var(--ink-dim);
     transition:transform .45s cubic-bezier(.16,1,.3,1), border-color .3s ease, background-color .3s ease;
   }
   .menu-card:hover .icon-wrap{
     transform:scale(1.14) rotate(-6deg);
-    border-color:rgba(64,102,255,.4);
+    border-color:rgba(54,84,224,.35);
     background:var(--accent-soft);
   }
   .menu-card .icon-img{
@@ -291,6 +297,32 @@
   }
   .menu-hero{margin-bottom:32px;}
   .menu-title{font-size:34px;margin-bottom:6px;}
+
+  .conference-badges{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .conference-logo{
+    height:60px;
+    padding:0 22px;
+    border-radius:12px;
+    background:#fff;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-card);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .conference-logo img{
+    height:38px;
+    width:auto;
+    max-width:170px;
+    object-fit:contain;
+    display:block;
+  }
 
   /* ---------- Dining image ---------- */
   .dining-image{
@@ -348,6 +380,8 @@
     padding:0 30px;
     border-radius:14px;
     background:#fff;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-card);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -400,15 +434,15 @@
   }
   .video-mute-btn:hover{
     transform:scale(1.08);
-    background:rgba(64,102,255,0.35);
-    border-color:rgba(64,102,255,.5);
+    background:rgba(54,84,224,0.45);
+    border-color:rgba(54,84,224,.6);
   }
   .video-mute-btn svg{width:18px;height:18px;}
 
   /* ---------- Workspace modal ---------- */
   .modal-overlay{
     position:fixed;inset:0;
-    background:rgba(0,0,0,0.72);
+    background:rgba(24,23,15,0.45);
     backdrop-filter:blur(6px);
     -webkit-backdrop-filter:blur(6px);
     display:flex;align-items:center;justify-content:center;
@@ -427,7 +461,7 @@
     max-width:440px;
     width:100%;
     position:relative;
-    box-shadow:0 30px 80px -20px rgba(0,0,0,.8);
+    box-shadow:0 30px 70px -20px rgba(24,23,15,.35);
     transform:translateY(14px) scale(.98);
     transition:transform .35s cubic-bezier(.16,1,.3,1);
     max-height:88vh;
@@ -443,7 +477,7 @@
     border-radius:8px;
     transition:all .2s ease;
   }
-  .modal-close:hover{color:var(--ink);background:rgba(255,255,255,.06);}
+  .modal-close:hover{color:var(--ink);background:rgba(24,23,15,.06);}
 
   .modal-dial{
     display:flex;align-items:center;justify-content:center;
@@ -470,7 +504,7 @@
   .challenge-card{
     display:flex;align-items:center;gap:14px;
     border:1px solid var(--line);
-    background:rgba(255,255,255,.015);
+    background:#f9f8f5;
     padding:13px 15px;
     border-radius:var(--radius-sm);
     cursor:pointer;
@@ -482,7 +516,7 @@
     width:34px;height:34px;
     border-radius:9px;
     border:1px solid var(--line);
-    background:rgba(255,255,255,0.02);
+    background:#ffffff;
     display:flex;align-items:center;justify-content:center;
     color:var(--ink-dim);
     flex-shrink:0;
@@ -491,8 +525,8 @@
   .challenge-card .icon-wrap svg{width:16px;height:16px;}
   .challenge-card.selected .icon-wrap{
     color:var(--accent-bright);
-    border-color:rgba(64,102,255,.4);
-    background:var(--accent-soft);
+    border-color:rgba(54,84,224,.4);
+    background:#ffffff;
   }
   .challenge-card .label{font-size:14px;font-weight:500;color:var(--ink);}
 
@@ -513,6 +547,8 @@
     .trusted-logo{height:60px;padding:0 20px;}
     .trusted-logo img{height:30px;max-width:110px;}
     .video-mute-btn{width:38px;height:38px;right:12px;bottom:12px;}
+    .conference-logo{height:48px;padding:0 16px;}
+    .conference-logo img{height:28px;max-width:130px;}
   }
 </style>
 </head>
@@ -536,23 +572,27 @@
   <!-- MENU -->
   <section id="screen-menu" class="screen">
     <div class="menu-hero">
-      <p class="eyebrow">Concierge</p>
+      <div class="conference-badges">
+        <div class="conference-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTetj3U0ei_Cyh5KZ-9TW2B2_qqeh8p_EiGyQ3UFY4rX_5q51sjsSBmS48n&s=10" alt="Global DDF Summit"></div>
+        <div class="conference-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_gu-XhanJFuvUg9v6z3zsCCe3DrgDBI69JBhyYlfTDah9V_ZVFTxpbKRt&s=10" alt="CAR-TCR Summit"></div>
+      </div>
+      <p class="eyebrow">Welcome to Lunartree Concierge</p>
       <h1 class="title menu-title">How may we assist you?</h1>
-      <p class="lede" style="margin-bottom:0;">Select an option below — we'll take it from there.</p>
+      <p class="lede" style="margin-bottom:0;">Request your pick and we'll take it from there</p>
     </div>
 
     <div class="menu-grid">
-      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20coffee%20for%20my%20booth." target="_blank" rel="noopener">
+      <a class="menu-card hidden-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20coffee%20for%20my%20booth." target="_blank" rel="noopener">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Hot%20beverage/3D/hot_beverage_3d.png" alt=""></div>
         <div class="label">Ask for a coffee</div>
         <div class="sub">Brewed to order, brought to you</div>
       </a>
-      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20bagels%20for%20my%20booth." target="_blank" rel="noopener">
+      <a class="menu-card hidden-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20bagels%20for%20my%20booth." target="_blank" rel="noopener">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Bagel/3D/bagel_3d.png" alt=""></div>
         <div class="label">Ask for bagels</div>
         <div class="sub">A morning bite, your way</div>
       </a>
-      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20book%20a%20seat%20at%20Eddie%20Merlot%27s." target="_blank" rel="noopener">
+      <a class="menu-card hidden-card" href="https://wa.me/917871044448?text=I%20want%20to%20book%20a%20seat%20at%20Eddie%20Merlot%27s." target="_blank" rel="noopener">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Fork%20and%20knife%20with%20plate/3D/fork_and_knife_with_plate_3d.png" alt=""></div>
         <div class="label">Book a seat at Eddie Merlot's</div>
         <div class="sub">Reserve a table nearby</div>
