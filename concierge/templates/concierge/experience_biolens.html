@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience BioLens — Lunartree</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#18170f;
+    --ink-dim:#68665c;
+    --ink-faint:#8f8c80;
+    --bg:#f0eee8;
+    --panel:#ffffff;
+    --panel-hover:#fbfaf7;
+    --line:rgba(24,23,15,0.10);
+    --line-strong:rgba(24,23,15,0.18);
+    --accent:#3654e0;
+    --accent-bright:#2643c2;
+    --accent-soft:rgba(54,84,224,0.08);
+    --radius:16px;
+    --radius-sm:10px;
+    --shadow-card:0 1px 2px rgba(24,23,15,.04), 0 10px 28px -14px rgba(24,23,15,.14);
+    --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
+  }
+  *{box-sizing:border-box;}
+  [hidden]{display:none;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    min-height:100vh;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#fff;}
+
+  .app{
+    max-width:1120px;
+    margin:0 auto;
+    min-height:100vh;
+    padding:40px 28px 80px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;row-gap:10px;margin-bottom:8px;
+  }
+  .topbar .brand-left{display:flex;align-items:center;gap:10px;}
+  .topbar img.logo{width:26px;height:26px;border-radius:7px;display:block;}
+  .topbar .brand-name{font-weight:600;font-size:15px;color:var(--ink);letter-spacing:-0.01em;}
+  .topbar a.back-link{
+    font-size:13px;color:var(--ink-faint);text-decoration:none;
+    display:flex;align-items:center;gap:6px;
+    transition:color .15s ease;
+  }
+  .topbar a.back-link:hover{color:var(--accent-bright);}
+  .topbar .pill{
+    font-size:11px;color:var(--ink-dim);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;letter-spacing:.06em;text-transform:uppercase;
+  }
+
+  .hero{margin:36px 0 32px;}
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent-bright);margin:0 0 10px;font-weight:600;
+  }
+  h1.title{
+    font-weight:800;font-size:32px;margin:0 0 12px;
+    color:var(--ink);letter-spacing:-0.03em;
+  }
+  p.lede{color:var(--ink-dim);font-size:15.5px;max-width:62ch;margin:0;}
+  .persona-pill{
+    display:inline-block;margin-top:14px;
+    background:var(--accent-soft);color:var(--accent-bright);
+    font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;
+  }
+
+  /* ---------- Use-case tab bar ---------- */
+  .usecase-tabs{
+    display:flex;flex-wrap:wrap;gap:10px;
+    margin-bottom:32px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  .usecase-tab{
+    display:flex;align-items:center;gap:10px;
+    border:1px solid var(--line-strong);
+    background:var(--panel);
+    padding:12px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--ink-dim);
+    box-shadow:var(--shadow-card);
+    transition:all .2s ease;
+    user-select:none;
+  }
+  .usecase-tab .num{
+    display:flex;align-items:center;justify-content:center;
+    width:20px;height:20px;border-radius:50%;
+    background:var(--bg);color:var(--ink-faint);
+    font-size:11px;font-weight:700;
+    flex-shrink:0;
+    transition:all .2s ease;
+  }
+  .usecase-tab:hover{border-color:var(--accent);color:var(--ink);}
+  .usecase-tab.active{
+    border-color:var(--accent);background:var(--accent);color:#fff;
+  }
+  .usecase-tab.active .num{background:rgba(255,255,255,.22);color:#fff;}
+
+  /* ---------- Use-case panel ---------- */
+  .usecase-panel{display:none;flex:1;flex-direction:column;animation:fade .4s ease;}
+  .usecase-panel.active{display:flex;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .usecase-head{margin-bottom:24px;}
+  .usecase-head .eyebrow{margin-bottom:8px;}
+  .usecase-head h2{
+    font-weight:700;font-size:24px;margin:0 0 8px;
+    color:var(--ink);letter-spacing:-0.02em;
+  }
+  .usecase-head p{color:var(--ink-dim);font-size:14.5px;max-width:64ch;margin:0;}
+
+  /* ---------- Mock stage ---------- */
+  .mock-stage{
+    flex:1;
+    border:1px solid var(--line-strong);
+    background:var(--panel);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-card);
+    min-height:420px;
+    padding:0;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .mock-stage .mock-chrome{
+    display:flex;align-items:center;gap:8px;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+    background:#f9f8f5;
+  }
+  .mock-stage .mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line-strong);}
+  .mock-stage .mock-chrome-label{
+    margin-left:8px;font-size:12px;color:var(--ink-faint);
+    letter-spacing:.04em;
+  }
+  .mock-stage .mock-empty{
+    flex:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;gap:14px;padding:60px 30px;
+  }
+  .mock-stage .mock-empty .icon-wrap{
+    width:52px;height:52px;border-radius:14px;
+    border:1px dashed var(--line-strong);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-faint);
+  }
+  .mock-stage .mock-empty p{
+    color:var(--ink-faint);font-size:13.5px;max-width:38ch;margin:0;
+  }
+  .mock-stage .mock-empty p.strong{color:var(--ink-dim);font-weight:600;font-size:14.5px;}
+  .mock-stage .mock-content{flex:1;padding:28px;}
+
+  /* ---------- Search & evaluate companies demo ---------- */
+  /* No window chrome, no card frame — this sits directly on the page,
+     scaled up so it reads as a close-in view of the product, not a thumbnail. */
+  .search-caption{
+    font-size:14.5px;color:var(--ink-dim);
+    margin:-4px 0 20px;min-height:22px;
+  }
+  .search-demo-stage{
+    min-height:480px;overflow:visible;
+    border:none;box-shadow:none;background:transparent;border-radius:0;
+  }
+
+  .search-stage-wrap{position:relative;flex:1;min-height:420px;}
+
+  .search-prompt-stage{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:flex-start;
+    padding:36px 30px 28px;
+    transition:opacity 350ms ease, transform 350ms ease;
+  }
+  .search-prompt-stage.stage-hidden{opacity:0;transform:translateY(-12px);pointer-events:none;}
+  .search-prompt-title{font-size:19px;font-weight:600;color:var(--ink-dim);margin:0 0 18px;text-align:center;}
+  .search-query-box{
+    border:1px solid var(--line-strong);border-radius:18px;background:#f9f8f5;
+    padding:20px 24px;min-height:64px;font-size:18px;color:var(--ink);
+    display:flex;align-items:center;gap:12px;max-width:700px;margin:0 auto;
+    transition:min-height 350ms ease, padding 350ms ease, box-shadow 350ms ease, border-color 350ms ease, background-color 350ms ease;
+  }
+  .search-query-box .search-icon{color:var(--ink-faint);flex-shrink:0;transition:color 350ms ease;width:22px;height:22px;}
+  .search-query-box.expanded{
+    min-height:82px;padding:26px 28px;font-size:19.5px;
+    background:#fff;border-color:var(--accent);
+    box-shadow:0 18px 40px -20px rgba(54,84,224,.35);
+  }
+  .search-query-box.expanded .search-icon{color:var(--accent);}
+  .search-query-placeholder{color:var(--ink-faint);}
+  .search-query-box.expanded .search-query-placeholder{display:none;}
+  .search-type-text{display:none;}
+  .search-query-box.expanded .search-type-text{display:inline;}
+  .search-type-text::after{
+    content:"";display:inline-block;width:2px;height:1em;margin-left:3px;
+    transform:translateY(2px);background:var(--accent);
+    animation:searchCaret 630ms step-end infinite;
+  }
+  .search-type-text.typing-complete::after{opacity:0;}
+  @keyframes searchCaret{50%{opacity:0;}}
+
+  .search-suggestions{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    max-width:800px;margin:24px auto 0;
+    transition:opacity 300ms ease, transform 300ms ease;
+  }
+  .search-suggestions.suggestions-hidden{opacity:0;transform:translateY(-8px);pointer-events:none;}
+  .search-suggestion-card{
+    border:1px solid var(--line-strong);background:var(--panel);border-radius:14px;
+    padding:16px 18px;font-size:14.5px;line-height:1.45;color:var(--ink-dim);font-weight:500;
+    cursor:pointer;transition:all .18s ease;
+  }
+  .search-suggestion-card:hover{border-color:var(--accent);color:var(--ink);background:var(--panel-hover);}
+  @media(max-width:600px){
+    .search-suggestions{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Shared: pulse a CTA to prompt the next action ---------- */
+  @keyframes ctaPulse{
+    0%, 100% { box-shadow: 0 0 0 0 rgba(54,84,224,.32); }
+    50% { box-shadow: 0 0 0 7px rgba(54,84,224,0); }
+  }
+  .search-suggestion-card, .cdmo-write-btn, .cdmo-send-btn:not([hidden]),
+  .ci-question-card, .ci-download-btn, .crm-add-btn{
+    animation: ctaPulse 2.2s ease-in-out infinite;
+  }
+  .search-suggestion-card:hover, .cdmo-write-btn:hover, .cdmo-send-btn:hover,
+  .ci-question-card:hover, .ci-download-btn:hover, .crm-add-btn:hover{
+    animation: none;
+  }
+
+  .search-table-stage{
+    position:absolute;inset:0;
+    opacity:0;transform:translateY(18px) scale(.98);pointer-events:none;
+    transition:opacity 385ms ease, transform 385ms ease;
+    background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);
+    display:flex;flex-direction:column;
+    overflow:hidden;
+  }
+  .search-table-stage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+
+  .search-results-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 26px;border-bottom:1px solid var(--line);
+  }
+  .search-results-head h4{margin:0;font-size:17px;font-weight:700;color:var(--ink);}
+  .search-found-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--accent-soft);color:var(--accent-bright);
+    font-size:13px;font-weight:700;padding:7px 16px;border-radius:999px;flex-shrink:0;
+  }
+  .search-found-pill .dot{width:8px;height:8px;border-radius:50%;background:#16a34a;}
+
+  .search-row-grid{
+    display:grid;
+    grid-template-columns:minmax(180px,1.6fr) 74px 90px minmax(130px,1fr) minmax(180px,1.4fr);
+    align-items:center;
+  }
+  .search-cols-head{
+    font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink-faint);background:#f9f8f5;border-bottom:1px solid var(--line);
+  }
+  .search-cols-head > div{padding:11px 18px;}
+  .search-rows-wrap{position:relative;flex:1;overflow:visible;}
+  .search-company-row{
+    border-bottom:1px solid var(--line);
+    opacity:0;transform:translateY(8px);
+    transition:opacity 294ms ease, transform 294ms ease;
+  }
+  .search-company-row.row-visible{opacity:1;transform:translateY(0);}
+  .search-company-row > div{padding:16px 18px;font-size:14.5px;}
+  .search-company-name{display:flex;align-items:center;gap:12px;}
+  .search-company-mark{
+    width:36px;height:36px;border-radius:9px;background:var(--accent-soft);color:var(--accent-bright);
+    display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex-shrink:0;
+  }
+  .search-company-name .name{font-weight:700;color:var(--ink);font-size:14.5px;}
+  .search-fit-ring{
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .search-fit-ring span{width:21px;height:21px;border-radius:50%;background:#fff;display:block;}
+  .search-evidence-tag{
+    background:#f3f2ee;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--ink);
+    display:inline-block;
+  }
+  .search-fit-target{transition:box-shadow 260ms ease, transform 260ms ease;}
+  .search-fit-target.fit-clicked{animation:searchClickPulse 455ms ease-out;}
+  @keyframes searchClickPulse{
+    0%{box-shadow:0 0 0 0 rgba(54,84,224,.32);transform:scale(1);}
+    42%{box-shadow:0 0 0 9px rgba(54,84,224,0);transform:scale(.94);}
+    100%{box-shadow:0 0 0 0 rgba(54,84,224,0);transform:scale(1);}
+  }
+  .search-cursor{
+    position:absolute;left:0;top:0;z-index:30;
+    opacity:0;transform:translate(0,0) scale(.96);
+    transition:opacity 154ms ease, transform 630ms cubic-bezier(.16,1,.3,1);
+    pointer-events:none;
+  }
+  .search-cursor.cursor-visible{opacity:1;}
+  .search-fit-popover{
+    position:absolute;z-index:20;width:340px;
+    background:var(--panel);border:1px solid var(--line-strong);border-radius:16px;
+    padding:20px;box-shadow:0 30px 60px -20px rgba(24,23,15,.35);
+    opacity:0;transform:translateX(6px) scale(.98);
+    transition:opacity 252ms ease, transform 252ms ease;
+    pointer-events:none;
+  }
+  .search-fit-popover.popover-visible{opacity:1;transform:translateX(0) scale(1);}
+  .search-fit-popover-arrow{
+    position:absolute;left:-8px;width:0;height:0;
+    border-top:8px solid transparent;border-bottom:8px solid transparent;
+    border-right:8px solid var(--panel);
+    filter:drop-shadow(-2px 0 1px rgba(24,23,15,.10));
+  }
+  .search-fit-popover h5{margin:0 0 12px;font-size:15.5px;font-weight:800;color:var(--ink);}
+  .search-fit-popover .crit{margin-bottom:12px;padding-top:12px;border-top:1px solid var(--line);}
+  .search-fit-popover .crit:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+  .search-fit-popover .crit-tag{
+    display:inline-block;background:#e8f6ec;color:#16803c;font-size:12px;font-weight:700;
+    padding:4px 10px;border-radius:999px;margin-bottom:7px;
+  }
+  .search-fit-popover .crit p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-dim);}
+
+  @media(max-width:700px){
+    .search-row-grid{grid-template-columns:minmax(140px,1.4fr) 56px 70px;}
+    .search-col-location, .search-col-evidence{display:none;}
+    .search-fit-popover{width:250px;}
+    .search-demo-stage{min-height:720px;}
+    .search-stage-wrap{min-height:680px;}
+  }
+
+  /* ---------- Biopharma R&D demo ---------- */
+  .rnd-stage-wrap{position:relative;min-height:480px;}
+  @media(max-width:700px){
+    .rnd-stage-wrap{min-height:780px;}
+  }
+
+  .rnd-table-stage{
+    position:absolute;inset:0;
+    opacity:1;transform:translateY(0) scale(1);
+    transition:opacity 350ms ease, transform 350ms ease;
+  }
+  .rnd-table-stage.stage-hidden{opacity:0;transform:translateY(-10px) scale(.99);pointer-events:none;}
+
+  .rnd-pill{
+    font-size:12.5px;font-weight:700;border-radius:999px;padding:8px 16px;
+    white-space:nowrap;
+  }
+  .rnd-pill-go{background:#e3f5e9;color:#1a7a41;}
+  .rnd-pill-conditional{background:#fdf1de;color:#9a6112;}
+  .rnd-pill-watch{background:#fdf1de;color:#9a6112;opacity:.75;}
+  .rnd-pill-drop{background:#fbe7e6;color:#af3327;}
+
+  .rnd-table{
+    border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);
+    overflow:hidden;
+  }
+  .rnd-row-grid{
+    display:grid;
+    grid-template-columns:minmax(190px,2fr) 96px 90px 140px minmax(110px,1fr) minmax(110px,1fr) minmax(130px,1fr);
+    align-items:center;
+  }
+  .rnd-head-row{
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--ink-faint);background:#f9f8f5;border-bottom:1px solid var(--line);
+    line-height:1.3;
+  }
+  .rnd-head-row > div{padding:12px 16px;}
+  .rnd-weight{display:block;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-faint);margin-top:2px;}
+  .rnd-body-row{
+    border-bottom:1px solid var(--line);
+    border-left:3px solid transparent;
+    opacity:0;transform:translateY(8px);
+    transition:opacity 260ms ease, transform 260ms ease, background-color 260ms ease, border-color 260ms ease;
+  }
+  .rnd-body-row.row-visible{opacity:1;transform:translateY(0);}
+  .rnd-body-row.rnd-row-selected{background:var(--accent-soft);border-left-color:var(--accent);}
+  .rnd-body-row:last-child{border-bottom:none;}
+  .rnd-body-row > div{padding:14px 16px;font-size:13.5px;}
+  .rnd-program-name{font-weight:700;color:var(--ink);font-size:14px;}
+  .rnd-program-originator{font-size:12px;color:var(--ink-faint);margin-top:2px;}
+  .rnd-hml{
+    display:inline-block;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 12px;
+    white-space:nowrap;
+  }
+  .rnd-hml-h{background:#e3f5e9;color:#1a7a41;}
+  .rnd-hml-m{background:#fdf1de;color:#9a6112;}
+  .rnd-hml-l{background:#fbe7e6;color:#af3327;}
+  .rnd-score{font-weight:700;color:var(--ink);}
+  .rnd-score .of{color:var(--ink-faint);font-weight:500;font-size:12px;}
+
+  @media(max-width:820px){
+    .rnd-row-grid{grid-template-columns:minmax(160px,1.8fr) 84px 76px 118px;}
+    .rnd-col-dim{display:none;}
+  }
+  @media(max-width:520px){
+    .rnd-row-grid{grid-template-columns:minmax(110px,1.5fr) 66px 108px;}
+    .rnd-row-grid > div:nth-child(3){display:none;}
+    .rnd-pill, .rnd-hml{font-size:11px;padding:5px 9px;}
+  }
+
+  /* ---------- R&D profile stage ---------- */
+  .rnd-profile-stage{
+    position:absolute;inset:0;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 28px;overflow:visible;
+    opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;
+    transition:opacity 380ms ease, transform 380ms ease;
+  }
+  .rnd-profile-stage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+
+  .rnd-quick-badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 20px;}
+  .rnd-field-tag{
+    display:inline-block;font-size:11.5px;font-weight:600;color:var(--ink-dim);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px;
+  }
+
+  .rnd-full-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:2px;}
+  .rnd-full-header h3{margin:0;font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;}
+  .rnd-generate-btn{
+    border:1px solid var(--line-strong);border-radius:999px;background:var(--panel);
+    font-size:12.5px;font-weight:600;color:var(--ink);padding:9px 18px;cursor:default;
+    white-space:nowrap;
+  }
+  .rnd-full-sub{color:var(--ink-faint);font-size:13px;margin:2px 0 0;}
+
+  .rnd-donut-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:20px 0 22px;}
+  .rnd-donut{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .rnd-donut-inner{
+    width:80px;height:80px;border-radius:50%;background:var(--panel);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .rnd-donut-inner .num{font-size:22px;font-weight:800;color:var(--ink);line-height:1;}
+  .rnd-donut-inner .of{font-size:11px;color:var(--ink-faint);}
+  .rnd-donut-label{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+  .rnd-donut-label h4{margin:0;font-size:17px;font-weight:700;color:var(--ink);}
+  .rnd-donut-desc{font-size:12.5px;color:var(--ink-faint);max-width:44ch;}
+
+  .rnd-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 22px;padding-top:16px;border-top:1px solid var(--line);}
+  .rnd-legend-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-dim);}
+  .rnd-dim-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .rnd-dim-dot.h{background:#1a7a41;}
+  .rnd-dim-dot.m{background:#c8860a;}
+  .rnd-dim-dot.l{background:#c23b34;}
+
+  .rnd-assessment{
+    font-size:13.5px;color:var(--ink-dim);line-height:1.6;
+    border-top:1px solid var(--line);padding-top:18px;margin:0;
+  }
+
+  @media(max-width:600px){
+    .rnd-profile-stage{padding:22px 18px;}
+    .rnd-donut-row{gap:16px;}
+    .rnd-donut{width:96px;height:96px;}
+    .rnd-donut-inner{width:64px;height:64px;}
+    .rnd-donut-inner .num{font-size:18px;}
+    .rnd-full-header h3{font-size:19px;}
+  }
+
+  /* ---------- CDMO BD & outreach demo ---------- */
+  .cdmo-stage-wrap{position:relative;min-height:420px;}
+  @media(max-width:700px){
+    .cdmo-stage-wrap{min-height:560px;}
+  }
+  .cdmo-substage{
+    position:absolute;inset:0;
+    opacity:0;transform:translateY(12px) scale(.99);pointer-events:none;
+    transition:opacity 350ms ease, transform 350ms ease;
+    overflow:visible;
+  }
+  .cdmo-substage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+
+  .cdmo-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 28px;
+  }
+
+  .cdmo-company-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+  .cdmo-company-head h3{margin:0;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;}
+  .cdmo-signals-pill{
+    background:#1f5f6b;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:999px;
+    display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  }
+  .cdmo-signals-pill .dot{width:6px;height:6px;border-radius:50%;background:#fff;}
+  .cdmo-target-icon{
+    width:32px;height:32px;border-radius:50%;border:2px solid #16a34a;color:#16a34a;
+    display:flex;align-items:center;justify-content:center;margin-left:auto;flex-shrink:0;
+  }
+  .cdmo-meta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink-dim);margin-bottom:20px;}
+  .cdmo-meta-row a{color:var(--accent-bright);text-decoration:none;}
+  .cdmo-status-pill{
+    background:var(--accent-soft);color:var(--accent-bright);font-weight:600;font-size:12.5px;
+    padding:6px 12px;border-radius:999px;
+  }
+  .cdmo-assignee-chip{
+    display:inline-flex;align-items:center;gap:8px;background:#f3f2ee;border-radius:999px;
+    padding:4px 12px 4px 4px;font-size:12.5px;color:var(--ink-dim);font-weight:600;
+  }
+  .cdmo-assignee-chip .avatar{
+    width:22px;height:22px;border-radius:50%;background:#dcdad2;
+    display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--ink-dim);
+  }
+
+  .cdmo-about-title{font-size:16px;font-weight:800;color:var(--ink);margin:0 0 12px;}
+  .cdmo-pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+  .cdmo-info-pill{
+    display:inline-flex;align-items:center;gap:6px;background:#f3f2ee;border-radius:999px;
+    padding:7px 14px;font-size:12.5px;color:var(--ink-dim);font-weight:600;
+  }
+
+  .cdmo-trigger-box{background:#fdeceb;border:1px solid #f6cfcb;border-radius:16px;padding:20px 22px;}
+  .cdmo-trigger-label{color:#b5433a;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;}
+  .cdmo-trigger-title{font-size:16.5px;font-weight:800;color:var(--ink);margin:0 0 10px;line-height:1.3;}
+  .cdmo-trigger-body{font-size:13.5px;color:var(--ink-dim);line-height:1.6;margin:0;}
+
+  .cdmo-section-head{border-left:4px solid #c8860a;padding-left:14px;margin-bottom:18px;}
+  .cdmo-section-head h3{margin:0;font-size:19px;font-weight:800;color:var(--ink);}
+  .cdmo-section-sub{font-size:13px;color:var(--ink-faint);margin-top:3px;}
+  .cdmo-section-sub .suggested{color:#1a7a41;font-weight:700;}
+
+  .cdmo-tier-pills{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap;}
+  .cdmo-tier-pill{
+    display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);border-radius:999px;
+    padding:6px 14px 6px 6px;font-size:13px;font-weight:600;color:var(--ink);background:var(--panel);
+  }
+  .cdmo-tier-badge{
+    width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:10.5px;font-weight:800;color:#fff;flex-shrink:0;
+  }
+  .cdmo-tier-badge.t2{background:#1f5f6b;}
+  .cdmo-tier-badge.t3{background:#3b82c4;}
+
+  .cdmo-tier-group{margin-bottom:22px;}
+  .cdmo-tier-group-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:14px;font-weight:700;color:var(--ink);}
+  .cdmo-suggested-label{
+    display:flex;align-items:center;gap:6px;color:#1a7a41;font-size:11.5px;font-weight:800;
+    letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px;
+  }
+
+  .cdmo-contact-card{border:1px solid #bfe3c9;background:#f3fbf5;border-radius:14px;padding:16px 18px;}
+  .cdmo-contact-top{display:flex;align-items:flex-start;gap:12px;}
+  .cdmo-contact-checkbox{width:16px;height:16px;border:1.5px solid var(--line-strong);border-radius:4px;margin-top:4px;flex-shrink:0;background:#fff;}
+  .cdmo-contact-avatar{
+    width:38px;height:38px;border-radius:50%;background:#fdf0c8;border:2px solid #16a34a;
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#9a6112;flex-shrink:0;
+  }
+  .cdmo-contact-name{font-weight:700;color:var(--ink);font-size:14.5px;}
+  .cdmo-contact-title{font-size:12.5px;color:var(--ink-faint);margin-top:1px;}
+  .cdmo-linkedin-btn{
+    margin-left:auto;width:30px;height:30px;border-radius:8px;background:#0a66c2;color:#fff;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:800;
+  }
+  .cdmo-contact-rationale{background:#dcf3e2;color:#1a5c33;font-size:12px;border-radius:8px;padding:9px 12px;margin:12px 0;line-height:1.45;}
+  .cdmo-contact-bottom{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .cdmo-email-box{
+    flex:1;min-width:170px;display:flex;align-items:center;gap:8px;background:#fff;
+    border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:12.5px;color:var(--ink-dim);
+  }
+  .cdmo-write-btn{
+    border:1px solid var(--accent);color:var(--accent-bright);background:#fff;border-radius:999px;
+    font-size:12.5px;font-weight:700;padding:9px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+    transition:all .18s ease;white-space:nowrap;
+  }
+  .cdmo-write-btn:hover{background:var(--accent-soft);}
+
+  .cdmo-compose-head{margin-bottom:20px;}
+  .cdmo-compose-head h3{margin:0;font-size:19px;font-weight:800;color:var(--ink);}
+  .cdmo-field{margin-bottom:16px;}
+  .cdmo-field label{display:block;font-size:12.5px;color:var(--ink-faint);margin-bottom:6px;}
+  .cdmo-field-box{
+    border:1px solid var(--line-strong);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ink);
+    background:#f9f8f5;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  }
+  .cdmo-field-box span:last-child{color:var(--ink-faint);}
+  .cdmo-field input{
+    border:1px solid var(--line-strong);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ink);
+    width:100%;font-family:inherit;background:var(--panel);
+  }
+  .cdmo-message-box{
+    border:1px solid var(--line-strong);border-radius:12px;padding:16px;font-size:13.5px;color:var(--ink);
+    white-space:pre-wrap;line-height:1.7;min-height:180px;background:var(--panel);
+  }
+  .cdmo-message-box.typing::after{
+    content:"";display:inline-block;width:2px;height:1em;margin-left:2px;transform:translateY(3px);
+    background:var(--accent);animation:searchCaret 630ms step-end infinite;
+  }
+
+  .cdmo-send-btn{
+    margin-top:4px;background:var(--accent);border:1px solid var(--accent);color:#fff;
+    font-weight:600;font-size:14px;padding:13px 26px;border-radius:999px;cursor:pointer;
+    font-family:inherit;transition:background-color .2s ease;
+  }
+  .cdmo-send-btn:hover{background:var(--accent-bright);}
+  .cdmo-link-btn{
+    background:none;border:none;color:var(--ink-faint);font-size:13px;cursor:pointer;
+    padding:0;font-family:inherit;
+  }
+  .cdmo-link-btn:hover{color:var(--accent-bright);}
+  .cdmo-done{display:flex;align-items:center;gap:10px;margin-top:16px;font-weight:700;color:#1a7a41;font-size:14.5px;}
+  .cdmo-done .check{
+    width:26px;height:26px;border-radius:50%;border:2px solid #1a7a41;color:#1a7a41;
+    display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;
+  }
+  .cdmo-send-btn[hidden], .cdmo-done[hidden]{display:none;}
+
+  @media(max-width:600px){
+    .cdmo-card{padding:20px;}
+    .cdmo-company-head h3{font-size:18px;}
+    .cdmo-meta-row{gap:10px;}
+    .cdmo-contact-top{flex-wrap:wrap;}
+    .cdmo-linkedin-btn{margin-left:0;}
+  }
+
+  /* ---------- Competitive intelligence demo ---------- */
+  .ci-grid{
+    display:grid;
+    grid-template-columns:1fr 1.15fr 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  .ci-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;min-width:0;overflow-wrap:break-word;
+  }
+
+  .ci-account-head{display:flex;gap:14px;margin-bottom:16px;}
+  .ci-logo{
+    width:42px;height:42px;border-radius:9px;background:#1f4fa0;color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;
+    flex-shrink:0;font-family:Georgia,serif;
+  }
+  .ci-account-head h3{margin:0 0 8px;font-size:17px;font-weight:800;color:var(--ink);}
+  .ci-meta-row{display:flex;flex-wrap:wrap;gap:5px 14px;font-size:12px;color:var(--ink-dim);margin-bottom:6px;}
+  .ci-meta-row a{color:var(--accent-bright);text-decoration:none;}
+  .ci-status-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ci-summary{font-size:13px;color:var(--ink-dim);line-height:1.65;margin:0;}
+
+  .ci-intel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px;}
+  .ci-intel-title{font-size:15px;font-weight:800;color:var(--ink);}
+  .ci-intel-date{font-weight:500;color:var(--ink-faint);font-size:12px;margin-left:4px;}
+  .ci-intel-head-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .ci-signals-count{color:#1a7a41;font-weight:700;font-size:12.5px;}
+  .ci-view-all-btn{
+    background:#1a7a41;color:#fff;border:none;border-radius:999px;font-size:12px;font-weight:700;
+    padding:8px 16px;cursor:default;white-space:nowrap;
+  }
+  .ci-intel-list{display:flex;flex-direction:column;gap:18px;}
+  .ci-intel-item{display:flex;gap:12px;align-items:flex-start;}
+  .ci-intel-icon{
+    width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    font-size:14px;flex-shrink:0;
+  }
+  .ci-intel-headline{font-weight:700;color:var(--ink);font-size:13.5px;line-height:1.35;}
+  .ci-intel-sub{font-size:12.5px;color:var(--ink-dim);margin-top:2px;}
+  .ci-intel-meta{font-size:11.5px;color:var(--ink-faint);margin-top:4px;}
+
+  .ci-copilot-label{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);margin-bottom:12px;}
+  .ci-question-card{
+    display:flex;gap:10px;background:#eef7f6;border:1px solid #bfe3df;border-radius:14px;
+    padding:14px 16px;font-size:13px;color:var(--ink-dim);line-height:1.45;margin-bottom:12px;
+    cursor:pointer;transition:all .18s ease;
+  }
+  .ci-question-card:hover{border-color:var(--accent);background:#e6f2f1;color:var(--ink);}
+
+  .ci-copilot-answer{display:none;}
+  .ci-copilot-answer.active{display:block;}
+  .ci-copilot-idle.hidden-away{display:none;}
+  .ci-asked-box{
+    background:#eef7f6;border:1px solid #bfe3df;border-radius:14px;padding:14px 16px;
+    font-size:13px;font-weight:600;color:var(--ink);line-height:1.45;margin-top:12px;
+  }
+  .ci-answer-text{
+    font-size:13.5px;color:var(--ink-dim);line-height:1.65;min-height:20px;
+  }
+  .ci-answer-text::after{
+    content:"";display:inline-block;width:2px;height:1em;margin-left:2px;transform:translateY(3px);
+    background:var(--accent);animation:searchCaret 630ms step-end infinite;
+  }
+  .ci-answer-text.done::after{display:none;}
+
+  .ci-report-card{
+    display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap;
+    border:1px solid var(--line-strong);border-radius:14px;padding:14px 16px;
+    opacity:0;transform:translateY(6px);transition:opacity 350ms ease, transform 350ms ease;
+  }
+  .ci-report-card.shown{opacity:1;transform:translateY(0);}
+  .ci-report-card[hidden]{display:none;}
+  .ci-report-icon{
+    width:36px;height:36px;border-radius:9px;background:#fbe7e6;color:#af3327;
+    display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
+  }
+  .ci-report-name{font-weight:700;font-size:12.5px;color:var(--ink);}
+  .ci-report-sub{font-size:11.5px;color:var(--ink-faint);margin-top:2px;}
+  .ci-download-btn{
+    margin-left:auto;background:var(--accent);border:1px solid var(--accent);color:#fff;
+    font-weight:600;font-size:12.5px;padding:9px 16px;border-radius:999px;cursor:pointer;
+    white-space:nowrap;transition:background-color .18s ease;font-family:inherit;
+  }
+  .ci-download-btn:hover{background:var(--accent-bright);}
+
+  @media(max-width:980px){
+    .ci-grid{grid-template-columns:1fr;}
+  }
+  @media(max-width:600px){
+    .ci-card{padding:18px;}
+    .ci-report-card{flex-wrap:wrap;}
+    .ci-download-btn{margin-left:0;width:100%;}
+  }
+
+  /* ---------- CRM sync demo ---------- */
+  .crm-stage-wrap{position:relative;min-height:320px;}
+  @media(max-width:700px){
+    .crm-stage-wrap{min-height:480px;}
+  }
+  .crm-substage{
+    position:absolute;inset:0;
+    opacity:0;transform:translateY(12px) scale(.99);pointer-events:none;
+    transition:opacity 350ms ease, transform 350ms ease;
+    overflow:visible;
+  }
+  .crm-substage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+
+  .crm-company-card{max-width:480px;}
+  .crm-company-name{margin:0 0 12px;font-size:19px;font-weight:800;color:var(--ink);}
+  .crm-company-summary{font-size:13px;color:var(--ink-dim);line-height:1.6;margin:0 0 22px;}
+  .crm-add-btn{
+    display:inline-flex;align-items:center;gap:9px;
+    background:#0176d3;border:1px solid #0176d3;color:#fff;
+    font-weight:600;font-size:14px;padding:12px 22px;border-radius:8px;cursor:pointer;
+    font-family:inherit;transition:background-color .2s ease;
+  }
+  .crm-add-btn:hover{background:#014486;}
+
+  .crm-sf-mock{
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    background:#fff;box-shadow:var(--shadow-card);
+  }
+  .crm-sf-nav{
+    background:#0b2545;color:#fff;padding:14px 20px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .crm-sf-logo{font-weight:800;font-size:14.5px;white-space:nowrap;}
+  .crm-sf-tabs{font-size:12.5px;color:#b9c6dc;}
+
+  .crm-sf-subtabs{display:flex;gap:4px;padding:0 16px;background:#f3f2ee;border-bottom:1px solid var(--line);}
+  .crm-sf-subtab{
+    background:none;border:none;border-bottom:2px solid transparent;
+    padding:12px 14px;font-size:13px;font-weight:600;color:var(--ink-faint);
+    cursor:pointer;font-family:inherit;transition:all .15s ease;
+  }
+  .crm-sf-subtab:hover{color:var(--ink);}
+  .crm-sf-subtab.active{color:var(--accent-bright);border-bottom-color:var(--accent);}
+
+  .crm-sf-body{padding:20px 24px;}
+  .crm-sf-subpanel{display:none;}
+  .crm-sf-subpanel.active{display:block;}
+  .crm-sf-section-title{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);margin-bottom:10px;}
+
+  .crm-sf-list-head, .crm-sf-contacts-head{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;
+    font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-faint);
+    padding:8px 12px;background:#f9f8f5;border:1px solid var(--line);border-bottom:none;border-radius:8px 8px 0 0;
+  }
+  .crm-sf-contacts-head{grid-template-columns:1.3fr 1.5fr 1.6fr 0.8fr;}
+  .crm-sf-row{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;align-items:center;
+    padding:11px 12px;font-size:12.5px;color:var(--ink-dim);border:1px solid var(--line);border-top:none;
+    opacity:0;transform:translateY(6px);transition:opacity 240ms ease, transform 240ms ease, background-color 300ms ease;
+  }
+  .crm-sf-row.row-visible{opacity:1;transform:translateY(0);}
+  .crm-sf-row:last-child{border-radius:0 0 8px 8px;}
+  .crm-sf-row span:first-child{font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;}
+  .crm-sf-row.pulse{background:#eaf6ed;}
+  .crm-new-badge{
+    background:#1a7a41;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;
+  }
+
+  .crm-sf-account-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .crm-sf-breadcrumb{font-size:11px;color:var(--ink-faint);margin-bottom:2px;}
+  .crm-sf-account-header h4{margin:0;font-size:18px;font-weight:800;color:var(--ink);}
+  .crm-sf-header-btns{display:flex;gap:8px;flex-shrink:0;}
+  .crm-sf-header-btns span{
+    border:1px solid var(--line-strong);border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--ink-dim);
+  }
+
+  .crm-field-row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px;
+    opacity:0;transform:translateY(6px);transition:opacity 240ms ease, transform 240ms ease;
+  }
+  .crm-field-row.row-visible{opacity:1;transform:translateY(0);}
+  .crm-field-row:last-child{border-bottom:none;}
+  .crm-field-row.synced{background:var(--accent-soft);border-radius:8px;border-bottom-color:transparent;}
+  .crm-field-label{color:var(--ink-faint);flex-shrink:0;display:flex;align-items:center;gap:6px;}
+  .crm-field-label .bolt{color:var(--accent-bright);}
+  .crm-field-value{color:var(--ink);font-weight:600;text-align:right;}
+
+  .crm-contact-row{
+    display:grid;grid-template-columns:1.3fr 1.5fr 1.6fr 0.8fr;gap:10px;align-items:center;
+    padding:11px 12px;font-size:12.5px;color:var(--ink-dim);border:1px solid var(--line);border-top:none;
+    opacity:0;transform:translateY(6px);transition:opacity 240ms ease, transform 240ms ease;
+  }
+  .crm-contact-row.row-visible{opacity:1;transform:translateY(0);}
+  .crm-contact-row:last-child{border-radius:0 0 8px 8px;}
+  .crm-contact-row span:first-child{font-weight:700;color:var(--ink);}
+  .crm-status-new{
+    display:inline-block;background:var(--accent-soft);color:var(--accent-bright);
+    font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;
+  }
+
+  #crm-back-btn{margin-top:16px;}
+
+  @media(max-width:700px){
+    .crm-sf-list-head span:nth-child(3), .crm-sf-row span:nth-child(3){display:none;}
+    .crm-sf-list-head{grid-template-columns:2fr 1fr;}
+    .crm-sf-row{grid-template-columns:2fr 1fr;}
+    .crm-sf-contacts-head span:nth-child(3), .crm-contact-row span:nth-child(3){display:none;}
+    .crm-sf-contacts-head{grid-template-columns:1.3fr 1.3fr 0.8fr;}
+    .crm-contact-row{grid-template-columns:1.3fr 1.3fr 0.8fr;}
+    .crm-field-row{flex-direction:column;align-items:flex-start;gap:4px;}
+    .crm-field-value{text-align:left;}
+    .crm-sf-body{padding:18px;}
+  }
+
+  footer.app-footer{
+    text-align:center;color:var(--ink-faint);
+    font-size:11.5px;letter-spacing:.08em;margin-top:40px;
+  }
+
+  @media(max-width:600px){
+    .app{padding:28px 18px 60px;}
+    h1.title{font-size:24px;}
+    .usecase-head h2{font-size:20px;}
+    .mock-stage{min-height:320px;}
+    .mock-stage .mock-empty{padding:40px 20px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="brand-left">
+      <img class="logo" src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="Lunartree">
+      <span class="brand-name">BioLens · Lunartree</span>
+    </div>
+    <span class="pill">Live demo</span>
+  </div>
+
+  <div class="hero">
+    <p class="eyebrow">Experience BioLens</p>
+    <h1 class="title">See BioLens in action</h1>
+    <p class="lede">A guided walkthrough of how teams actually use BioLens — pick a use case below to see it running.</p>
+    <span class="persona-pill">Shown as: WuXi Biologics business development team</span>
+  </div>
+
+  <div class="usecase-tabs" id="usecase-tabs">
+    <div class="usecase-tab active" data-panel="panel-search"><span class="num">1</span>Search &amp; evaluate companies</div>
+    <div class="usecase-tab" data-panel="panel-rnd"><span class="num">2</span>Biopharma R&amp;D</div>
+    <div class="usecase-tab" data-panel="panel-cdmo"><span class="num">3</span>CDMO BD &amp; outreach</div>
+    <div class="usecase-tab" data-panel="panel-ci"><span class="num">4</span>Competitive intelligence</div>
+    <div class="usecase-tab" data-panel="panel-crm"><span class="num">5</span>CRM sync</div>
+  </div>
+
+  <!-- 1. SEARCH & EVALUATE COMPANIES -->
+  <section class="usecase-panel active" id="panel-search">
+    <div class="usecase-head">
+      <h2>Search &amp; evaluate companies</h2>
+      <p>As WuXi Biologics, find and evaluate the biotech and pharma programs that need biologics discovery, development, or manufacturing support.</p>
+    </div>
+
+    <p class="search-caption" id="search-caption"><span id="search-caption-text">Typing a search for ADC-focused biotech targets.</span></p>
+
+    <div class="mock-stage search-demo-stage">
+      <div class="search-stage-wrap">
+        <div class="search-prompt-stage">
+          <p class="search-prompt-title">What are you looking for?</p>
+          <div class="search-query-box" id="search-query-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="search-query-placeholder" id="search-query-placeholder">Describe the companies you want to find</span>
+            <span id="search-query-text" class="search-type-text"></span>
+          </div>
+          <div class="search-suggestions" id="search-suggestions">
+            <div class="search-suggestion-card" data-scenario="0">Find me biotechs with a bispecific antibody program entering IND-enabling studies</div>
+            <div class="search-suggestion-card" data-scenario="1">Find me biotechs with an ADC program that need bioconjugation and manufacturing support</div>
+            <div class="search-suggestion-card" data-scenario="2">Find me pharma companies with a late-stage monoclonal antibody needing large-scale commercial manufacturing</div>
+            <div class="search-suggestion-card" data-scenario="3">Find me biotechs with a novel biologic in early discovery needing an integrated CRDMO partner</div>
+          </div>
+        </div>
+
+        <div class="search-table-stage">
+          <div class="search-results-head">
+            <h4 id="search-results-title">Top matches</h4>
+            <span class="search-found-pill"><span class="dot"></span><span id="search-found-count">0 accounts found</span></span>
+          </div>
+          <div class="search-cols-head search-row-grid">
+            <div>Company</div>
+            <div>Fit</div>
+            <div>Stage</div>
+            <div class="search-col-location">Location</div>
+            <div class="search-col-evidence">Evidence</div>
+          </div>
+          <div class="search-rows-wrap" id="search-rows-wrap"></div>
+
+          <div class="search-cursor" id="search-cursor">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#18170f" stroke="#fff" stroke-width="1"><path d="M5 3l14 8-6 2-2 6-6-16z"/></svg>
+          </div>
+          <div class="search-fit-popover" id="search-fit-popover"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. BIOPHARMA R&D -->
+  <section class="usecase-panel" id="panel-rnd">
+    <div class="usecase-head">
+      <h2>Biopharma R&amp;D</h2>
+      <p>As WuXi Biologics, evaluate biologics pipeline programs at biotech and pharma companies and prioritize which ones to court.</p>
+    </div>
+
+    <p class="search-caption" id="rnd-caption"><span id="rnd-caption-text">Scoring biologics programs against WuXi Biologics' partnership criteria.</span></p>
+
+    <div class="rnd-stage-wrap">
+      <div class="rnd-table-stage" id="rnd-table-stage">
+        <div class="rnd-table" id="rnd-table">
+          <div class="rnd-row rnd-head-row rnd-row-grid">
+            <div>Program</div>
+            <div>Overall</div>
+            <div>Score</div>
+            <div>Decision</div>
+            <div class="rnd-col-dim">Manufacturing<br>timing <span class="rnd-weight">16%</span></div>
+            <div class="rnd-col-dim">Modality<br>fit <span class="rnd-weight">14%</span></div>
+            <div class="rnd-col-dim">No committed<br>partner <span class="rnd-weight">12%</span></div>
+          </div>
+          <div id="rnd-rows-wrap"></div>
+        </div>
+      </div>
+
+      <div class="rnd-profile-stage" id="rnd-profile-stage">
+        <div id="rnd-profile-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CDMO BD & OUTREACH -->
+  <section class="usecase-panel" id="panel-cdmo">
+    <div class="usecase-head">
+      <h2>CDMO BD &amp; outreach</h2>
+      <p>As WuXi Biologics, turn a high-priority account signal into a drafted outreach email to the right decision maker.</p>
+    </div>
+
+    <p class="search-caption" id="cdmo-caption"><span id="cdmo-caption-text">Reviewing AbCellera Biologics Inc. for outreach priority.</span></p>
+
+    <div class="cdmo-stage-wrap">
+
+      <!-- STAGE 1: Company -->
+      <div class="cdmo-substage stage-visible" id="cdmo-company-stage">
+        <div class="cdmo-card">
+          <div class="cdmo-company-head">
+            <h3>AbCellera Biologics Inc.</h3>
+            <span class="cdmo-signals-pill"><span class="dot"></span>+24 Signals</span>
+            <span class="cdmo-target-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+            </span>
+          </div>
+          <div class="cdmo-meta-row">
+            <span>&#127464;&#127462; British Columbia, Canada</span>
+            <a href="https://www.abcellera.com" target="_blank" rel="noopener">&#127760; abcellera.com &#8599;</a>
+            <span class="cdmo-status-pill">New &#8964;</span>
+            <span class="cdmo-assignee-chip"><span class="avatar">WB</span>WuXi Biologics BD</span>
+          </div>
+
+          <div class="cdmo-about-title">About AbCellera Biologics Inc.</div>
+          <div class="cdmo-pill-row">
+            <span class="cdmo-info-pill">&#128197; 2012</span>
+            <span class="cdmo-info-pill">&#129513; Phase 2</span>
+            <span class="cdmo-info-pill">&#128101; 561</span>
+            <span class="cdmo-info-pill">&#128176; Public Company</span>
+            <span class="cdmo-info-pill">&#127919; Women's Health, Immunology, Oncology</span>
+          </div>
+
+          <div class="cdmo-trigger-box">
+            <div class="cdmo-trigger-label">High priority trigger</div>
+            <h4 class="cdmo-trigger-title">Initiate Strategic Outreach to AbCellera Post-Funding and Clinical Milestones</h4>
+            <p class="cdmo-trigger-body">AbCellera's $200M offering and strong Phase 2 results signal an urgent window to position WuXi Biologics as a manufacturing partner for late-stage and commercial-scale needs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 2: Decision makers -->
+      <div class="cdmo-substage" id="cdmo-contacts-stage">
+        <div class="cdmo-card">
+          <div class="cdmo-section-head">
+            <h3>Operations &amp; Manufacturing</h3>
+            <div class="cdmo-section-sub">2 decision makers &middot; <span class="suggested">2 suggested</span></div>
+          </div>
+
+          <div class="cdmo-tier-pills">
+            <span class="cdmo-tier-pill"><span class="cdmo-tier-badge t2">T2</span>VP / Head &middot; 1</span>
+            <span class="cdmo-tier-pill"><span class="cdmo-tier-badge t3">T3</span>Director &middot; 1</span>
+          </div>
+
+          <div class="cdmo-tier-group">
+            <div class="cdmo-tier-group-head"><span class="cdmo-tier-badge t2">T2</span>VP / Head &middot; 1</div>
+            <div class="cdmo-suggested-label">&#10022; Suggested for outreach &middot; 1</div>
+            <div class="cdmo-contact-card">
+              <div class="cdmo-contact-top">
+                <span class="cdmo-contact-checkbox"></span>
+                <span class="cdmo-contact-avatar">MS</span>
+                <div>
+                  <div class="cdmo-contact-name">Mark Skoog</div>
+                  <div class="cdmo-contact-title">Vice President of Manufacturing</div>
+                </div>
+                <span class="cdmo-linkedin-btn">in</span>
+              </div>
+              <div class="cdmo-contact-rationale">Mark Skoog is Site Head and VP, Manufacturing, directly overseeing manufacturing operations and scale-up decisions.</div>
+              <div class="cdmo-contact-bottom">
+                <span class="cdmo-email-box">&#9993; mark.skoog@abcellera.com</span>
+                <button class="cdmo-write-btn" data-contact="mark">&#10022; Write outreach</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cdmo-tier-group">
+            <div class="cdmo-tier-group-head"><span class="cdmo-tier-badge t3">T3</span>Director &middot; 1</div>
+            <div class="cdmo-suggested-label">&#10022; Suggested for outreach &middot; 1</div>
+            <div class="cdmo-contact-card">
+              <div class="cdmo-contact-top">
+                <span class="cdmo-contact-checkbox"></span>
+                <span class="cdmo-contact-avatar">MH</span>
+                <div>
+                  <div class="cdmo-contact-name">Mary Helstad</div>
+                  <div class="cdmo-contact-title">Senior Director, Manufacturing Operations</div>
+                </div>
+                <span class="cdmo-linkedin-btn">in</span>
+              </div>
+              <div class="cdmo-contact-rationale">Mary Helstad holds the position Senior Director of Manufacturing Operations, responsible for day-to-day operational execution.</div>
+              <div class="cdmo-contact-bottom">
+                <span class="cdmo-email-box">&#9993; mary.helstad@abcellera.com</span>
+                <button class="cdmo-write-btn" data-contact="mary">&#10022; Write outreach</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3: Compose -->
+      <div class="cdmo-substage" id="cdmo-compose-stage">
+        <div class="cdmo-card">
+          <div class="cdmo-compose-head">
+            <h3 id="cdmo-compose-name">Mark Skoog at AbCellera Biologics Inc.</h3>
+          </div>
+
+          <div class="cdmo-field">
+            <label>Company</label>
+            <div class="cdmo-field-box">AbCellera Biologics Inc. <span>&#8597;</span></div>
+          </div>
+          <div class="cdmo-field">
+            <label>To</label>
+            <div class="cdmo-field-box"><span id="cdmo-compose-to">Mark Skoog &middot; Vice President of Manufacturing</span> <span>&#8597;</span></div>
+          </div>
+          <div class="cdmo-field">
+            <label>Sending to (editable)</label>
+            <input type="text" id="cdmo-compose-sendingto" value="mark.skoog@abcellera.com">
+          </div>
+          <div class="cdmo-field">
+            <label>Subject</label>
+            <input type="text" id="cdmo-compose-subject" value="Manufacturing support for ABCL635 and ABCL575">
+          </div>
+          <div class="cdmo-field">
+            <label>Message</label>
+            <div class="cdmo-message-box" id="cdmo-compose-message"></div>
+          </div>
+
+          <button class="cdmo-send-btn" id="cdmo-send-btn" hidden>Send email</button>
+          <div class="cdmo-done" id="cdmo-done" hidden>
+            <span class="check">&#10003;</span> Outreach Done
+          </div>
+          <div style="margin-top:14px;">
+            <button class="cdmo-link-btn" id="cdmo-draft-another">&larr; Back to decision makers</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. COMPETITIVE INTELLIGENCE -->
+  <section class="usecase-panel" id="panel-ci">
+    <div class="usecase-head">
+      <h2>Competitive intelligence</h2>
+      <p>As WuXi Biologics, monitor account signals and ask an AI copilot how to act on them.</p>
+    </div>
+
+    <div class="ci-grid">
+
+      <!-- COLUMN 1: Account -->
+      <div class="ci-card ci-col-account">
+        <div class="ci-account-head">
+          <div class="ci-logo">b</div>
+          <div>
+            <h3>Biohaven, Ltd.</h3>
+            <div class="ci-meta-row">
+              <a href="https://www.biohaven.com" target="_blank" rel="noopener">&#127760; biohaven.com</a>
+              <span>&#128205; New Haven, Connecticut, United States</span>
+              <span>&#128197; 2022</span>
+              <span>&#128101; 274</span>
+            </div>
+            <div class="ci-meta-row">
+              <span>&#128176; Public Company (NYSE: BHVN), major licensing deal with SK Biopharmaceuticals ($400M cash in 2026)</span>
+            </div>
+          </div>
+        </div>
+        <div class="ci-status-row">
+          <span class="cdmo-target-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+          </span>
+          <span class="cdmo-status-pill">New &#8964;</span>
+          <span class="cdmo-assignee-chip"><span class="avatar">WB</span>WuXi Biologics BD</span>
+        </div>
+        <p class="ci-summary">Publicly traded, mid-size biotech with multiple in-scope biologic assets (ADCs, recombinant protein degraders) in pivotal Phase II/III trials, and $400M in fresh non-dilutive funding. Diversified pipeline and strong financial posture make Biohaven a high-priority BD target, despite regulatory risk from the BHV-7000 clinical hold.</p>
+      </div>
+
+      <!-- COLUMN 2: Intelligence Update -->
+      <div class="ci-card ci-col-intel">
+        <div class="ci-intel-head">
+          <span class="ci-intel-title">&#9889; Intelligence Update <span class="ci-intel-date">(Updates as of September 13th)</span></span>
+          <div class="ci-intel-head-right">
+            <span class="cdmo-status-pill" style="background:#e3f5e9;color:#1a7a41;">High</span>
+            <span class="ci-signals-count">+27 signals</span>
+            <button class="ci-view-all-btn">View all</button>
+          </div>
+        </div>
+        <div class="ci-intel-list">
+          <div class="ci-intel-item">
+            <span class="ci-intel-icon" style="background:#fdf1de;color:#c8860a;">&#128240;</span>
+            <div>
+              <div class="ci-intel-headline">FDA places partial clinical hold on BHV-7000 trials</div>
+              <div class="ci-intel-sub">Enrollment paused, regulatory risk for epilepsy asset</div>
+              <div class="ci-intel-meta">4 days ago &middot; Fierce Biotech</div>
+            </div>
+          </div>
+          <div class="ci-intel-item">
+            <span class="ci-intel-icon" style="background:#e3f5e9;color:#1a7a41;">&#9889;</span>
+            <div>
+              <div class="ci-intel-headline">Biohaven licenses Kv7 platform to SK Biopharmaceuticals</div>
+              <div class="ci-intel-sub">Secures $400M cash, enabling pipeline funding</div>
+              <div class="ci-intel-meta">3 weeks ago &middot; PR Newswire</div>
+            </div>
+          </div>
+          <div class="ci-intel-item">
+            <span class="ci-intel-icon" style="background:#e3edfb;color:#3b6fc4;">&#128188;</span>
+            <div>
+              <div class="ci-intel-headline">John Yetimoglu appointed to Board of Directors</div>
+              <div class="ci-intel-sub">Strengthens AI-driven drug development strategy</div>
+              <div class="ci-intel-meta">last month &middot; PR Newswire</div>
+            </div>
+          </div>
+          <div class="ci-intel-item">
+            <span class="ci-intel-icon" style="background:#f1e7fb;color:#8a4fc4;">&#129514;</span>
+            <div>
+              <div class="ci-intel-headline">First-in-human dosing of BHV-8100 initiated</div>
+              <div class="ci-intel-sub">Novel PKM2 modulator enters Phase 1 trial</div>
+              <div class="ci-intel-meta">4 months ago &middot; PR Newswire</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMN 3: AI Copilot -->
+      <div class="ci-card ci-col-copilot">
+        <div class="ci-copilot-idle" id="ci-copilot-idle">
+          <div class="ci-copilot-label">Ask the AI copilot</div>
+          <div class="ci-question-card" data-q="0">&#128172; How should WuXi Biologics position its manufacturing capabilities to Biohaven following their $400M licensing deal with SK Biopharmaceuticals?</div>
+          <div class="ci-question-card" data-q="1">&#128172; What impact does the FDA partial clinical hold on BHV-7000 have on Biohaven's manufacturing and outsourcing strategy?</div>
+          <div class="ci-question-card" data-q="2">&#128172; Should WuXi Biologics highlight its ADC and recombinant protein platforms to Biohaven given their pipeline and recent leadership changes?</div>
+          <div class="ci-question-card" data-q="3">&#128172; What is the best timing for outreach to Biohaven in light of their ongoing pivotal trials and recent capital influx?</div>
+        </div>
+
+        <div class="ci-copilot-answer" id="ci-copilot-answer">
+          <button class="cdmo-link-btn" id="ci-back-btn">&larr; Ask another question</button>
+          <div class="ci-asked-box" id="ci-asked-text"></div>
+          <div class="ci-copilot-label" style="margin-top:16px;">AI Copilot</div>
+          <div class="ci-answer-text" id="ci-answer-text"></div>
+          <div class="ci-report-card" id="ci-report-card" hidden>
+            <span class="ci-report-icon">&#128196;</span>
+            <div>
+              <div class="ci-report-name" id="ci-report-name">Biohaven_CompetitiveIntelligence_Brief.pdf</div>
+              <div class="ci-report-sub">Generated just now</div>
+            </div>
+            <button class="ci-download-btn">&#8681; Download report</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. CRM SYNC -->
+  <section class="usecase-panel" id="panel-crm">
+    <div class="usecase-head">
+      <h2>CRM sync</h2>
+      <p>As WuXi Biologics, push BioLens account intelligence straight into your Salesforce CRM.</p>
+    </div>
+
+    <p class="search-caption" id="crm-caption"><span id="crm-caption-text">Review AbCellera Biologics Inc. in BioLens, then push it to Salesforce.</span></p>
+
+    <div class="crm-stage-wrap">
+
+      <!-- STAGE 1: BioLens company card -->
+      <div class="crm-substage stage-visible" id="crm-company-stage">
+        <div class="cdmo-card crm-company-card">
+          <h3 class="crm-company-name">AbCellera Biologics Inc.</h3>
+          <div class="cdmo-meta-row" style="margin-bottom:14px;">
+            <span>&#127464;&#127462; British Columbia, Canada</span>
+            <span>&#128197; 2012</span>
+            <span>&#128101; 561</span>
+          </div>
+          <p class="crm-company-summary">High-priority BD target: $200M public offering, strong Phase 2 results, and an active manufacturing vendor evaluation window.</p>
+          <button class="crm-add-btn" id="crm-add-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 15 8.05 4.5 4.5 0 0 1 17.5 17H6Z"/></svg>
+            Add to Salesforce
+          </button>
+        </div>
+      </div>
+
+      <!-- STAGE 2: Salesforce mock -->
+      <div class="crm-substage" id="crm-sf-stage">
+        <div class="crm-sf-mock">
+          <div class="crm-sf-nav">
+            <span class="crm-sf-logo">&#9889; WuXi Biologics</span>
+            <span class="crm-sf-tabs">Home &middot; Accounts &middot; Contacts &middot; Opportunities &middot; Reports</span>
+          </div>
+
+          <div class="crm-sf-subtabs" id="crm-sf-subtabs">
+            <button class="crm-sf-subtab" data-sub="accounts">Accounts</button>
+            <button class="crm-sf-subtab" data-sub="details">Details</button>
+            <button class="crm-sf-subtab" data-sub="contacts">Contacts</button>
+          </div>
+
+          <div class="crm-sf-body">
+            <div class="crm-sf-subpanel" id="crm-sub-accounts">
+              <div class="crm-sf-section-title">Accounts &middot; Recently Viewed</div>
+              <div class="crm-sf-list-head">
+                <span>Account Name</span><span>Industry</span><span>Owner</span>
+              </div>
+              <div id="crm-sf-list"></div>
+            </div>
+
+            <div class="crm-sf-subpanel" id="crm-sub-details">
+              <div class="crm-sf-account-header">
+                <div>
+                  <div class="crm-sf-breadcrumb">Account</div>
+                  <h4>AbCellera Biologics Inc.</h4>
+                </div>
+                <div class="crm-sf-header-btns"><span>Follow</span><span>Edit</span></div>
+              </div>
+              <div class="crm-sf-section-title" style="margin-top:14px;">Account Information</div>
+              <div id="crm-sf-fields"></div>
+            </div>
+
+            <div class="crm-sf-subpanel" id="crm-sub-contacts">
+              <div class="crm-sf-section-title">Related Contacts (4)</div>
+              <div class="crm-sf-contacts-head">
+                <span>Name</span><span>Title</span><span>Email</span><span>Status</span>
+              </div>
+              <div id="crm-sf-contacts"></div>
+            </div>
+          </div>
+        </div>
+        <button class="cdmo-link-btn" id="crm-back-btn">&larr; Sync another account</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="app-footer">BioLens · Lunartree — live product demo</footer>
+</div>
+
+<script>
+  /* Dynamically size a crossfading stage-wrap to match its currently visible
+     child's real content height, so nothing ever needs an internal scrollbar
+     or clips, regardless of viewport width or text length. */
+  function fitWrapToChild(wrapSelector, childSelector){
+    const wrap = document.querySelector(wrapSelector);
+    const child = document.querySelector(childSelector);
+    if(!wrap || !child) return;
+    requestAnimationFrame(() => {
+      const h = child.scrollHeight;
+      if(h > 0) wrap.style.minHeight = h + 'px';
+    });
+  }
+
+  const tabs = document.querySelectorAll('.usecase-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelectorAll('.usecase-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(tab.dataset.panel).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+      if(tab.dataset.panel === 'panel-search'){
+        idleSearchStage();
+      }else{
+        stopSearchDemo();
+      }
+      if(tab.dataset.panel === 'panel-rnd'){
+        startRndDemo();
+      }else{
+        stopRndDemo();
+      }
+      if(tab.dataset.panel === 'panel-cdmo'){
+        startCdmoDemo();
+      }else{
+        stopCdmoDemo();
+      }
+      resetCiDemo();
+      resetCrmDemo();
+    });
+  });
+
+  /* ---------- Search & evaluate companies: guided demo ---------- */
+  const searchScenarios = [
+    {
+      resultsTitle: 'Bispecific antibody biotechs',
+      foundCount: 34,
+      query: "Find biotechs with a bispecific antibody program entering IND-enabling studies",
+      rows: [
+        { mark:'CU', name:'Cullinan Therapeutics', fit:90, stage:'Phase 1', loc:'Cambridge, MA', evidence:'CD19xCD3 bispecific, early manufacturing need' },
+        { mark:'MG', name:'MacroGenics', fit:86, stage:'Phase 1', loc:'Rockville, MD', evidence:'DART bispecific platform, multiple programs' },
+        { mark:'AG', name:'Agenus', fit:81, stage:'Phase 1', loc:'Lexington, MA', evidence:'Bispecific immuno-oncology pipeline' },
+        { mark:'IM', name:'Immunome', fit:78, stage:'Phase 1', loc:'Exton, PA', evidence:'Bispecific-derived candidates, small in-house footprint', highlight:true }
+      ],
+      popoverTitle: 'Company fit: Immunome',
+      popoverCriteria: [
+        { tag:'Bispecific program approaching IND: True', text:'Memory B-cell-derived bispecific candidates are in IND-enabling studies.' },
+        { tag:'No named cell-line partner: True', text:'No commercial-scale cell-line development or drug substance manufacturer disclosed.' },
+        { tag:'Right-sized for a CRDMO partnership: True', text:'Small clinical-stage team with limited in-house manufacturing infrastructure, well suited to an integrated discovery-to-IND partner.' }
+      ],
+      caption: {
+        typing: 'Typing a search for bispecific antibody programs entering IND-enabling studies.',
+        results: 'matching biotechs found with bispecific programs approaching IND.',
+        fit: 'Opening company fit for Immunome.'
+      }
+    },
+    {
+      resultsTitle: 'ADC-focused biotechs',
+      foundCount: 46,
+      query: "Find biotechs with an ADC program that need bioconjugation and manufacturing support",
+      rows: [
+        { mark:'MT', name:'Mersana Therapeutics', fit:93, stage:'Phase 1', loc:'Cambridge, MA', evidence:'ADC platform, conjugation capacity gap' },
+        { mark:'SB', name:'Sutro Biopharma', fit:90, stage:'Phase 2', loc:'South San Francisco, CA', evidence:'Cell-free ADC platform, seeking scale-up' },
+        { mark:'AT', name:'ADC Therapeutics', fit:88, stage:'Approved', loc:'Lausanne, Switzerland', evidence:'Commercial ADC, expanding conjugation supply', highlight:true },
+        { mark:'ZY', name:'Zymeworks', fit:82, stage:'Phase 1', loc:'Vancouver, Canada', evidence:'Bispecific ADC pipeline, early partner search' }
+      ],
+      popoverTitle: 'Company fit: ADC Therapeutics',
+      popoverCriteria: [
+        { tag:'Commercial ADC in market: True', text:'ZYNLONTA is approved and commercial, with additional ADC candidates in clinical development.' },
+        { tag:'Conjugation capacity gap: True', text:'Public statements point to reliance on external partners for conjugation and fill finish as the pipeline expands.' },
+        { tag:'Not a competing CDMO: True', text:'Core business is therapeutic development, not contract manufacturing.' }
+      ],
+      caption: {
+        typing: 'Typing a search for ADC biotechs needing bioconjugation support.',
+        results: 'matching biotechs found with active ADC programs.',
+        fit: 'Opening company fit for ADC Therapeutics.'
+      }
+    },
+    {
+      resultsTitle: 'Late-stage mAb pharma companies',
+      foundCount: 58,
+      query: "Find pharma companies with a late-stage monoclonal antibody needing large-scale commercial manufacturing",
+      rows: [
+        { mark:'AG', name:'Apogee Therapeutics', fit:91, stage:'Phase 2', loc:'Waltham, MA', evidence:'mAb pipeline nearing Phase 3' },
+        { mark:'AK', name:'Akero Therapeutics', fit:87, stage:'Phase 3', loc:'South San Francisco, CA', evidence:'Fc-fusion biologic nearing filing' },
+        { mark:'ML', name:'MoonLake Immunotherapeutics', fit:85, stage:'Phase 3', loc:'Zug, Switzerland', evidence:'Lead asset nearing filing, scale-up needed', highlight:true },
+        { mark:'VB', name:'Vir Biotechnology', fit:80, stage:'Phase 1', loc:'San Francisco, CA', evidence:'mAb pipeline for infectious disease' }
+      ],
+      popoverTitle: 'Company fit: MoonLake Immunotherapeutics',
+      popoverCriteria: [
+        { tag:'Late-stage biologic asset: True', text:'Lead program is in Phase 3 across multiple indications and approaching potential filing.' },
+        { tag:'Large-scale manufacturing need: True', text:'No disclosed large-scale commercial manufacturing partner announced to date.' },
+        { tag:'Not a competing CDMO: True', text:'Company is a clinical-stage biotech, not a manufacturing services provider.' }
+      ],
+      caption: {
+        typing: 'Typing a search for late-stage mAbs needing commercial-scale manufacturing.',
+        results: 'matching pharma companies found nearing commercial scale.',
+        fit: 'Opening company fit for MoonLake Immunotherapeutics.'
+      }
+    },
+    {
+      resultsTitle: 'Novel biologics in early discovery',
+      foundCount: 29,
+      query: "Find biotechs with a novel biologic in early discovery needing an integrated CRDMO partner",
+      rows: [
+        { mark:'SP', name:'Spyre Therapeutics', fit:88, stage:'Preclinical', loc:'South San Francisco, CA', evidence:'Multi-specific antibody portfolio' },
+        { mark:'VT', name:'Vera Therapeutics', fit:84, stage:'Phase 3', loc:'Brisbane, CA', evidence:'Fusion protein biologic, expanding indications' },
+        { mark:'AB', name:'Anaptysbio', fit:80, stage:'Phase 1', loc:'San Diego, CA', evidence:'Novel antibody discovery pipeline' },
+        { mark:'AD', name:'Adagene', fit:76, stage:'Phase 1', loc:'San Diego, CA', evidence:'Masked antibody platform, early manufacturing need', highlight:true }
+      ],
+      popoverTitle: 'Company fit: Adagene',
+      popoverCriteria: [
+        { tag:'Novel biologic format: True', text:'SAFEbody masked-antibody platform produces candidates entering early clinical development.' },
+        { tag:'No integrated discovery-to-IND partner named: True', text:'No disclosed end-to-end CRDMO relationship for upcoming candidates.' },
+        { tag:'Right-sized for early relationship-building: True', text:'Small, capital-efficient biotech with limited in-house manufacturing footprint.' }
+      ],
+      caption: {
+        typing: 'Typing a search for novel biologics in early discovery.',
+        results: 'matching biotechs found with novel biologics in discovery to preclinical stage.',
+        fit: 'Opening company fit for Adagene.'
+      }
+    }
+  ];
+
+  let searchDemoTimers = [];
+  let searchTypingTimeout = null;
+  let searchGen = 0;
+
+  function searchWait(ms){
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      searchDemoTimers.push(t);
+    });
+  }
+
+  function clearSearchTimers(){
+    searchDemoTimers.forEach(t => clearTimeout(t));
+    searchDemoTimers = [];
+    if(searchTypingTimeout){ clearTimeout(searchTypingTimeout); searchTypingTimeout = null; }
+  }
+
+  function setSearchCaption(text){
+    const el = document.getElementById('search-caption-text');
+    if(el) el.textContent = text;
+  }
+
+  function resetSearchStage(){
+    const queryText = document.getElementById('search-query-text');
+    const promptStage = document.querySelector('.search-prompt-stage');
+    const tableStage = document.querySelector('.search-table-stage');
+    const rows = document.querySelectorAll('.search-company-row');
+    const cursor = document.getElementById('search-cursor');
+    const popover = document.getElementById('search-fit-popover');
+    const box = document.getElementById('search-query-box');
+    const suggestions = document.getElementById('search-suggestions');
+
+    if(queryText){ queryText.textContent = ''; queryText.classList.remove('typing-complete'); }
+    if(box) box.classList.remove('expanded');
+    if(suggestions) suggestions.classList.remove('suggestions-hidden');
+    if(promptStage) promptStage.classList.remove('stage-hidden');
+    if(tableStage) tableStage.classList.remove('stage-visible');
+    rows.forEach(r => r.classList.remove('row-visible'));
+    if(cursor){ cursor.classList.remove('cursor-visible'); cursor.style.transform = 'translate(0px, 0px) scale(0.96)'; }
+    if(popover) popover.classList.remove('popover-visible');
+    document.querySelectorAll('.search-fit-target').forEach(t => t.classList.remove('fit-clicked'));
+  }
+
+  function renderSearchScenario(scenario){
+    document.getElementById('search-results-title').textContent = scenario.resultsTitle;
+    document.getElementById('search-found-count').textContent = `${scenario.foundCount} accounts found`;
+
+    const rowsWrap = document.getElementById('search-rows-wrap');
+    rowsWrap.innerHTML = scenario.rows.map(r => `
+      <div class="search-company-row search-row-grid">
+        <div class="search-company-name">
+          <div class="search-company-mark">${r.mark}</div>
+          <div class="name">${r.name}</div>
+        </div>
+        <div><span class="search-fit-ring ${r.highlight ? 'search-fit-target' : ''}" ${r.highlight ? 'id="search-fit-target"' : ''} style="background:conic-gradient(#16a34a ${r.fit}%, #e9e7e0 0)"><span></span></span></div>
+        <div>${r.stage}</div>
+        <div class="search-col-location">${r.loc}</div>
+        <div class="search-col-evidence"><span class="search-evidence-tag">${r.evidence}</span></div>
+      </div>
+    `).join('');
+
+    document.getElementById('search-fit-popover').innerHTML = `
+      <div class="search-fit-popover-arrow" id="search-fit-popover-arrow"></div>
+      <h5>${scenario.popoverTitle}</h5>
+      ${scenario.popoverCriteria.map(c => `
+        <div class="crit">
+          <span class="crit-tag">${c.tag}</span>
+          <p>${c.text}</p>
+        </div>
+      `).join('')}
+    `;
+  }
+
+  function typeSearchQuery(text, myGen){
+    const queryText = document.getElementById('search-query-text');
+    if(!queryText) return Promise.resolve();
+    queryText.textContent = '';
+    queryText.classList.remove('typing-complete');
+    return new Promise(resolve => {
+      let index = 0;
+      const typeNext = () => {
+        if(myGen !== searchGen) return;
+        queryText.textContent = text.slice(0, index);
+        index += 1;
+        if(index <= text.length){
+          searchTypingTimeout = setTimeout(typeNext, 35);
+          searchDemoTimers.push(searchTypingTimeout);
+        }else{
+          queryText.classList.add('typing-complete');
+          resolve();
+        }
+      };
+      typeNext();
+    });
+  }
+
+  async function runSearchScenario(index, myGen){
+    const scenario = searchScenarios[index];
+    renderSearchScenario(scenario);
+    resetSearchStage();
+
+    const box = document.getElementById('search-query-box');
+    const suggestions = document.getElementById('search-suggestions');
+    if(box) box.classList.add('expanded');
+    if(suggestions) suggestions.classList.add('suggestions-hidden');
+    setSearchCaption(scenario.caption.typing);
+
+    await searchWait(400);
+    if(myGen !== searchGen) return;
+    await typeSearchQuery(scenario.query, myGen);
+    if(myGen !== searchGen) return;
+    await searchWait(600);
+    if(myGen !== searchGen) return;
+
+    const promptStage = document.querySelector('.search-prompt-stage');
+    const tableStage = document.querySelector('.search-table-stage');
+    if(promptStage) promptStage.classList.add('stage-hidden');
+    await searchWait(300);
+    if(myGen !== searchGen) return;
+    if(tableStage) tableStage.classList.add('stage-visible');
+    fitWrapToChild('.search-stage-wrap', '.search-table-stage');
+    setSearchCaption(`${scenario.foundCount} ${scenario.caption.results}`);
+    await searchWait(450);
+    if(myGen !== searchGen) return;
+
+    const rows = document.querySelectorAll('.search-company-row');
+    for(const row of rows){
+      if(myGen !== searchGen) return;
+      row.classList.add('row-visible');
+      await searchWait(400);
+    }
+    if(myGen !== searchGen) return;
+
+    await searchWait(450);
+    if(myGen !== searchGen) return;
+
+    const cursor = document.getElementById('search-cursor');
+    const target = document.getElementById('search-fit-target');
+    const popover = document.getElementById('search-fit-popover');
+    const stage = document.querySelector('.search-table-stage');
+
+    if(cursor && target && stage){
+      const targetRect = target.getBoundingClientRect();
+      const stageRect = stage.getBoundingClientRect();
+      const targetX = targetRect.left - stageRect.left + targetRect.width * 0.65;
+      const targetY = targetRect.top - stageRect.top + targetRect.height * 0.65;
+
+      const popoverWidth = popover.getBoundingClientRect().width || 340;
+      const popoverHeight = popover.getBoundingClientRect().height;
+      const ringLeft = targetRect.left - stageRect.left;
+      const ringRight = targetRect.right - stageRect.left;
+      const ringCenterY = targetRect.top - stageRect.top + targetRect.height / 2;
+
+      const desiredLeft = ringRight + 16;
+      const maxLeft = Math.max(stageRect.width - popoverWidth - 12, 12);
+      const popLeft = Math.min(desiredLeft, maxLeft);
+
+      const desiredTop = ringCenterY - popoverHeight / 2;
+      const popTop = Math.max(12, Math.min(desiredTop, stageRect.height - popoverHeight - 12));
+
+      popover.style.left = popLeft + 'px';
+      popover.style.top = popTop + 'px';
+
+      const arrow = document.getElementById('search-fit-popover-arrow');
+      if(arrow){
+        const arrowTop = Math.max(14, Math.min(ringCenterY - popTop - 8, popoverHeight - 22));
+        arrow.style.top = arrowTop + 'px';
+      }
+
+      cursor.style.transform = `translate(${targetX - 120}px, ${targetY + 70}px) scale(0.96)`;
+      cursor.classList.add('cursor-visible');
+      await searchWait(80);
+      if(myGen !== searchGen) return;
+      cursor.style.transform = `translate(${targetX}px, ${targetY}px) scale(1)`;
+      await searchWait(650);
+      if(myGen !== searchGen) return;
+      target.classList.add('fit-clicked');
+      await searchWait(200);
+      if(myGen !== searchGen) return;
+      popover.classList.add('popover-visible');
+      setSearchCaption(scenario.caption.fit);
+    }
+
+    await searchWait(2800);
+    if(myGen !== searchGen) return;
+    if(popover) popover.classList.remove('popover-visible');
+    if(cursor) cursor.classList.remove('cursor-visible');
+    await searchWait(500);
+    if(myGen !== searchGen) return;
+
+    // Done — return to the idle "pick a search" state and wait for the next click.
+    resetSearchStage();
+    setSearchCaption('Select a search to see it run.');
+  }
+
+  function idleSearchStage(){
+    searchGen += 1;
+    clearSearchTimers();
+    resetSearchStage();
+    fitWrapToChild('.search-stage-wrap', '.search-prompt-stage');
+    setSearchCaption('Select a search to see it run.');
+  }
+
+  function stopSearchDemo(){
+    searchGen += 1;
+    clearSearchTimers();
+  }
+
+  function selectSearchScenario(index){
+    searchGen += 1;
+    clearSearchTimers();
+    const myGen = searchGen;
+    runSearchScenario(index, myGen);
+  }
+
+  document.querySelectorAll('.search-suggestion-card').forEach(card => {
+    card.addEventListener('click', () => {
+      selectSearchScenario(Number(card.dataset.scenario));
+    });
+  });
+
+  idleSearchStage();
+
+  /* ---------- Biopharma R&D: asset table + quick view + full profile ---------- */
+  const RND_DIMENSIONS = [
+    { key:'timing', label:'Manufacturing timing', weight:16 },
+    { key:'modality', label:'Modality fit', weight:14 },
+    { key:'momentum', label:'Program momentum', weight:12 },
+    { key:'whitespace', label:'No committed partner', weight:12 },
+    { key:'commercial', label:'Commercial potential', weight:11 },
+    { key:'regulatory', label:'Regulatory clarity', weight:9 },
+    { key:'scaleup', label:'Scale-up complexity', weight:8 },
+    { key:'resourcing', label:'Originator resourcing', weight:8 },
+    { key:'competitive', label:'CDMO landscape', weight:6 },
+    { key:'longterm', label:'Partnership upside', weight:4 }
+  ];
+
+  const RND_ASSETS = [
+    {
+      name:'APG777', originator:'Apogee Therapeutics',
+      modality:'Humanized IgG1 monoclonal antibody', indication:'Atopic dermatitis (Phase 2); COPD program earlier in development',
+      stage:'Phase 2', decision:'Go', overall:'High', score:8.2,
+      dims:{timing:'H',modality:'H',momentum:'H',whitespace:'H',commercial:'H',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'H'},
+      assessment:"Apogee's lead program is advancing through Phase 2 with strong modality fit and no disclosed manufacturing partner, and the company has completed multiple financings since its 2023 IPO, indicating the ability to fund a CDMO partnership. A high-priority account for early relationship-building."
+    },
+    {
+      name:'Sonelokimab', originator:'MoonLake Immunotherapeutics',
+      modality:'Trivalent Nanobody (single-domain antibody)', indication:'Hidradenitis suppurativa, psoriatic arthritis (Phase 3)',
+      stage:'Phase 3', decision:'Go', overall:'High', score:8.6,
+      dims:{timing:'H',modality:'M',momentum:'H',whitespace:'H',commercial:'H',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'H'},
+      assessment:"MoonLake's lead asset is nearing a Phase 3 filing with urgent manufacturing scale-up needs and no committed commercial partner announced to date. A high-priority, time-sensitive account."
+    },
+    {
+      name:'Efruxifermin', originator:'Akero Therapeutics',
+      modality:'Fc-fusion protein (FGF21 analog)', indication:'MASH (Phase 3)',
+      stage:'Phase 3', decision:'Conditional Go', overall:'High', score:7.9,
+      dims:{timing:'H',modality:'M',momentum:'H',whitespace:'M',commercial:'H',regulatory:'M',scaleup:'M',resourcing:'H',competitive:'H',longterm:'M'},
+      assessment:'A well-funded Phase 3 program in a large, competitive MASH landscape. Some public commentary suggests manufacturing discussions may already be underway with another partner, so status here is less certain.'
+    },
+    {
+      name:'CLN-978', originator:'Cullinan Therapeutics',
+      modality:'Bispecific antibody (CD19 x CD3 T-cell engager)', indication:'B-cell malignancies; autoimmune disease (Phase 1)',
+      stage:'Phase 1', decision:'Conditional Go', overall:'Medium', score:7.2,
+      dims:{timing:'M',modality:'H',momentum:'M',whitespace:'H',commercial:'M',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'L',longterm:'H'},
+      assessment:'An early-stage bispecific program with low competitive pressure today. A good candidate for building the relationship ahead of later-phase manufacturing needs.'
+    },
+    {
+      name:'Luvelta (STRO-002)', originator:'Sutro Biopharma',
+      modality:'Antibody-drug conjugate (folate receptor alpha)', indication:'Ovarian cancer (Phase 2)',
+      stage:'Phase 2', decision:'Conditional Go', overall:'Medium', score:7.0,
+      dims:{timing:'M',modality:'H',momentum:'M',whitespace:'H',commercial:'M',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'M'},
+      assessment:"A mid-stage ADC program built on Sutro's proprietary cell-free conjugation platform. The account may prefer a partner who can integrate with their existing technology rather than a fully outsourced model."
+    },
+    {
+      name:'VIR-5818', originator:'Vir Biotechnology',
+      modality:'T-cell engager (multispecific biologic)', indication:'Solid tumors (Phase 1)',
+      stage:'Phase 1', decision:'Watch', overall:'Medium', score:6.4,
+      dims:{timing:'L',modality:'M',momentum:'M',whitespace:'M',commercial:'M',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'M'},
+      assessment:'Still early in Phase 1, with manufacturing decisions likely more than two years away. Best treated as a watch-list account to revisit as the program advances.'
+    },
+    {
+      name:'Zanidatamab (Ziihera)', originator:'Zymeworks / Jazz Pharmaceuticals',
+      modality:'Bispecific antibody (HER2)', indication:'Biliary tract cancer (approved); other HER2+ cancers in development',
+      stage:'Approved', decision:'Watch', overall:'Low', score:4.8,
+      dims:{timing:'L',modality:'H',momentum:'L',whitespace:'L',commercial:'M',regulatory:'H',scaleup:'L',resourcing:'H',competitive:'L',longterm:'M'},
+      assessment:'Already approved and commercial since 2024, so manufacturing is almost certainly locked in. Limited near-term opportunity beyond monitoring for future expansion-indication capacity.'
+    },
+    {
+      name:'Loncastuximab tesirine (ZYNLONTA)', originator:'ADC Therapeutics',
+      modality:'Antibody-drug conjugate (CD19)', indication:'Diffuse large B-cell lymphoma (approved)',
+      stage:'Approved', decision:'Drop', overall:'Low', score:4.2,
+      dims:{timing:'L',modality:'H',momentum:'L',whitespace:'L',commercial:'L',regulatory:'H',scaleup:'L',resourcing:'M',competitive:'L',longterm:'L'},
+      assessment:"A mature, approved product with an established commercial supply chain. Recommended for deprioritization in favor of earlier-stage accounts with real manufacturing whitespace."
+    }
+  ];
+
+  function rndDecisionClass(decision){
+    if(decision === 'Go') return 'rnd-pill-go';
+    if(decision === 'Conditional Go') return 'rnd-pill-conditional';
+    if(decision === 'Watch') return 'rnd-pill-watch';
+    return 'rnd-pill-drop';
+  }
+  function rndHmlClass(v){
+    if(v === 'High' || v === 'H') return 'rnd-hml-h';
+    if(v === 'Medium' || v === 'M') return 'rnd-hml-m';
+    return 'rnd-hml-l';
+  }
+  function rndDotClass(v){ return v === 'H' ? 'h' : (v === 'M' ? 'm' : 'l'); }
+  function rndWord(v){ return v === 'H' ? 'High' : (v === 'M' ? 'Medium' : 'Low'); }
+  function rndColor(v){ return v === 'H' ? '#1a7a41' : (v === 'M' ? '#c8860a' : '#c23b34'); }
+
+  function rndBuildDonut(dims){
+    let acc = 0;
+    const stops = RND_DIMENSIONS.map(d => {
+      const start = acc;
+      acc += (d.weight / 100) * 360;
+      return `${rndColor(dims[d.key])} ${start}deg ${acc}deg`;
+    });
+    return `conic-gradient(${stops.join(', ')})`;
+  }
+
+  function renderRndTable(){
+    const wrap = document.getElementById('rnd-rows-wrap');
+    wrap.innerHTML = RND_ASSETS.map((a, i) => `
+      <div class="rnd-body-row rnd-row-grid" data-idx="${i}">
+        <div>
+          <div class="rnd-program-name">${a.name}</div>
+          <div class="rnd-program-originator">${a.originator}</div>
+        </div>
+        <div><span class="rnd-hml ${rndHmlClass(a.overall)}">${a.overall}</span></div>
+        <div class="rnd-score">${a.score.toFixed(1)}<span class="of"> / 10</span></div>
+        <div><span class="rnd-pill ${rndDecisionClass(a.decision)}">${a.decision}</span></div>
+        <div class="rnd-col-dim"><span class="rnd-hml ${rndHmlClass(a.dims.timing)}">${a.dims.timing}</span></div>
+        <div class="rnd-col-dim"><span class="rnd-hml ${rndHmlClass(a.dims.modality)}">${a.dims.modality}</span></div>
+        <div class="rnd-col-dim"><span class="rnd-hml ${rndHmlClass(a.dims.whitespace)}">${a.dims.whitespace}</span></div>
+      </div>
+    `).join('');
+  }
+
+  function renderRndProfile(asset){
+    const legendHtml = RND_DIMENSIONS.slice(0, 6).map(d => `
+      <span class="rnd-legend-item"><span class="rnd-dim-dot ${rndDotClass(asset.dims[d.key])}"></span>${d.label} &middot; ${rndWord(asset.dims[d.key])}</span>
+    `).join('');
+    document.getElementById('rnd-profile-body').innerHTML = `
+      <div class="rnd-full-header">
+        <div>
+          <h3>${asset.name}</h3>
+          <p class="rnd-full-sub">${asset.originator} &middot; ${asset.stage}</p>
+        </div>
+        <button class="rnd-generate-btn">Generate report</button>
+      </div>
+      <div class="rnd-quick-badges">
+        <span class="rnd-field-tag">${asset.modality}</span>
+        <span class="rnd-field-tag">${asset.indication}</span>
+      </div>
+      <div class="rnd-donut-row">
+        <div class="rnd-donut" style="background:${rndBuildDonut(asset.dims)};">
+          <div class="rnd-donut-inner"><span class="num">${asset.score.toFixed(1)}</span><span class="of">/ 10</span></div>
+        </div>
+        <div>
+          <div class="rnd-donut-label"><h4>Opportunity score</h4><span class="rnd-pill ${rndDecisionClass(asset.decision)}">${asset.decision}</span></div>
+          <p class="rnd-donut-desc">Weighted across ${RND_DIMENSIONS.length} reasoning dimensions.</p>
+        </div>
+      </div>
+      <div class="rnd-legend">${legendHtml}</div>
+      <p class="rnd-assessment">${asset.assessment}</p>
+    `;
+  }
+
+  let rndDemoRunning = false;
+  let rndTimers = [];
+  let rndGen = 0;
+
+  function rndWait(ms){
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      rndTimers.push(t);
+    });
+  }
+
+  function clearRndTimers(){
+    rndTimers.forEach(t => clearTimeout(t));
+    rndTimers = [];
+  }
+
+  function setRndCaption(text){
+    const el = document.getElementById('rnd-caption-text');
+    if(el) el.textContent = text;
+  }
+
+  function resetRndStage(){
+    document.getElementById('rnd-rows-wrap').innerHTML = '';
+    document.getElementById('rnd-profile-body').innerHTML = '';
+    document.getElementById('rnd-table-stage').classList.remove('stage-hidden');
+    document.getElementById('rnd-profile-stage').classList.remove('stage-visible');
+  }
+
+  async function runRndCycle(idx, myGen){
+    const asset = RND_ASSETS[idx];
+    resetRndStage();
+    renderRndTable();
+    fitWrapToChild('.rnd-stage-wrap', '.rnd-table-stage');
+    setRndCaption(`Scoring ${RND_ASSETS.length} biologics programs against WuXi Biologics' partnership criteria.`);
+
+    await rndWait(400);
+    if(myGen !== rndGen) return;
+
+    const rows = document.querySelectorAll('.rnd-body-row');
+    for(const row of rows){
+      if(myGen !== rndGen) return;
+      row.classList.add('row-visible');
+      await rndWait(180);
+    }
+    if(myGen !== rndGen) return;
+
+    await rndWait(500);
+    if(myGen !== rndGen) return;
+
+    const targetRow = document.querySelector(`.rnd-body-row[data-idx="${idx}"]`);
+    if(targetRow) targetRow.classList.add('rnd-row-selected');
+    setRndCaption(`Selecting ${asset.name} for a full opportunity assessment.`);
+    await rndWait(700);
+    if(myGen !== rndGen) return;
+
+    document.getElementById('rnd-table-stage').classList.add('stage-hidden');
+    await rndWait(320);
+    if(myGen !== rndGen) return;
+
+    renderRndProfile(asset);
+    document.getElementById('rnd-profile-stage').classList.add('stage-visible');
+    fitWrapToChild('.rnd-stage-wrap', '.rnd-profile-stage');
+    setRndCaption(`Reviewing opportunity score and assessment for ${asset.name}.`);
+    await rndWait(3400);
+    if(myGen !== rndGen) return;
+
+    document.getElementById('rnd-profile-stage').classList.remove('stage-visible');
+    await rndWait(450);
+    if(myGen !== rndGen) return;
+  }
+
+  async function runRndLoop(myGen){
+    let i = 0;
+    while(rndDemoRunning && myGen === rndGen){
+      await runRndCycle(i % RND_ASSETS.length, myGen);
+      if(myGen !== rndGen) return;
+      i += 1;
+    }
+  }
+
+  function startRndDemo(){
+    if(rndDemoRunning) return;
+    rndDemoRunning = true;
+    const myGen = rndGen;
+    runRndLoop(myGen);
+  }
+
+  function stopRndDemo(){
+    rndDemoRunning = false;
+    rndGen += 1;
+    clearRndTimers();
+  }
+
+  /* ---------- CDMO BD & outreach: company -> decision makers -> draft outreach ---------- */
+  const CDMO_CONTACTS = {
+    mark: {
+      name: 'Mark Skoog',
+      title: 'Vice President of Manufacturing',
+      email: 'mark.skoog@abcellera.com',
+      subject: 'Manufacturing support for ABCL635 and ABCL575',
+      message: "Congrats on ABCL635's positive Phase 2 readout and ABCL575 dosing completion.\n\nAt WuXi Biologics, we offer cell line/process development and GMP clinical-to-commercial manufacturing.\n\nCan I send a short capacity and timeline snapshot?\n\nBest,"
+    },
+    mary: {
+      name: 'Mary Helstad',
+      title: 'Senior Director, Manufacturing Operations',
+      email: 'mary.helstad@abcellera.com',
+      subject: 'Manufacturing support for ABCL635 and ABCL575',
+      message: "Congrats on ABCL635's positive Phase 2 readout and ABCL575 dosing completion.\n\nAt WuXi Biologics, we offer cell line/process development and GMP clinical-to-commercial manufacturing.\n\nCan I send a short capacity and timeline snapshot?\n\nBest,"
+    }
+  };
+
+  let cdmoGen = 0;
+  let cdmoTimers = [];
+  let cdmoTypingTimeout = null;
+
+  function cdmoWait(ms){
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      cdmoTimers.push(t);
+    });
+  }
+
+  function clearCdmoTimers(){
+    cdmoTimers.forEach(t => clearTimeout(t));
+    cdmoTimers = [];
+    if(cdmoTypingTimeout){ clearTimeout(cdmoTypingTimeout); cdmoTypingTimeout = null; }
+  }
+
+  function setCdmoCaption(text){
+    const el = document.getElementById('cdmo-caption-text');
+    if(el) el.textContent = text;
+  }
+
+  function showCdmoStage(name){
+    ['company', 'contacts', 'compose'].forEach(s => {
+      const el = document.getElementById('cdmo-' + s + '-stage');
+      el.classList.toggle('stage-visible', s === name);
+    });
+    fitWrapToChild('.cdmo-stage-wrap', '#cdmo-' + name + '-stage');
+  }
+
+  function cdmoTypeMessage(el, text, myGen){
+    el.textContent = '';
+    el.classList.add('typing');
+    return new Promise(resolve => {
+      let i = 0;
+      const step = () => {
+        if(myGen !== cdmoGen) return;
+        el.textContent = text.slice(0, i);
+        i += 1;
+        if(i <= text.length){
+          cdmoTypingTimeout = setTimeout(step, 14);
+          cdmoTimers.push(cdmoTypingTimeout);
+        }else{
+          el.classList.remove('typing');
+          resolve();
+        }
+      };
+      step();
+    });
+  }
+
+  async function runCdmoIntro(myGen){
+    showCdmoStage('company');
+    setCdmoCaption('Reviewing AbCellera Biologics Inc. for outreach priority.');
+    await cdmoWait(1800);
+    if(myGen !== cdmoGen) return;
+    showCdmoStage('contacts');
+    setCdmoCaption('Choose a decision maker to draft outreach.');
+  }
+
+  function startCdmoDemo(){
+    cdmoGen += 1;
+    clearCdmoTimers();
+    const myGen = cdmoGen;
+    document.getElementById('cdmo-send-btn').hidden = true;
+    document.getElementById('cdmo-done').hidden = true;
+    runCdmoIntro(myGen);
+  }
+
+  function stopCdmoDemo(){
+    cdmoGen += 1;
+    clearCdmoTimers();
+  }
+
+  async function startCdmoCompose(key){
+    cdmoGen += 1;
+    clearCdmoTimers();
+    const myGen = cdmoGen;
+    const c = CDMO_CONTACTS[key];
+
+    document.getElementById('cdmo-compose-name').textContent = `${c.name} at AbCellera Biologics Inc.`;
+    document.getElementById('cdmo-compose-to').textContent = `${c.name} · ${c.title}`;
+    document.getElementById('cdmo-compose-sendingto').value = c.email;
+    document.getElementById('cdmo-compose-subject').value = c.subject;
+    document.getElementById('cdmo-send-btn').hidden = true;
+    document.getElementById('cdmo-done').hidden = true;
+
+    const msgEl = document.getElementById('cdmo-compose-message');
+    showCdmoStage('compose');
+    setCdmoCaption(`Drafting outreach to ${c.name}.`);
+    await cdmoWait(350);
+    if(myGen !== cdmoGen) return;
+    await cdmoTypeMessage(msgEl, c.message, myGen);
+    if(myGen !== cdmoGen) return;
+    document.getElementById('cdmo-send-btn').hidden = false;
+    fitWrapToChild('.cdmo-stage-wrap', '#cdmo-compose-stage');
+    setCdmoCaption('Review the draft, then send when ready.');
+  }
+
+  document.querySelectorAll('.cdmo-write-btn').forEach(btn => {
+    btn.addEventListener('click', () => startCdmoCompose(btn.dataset.contact));
+  });
+
+  document.getElementById('cdmo-send-btn').addEventListener('click', () => {
+    document.getElementById('cdmo-send-btn').hidden = true;
+    document.getElementById('cdmo-done').hidden = false;
+    fitWrapToChild('.cdmo-stage-wrap', '#cdmo-compose-stage');
+    setCdmoCaption('Outreach sent.');
+  });
+
+  document.getElementById('cdmo-draft-another').addEventListener('click', () => {
+    cdmoGen += 1;
+    clearCdmoTimers();
+    showCdmoStage('contacts');
+    setCdmoCaption('Choose a decision maker to draft outreach.');
+  });
+
+  /* ---------- Competitive intelligence: AI copilot Q&A ---------- */
+  const CI_QUESTIONS = [
+    {
+      question: "How should WuXi Biologics position its manufacturing capabilities to Biohaven following their $400M licensing deal with SK Biopharmaceuticals?",
+      answer: "Biohaven's $400M non-dilutive cash infusion from the SK Biopharmaceuticals deal removes near-term funding risk and accelerates their pivotal-stage pipeline. This is the right moment to position WuXi Biologics as the GMP manufacturing partner for their in-scope ADC and recombinant protein degrader assets moving into Phase II/III. Lead with integrated cell line development through commercial-scale manufacturing, and reference the funding milestone directly in outreach to align with their evolving vendor evaluation timeline.",
+      report: 'Biohaven_ManufacturingPositioning_Brief.pdf'
+    },
+    {
+      question: "What impact does the FDA partial clinical hold on BHV-7000 have on Biohaven's manufacturing and outsourcing strategy?",
+      answer: "The partial clinical hold on BHV-7000 pauses enrollment for that specific epilepsy asset but doesn't affect Biohaven's broader pipeline or their near-term manufacturing needs for other in-scope biologics. If anything, the regulatory setback may accelerate their evaluation of external manufacturing partners to de-risk the rest of their portfolio. Outreach should acknowledge the hold as context but focus on their unaffected ADC and biologic degrader programs.",
+      report: 'Biohaven_RegulatoryRiskImpact_Brief.pdf'
+    },
+    {
+      question: "Should WuXi Biologics highlight its ADC and recombinant protein platforms to Biohaven given their pipeline and recent leadership changes?",
+      answer: "Yes. Biohaven's disclosed pipeline includes multiple ADCs and recombinant protein degraders in pivotal trials, both squarely within WuXi Biologics' core capabilities. The recent scientific leadership transition toward discovery and external collaborations signals openness to new manufacturing partnerships. Leading with platform-specific capabilities, rather than a generic manufacturing pitch, will resonate more with the incoming leadership's stated focus.",
+      report: 'Biohaven_PlatformFit_Brief.pdf'
+    },
+    {
+      question: "What is the best timing for outreach to Biohaven in light of their ongoing pivotal trials and recent capital influx?",
+      answer: "Now is a strong window. Biohaven just secured $400M in non-dilutive funding, has multiple pivotal-stage assets approaching manufacturing decisions, and recently added board and scientific leadership focused on external collaboration. Waiting risks losing the account to a competing CDMO already engaged during this active vendor evaluation period. Recommend initiating outreach within the next two weeks.",
+      report: 'Biohaven_OutreachTiming_Brief.pdf'
+    }
+  ];
+
+  let ciGen = 0;
+  let ciTimers = [];
+  let ciTypingTimeout = null;
+
+  function ciWait(ms){
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      ciTimers.push(t);
+    });
+  }
+
+  function clearCiTimers(){
+    ciTimers.forEach(t => clearTimeout(t));
+    ciTimers = [];
+    if(ciTypingTimeout){ clearTimeout(ciTypingTimeout); ciTypingTimeout = null; }
+  }
+
+  function ciTypeAnswer(el, text, myGen){
+    el.textContent = '';
+    el.classList.remove('done');
+    return new Promise(resolve => {
+      let i = 0;
+      const step = () => {
+        if(myGen !== ciGen) return;
+        el.textContent = text.slice(0, i);
+        i += 1;
+        if(i <= text.length){
+          ciTypingTimeout = setTimeout(step, 12);
+          ciTimers.push(ciTypingTimeout);
+        }else{
+          el.classList.add('done');
+          resolve();
+        }
+      };
+      step();
+    });
+  }
+
+  async function askCiQuestion(idx){
+    ciGen += 1;
+    clearCiTimers();
+    const myGen = ciGen;
+    const q = CI_QUESTIONS[idx];
+
+    document.getElementById('ci-copilot-idle').classList.add('hidden-away');
+    document.getElementById('ci-copilot-answer').classList.add('active');
+    document.getElementById('ci-asked-text').textContent = q.question;
+    document.getElementById('ci-report-card').hidden = true;
+    document.getElementById('ci-report-card').classList.remove('shown');
+    document.getElementById('ci-report-name').textContent = q.report;
+
+    const answerEl = document.getElementById('ci-answer-text');
+    await ciWait(300);
+    if(myGen !== ciGen) return;
+    await ciTypeAnswer(answerEl, q.answer, myGen);
+    if(myGen !== ciGen) return;
+
+    await ciWait(400);
+    if(myGen !== ciGen) return;
+    const reportCard = document.getElementById('ci-report-card');
+    reportCard.hidden = false;
+    await ciWait(30);
+    if(myGen !== ciGen) return;
+    reportCard.classList.add('shown');
+  }
+
+  function resetCiDemo(){
+    ciGen += 1;
+    clearCiTimers();
+    document.getElementById('ci-copilot-answer').classList.remove('active');
+    document.getElementById('ci-copilot-idle').classList.remove('hidden-away');
+  }
+
+  document.querySelectorAll('.ci-question-card').forEach(card => {
+    card.addEventListener('click', () => askCiQuestion(Number(card.dataset.q)));
+  });
+
+  document.getElementById('ci-back-btn').addEventListener('click', resetCiDemo);
+
+  /* ---------- CRM sync: BioLens -> Salesforce ---------- */
+  const CRM_LIST_ROWS = [
+    { name: 'Apogee Therapeutics', industry: 'Biotechnology', owner: 'bpfaff' },
+    { name: 'MoonLake Immunotherapeutics', industry: 'Biotechnology', owner: 'bpfaff' },
+    { name: 'Cullinan Therapeutics', industry: 'Biotechnology', owner: 'jwams' },
+    { name: 'Sutro Biopharma', industry: 'Biotechnology', owner: 'jwams' },
+    { name: 'Vir Biotechnology', industry: 'Biotechnology', owner: 'tsham' },
+    { name: 'Adagene', industry: 'Biotechnology', owner: 'tsham' },
+    { name: 'AbCellera Biologics Inc.', industry: 'Biotechnology', owner: 'WuXi BD', isNew: true }
+  ];
+
+  const CRM_FIELDS = [
+    { label: 'Account Owner', value: 'WuXi Biologics BD' },
+    { label: 'Website', value: 'abcellera.com' },
+    { label: 'Employees', value: '561' },
+    { label: 'Founded', value: '2012' },
+    { label: 'Type', value: 'Public Company' },
+    { label: 'BioLens Priority Score', value: 'High &middot; 24 signals', synced: true },
+    { label: 'Primary Focus (BioLens)', value: "Women's Health, Immunology, Oncology", synced: true },
+    { label: 'Recommended Action (BioLens)', value: 'Initiate manufacturing partnership outreach', synced: true }
+  ];
+
+  const CRM_CONTACTS = [
+    { name: 'Mark Skoog', title: 'Vice President of Manufacturing', email: 'mark.skoog@abcellera.com' },
+    { name: 'Mary Helstad', title: 'Senior Director, Manufacturing Operations', email: 'mary.helstad@abcellera.com' },
+    { name: 'David Chen', title: 'Chief Executive Officer', email: 'david.chen@abcellera.com' },
+    { name: 'Priya Nandakumar', title: 'Chief Scientific Officer', email: 'priya.nandakumar@abcellera.com' }
+  ];
+
+  let crmGen = 0;
+  let crmTimers = [];
+
+  function crmWait(ms){
+    return new Promise(resolve => {
+      const t = setTimeout(resolve, ms);
+      crmTimers.push(t);
+    });
+  }
+
+  function clearCrmTimers(){
+    crmTimers.forEach(t => clearTimeout(t));
+    crmTimers = [];
+  }
+
+  function setCrmCaption(text){
+    const el = document.getElementById('crm-caption-text');
+    if(el) el.textContent = text;
+  }
+
+  function showCrmStage(name){
+    document.getElementById('crm-company-stage').classList.toggle('stage-visible', name === 'company');
+    document.getElementById('crm-sf-stage').classList.toggle('stage-visible', name === 'sf');
+    fitWrapToChild('.crm-stage-wrap', name === 'sf' ? '#crm-sf-stage' : '#crm-company-stage');
+  }
+
+  function showCrmSubtab(name){
+    document.querySelectorAll('.crm-sf-subtab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.sub === name);
+    });
+    document.querySelectorAll('.crm-sf-subpanel').forEach(panel => {
+      panel.classList.toggle('active', panel.id === 'crm-sub-' + name);
+    });
+    fitWrapToChild('.crm-stage-wrap', '#crm-sf-stage');
+  }
+
+  document.querySelectorAll('.crm-sf-subtab').forEach(btn => {
+    btn.addEventListener('click', () => showCrmSubtab(btn.dataset.sub));
+  });
+
+  function renderCrmSalesforce(){
+    document.getElementById('crm-sf-list').innerHTML = CRM_LIST_ROWS.map(r => `
+      <div class="crm-sf-row${r.isNew ? ' crm-sf-row-new' : ''}" ${r.isNew ? 'id="crm-sf-new-row"' : ''}>
+        <span>${r.name}${r.isNew ? '<span class="crm-new-badge">New</span>' : ''}</span>
+        <span>${r.industry}</span>
+        <span>${r.owner}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('crm-sf-fields').innerHTML = CRM_FIELDS.map(f => `
+      <div class="crm-field-row${f.synced ? ' synced' : ''}">
+        <span class="crm-field-label">${f.synced ? '<span class="bolt">&#9889;</span>' : ''}${f.label}</span>
+        <span class="crm-field-value">${f.value}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('crm-sf-contacts').innerHTML = CRM_CONTACTS.map(c => `
+      <div class="crm-contact-row">
+        <span>${c.name}</span>
+        <span>${c.title}</span>
+        <span>${c.email}</span>
+        <span><span class="crm-status-new">New</span></span>
+      </div>
+    `).join('');
+  }
+
+  async function runCrmSync(myGen){
+    renderCrmSalesforce();
+    showCrmStage('sf');
+    showCrmSubtab('accounts');
+    setCrmCaption('Pushing AbCellera Biologics Inc. to Salesforce.');
+
+    await crmWait(350);
+    if(myGen !== crmGen) return;
+
+    const listRows = document.querySelectorAll('.crm-sf-row');
+    for(const row of listRows){
+      if(myGen !== crmGen) return;
+      row.classList.add('row-visible');
+      await crmWait(90);
+    }
+    if(myGen !== crmGen) return;
+    const newRow = document.getElementById('crm-sf-new-row');
+    if(newRow) newRow.classList.add('pulse');
+    setCrmCaption('AbCellera Biologics Inc. added as a new account.');
+    await crmWait(750);
+    if(myGen !== crmGen) return;
+
+    showCrmSubtab('details');
+    setCrmCaption('Pushing BioLens account intelligence into custom CRM fields.');
+    await crmWait(300);
+    if(myGen !== crmGen) return;
+
+    const fieldRows = document.querySelectorAll('.crm-field-row');
+    for(const row of fieldRows){
+      if(myGen !== crmGen) return;
+      row.classList.add('row-visible');
+      await crmWait(110);
+      fitWrapToChild('.crm-stage-wrap', '#crm-sf-stage');
+    }
+    await crmWait(600);
+    if(myGen !== crmGen) return;
+
+    showCrmSubtab('contacts');
+    setCrmCaption('Adding decision makers as related contacts.');
+    await crmWait(300);
+    if(myGen !== crmGen) return;
+
+    const contactRows = document.querySelectorAll('.crm-contact-row');
+    for(const row of contactRows){
+      if(myGen !== crmGen) return;
+      row.classList.add('row-visible');
+      await crmWait(140);
+      fitWrapToChild('.crm-stage-wrap', '#crm-sf-stage');
+    }
+    if(myGen !== crmGen) return;
+    setCrmCaption('AbCellera Biologics Inc. and its decision makers are now synced to Salesforce.');
+  }
+
+  function resetCrmDemo(){
+    crmGen += 1;
+    clearCrmTimers();
+    showCrmStage('company');
+    setCrmCaption('Review AbCellera Biologics Inc. in BioLens, then push it to Salesforce.');
+  }
+
+  document.getElementById('crm-add-btn').addEventListener('click', () => {
+    crmGen += 1;
+    clearCrmTimers();
+    const myGen = crmGen;
+    runCrmSync(myGen);
+  });
+
+  document.getElementById('crm-back-btn').addEventListener('click', resetCrmDemo);
+</script>
+</body>
+</html>

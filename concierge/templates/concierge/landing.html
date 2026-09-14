@@ -624,11 +624,11 @@
         <div class="label">View BioLens</div>
         <div class="sub">An overview of the platform</div>
       </a>
-      <div class="menu-card" onclick="goTo('screen-experience')">
+      <a class="menu-card" href="{% url 'concierge:experience_biolens' %}" target="_blank" rel="noopener">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Desktop%20computer/3D/desktop_computer_3d.png" alt=""></div>
         <div class="label">Experience BioLens</div>
         <div class="sub">See it running, live</div>
-      </div>
+      </a>
       <div class="menu-card" onclick="openWorkspaceModal()">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Briefcase/3D/briefcase_3d.png" alt=""></div>
         <div class="label">Request your workspace</div>
@@ -678,34 +678,6 @@
       <h1 class="title">Recommendations near the venue</h1>
       <p class="lede">A short list, curated by the concierge desk.</p>
       <img class="dining-image" src="https://res.cloudinary.com/dnscrocre/image/upload/v1786534287/ChatGPT_Image_Aug_12_2026_02_00_16_AM_lkk3uz.png" alt="Dining recommendations near the venue">
-    </div>
-  </section>
-
-  <!-- EXPERIENCE BIOLENS -->
-  <section id="screen-experience" class="screen">
-    <div class="narrow">
-      <div class="back-row"><button class="btn-text" onclick="goTo('screen-menu')">&larr; Back to menu</button></div>
-      <p class="eyebrow">BioLens</p>
-      <h1 class="title">Experience BioLens</h1>
-      <p class="lede">Have a member of our team walk you through a live workspace at the booth, using your own sample data if you'd like.</p>
-      <div class="field">
-        <label>When works best?</label>
-        <div class="radio-row" data-chipgroup="experience-time">
-          <div class="chip" data-value="Now">Right now</div>
-          <div class="chip" data-value="In 30 minutes">In 30 minutes</div>
-          <div class="chip" data-value="Later today">Later today</div>
-        </div>
-      </div>
-      <div class="field">
-        <label for="experience-notes">Anything specific you'd like to see?</label>
-        <textarea id="experience-notes" placeholder="e.g. imaging pipeline, collaboration features, API access..."></textarea>
-      </div>
-      <div class="actions">
-        <button class="btn primary" onclick="submitAction('experience_biolens', {
-          when: getChipValue('experience-time'),
-          interest: valOf('experience-notes')
-        }, 'A BioLens specialist has been notified and will find you shortly.')">Request a walkthrough</button>
-      </div>
     </div>
   </section>
 

@@ -18,6 +18,10 @@ def ddf_intel(request):
     return render(request, 'concierge/ddf_intel.html')
 
 
+def experience_biolens(request):
+    return render(request, 'concierge/experience_biolens.html')
+
+
 @require_POST
 def submit_request(request):
     try:
