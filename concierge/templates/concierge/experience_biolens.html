@@ -41,10 +41,10 @@
   ::selection{background:var(--accent);color:#fff;}
 
   .app{
-    max-width:1120px;
+    max-width:1680px;
     margin:0 auto;
     min-height:100vh;
-    padding:40px 28px 80px;
+    padding:40px 40px 80px;
     display:flex;
     flex-direction:column;
   }
@@ -84,12 +84,13 @@
     font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;
   }
 
-  /* ---------- Use-case tab bar ---------- */
+  /* ---------- Use-case tab bar (sidebar on desktop, top pills on mobile) ---------- */
+  .usecase-layout{display:flex;align-items:flex-start;gap:28px;}
+  .usecase-panels{flex:1;min-width:0;display:flex;flex-direction:column;}
   .usecase-tabs{
-    display:flex;flex-wrap:wrap;gap:10px;
-    margin-bottom:32px;
-    border-bottom:1px solid var(--line);
-    padding-bottom:24px;
+    display:flex;flex-direction:column;flex-wrap:nowrap;gap:8px;
+    flex-shrink:0;width:240px;
+    position:sticky;top:24px;
   }
   .usecase-tab{
     display:flex;align-items:center;gap:10px;
@@ -104,6 +105,7 @@
     box-shadow:var(--shadow-card);
     transition:all .2s ease;
     user-select:none;
+    width:100%;
   }
   .usecase-tab .num{
     display:flex;align-items:center;justify-content:center;
@@ -118,6 +120,18 @@
     border-color:var(--accent);background:var(--accent);color:#fff;
   }
   .usecase-tab.active .num{background:rgba(255,255,255,.22);color:#fff;}
+
+  @media(max-width:900px){
+    .usecase-layout{flex-direction:column;}
+    .usecase-tabs{
+      flex-direction:row;flex-wrap:wrap;gap:10px;
+      width:auto;position:static;
+      margin-bottom:32px;
+      border-bottom:1px solid var(--line);
+      padding-bottom:24px;
+    }
+    .usecase-tab{width:auto;}
+  }
 
   /* ---------- Use-case panel ---------- */
   .usecase-panel{display:none;flex:1;flex-direction:column;animation:fade .4s ease;}
@@ -192,47 +206,19 @@
     border:none;box-shadow:none;background:transparent;border-radius:0;
   }
 
-  .search-stage-wrap{position:relative;flex:1;min-height:420px;}
+  .search-stage-wrap{flex:1;}
 
   .search-prompt-stage{
-    position:absolute;inset:0;
     display:flex;flex-direction:column;justify-content:flex-start;
     padding:36px 30px 28px;
-    transition:opacity 350ms ease, transform 350ms ease;
   }
-  .search-prompt-stage.stage-hidden{opacity:0;transform:translateY(-12px);pointer-events:none;}
+  .search-prompt-stage.stage-hidden{display:none;}
   .search-prompt-title{font-size:19px;font-weight:600;color:var(--ink-dim);margin:0 0 18px;text-align:center;}
-  .search-query-box{
-    border:1px solid var(--line-strong);border-radius:18px;background:#f9f8f5;
-    padding:20px 24px;min-height:64px;font-size:18px;color:var(--ink);
-    display:flex;align-items:center;gap:12px;max-width:700px;margin:0 auto;
-    transition:min-height 350ms ease, padding 350ms ease, box-shadow 350ms ease, border-color 350ms ease, background-color 350ms ease;
-  }
-  .search-query-box .search-icon{color:var(--ink-faint);flex-shrink:0;transition:color 350ms ease;width:22px;height:22px;}
-  .search-query-box.expanded{
-    min-height:82px;padding:26px 28px;font-size:19.5px;
-    background:#fff;border-color:var(--accent);
-    box-shadow:0 18px 40px -20px rgba(54,84,224,.35);
-  }
-  .search-query-box.expanded .search-icon{color:var(--accent);}
-  .search-query-placeholder{color:var(--ink-faint);}
-  .search-query-box.expanded .search-query-placeholder{display:none;}
-  .search-type-text{display:none;}
-  .search-query-box.expanded .search-type-text{display:inline;}
-  .search-type-text::after{
-    content:"";display:inline-block;width:2px;height:1em;margin-left:3px;
-    transform:translateY(2px);background:var(--accent);
-    animation:searchCaret 630ms step-end infinite;
-  }
-  .search-type-text.typing-complete::after{opacity:0;}
-  @keyframes searchCaret{50%{opacity:0;}}
 
   .search-suggestions{
     display:grid;grid-template-columns:1fr 1fr;gap:14px;
     max-width:800px;margin:24px auto 0;
-    transition:opacity 300ms ease, transform 300ms ease;
   }
-  .search-suggestions.suggestions-hidden{opacity:0;transform:translateY(-8px);pointer-events:none;}
   .search-suggestion-card{
     border:1px solid var(--line-strong);background:var(--panel);border-radius:14px;
     padding:16px 18px;font-size:14.5px;line-height:1.45;color:var(--ink-dim);font-weight:500;
@@ -257,20 +243,19 @@
     animation: none;
   }
 
-  .search-table-stage{
-    position:absolute;inset:0;
-    opacity:0;transform:translateY(18px) scale(.98);pointer-events:none;
-    transition:opacity 385ms ease, transform 385ms ease;
+  .search-workspace-stage{
+    display:none;
     background:var(--panel);
     border:1px solid var(--line);border-radius:var(--radius);
-    display:flex;flex-direction:column;
-    overflow:hidden;
+    flex-direction:column;
+    padding:0 0 22px;
   }
-  .search-table-stage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+  .search-workspace-stage.stage-visible{display:flex;}
 
   .search-results-head{
     display:flex;align-items:center;justify-content:space-between;
     padding:20px 26px;border-bottom:1px solid var(--line);
+    margin-bottom:18px;
   }
   .search-results-head h4{margin:0;font-size:17px;font-weight:700;color:var(--ink);}
   .search-found-pill{
@@ -280,102 +265,84 @@
   }
   .search-found-pill .dot{width:8px;height:8px;border-radius:50%;background:#16a34a;}
 
-  .search-row-grid{
-    display:grid;
-    grid-template-columns:minmax(180px,1.6fr) 74px 90px minmax(130px,1fr) minmax(180px,1.4fr);
-    align-items:center;
+  /* ---------- Accordion: company list + fit assessment on expand ---------- */
+  .search-accordion{display:flex;flex-direction:column;gap:10px;padding:0 26px;}
+  .search-acc-item{
+    border:1px solid var(--line);border-radius:12px;background:var(--panel);
+    overflow:hidden;transition:border-color 180ms ease;
   }
-  .search-cols-head{
-    font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
-    color:var(--ink-faint);background:#f9f8f5;border-bottom:1px solid var(--line);
+  .search-acc-item.acc-open{border-color:var(--line-strong);}
+  .search-acc-header{
+    width:100%;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left;
+    font-family:inherit;color:inherit;
   }
-  .search-cols-head > div{padding:11px 18px;}
-  .search-rows-wrap{position:relative;flex:1;overflow:visible;}
-
-  /* Shared: let a fixed-column table scroll horizontally rather than clip
-     or squash its columns when the container is narrower than its content. */
-  .table-hscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  .search-company-row{
-    border-bottom:1px solid var(--line);
-    opacity:0;transform:translateY(8px);
-    transition:opacity 294ms ease, transform 294ms ease;
+  .search-acc-header:hover{background:var(--panel-hover);}
+  .search-acc-header .chevron{
+    width:18px;height:18px;color:var(--ink-faint);flex-shrink:0;margin-left:auto;
+    transition:transform 200ms ease;
   }
-  .search-company-row.row-visible{opacity:1;transform:translateY(0);}
-  .search-company-row > div{padding:16px 18px;font-size:14.5px;}
-  .search-company-name{display:flex;align-items:center;gap:12px;}
+  .search-acc-item.acc-open .search-acc-header .chevron{transform:rotate(180deg);}
   .search-company-mark{
     width:36px;height:36px;border-radius:9px;background:var(--accent-soft);color:var(--accent-bright);
     display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;flex-shrink:0;
   }
-  .search-company-name .name{font-weight:700;color:var(--ink);font-size:14.5px;}
-  .search-fit-ring{
-    width:38px;height:38px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
+  .search-acc-name{font-weight:700;color:var(--ink);font-size:14.5px;flex:1;min-width:140px;}
+  .search-tier-pill{
+    font-size:11px;font-weight:700;padding:5px 11px;border-radius:999px;flex-shrink:0;
+    text-transform:uppercase;letter-spacing:.02em;
   }
-  .search-fit-ring span{width:21px;height:21px;border-radius:50%;background:#fff;display:block;}
-  .search-evidence-tag{
-    background:#f3f2ee;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--ink);
-    display:inline-block;
+  .search-tier-pill.tier-high{background:#e3f5e9;color:#1a7a41;}
+  .search-tier-pill.tier-medium{background:#fdf1de;color:#9a6112;}
+  .search-acc-stage{font-size:13px;color:var(--ink-dim);width:110px;flex-shrink:0;}
+  .search-acc-loc{font-size:13px;color:var(--ink-faint);width:180px;flex-shrink:0;}
+
+  .search-acc-body{max-height:0;overflow:hidden;transition:max-height 280ms ease;}
+  .search-acc-body-inner{padding:0 18px 4px;border-top:1px solid var(--line);}
+  .search-acc-evidence{
+    background:#f3f2ee;border-radius:10px;padding:11px 14px;font-size:13px;color:var(--ink);
+    margin:16px 0 18px;
   }
-  .search-fit-target{transition:box-shadow 260ms ease, transform 260ms ease;}
-  .search-fit-target.fit-clicked{animation:searchClickPulse 455ms ease-out;}
-  @keyframes searchClickPulse{
-    0%{box-shadow:0 0 0 0 rgba(54,84,224,.32);transform:scale(1);}
-    42%{box-shadow:0 0 0 9px rgba(54,84,224,0);transform:scale(.94);}
-    100%{box-shadow:0 0 0 0 rgba(54,84,224,0);transform:scale(1);}
+  .search-acc-label{
+    margin:0 0 10px;font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--ink-faint);
   }
-  .search-cursor{
-    position:absolute;left:0;top:0;z-index:30;
-    opacity:0;transform:translate(0,0) scale(.96);
-    transition:opacity 154ms ease, transform 630ms cubic-bezier(.16,1,.3,1);
-    pointer-events:none;
-  }
-  .search-cursor.cursor-visible{opacity:1;}
-  .search-fit-popover{
-    position:absolute;z-index:20;width:340px;
-    background:var(--panel);border:1px solid var(--line-strong);border-radius:16px;
-    padding:20px;box-shadow:0 30px 60px -20px rgba(24,23,15,.35);
-    opacity:0;transform:translateX(6px) scale(.98);
-    transition:opacity 252ms ease, transform 252ms ease;
-    pointer-events:none;
-  }
-  .search-fit-popover.popover-visible{opacity:1;transform:translateX(0) scale(1);}
-  .search-fit-popover-arrow{
-    position:absolute;left:-8px;width:0;height:0;
-    border-top:8px solid transparent;border-bottom:8px solid transparent;
-    border-right:8px solid var(--panel);
-    filter:drop-shadow(-2px 0 1px rgba(24,23,15,.10));
-  }
-  .search-fit-popover h5{margin:0 0 12px;font-size:15.5px;font-weight:800;color:var(--ink);}
-  .search-fit-popover .crit{margin-bottom:12px;padding-top:12px;border-top:1px solid var(--line);}
-  .search-fit-popover .crit:first-of-type{border-top:none;padding-top:0;margin-top:0;}
-  .search-fit-popover .crit-tag{
+  .search-acc-criteria{margin-bottom:20px;}
+  .search-acc-criteria .crit{margin-bottom:12px;padding-top:12px;border-top:1px solid var(--line);}
+  .search-acc-criteria .crit:first-child{border-top:none;padding-top:0;margin-top:0;}
+  .search-acc-criteria .crit-tag{
     display:inline-block;background:#e8f6ec;color:#16803c;font-size:12px;font-weight:700;
     padding:4px 10px;border-radius:999px;margin-bottom:7px;
   }
-  .search-fit-popover .crit p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-dim);}
+  .search-acc-criteria .crit-tag.tag-false{background:#fbe7e6;color:#af3327;}
+  .search-acc-criteria .crit p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-dim);}
+  .search-acc-contacts{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+  .search-acc-empty{font-size:13px;color:var(--ink-faint);font-style:italic;margin:0 0 16px;}
+
+  .search-fit-contact{display:flex;align-items:flex-start;gap:10px;}
+  .search-fit-contact-info{flex:1;min-width:0;}
+  .search-fit-contact-name{font-size:13px;font-weight:700;color:var(--ink);}
+  .search-fit-contact-title{font-size:12px;color:var(--ink-faint);margin-top:1px;}
+  .search-fit-contact-email{font-size:11.5px;color:var(--ink-dim);margin-top:3px;word-break:break-all;}
+  .search-fit-contact .cdmo-linkedin-btn{width:24px;height:24px;border-radius:6px;font-size:10px;flex-shrink:0;margin-left:0;}
+
+  #search-back-btn{margin:18px 26px 0;align-self:flex-start;}
 
   @media(max-width:700px){
-    /* Keep every column in the grid — the wrapping .table-hscroll lets
-       narrow viewports scroll to reach them instead of hiding data. */
-    .search-row-grid{grid-template-columns:minmax(150px,1.4fr) 60px 74px minmax(120px,1fr) minmax(150px,1.2fr);}
-    .search-fit-popover{width:250px;}
-    .search-demo-stage{min-height:720px;}
-    .search-stage-wrap{min-height:680px;}
+    .search-acc-header{gap:8px 12px;}
+    .search-acc-stage, .search-acc-loc{width:auto;}
+    .search-results-head, .search-accordion{padding-left:18px;padding-right:18px;}
+    #search-back-btn{margin-left:18px;}
   }
 
-  /* ---------- Biopharma R&D demo ---------- */
-  .rnd-stage-wrap{position:relative;min-height:480px;}
-  @media(max-width:700px){
-    .rnd-stage-wrap{min-height:780px;}
+  /* ---------- Biopharma R&D: interaction-led workspace (real BioLens export data) ---------- */
+  .rnd-stage-wrap{}
+  .rnd-workspace{
+    background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);
+    display:flex;flex-direction:column;
+    padding:0 0 22px;
   }
-
-  .rnd-table-stage{
-    position:absolute;inset:0;
-    opacity:1;transform:translateY(0) scale(1);
-    transition:opacity 350ms ease, transform 350ms ease;
-  }
-  .rnd-table-stage.stage-hidden{opacity:0;transform:translateY(-10px) scale(.99);pointer-events:none;}
 
   .rnd-pill{
     font-size:12.5px;font-weight:700;border-radius:999px;padding:8px 16px;
@@ -386,113 +353,40 @@
   .rnd-pill-watch{background:#fdf1de;color:#9a6112;opacity:.75;}
   .rnd-pill-drop{background:#fbe7e6;color:#af3327;}
 
-  .rnd-table{
-    border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);
-    overflow:hidden;
-  }
-  .rnd-row-grid{
-    display:grid;
-    grid-template-columns:minmax(190px,2fr) 96px 90px 140px minmax(110px,1fr) minmax(110px,1fr) minmax(130px,1fr);
-    align-items:center;
-  }
-  .rnd-head-row{
-    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
-    color:var(--ink-faint);background:#f9f8f5;border-bottom:1px solid var(--line);
-    line-height:1.3;
-  }
-  .rnd-head-row > div{padding:12px 16px;}
-  .rnd-weight{display:block;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-faint);margin-top:2px;}
-  .rnd-body-row{
-    border-bottom:1px solid var(--line);
-    border-left:3px solid transparent;
-    opacity:0;transform:translateY(8px);
-    transition:opacity 260ms ease, transform 260ms ease, background-color 260ms ease, border-color 260ms ease;
-  }
-  .rnd-body-row.row-visible{opacity:1;transform:translateY(0);}
-  .rnd-body-row.rnd-row-selected{background:var(--accent-soft);border-left-color:var(--accent);}
-  .rnd-body-row:last-child{border-bottom:none;}
-  .rnd-body-row > div{padding:14px 16px;font-size:13.5px;}
-  .rnd-program-name{font-weight:700;color:var(--ink);font-size:14px;}
-  .rnd-program-originator{font-size:12px;color:var(--ink-faint);margin-top:2px;}
-  .rnd-hml{
-    display:inline-block;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 12px;
-    white-space:nowrap;
-  }
-  .rnd-hml-h{background:#e3f5e9;color:#1a7a41;}
-  .rnd-hml-m{background:#fdf1de;color:#9a6112;}
-  .rnd-hml-l{background:#fbe7e6;color:#af3327;}
-  .rnd-score{font-weight:700;color:var(--ink);}
-  .rnd-score .of{color:var(--ink-faint);font-weight:500;font-size:12px;}
+  .rnd-acc-score{font-weight:700;color:var(--ink);font-size:13px;width:64px;flex-shrink:0;}
+  .rnd-acc-score .of{color:var(--ink-faint);font-weight:500;font-size:11.5px;}
 
-  /* Keep every column in the grid at every width — the wrapping
-     .table-hscroll lets narrow viewports scroll to reach them instead
-     of hiding data. */
-  @media(max-width:820px){
-    .rnd-row-grid{grid-template-columns:minmax(160px,1.8fr) 80px 76px 100px minmax(100px,1fr) minmax(100px,1fr) minmax(110px,1fr);}
-  }
-  @media(max-width:520px){
-    .rnd-row-grid{grid-template-columns:minmax(130px,1.6fr) 70px 66px 88px minmax(92px,1fr) minmax(92px,1fr) minmax(100px,1fr);}
-    .rnd-pill, .rnd-hml{font-size:11px;padding:5px 9px;}
-  }
-
-  /* ---------- R&D profile stage ---------- */
-  .rnd-profile-stage{
-    position:absolute;inset:0;
-    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px 28px;overflow:visible;
-    opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;
-    transition:opacity 380ms ease, transform 380ms ease;
-  }
-  .rnd-profile-stage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-
-  .rnd-quick-badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 20px;}
-  .rnd-field-tag{
-    display:inline-block;font-size:11.5px;font-weight:600;color:var(--ink-dim);
-    border:1px solid var(--line);border-radius:999px;padding:5px 12px;
-  }
-
-  .rnd-full-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:2px;}
-  .rnd-full-header h3{margin:0;font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;}
-  .rnd-generate-btn{
-    border:1px solid var(--line-strong);border-radius:999px;background:var(--panel);
-    font-size:12.5px;font-weight:600;color:var(--ink);padding:9px 18px;cursor:default;
-    white-space:nowrap;
-  }
-  .rnd-full-sub{color:var(--ink-faint);font-size:13px;margin:2px 0 0;}
-
-  .rnd-donut-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:20px 0 22px;}
-  .rnd-donut{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .rnd-donut-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:16px 0 20px;}
+  .rnd-donut{width:110px;height:110px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .rnd-donut-inner{
-    width:80px;height:80px;border-radius:50%;background:var(--panel);
+    width:74px;height:74px;border-radius:50%;background:var(--panel);
     display:flex;flex-direction:column;align-items:center;justify-content:center;
   }
-  .rnd-donut-inner .num{font-size:22px;font-weight:800;color:var(--ink);line-height:1;}
+  .rnd-donut-inner .num{font-size:20px;font-weight:800;color:var(--ink);line-height:1;}
   .rnd-donut-inner .of{font-size:11px;color:var(--ink-faint);}
   .rnd-donut-label{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
-  .rnd-donut-label h4{margin:0;font-size:17px;font-weight:700;color:var(--ink);}
+  .rnd-donut-label h4{margin:0;font-size:16px;font-weight:700;color:var(--ink);}
   .rnd-donut-desc{font-size:12.5px;color:var(--ink-faint);max-width:44ch;}
 
-  .rnd-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 22px;padding-top:16px;border-top:1px solid var(--line);}
+  .rnd-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 20px;}
   .rnd-legend-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-dim);}
   .rnd-dim-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
   .rnd-dim-dot.h{background:#1a7a41;}
   .rnd-dim-dot.m{background:#c8860a;}
   .rnd-dim-dot.l{background:#c23b34;}
 
-  .rnd-assessment{
-    font-size:13.5px;color:var(--ink-dim);line-height:1.6;
-    border-top:1px solid var(--line);padding-top:18px;margin:0;
-  }
+  .rnd-fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin-bottom:4px;}
+  .rnd-fact{display:flex;flex-direction:column;gap:3px;}
+  .rnd-fact .k{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-faint);}
+  .rnd-fact .v{font-size:13px;color:var(--ink-dim);line-height:1.45;}
+  .rnd-fact.rnd-fact-wide{grid-column:1 / -1;}
 
-  @media(max-width:600px){
-    .rnd-profile-stage{padding:22px 18px;}
-    .rnd-donut-row{gap:16px;}
-    .rnd-donut{width:96px;height:96px;}
-    .rnd-donut-inner{width:64px;height:64px;}
-    .rnd-donut-inner .num{font-size:18px;}
-    .rnd-full-header h3{font-size:19px;}
+  @media(max-width:700px){
+    .rnd-fact-grid{grid-template-columns:1fr;}
+    .rnd-donut{width:92px;height:92px;}
+    .rnd-donut-inner{width:60px;height:60px;}
+    .rnd-donut-inner .num{font-size:17px;}
   }
-
   /* ---------- CDMO BD & outreach demo ---------- */
   .cdmo-stage-wrap{position:relative;min-height:420px;}
   @media(max-width:700px){
@@ -897,6 +791,7 @@
     <span class="persona-pill">Shown as: WuXi Biologics business development team</span>
   </div>
 
+  <div class="usecase-layout">
   <div class="usecase-tabs" id="usecase-tabs">
     <div class="usecase-tab active" data-panel="panel-search"><span class="num">1</span>Search &amp; evaluate companies</div>
     <div class="usecase-tab" data-panel="panel-rnd"><span class="num">2</span>Biopharma R&amp;D</div>
@@ -905,6 +800,7 @@
     <div class="usecase-tab" data-panel="panel-crm"><span class="num">5</span>CRM sync</div>
   </div>
 
+  <div class="usecase-panels">
   <!-- 1. SEARCH & EVALUATE COMPANIES -->
   <section class="usecase-panel active" id="panel-search">
     <div class="usecase-head">
@@ -912,45 +808,25 @@
       <p>As WuXi Biologics, find and evaluate the biotech and pharma programs that need biologics discovery, development, or manufacturing support.</p>
     </div>
 
-    <p class="search-caption" id="search-caption"><span id="search-caption-text">Typing a search for ADC-focused biotech targets.</span></p>
+    <p class="search-caption" id="search-caption"><span id="search-caption-text">Select a search to see results.</span></p>
 
     <div class="mock-stage search-demo-stage">
       <div class="search-stage-wrap">
         <div class="search-prompt-stage">
           <p class="search-prompt-title">What are you looking for?</p>
-          <div class="search-query-box" id="search-query-box">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-            <span class="search-query-placeholder" id="search-query-placeholder">Describe the companies you want to find</span>
-            <span id="search-query-text" class="search-type-text"></span>
-          </div>
           <div class="search-suggestions" id="search-suggestions">
-            <div class="search-suggestion-card" data-scenario="0">Find me biotechs with a bispecific antibody program entering IND-enabling studies</div>
-            <div class="search-suggestion-card" data-scenario="1">Find me biotechs with an ADC program that need bioconjugation and manufacturing support</div>
-            <div class="search-suggestion-card" data-scenario="2">Find me pharma companies with a late-stage monoclonal antibody needing large-scale commercial manufacturing</div>
-            <div class="search-suggestion-card" data-scenario="3">Find me biotechs with a novel biologic in early discovery needing an integrated CRDMO partner</div>
+            <div class="search-suggestion-card" data-scenario="0">Find me biotechs with a bispecific antibody program entering IND-enabling studies in US</div>
+            <div class="search-suggestion-card" data-scenario="1">Find ADC programs with bioconjugation and manufacturing needs</div>
           </div>
         </div>
 
-        <div class="search-table-stage">
+        <div class="search-workspace-stage">
           <div class="search-results-head">
             <h4 id="search-results-title">Top matches</h4>
             <span class="search-found-pill"><span class="dot"></span><span id="search-found-count">0 accounts found</span></span>
           </div>
-          <div class="table-hscroll">
-            <div class="search-cols-head search-row-grid">
-              <div>Company</div>
-              <div>Fit</div>
-              <div>Stage</div>
-              <div class="search-col-location">Location</div>
-              <div class="search-col-evidence">Evidence</div>
-            </div>
-            <div class="search-rows-wrap" id="search-rows-wrap"></div>
-          </div>
-
-          <div class="search-cursor" id="search-cursor">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#18170f" stroke="#fff" stroke-width="1"><path d="M5 3l14 8-6 2-2 6-6-16z"/></svg>
-          </div>
-          <div class="search-fit-popover" id="search-fit-popover"></div>
+          <div class="search-accordion" id="search-accordion"></div>
+          <button class="cdmo-link-btn" id="search-back-btn">&larr; Search another</button>
         </div>
       </div>
     </div>
@@ -963,28 +839,15 @@
       <p>As WuXi Biologics, evaluate biologics pipeline programs at biotech and pharma companies and prioritize which ones to court.</p>
     </div>
 
-    <p class="search-caption" id="rnd-caption"><span id="rnd-caption-text">Scoring biologics programs against WuXi Biologics' partnership criteria.</span></p>
+    <p class="search-caption" id="rnd-caption"><span id="rnd-caption-text">Real BioLens opportunity scores for pipeline molecules above a 6.0 threshold.</span></p>
 
     <div class="rnd-stage-wrap">
-      <div class="rnd-table-stage" id="rnd-table-stage">
-        <div class="rnd-table" id="rnd-table">
-          <div class="table-hscroll">
-            <div class="rnd-row rnd-head-row rnd-row-grid">
-              <div>Program</div>
-              <div>Overall</div>
-              <div>Score</div>
-              <div>Decision</div>
-              <div class="rnd-col-dim">Manufacturing<br>timing <span class="rnd-weight">16%</span></div>
-              <div class="rnd-col-dim">Modality<br>fit <span class="rnd-weight">14%</span></div>
-              <div class="rnd-col-dim">No committed<br>partner <span class="rnd-weight">12%</span></div>
-            </div>
-            <div id="rnd-rows-wrap"></div>
-          </div>
+      <div class="rnd-workspace">
+        <div class="search-results-head">
+          <h4>Pipeline opportunity scoring</h4>
+          <span class="search-found-pill"><span class="dot"></span><span id="rnd-found-count">0 programs above 6.0</span></span>
         </div>
-      </div>
-
-      <div class="rnd-profile-stage" id="rnd-profile-stage">
-        <div id="rnd-profile-body"></div>
+        <div class="search-accordion" id="rnd-accordion"></div>
       </div>
     </div>
   </section>
@@ -1351,6 +1214,8 @@
 
     </div>
   </section>
+  </div>
+  </div>
 
   <footer class="app-footer">BioLens · Lunartree — live product demo</footer>
 </div>
@@ -1397,311 +1262,111 @@
     });
   });
 
-  /* ---------- Search & evaluate companies: guided demo ---------- */
+  /* ---------- Search & evaluate companies: interaction-led workspace (real BioLens export data) ---------- */
   const searchScenarios = [
     {
-      resultsTitle: 'Bispecific antibody biotechs',
-      foundCount: 34,
-      query: "Find biotechs with a bispecific antibody program entering IND-enabling studies",
-      rows: [
-        { mark:'CU', name:'Cullinan Therapeutics', fit:90, stage:'Phase 1', loc:'Cambridge, MA', evidence:'CD19xCD3 bispecific, early manufacturing need' },
-        { mark:'MG', name:'MacroGenics', fit:86, stage:'Phase 1', loc:'Rockville, MD', evidence:'DART bispecific platform, multiple programs' },
-        { mark:'AG', name:'Agenus', fit:81, stage:'Phase 1', loc:'Lexington, MA', evidence:'Bispecific immuno-oncology pipeline' },
-        { mark:'IM', name:'Immunome', fit:78, stage:'Phase 1', loc:'Exton, PA', evidence:'Bispecific-derived candidates, small in-house footprint', highlight:true }
-      ],
-      popoverTitle: 'Company fit: Immunome',
-      popoverCriteria: [
-        { tag:'Bispecific program approaching IND: True', text:'Memory B-cell-derived bispecific candidates are in IND-enabling studies.' },
-        { tag:'No named cell-line partner: True', text:'No commercial-scale cell-line development or drug substance manufacturer disclosed.' },
-        { tag:'Right-sized for a CRDMO partnership: True', text:'Small clinical-stage team with limited in-house manufacturing infrastructure, well suited to an integrated discovery-to-IND partner.' }
-      ],
-      caption: {
-        typing: 'Typing a search for bispecific antibody programs entering IND-enabling studies.',
-        results: 'matching biotechs found with bispecific programs approaching IND.',
-        fit: 'Opening company fit for Immunome.'
-      }
+      resultsTitle: 'US bispecific antibody biotechs — IND-enabling',
+      foundCount: 9,
+      query: "Find me biotechs with a bispecific antibody program entering IND-enabling studies in US",
+      rows: [{"mark": "DI", "name": "Diagonal Therapeutics", "stage": "Phase 1/2", "loc": "Watertown, MA", "evidence": "DIAG723 bispecific dosing patients in HHT Phase 1/2", "criteria": [{"tag": "Program stage fit: True", "text": "DIAG723 is currently being evaluated in a Phase 1/2 clinical trial in adults with hereditary hemorrhagic telangiectasia (HHT), placing the program squarely within the highest-priority window for CDMO engagement. This is confirmed by public trial registry records and recent press releases."}, {"tag": "Financially ready for GMP engagement: True", "text": "With $253M raised across Series A and B rounds and a $125M Series B closed in January 2026, Diagonal Therapeutics is a well-funded, late-stage private biotech. This financial posture is suitable for supporting clinical manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company dosed its first patient in a Phase 1/2 trial for DIAG723 in mid-2026, a major milestone indicating active CMC and clinical operations. The recent hire of a CFO with deep capital markets experience and the transition to clinical stage further signal readiness for manufacturing partnerships."}], "contacts": [{"name": "Patrick Andre", "title": "Chief Scientific Officer", "email": "patrick@diagonaltx.com", "linkedin": "http://www.linkedin.com/in/patrick-andre-ba91032"}, {"name": "Benjamin Hutchins", "title": "Vice President, CMC", "email": "ben@diagonaltx.com", "linkedin": "http://www.linkedin.com/in/benjaminmhutchins"}, {"name": "Carrie Margulies", "title": "Director, Program Development", "email": "carrie@diagonaltx.com", "linkedin": "http://www.linkedin.com/in/carriemargulies"}], "tier": "HIGH"}, {"mark": "OB", "name": "Ollin Biosciences", "stage": "IND-enabling", "loc": "Austin, TX", "evidence": "OLN102 bispecific IND-enabling; OLN324 entering Phase 3", "criteria": [{"tag": "Program stage fit: True", "text": "The lead program, OLN324, is entering two global Phase 3 trials for wet AMD and DME starting in the second half of 2026. This places the asset in the Phase III/Commercial window, which is a relevant stage for WuXi\u2019s manufacturing services."}, {"tag": "Financially ready for GMP engagement: True", "text": "Ollin Biosciences raised a $330 million Series B in June 2026, led by top-tier institutional investors, positioning it as a well-capitalized, late-stage private biotech with sufficient financial resources for global Phase 3 development and manufacturing engagement."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Ollin Biosciences registered two global Phase 3 trials for OLN324 in September 2026 and announced positive topline data from the Phase 1b JADE study earlier in the year, both clear recent program milestones indicating active development and likely CMC/manufacturing engagement."}], "contacts": [{"name": "Dengfeng Liu", "title": "VP, Head of CMC", "email": "dliu@ollin.bio", "linkedin": "http://www.linkedin.com/in/dengfeng-liu-aa769114"}, {"name": "Alexandra Haagensen", "title": "Vice President", "email": "ahaagensen@ollin.bio", "linkedin": "http://www.linkedin.com/in/alexandra-haagensen-md-mba-2b4099112"}, {"name": "Yu-Ling Yan", "title": "VP, Head of Quality", "email": "yyan@ollin.bio", "linkedin": "http://www.linkedin.com/in/yu-ling-yan-1823544"}], "tier": "HIGH"}, {"mark": "SL", "name": "Shattuck Labs", "stage": "IND-enabling", "loc": "Austin, TX", "evidence": "SL-846 bispecific in IND-enabling GLP tox studies", "criteria": [{"tag": "Program stage fit: True", "text": "Shattuck Labs' lead program, SL-325, completed Phase I and is now in Phase II clinical trials for Crohn\u2019s disease. This places their primary asset in the Phase I\u2013II development window."}, {"tag": "Financially ready for GMP engagement: True", "text": "Shattuck Labs is a public company (NASDAQ: STTK) and recently raised capital through a public offering and warrant exercises, demonstrating financial readiness for GMP development and manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Public disclosures in 2026 confirm Phase I trial completion and advancement to Phase II for SL-325, with ongoing clinical milestones and active clinical operations, indicating a near-term need for CMC and manufacturing partners."}], "contacts": [{"name": "Tom Lampkin", "title": "Sr Vice President", "email": "tlampkin@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/tom-lampkin-b7360678"}, {"name": "Kelli Collin", "title": "Senior Vice President, Quality", "email": "kcollin@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/kelli-collin-mba-954a619"}, {"name": "Purna Koppu", "title": "Senior Process Development Associate", "email": "pkoppu@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/purna-koppu-256a49132"}], "tier": "HIGH"}, {"mark": "SW", "name": "Sidewinder Therapeutics", "stage": "Preclinical", "loc": "San Diego, CA", "evidence": "SWT012 bispecific ADC targeting IND filing late 2026", "criteria": [{"tag": "Program stage fit: True", "text": "Sidewinder's lead programs are in preclinical development, with the lead asset (SWT012) targeting an IND filing by late 2026. Other pipeline assets (SWT019, SWT020) are also preclinical. This puts the company squarely in the discovery/preclinical window."}, {"tag": "Financially ready for GMP engagement: True", "text": "With a $137 million Series B closed in April 2026 and total funding exceeding $160 million, Sidewinder is well-capitalized for its stage. Series B status and blue-chip investors indicate strong financial readiness."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company has publicly announced that its lead program (SWT012) is advancing toward an IND filing by late 2026, with two additional programs expected to reach first-in-human studies in 2027. These pipeline milestones signal near-term CMC/manufacturing needs."}], "contacts": [{"name": "Eric Murphy, Ph.D.", "title": "Chief Executive Officer, Co-Founder, & Director", "email": "", "linkedin": ""}, {"name": "Rob McRae", "title": "President & Chief Operating Officer", "email": "", "linkedin": ""}], "tier": "HIGH"}, {"mark": "IG", "name": "Ichnos Glenmark Innovation", "stage": "Phase 1/2", "loc": "New York, NY", "evidence": "ISB 2301 multispecific entering IND-enabling for US filing", "criteria": [{"tag": "Program stage fit: True", "text": "The company's lead assets are in active Phase I and Phase II clinical trials, as detailed in their pipeline disclosures and corporate presentations. This places them directly within the priority window for WuXi's CDMO engagement."}, {"tag": "Financially ready for GMP engagement: True", "text": "Ichnos Glenmark Innovation is financially backed by Glenmark Pharmaceuticals, a global pharma company, and benefits from ongoing operational and strategic support. This partnership provides the financial resources and commercial readiness necessary for GMP manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Recent public disclosures highlight multiple clinical-stage oncology programs, including two assets with orphan drug designation and ongoing Phase I/II trials. This level of activity demonstrates program progression and a clear need for ongoing GMP manufacturing."}], "contacts": [{"name": "S\u00e9bastien Chenuet, Ph.D.", "title": "SVP, Head of Business Development & Licensing, Alliance Management and Investor Relations", "email": "", "linkedin": ""}, {"name": "Roberto Giovannini, Ph.D.", "title": "Chief Process and Manufacturing Officer", "email": "", "linkedin": ""}], "tier": "HIGH"}, {"mark": "NB", "name": "NAYA Biosciences", "stage": "Phase 1/2", "loc": "Sarasota, FL", "evidence": "NY-303 bispecific NK engager just beyond IND-enabling", "criteria": [{"tag": "Program stage fit: True", "text": "The lead asset NY-303 is a GPC3-targeted NK engager bispecific antibody currently in a Phase 1/2a clinical trial for hepatocellular carcinoma, placing it in the Phase I\u2013II development window."}, {"tag": "Financially ready for GMP engagement: True", "text": "NAYA Biosciences is a publicly listed company (NASDAQ: NAYA) and has completed recent public offerings, indicating sufficient financial resources for GMP manufacturing engagements. Its size and public status qualify it as a mid-size biotech/pharma."}, {"tag": "Active CMC/manufacturing signal: True", "text": "NAYA Biosciences announced the initiation of a Phase 1/2a clinical trial for NY-303 in 2025, which is a recent program milestone indicating active CMC and clinical development activity."}], "contacts": [{"name": "Nicolas Cherrier", "title": "CPhO and Head of Supply Chain - Naya Therapeutics Europe", "email": "nicolas@nayatx.com", "linkedin": "http://www.linkedin.com/in/nicolas-cherrier-945246155"}, {"name": "Laurent Navarro", "title": "Vice President, Radiopharmaceutical R&D & CMC", "email": "laurent@nayatx.com", "linkedin": "http://www.linkedin.com/in/laurent-navarro-51369112b"}], "tier": "HIGH"}, {"mark": "MW", "name": "MindWalk", "stage": "Preclinical", "loc": "Austin, TX", "evidence": "MDWK-200 bispecific lead candidate, pre-IND-enabling", "criteria": [{"tag": "Program stage fit: True", "text": "MindWalk's pipeline includes assets at the discovery, preclinical, IND-enabling, and early clinical (Phase I\u2013II) stages, as evidenced by their public pipeline and recent news releases. These stages align with WuXi's priority engagement window."}, {"tag": "Financially ready for GMP engagement: True", "text": "MindWalk Holdings Corp. is a publicly traded company on NASDAQ, with recent financial disclosures showing significant revenue and a $30 million credit facility secured in 2026. This indicates strong financial readiness for GMP manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "MindWalk announced a $30 million credit facility to accelerate biologics and AI expansion in September 2026, and recent news releases detail pipeline progression and expansion. These are clear signals of active program advancement and near-term manufacturing needs."}], "contacts": [{"name": "Dr. Jennifer Bath, PhD", "title": "Chief Executive Officer and President", "email": "", "linkedin": "https://www.linkedin.com/in/jennifer-bath-ph-d-8314174a/"}, {"name": "Thomas Lynch, PhD", "title": "Chief Business Officer", "email": "", "linkedin": "https://www.linkedin.com/in/thomas-lynch-ph-d-82a7ba7/"}, {"name": "Dirk Van Hyfte, MD, PhD", "title": "Chief Technology Officer", "email": "", "linkedin": "https://www.linkedin.com/in/dirkvanhyfte/"}], "tier": "HIGH"}, {"mark": "DU", "name": "Dualitas Therapeutics", "stage": "IND-enabling", "loc": "South San Francisco, CA", "evidence": "DTX-102 bispecific in IND-enabling since June 2026", "criteria": [{"tag": "Program stage fit: True", "text": "Both lead programs, DTX-103 and DTX-102, are in preclinical development as of 2026, with no IND filings or clinical trial registrations found. This places them in the Discovery/Preclinical stage."}, {"tag": "Financially ready for GMP engagement: True", "text": "Dualitas completed a $65 million Series A round in 2025, making them an early-stage startup with substantial venture backing but not yet late-stage or public."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Dualitas has announced significant program milestones, including the generation of compelling preclinical data for DTX-103 and DTX-102 and the appointment of a new CEO to advance these programs. These signals indicate active development and preparation for future clinical entry."}], "contacts": [{"name": "Greg Lazar", "title": "Co-Founder and Chief Scientific Officer", "email": "", "linkedin": "http://www.linkedin.com/in/greg-lazar-015835"}], "tier": "MEDIUM"}, {"mark": "FB", "name": "Fortitude Biomedicines", "stage": "IND-enabling", "loc": "Waltham, MA", "evidence": "FORT-202 bispecific explicitly in IND-enabling studies", "criteria": [{"tag": "Program stage fit: True", "text": "FORT-202, Fortitude\u2019s lead bispecific antibody program, is currently in IND-enabling studies. The pipeline is otherwise focused on discovery and preclinical-stage biologics and ADCs."}, {"tag": "Financially ready for GMP engagement: False", "text": "Fortitude Biomedicines has raised $13 million in Seed funding in January 2026, with no evidence of Series A or later rounds or pharma partnerships. This places them in the 'Early-Stage Startup' category, which may limit their ability to fund a GMP engagement."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company has publicly disclosed that its lead program, FORT-202, has advanced into IND-enabling studies as of April 2026. This milestone is a strong signal of imminent need for CMC and manufacturing services."}], "contacts": [{"name": "Pearl Fang", "title": "Clinical Development Leader", "email": "pfang@nereidtx.com", "linkedin": "http://www.linkedin.com/in/pearl-fang-phd"}, {"name": "Stephen Monks, Ph.D.", "title": "Acting Chief Development Officer", "email": "", "linkedin": ""}, {"name": "Keith Dewedoff", "title": "Acting CFO", "email": "", "linkedin": ""}], "tier": "MEDIUM"}]
+
     },
     {
-      resultsTitle: 'ADC-focused biotechs',
-      foundCount: 46,
-      query: "Find biotechs with an ADC program that need bioconjugation and manufacturing support",
-      rows: [
-        { mark:'MT', name:'Mersana Therapeutics', fit:93, stage:'Phase 1', loc:'Cambridge, MA', evidence:'ADC platform, conjugation capacity gap' },
-        { mark:'SB', name:'Sutro Biopharma', fit:90, stage:'Phase 2', loc:'South San Francisco, CA', evidence:'Cell-free ADC platform, seeking scale-up' },
-        { mark:'AT', name:'ADC Therapeutics', fit:88, stage:'Approved', loc:'Lausanne, Switzerland', evidence:'Commercial ADC, expanding conjugation supply', highlight:true },
-        { mark:'ZY', name:'Zymeworks', fit:82, stage:'Phase 1', loc:'Vancouver, Canada', evidence:'Bispecific ADC pipeline, early partner search' }
-      ],
-      popoverTitle: 'Company fit: ADC Therapeutics',
-      popoverCriteria: [
-        { tag:'Commercial ADC in market: True', text:'ZYNLONTA is approved and commercial, with additional ADC candidates in clinical development.' },
-        { tag:'Conjugation capacity gap: True', text:'Public statements point to reliance on external partners for conjugation and fill finish as the pipeline expands.' },
-        { tag:'Not a competing CDMO: True', text:'Core business is therapeutic development, not contract manufacturing.' }
-      ],
-      caption: {
-        typing: 'Typing a search for ADC biotechs needing bioconjugation support.',
-        results: 'matching biotechs found with active ADC programs.',
-        fit: 'Opening company fit for ADC Therapeutics.'
-      }
-    },
-    {
-      resultsTitle: 'Late-stage mAb pharma companies',
-      foundCount: 58,
-      query: "Find pharma companies with a late-stage monoclonal antibody needing large-scale commercial manufacturing",
-      rows: [
-        { mark:'AG', name:'Apogee Therapeutics', fit:91, stage:'Phase 2', loc:'Waltham, MA', evidence:'mAb pipeline nearing Phase 3' },
-        { mark:'AK', name:'Akero Therapeutics', fit:87, stage:'Phase 3', loc:'South San Francisco, CA', evidence:'Fc-fusion biologic nearing filing' },
-        { mark:'ML', name:'MoonLake Immunotherapeutics', fit:85, stage:'Phase 3', loc:'Zug, Switzerland', evidence:'Lead asset nearing filing, scale-up needed', highlight:true },
-        { mark:'VB', name:'Vir Biotechnology', fit:80, stage:'Phase 1', loc:'San Francisco, CA', evidence:'mAb pipeline for infectious disease' }
-      ],
-      popoverTitle: 'Company fit: MoonLake Immunotherapeutics',
-      popoverCriteria: [
-        { tag:'Late-stage biologic asset: True', text:'Lead program is in Phase 3 across multiple indications and approaching potential filing.' },
-        { tag:'Large-scale manufacturing need: True', text:'No disclosed large-scale commercial manufacturing partner announced to date.' },
-        { tag:'Not a competing CDMO: True', text:'Company is a clinical-stage biotech, not a manufacturing services provider.' }
-      ],
-      caption: {
-        typing: 'Typing a search for late-stage mAbs needing commercial-scale manufacturing.',
-        results: 'matching pharma companies found nearing commercial scale.',
-        fit: 'Opening company fit for MoonLake Immunotherapeutics.'
-      }
-    },
-    {
-      resultsTitle: 'Novel biologics in early discovery',
-      foundCount: 29,
-      query: "Find biotechs with a novel biologic in early discovery needing an integrated CRDMO partner",
-      rows: [
-        { mark:'SP', name:'Spyre Therapeutics', fit:88, stage:'Preclinical', loc:'South San Francisco, CA', evidence:'Multi-specific antibody portfolio' },
-        { mark:'VT', name:'Vera Therapeutics', fit:84, stage:'Phase 3', loc:'Brisbane, CA', evidence:'Fusion protein biologic, expanding indications' },
-        { mark:'AB', name:'Anaptysbio', fit:80, stage:'Phase 1', loc:'San Diego, CA', evidence:'Novel antibody discovery pipeline' },
-        { mark:'AD', name:'Adagene', fit:76, stage:'Phase 1', loc:'San Diego, CA', evidence:'Masked antibody platform, early manufacturing need', highlight:true }
-      ],
-      popoverTitle: 'Company fit: Adagene',
-      popoverCriteria: [
-        { tag:'Novel biologic format: True', text:'SAFEbody masked-antibody platform produces candidates entering early clinical development.' },
-        { tag:'No integrated discovery-to-IND partner named: True', text:'No disclosed end-to-end CRDMO relationship for upcoming candidates.' },
-        { tag:'Right-sized for early relationship-building: True', text:'Small, capital-efficient biotech with limited in-house manufacturing footprint.' }
-      ],
-      caption: {
-        typing: 'Typing a search for novel biologics in early discovery.',
-        results: 'matching biotechs found with novel biologics in discovery to preclinical stage.',
-        fit: 'Opening company fit for Adagene.'
-      }
+      resultsTitle: 'ADC biotechs needing bioconjugation & CDMO support',
+      foundCount: 15,
+      query: "Find ADC programs with bioconjugation and manufacturing needs",
+      rows: [{"mark": "WH", "name": "Whitehawk Therapeutics", "stage": "Phase 1", "loc": "New Jersey, US", "evidence": "HWK-007/016 in Phase 1; HWK-206 IND planned mid-2026", "criteria": [{"tag": "Program stage fit: True", "text": "Whitehawk has two ADC programs, HWK-007 and HWK-016, actively recruiting in Phase 1 clinical trials, and a third (HWK-206) on track for IND submission and Phase 1 start in Q3 2026. This places their lead assets in the Phase I\u2013II development window."}, {"tag": "Financially ready for GMP engagement: True", "text": "Whitehawk Therapeutics is a publicly listed company on Nasdaq and reported $190 million in cash, cash equivalents, and short-term investments as of June 30, 2026. This indicates strong financial readiness to fund GMP manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Whitehawk has achieved multiple recent program milestones, including active Phase 1 trials for HWK-007 and HWK-016, and a planned IND submission for HWK-206 in mid-2026. These milestones are strong indicators of near-term manufacturing and CMC activity."}], "contacts": [{"name": "Bryan Ball", "title": "Chief Technical Operations Officer", "email": "bball@whitehawktx.com", "linkedin": "http://www.linkedin.com/in/bryan-ball-m-s-m-b-a-1823b9"}, {"name": "Shawn Hou", "title": "Executive Director, Nonclinical", "email": "", "linkedin": "http://www.linkedin.com/in/shawn-hou-644b69b"}, {"name": "David Dornan, PhD", "title": "Chief Scientific Officer", "email": "", "linkedin": ""}], "tier": "HIGH"}, {"mark": "AY", "name": "Adcytherix", "stage": "Phase 1", "loc": "Provence-Alpes-C\u00f4te d\u2019Azur, France", "evidence": "ADCX-020 dosed first patient in Phase 1, March 2026", "criteria": [{"tag": "Program stage fit: True", "text": "Adcytherix's lead program, ADCX-020, entered first-in-human Phase I clinical trials in Q1 2026, placing the company in the high-priority clinical window for CDMO engagement. There are no disclosed later-stage programs."}, {"tag": "Financially ready for GMP engagement: True", "text": "Adcytherix has raised \u20ac135M in funding, including a \u20ac105M Series A in late 2025, which is substantial for an early-stage biotech. This level of funding supports the ability to engage in GMP manufacturing partnerships."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company achieved a major milestone by dosing the first patient in its Phase I trial for ADCX-020 in March 2026, indicating active clinical development and a near-term need for CMC and manufacturing support."}], "contacts": [], "tier": "HIGH"}, {"mark": "AM", "name": "AmMax Bio", "stage": "Phase 2", "loc": "California, US", "evidence": "AMB-066 dosing patients in Phase 2a since Jan 2025; Amgen-partnered", "criteria": [{"tag": "Program stage fit: True", "text": "AmMax Bio's lead program, AMB-066, is in a Phase 2a clinical trial for colorectal cancer, and the company has other pipeline assets at preclinical and early clinical stages. This places them in the Phase I\u2013II priority window."}, {"tag": "Financially ready for GMP engagement: True", "text": "AmMax Bio has a strategic partnership with Amgen, including a worldwide license to develop and commercialize certain assets. This pharma partnership provides financial and commercial backing, making them a credible outsourcing prospect."}, {"tag": "Active CMC/manufacturing signal: True", "text": "AmMax Bio announced the first patient dosed in a Phase 2a clinical trial for AMB-066 in January 2025, which is a clear recent program milestone indicating active CMC and clinical operations."}], "contacts": [{"name": "Laura Zhu", "title": "Chief Business Officer", "email": "laurazhu@ammaxbio.com", "linkedin": "http://www.linkedin.com/in/laura-zhu-phd-mba-523230"}], "tier": "HIGH"}, {"mark": "AB", "name": "AbTis", "stage": "Phase 1", "loc": "Gyeonggi-do, South Korea", "evidence": "New Lotte Biologics & ChemExpress partnerships; ADC data at AACR 2026", "criteria": [{"tag": "Program stage fit: True", "text": "AbTis's pipeline is primarily at the preclinical stage, with recent presentations of 10 preclinical ADC and bispecific antibody programs in oncology. No evidence of clinical-stage assets was found as of 2026."}, {"tag": "Financially ready for GMP engagement: True", "text": "AbTis was acquired by Dong-A ST in December 2023, after raising Series B funding and forming partnerships with major pharma and CDMO organizations. This demonstrates strong financial backing and strategic partnership posture."}, {"tag": "Active CMC/manufacturing signal: True", "text": "AbTis has announced multiple recent program milestones, including new strategic partnerships (Lotte Biologics, ChemExpress) and presentations of preclinical oncology data at AACR 2026, indicating pipeline progression and near-term CMC needs."}], "contacts": [{"name": "Sang Jeon Chung, Ph.D.", "title": "Chief Scientific Officer, Founder", "email": "", "linkedin": ""}, {"name": "Juhwan Kim, Ph.D.", "title": "Head of Research and Development", "email": "", "linkedin": ""}, {"name": "Hyeonju Seo", "title": "Head of CMC & R&D Quality", "email": "", "linkedin": ""}], "tier": "HIGH"}, {"mark": "AD", "name": "Adcendo", "stage": "Phase 2", "loc": "Copenhagen, Denmark", "evidence": "ADCE-T02 in Phase I/II expansion; ADCE-D01 first-in-human", "criteria": [{"tag": "Program stage fit: True", "text": "Adcendo has three ADC programs in clinical development, including ADCE-T02 in the Tiffany-01 Phase I/II study and ADCE-D01 entering first-in-human trials. This places their lead assets in the Phase I\u2013II window, which is the primary target stage for WuXi."}, {"tag": "Financially ready for GMP engagement: True", "text": "Adcendo closed a $75 million Series C round in April 2026, following a $135 million Series B in 2024. This level of funding and late-stage private status demonstrates strong financial readiness to support GMP development and manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Adcendo has reached key program milestones in 2026, including advancing ADCE-T02 into Phase I/II cohort expansion and initiating first-in-human trials for ADCE-D01. These milestones indicate active CMC and manufacturing activity and a near-term need for CDMO engagement."}], "contacts": [{"name": "Dominik Mumberg, PhD", "title": "Chief Scientific Officer", "email": "", "linkedin": ""}, {"name": "Pernille Hemmingsen, PhD", "title": "Chief Technology Officer", "email": "", "linkedin": ""}, {"name": "James Wang, PhD", "title": "VP, Head of Business Development", "email": "", "linkedin": ""}], "tier": "HIGH"}, {"mark": "PH", "name": "Pheon Therapeutics", "stage": "Phase 1", "loc": "Kent, UK", "evidence": "Hiring CMC/process development leads; PHN-012 in Phase 1", "criteria": [{"tag": "Program stage fit: True", "text": "Pheon Therapeutics has an ADC program (PHN-012) in a Phase I clinical trial for advanced solid tumors as of 2026. This places their lead asset in the Phase I\u2013II window, which is the priority stage for CDMO engagement."}, {"tag": "Financially ready for GMP engagement: True", "text": "The company has raised $188 million to date, including a $120 million Series B in 2024, and is progressing multiple clinical-stage ADCs. This level of funding and activity is consistent with a late-stage private biotech capable of engaging a CDMO for GMP manufacturing."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Pheon Therapeutics has posted multiple open roles in 2026 for Director-level CMC Analytical Development and Biologics Process Development, indicating active buildout of CMC and process development functions. This is a strong signal of imminent or ongoing manufacturing needs."}], "contacts": [{"name": "Chi-Ting Huang", "title": "Vice President, CMC", "email": "chi-ting.huang@pheontx.com", "linkedin": "http://www.linkedin.com/in/chi-ting-huang"}, {"name": "Siddhesh Patil", "title": "Vice President, Head of CMC", "email": "siddhesh.patil@pheontx.com", "linkedin": "http://www.linkedin.com/in/siddhesh-patil-phd-3500bb4"}, {"name": "Leigh Zawel, PhD", "title": "Chief Scientific Officer", "email": "", "linkedin": ""}], "tier": "HIGH"}, {"mark": "KV", "name": "Kivu Bioscience", "stage": "Phase 1", "loc": "California, US", "evidence": "KIVU-107/305 in Phase 1; existing cGMP partner Sterling Pharma", "criteria": [{"tag": "Program stage fit: True", "text": "Kivu Bioscience has two ADC programs (KIVU-107 and KIVU-305) currently in Phase I clinical trials for oncology indications, placing them in the 'Phase I\u2013II' secondary value for development stage."}, {"tag": "Financially ready for GMP engagement: True", "text": "Kivu Bioscience closed a $92 million Series A round in 2024, making it a well-funded early-stage startup with the financial capacity to engage in GMP manufacturing partnerships."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Kivu Bioscience has advanced two ADCs (KIVU-107 and KIVU-305) into Phase I trials in 2026, and announced a cGMP manufacturing partnership with Sterling Pharma Solutions, indicating active CMC and business development activity."}], "contacts": [{"name": "Brunilda Shtylla", "title": "Chief Business Officer", "email": "bshtylla@kivubioscience.com", "linkedin": "http://www.linkedin.com/in/brunildashtylla"}, {"name": "Liangyi Zhang", "title": "VP and Head of CMC", "email": "lzhang@kivubioscience.com", "linkedin": "http://www.linkedin.com/in/liangyi-zhang-52457411"}, {"name": "Xiaoyue Jiang", "title": "Director of Analytical Development and Quality Control", "email": "xjiang@kivubioscience.com", "linkedin": "http://www.linkedin.com/in/xiaoyue-jiang-045b9b25"}], "tier": "HIGH"}, {"mark": "HD", "name": "Hangzhou DAC Biotechnology", "stage": "Phase 1", "loc": "Zhejiang, China", "evidence": "DXC006 Phase I data released June 2026", "criteria": [{"tag": "Program stage fit: True", "text": "The lead asset DXC006 is in a Phase I clinical trial for small cell lung cancer, as reported in the company's June 2026 press release. This places the program in the Phase I\u2013II window, which is a priority for WuXi Biologics' BD focus."}, {"tag": "Financially ready for GMP engagement: True", "text": "The company has raised at least $156M through a Series C round and is described as a late-stage private biotech, indicating sufficient financial resources to fund GMP development and manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "DAC reached a major program milestone in June 2026 with the Phase I clinical data release for DXC006. This indicates active advancement in the clinic and a likely near-term need for CMC and manufacturing partners."}], "contacts": [{"name": "Qingliang Yang", "title": "Director", "email": "duoxi@dacbiotech.com", "linkedin": "http://www.linkedin.com/in/qingliang-yang-77b16110"}, {"name": "Dr. Yongxin Zhao", "title": "Chairman of the Board and General Manager", "email": "duoxi@dacbiotech.com", "linkedin": ""}, {"name": "Dr. Xiaomai Zhou", "title": "Vice President", "email": "duoxi@dacbiotech.com", "linkedin": ""}], "tier": "HIGH"}, {"mark": "PB", "name": "Phrontline Biopharma", "stage": "Phase 1", "loc": "Shanghai, China", "evidence": "Hiring CMC leadership; $60M Pre-A+ round Nov 2025", "criteria": [{"tag": "Program stage fit: True", "text": "The lead program, TJ101, is a bispecific ADC currently in a Phase 1 clinical trial for advanced solid tumors (NSCLC, HNSCC), and a Phase 1/2 study for ovarian cancer is planned. This places the company squarely in the discovery-to-Phase II window prioritized by WuXi."}, {"tag": "Financially ready for GMP engagement: True", "text": "Phrontline Biopharma closed a $60 million Pre-A+ financing round in November 2025, with prior rounds in 2024, and is actively expanding its clinical pipeline. This level of funding and investor backing supports late-stage private status and indicates financial readiness for GMP engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company is actively hiring for CMC and process development leadership roles and recently announced a major financing round and clinical trial initiations, indicating an active and maturing business development and manufacturing function."}], "contacts": [{"name": "Min Zhao", "title": "CMC VP", "email": "min@phrontlinebio.com", "linkedin": "http://www.linkedin.com/in/min-zhao-9b691b68"}, {"name": "Shugaku Takeda", "title": "Executive Director of R&D", "email": "shugaku.takeda@inspirna.com", "linkedin": "http://www.linkedin.com/in/shugaku-takeda-phd-40473643"}, {"name": "Wenchao Liu", "title": "Vice President of CMC", "email": "", "linkedin": "http://www.linkedin.com/in/wenchao-liu-956757207"}], "tier": "HIGH"}, {"mark": "FB", "name": "Fortitude Biomedicines", "stage": "Preclinical", "loc": "Massachusetts, US", "evidence": "FORT-202 advanced into IND-enabling studies, April 2026", "criteria": [{"tag": "Program stage fit: True", "text": "FORT-202, Fortitude\u2019s lead bispecific antibody program, is currently in IND-enabling studies. The pipeline is otherwise focused on discovery and preclinical-stage biologics and ADCs."}, {"tag": "Financially ready for GMP engagement: False", "text": "Fortitude Biomedicines has raised $13 million in Seed funding in January 2026, with no evidence of Series A or later rounds or pharma partnerships. This places them in the 'Early-Stage Startup' category, which may limit their ability to fund a GMP engagement."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company has publicly disclosed that its lead program, FORT-202, has advanced into IND-enabling studies as of April 2026. This milestone is a strong signal of imminent need for CMC and manufacturing services."}], "contacts": [{"name": "Pearl Fang", "title": "Clinical Development Leader", "email": "pfang@nereidtx.com", "linkedin": "http://www.linkedin.com/in/pearl-fang-phd"}, {"name": "Stephen Monks, Ph.D.", "title": "Acting Chief Development Officer", "email": "", "linkedin": ""}, {"name": "Keith Dewedoff", "title": "Acting CFO", "email": "", "linkedin": ""}], "tier": "MEDIUM"}, {"mark": "AC", "name": "Adcentrx", "stage": "Phase 1", "loc": "California, US", "evidence": "Posting CMC/process development roles; building manufacturing function", "criteria": [{"tag": "Program stage fit: True", "text": "Adcentrx has two lead ADC programs: ADRX-0706 (Nectin-4 ADC) and ADRX-0405 (STEAP1 ADC), both in Phase 1 clinical trials as of 2025\u20132026. This matches the Phase I\u2013II window prioritized for WuXi's BD targeting."}, {"tag": "Financially ready for GMP engagement: True", "text": "Adcentrx is a Series A company with $101M raised to date. While this is substantial for an early-stage biotech, it is still categorized as an Early-Stage Startup per WuXi's definitions, with no pharma partnership or public company status disclosed."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Adcentrx has posted recent job openings for process development scientists and CMC leadership roles, indicating active build-out of its manufacturing and process development function. This is a strong signal of near-term manufacturing needs."}], "contacts": [{"name": "Alex Chu-Kung, Ph.D", "title": "Vice President, CMC", "email": "", "linkedin": ""}], "tier": "MEDIUM"}, {"mark": "SE", "name": "Shanghai Escugen Biotechnology", "stage": "Phase 3", "loc": "Shanghai, China", "evidence": "ESG401 entering Phase III; ESG406 starting Phase I", "criteria": [{"tag": "Program stage fit: True", "text": "Escugen has ADC assets in both Phase I (e.g., ESG406) and Phase III (e.g., ESG401 for metastatic breast cancer) clinical trials. These stages are well within the priority window for WuXi, with Phase I\u2013II being highest priority and Phase III still relevant for commercial manufacturing opportunities."}, {"tag": "Financially ready for GMP engagement: False", "text": "Escugen most recently completed a Series A+ financing round in 2023 and there is no evidence of later-stage private or public funding. This places them in the 'Early-Stage Startup' category, which may limit their ability to fund large-scale GMP manufacturing engagements."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Escugen has achieved recent program milestones, including IND approvals and clinical trial progression for multiple ADC assets (e.g., ESG401 entering Phase III and ESG406 starting Phase I). These are clear signals of active CMC and manufacturing needs."}], "contacts": [], "tier": "MEDIUM"}, {"mark": "XB", "name": "Xadcera Biopharmaceutical", "stage": "Phase 1", "loc": "Jiangsu, China", "evidence": "DM001 cleared for trials; multiple Phase I studies initiated", "criteria": [{"tag": "Program stage fit: True", "text": "Xadcera's lead programs, DM001 and DM002, are in Phase I clinical trials for advanced solid tumors. This places them in the Phase I\u2013II window, which is the highest priority for WuXi's BD targeting."}, {"tag": "Financially ready for GMP engagement: True", "text": "Xadcera is a private company with a completed Series A round. While this is early-stage, the substantial funding amount (950 million RMB) is sufficient for ongoing clinical and CMC activities."}, {"tag": "Active CMC/manufacturing signal: True", "text": "Xadcera has recently achieved significant program milestones, including regulatory approval for clinical trials (DM001) and the initiation of multiple Phase I studies. These are strong signals of active CMC and manufacturing engagement."}], "contacts": [], "tier": "MEDIUM"}, {"mark": "GQ", "name": "GeneQuantum Healthcare", "stage": "Phase 3", "loc": "Jiangsu, China", "evidence": "GQ1005 reaching Phase III; commercial manufacturing readiness", "criteria": [{"tag": "Program stage fit: True", "text": "GeneQuantum's lead asset, GQ1005, is in Phase III development targeting HER2-positive solid tumors. This places the company at the late clinical/commercial stage, which is within WuXi's serviceable window, though lower priority than earlier phases unless there is evidence of CDMO switching or scale-up."}, {"tag": "Financially ready for GMP engagement: True", "text": "GeneQuantum has reached Series C funding, raising several hundred million RMB from institutional investors. This late-stage private status indicates strong financial readiness to fund GMP manufacturing partnerships."}, {"tag": "Active CMC/manufacturing signal: True", "text": "GeneQuantum has announced IND approvals and late-stage clinical progress for multiple ADC assets, including GQ1005 reaching Phase III. These milestones signal active CMC and process development activity, indicating readiness for commercial manufacturing engagement."}], "contacts": [{"name": "Lili Shi", "title": "R&D Director", "email": "shill@genequantum.com", "linkedin": "http://www.linkedin.com/in/%e4%b8%bd%e4%b8%bd-%e6%97%b6-710a0a151"}, {"name": "Amy Que", "title": "CTO", "email": "", "linkedin": "http://www.linkedin.com/in/amy-que-3147a36"}, {"name": "Paul H. Song, Ph.D.", "title": "CSO (Chief Scientific Officer), Innovation Drug R&D and Pipeline Building", "email": "", "linkedin": ""}], "tier": "MEDIUM"}, {"mark": "PL", "name": "Primelink Biotherapeutics", "stage": "Phase 1", "loc": "Guangdong, China", "evidence": "PLB-002 IND planned 2025/2026", "criteria": [{"tag": "Program stage fit: True", "text": "PrimeLink BioTherapeutics' lead program, PLB-002, is an ADC for ovarian and lung cancer and is scheduled for IND filing in Q4 2025 (China) and Q1 2026 (outside China). This places it in the IND-enabling stage, which is a priority window for WuXi business development."}, {"tag": "Financially ready for GMP engagement: True", "text": "PrimeLink BioTherapeutics raised $14M in a Seed VC round in late 2022. This places the company in the 'Early-Stage Startup' category, with sufficient initial capital but not yet at mid-size or late-stage funding levels."}, {"tag": "Active CMC/manufacturing signal: True", "text": "The company has publicly disclosed an upcoming IND for its lead ADC program (PLB-002) in 2025/2026, which is a significant program milestone indicating near-term need for CMC and manufacturing partnerships."}], "contacts": [], "tier": "MEDIUM"}]
+
     }
   ];
-
-  let searchDemoTimers = [];
-  let searchTypingTimeout = null;
-  let searchGen = 0;
-
-  function searchWait(ms){
-    return new Promise(resolve => {
-      const t = setTimeout(resolve, ms);
-      searchDemoTimers.push(t);
-    });
-  }
-
-  function clearSearchTimers(){
-    searchDemoTimers.forEach(t => clearTimeout(t));
-    searchDemoTimers = [];
-    if(searchTypingTimeout){ clearTimeout(searchTypingTimeout); searchTypingTimeout = null; }
-  }
 
   function setSearchCaption(text){
     const el = document.getElementById('search-caption-text');
     if(el) el.textContent = text;
   }
 
-  function resetSearchStage(){
-    const queryText = document.getElementById('search-query-text');
-    const promptStage = document.querySelector('.search-prompt-stage');
-    const tableStage = document.querySelector('.search-table-stage');
-    const rows = document.querySelectorAll('.search-company-row');
-    const cursor = document.getElementById('search-cursor');
-    const popover = document.getElementById('search-fit-popover');
-    const box = document.getElementById('search-query-box');
-    const suggestions = document.getElementById('search-suggestions');
-
-    if(queryText){ queryText.textContent = ''; queryText.classList.remove('typing-complete'); }
-    if(box) box.classList.remove('expanded');
-    if(suggestions) suggestions.classList.remove('suggestions-hidden');
-    if(promptStage) promptStage.classList.remove('stage-hidden');
-    if(tableStage) tableStage.classList.remove('stage-visible');
-    rows.forEach(r => r.classList.remove('row-visible'));
-    if(cursor){ cursor.classList.remove('cursor-visible'); cursor.style.transform = 'translate(0px, 0px) scale(0.96)'; }
-    if(popover) popover.classList.remove('popover-visible');
-    document.querySelectorAll('.search-fit-target').forEach(t => t.classList.remove('fit-clicked'));
-  }
-
-  function renderSearchScenario(scenario){
+  function renderSearchAccordion(scenario){
     document.getElementById('search-results-title').textContent = scenario.resultsTitle;
     document.getElementById('search-found-count').textContent = `${scenario.foundCount} accounts found`;
 
-    const rowsWrap = document.getElementById('search-rows-wrap');
-    rowsWrap.innerHTML = scenario.rows.map(r => `
-      <div class="search-company-row search-row-grid">
-        <div class="search-company-name">
-          <div class="search-company-mark">${r.mark}</div>
-          <div class="name">${r.name}</div>
+    const wrap = document.getElementById('search-accordion');
+    wrap.innerHTML = scenario.rows.map((r, i) => `
+      <div class="search-acc-item" id="search-acc-${i}">
+        <button class="search-acc-header" onclick="toggleSearchAcc(${i})" aria-expanded="false">
+          <span class="search-company-mark">${r.mark}</span>
+          <span class="search-acc-name">${r.name}</span>
+          <span class="search-tier-pill tier-${r.tier.toLowerCase()}">${r.tier}</span>
+          <span class="search-acc-stage">${r.stage}</span>
+          <span class="search-acc-loc">${r.loc}</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="search-acc-body">
+          <div class="search-acc-body-inner">
+            <p class="search-acc-evidence">${r.evidence}</p>
+            <p class="search-acc-label">Company fit assessment</p>
+            <div class="search-acc-criteria">
+              ${r.criteria.map(c => `
+                <div class="crit">
+                  <span class="crit-tag${c.tag.endsWith(': False') ? ' tag-false' : ''}">${c.tag}</span>
+                  <p>${c.text}</p>
+                </div>
+              `).join('')}
+            </div>
+            <p class="search-acc-label">Decision makers</p>
+            ${r.contacts.length ? `
+              <div class="search-acc-contacts">
+                ${r.contacts.map(c => `
+                  <div class="search-fit-contact">
+                    <div class="search-fit-contact-info">
+                      <div class="search-fit-contact-name">${c.name}</div>
+                      <div class="search-fit-contact-title">${c.title}</div>
+                      <div class="search-fit-contact-email">${c.email ? c.email : 'No email on file'}</div>
+                    </div>
+                    ${c.linkedin ? `<a class="cdmo-linkedin-btn" href="${c.linkedin}" target="_blank" rel="noopener" aria-label="View LinkedIn profile for ${c.name}">in</a>` : ''}
+                  </div>
+                `).join('')}
+              </div>
+            ` : `<p class="search-acc-empty">No decision makers on file.</p>`}
+          </div>
         </div>
-        <div><span class="search-fit-ring ${r.highlight ? 'search-fit-target' : ''}" ${r.highlight ? 'id="search-fit-target"' : ''} style="background:conic-gradient(#16a34a ${r.fit}%, #e9e7e0 0)"><span></span></span></div>
-        <div>${r.stage}</div>
-        <div class="search-col-location">${r.loc}</div>
-        <div class="search-col-evidence"><span class="search-evidence-tag">${r.evidence}</span></div>
       </div>
     `).join('');
-
-    document.getElementById('search-fit-popover').innerHTML = `
-      <div class="search-fit-popover-arrow" id="search-fit-popover-arrow"></div>
-      <h5>${scenario.popoverTitle}</h5>
-      ${scenario.popoverCriteria.map(c => `
-        <div class="crit">
-          <span class="crit-tag">${c.tag}</span>
-          <p>${c.text}</p>
-        </div>
-      `).join('')}
-    `;
   }
 
-  function typeSearchQuery(text, myGen){
-    const queryText = document.getElementById('search-query-text');
-    if(!queryText) return Promise.resolve();
-    queryText.textContent = '';
-    queryText.classList.remove('typing-complete');
-    return new Promise(resolve => {
-      let index = 0;
-      const typeNext = () => {
-        if(myGen !== searchGen) return;
-        queryText.textContent = text.slice(0, index);
-        index += 1;
-        if(index <= text.length){
-          searchTypingTimeout = setTimeout(typeNext, 35);
-          searchDemoTimers.push(searchTypingTimeout);
-        }else{
-          queryText.classList.add('typing-complete');
-          resolve();
-        }
-      };
-      typeNext();
-    });
-  }
-
-  async function runSearchScenario(index, myGen){
-    const scenario = searchScenarios[index];
-    renderSearchScenario(scenario);
-    resetSearchStage();
-
-    const box = document.getElementById('search-query-box');
-    const suggestions = document.getElementById('search-suggestions');
-    if(box) box.classList.add('expanded');
-    if(suggestions) suggestions.classList.add('suggestions-hidden');
-    setSearchCaption(scenario.caption.typing);
-
-    await searchWait(400);
-    if(myGen !== searchGen) return;
-    await typeSearchQuery(scenario.query, myGen);
-    if(myGen !== searchGen) return;
-    await searchWait(600);
-    if(myGen !== searchGen) return;
-
-    const promptStage = document.querySelector('.search-prompt-stage');
-    const tableStage = document.querySelector('.search-table-stage');
-    if(promptStage) promptStage.classList.add('stage-hidden');
-    await searchWait(300);
-    if(myGen !== searchGen) return;
-    if(tableStage) tableStage.classList.add('stage-visible');
-    fitWrapToChild('.search-stage-wrap', '.search-table-stage');
-    setSearchCaption(`${scenario.foundCount} ${scenario.caption.results}`);
-    await searchWait(450);
-    if(myGen !== searchGen) return;
-
-    const rows = document.querySelectorAll('.search-company-row');
-    for(const row of rows){
-      if(myGen !== searchGen) return;
-      row.classList.add('row-visible');
-      await searchWait(400);
+  function toggleSearchAcc(i){
+    const item = document.getElementById(`search-acc-${i}`);
+    if(!item) return;
+    const body = item.querySelector('.search-acc-body');
+    const inner = item.querySelector('.search-acc-body-inner');
+    const btn = item.querySelector('.search-acc-header');
+    const isOpen = item.classList.contains('acc-open');
+    if(isOpen){
+      body.style.maxHeight = '0px';
+      item.classList.remove('acc-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }else{
+      item.classList.add('acc-open');
+      body.style.maxHeight = inner.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
     }
-    if(myGen !== searchGen) return;
-
-    await searchWait(450);
-    if(myGen !== searchGen) return;
-
-    const cursor = document.getElementById('search-cursor');
-    const target = document.getElementById('search-fit-target');
-    const popover = document.getElementById('search-fit-popover');
-    const stage = document.querySelector('.search-table-stage');
-
-    if(cursor && target && stage){
-      const targetRect = target.getBoundingClientRect();
-      const stageRect = stage.getBoundingClientRect();
-      const targetX = targetRect.left - stageRect.left + targetRect.width * 0.65;
-      const targetY = targetRect.top - stageRect.top + targetRect.height * 0.65;
-
-      const popoverWidth = popover.getBoundingClientRect().width || 340;
-      const popoverHeight = popover.getBoundingClientRect().height;
-      const ringLeft = targetRect.left - stageRect.left;
-      const ringRight = targetRect.right - stageRect.left;
-      const ringCenterY = targetRect.top - stageRect.top + targetRect.height / 2;
-
-      const desiredLeft = ringRight + 16;
-      const maxLeft = Math.max(stageRect.width - popoverWidth - 12, 12);
-      const popLeft = Math.min(desiredLeft, maxLeft);
-
-      const desiredTop = ringCenterY - popoverHeight / 2;
-      const popTop = Math.max(12, Math.min(desiredTop, stageRect.height - popoverHeight - 12));
-
-      popover.style.left = popLeft + 'px';
-      popover.style.top = popTop + 'px';
-
-      const arrow = document.getElementById('search-fit-popover-arrow');
-      if(arrow){
-        const arrowTop = Math.max(14, Math.min(ringCenterY - popTop - 8, popoverHeight - 22));
-        arrow.style.top = arrowTop + 'px';
-      }
-
-      cursor.style.transform = `translate(${targetX - 120}px, ${targetY + 70}px) scale(0.96)`;
-      cursor.classList.add('cursor-visible');
-      await searchWait(80);
-      if(myGen !== searchGen) return;
-      cursor.style.transform = `translate(${targetX}px, ${targetY}px) scale(1)`;
-      await searchWait(650);
-      if(myGen !== searchGen) return;
-      target.classList.add('fit-clicked');
-      await searchWait(200);
-      if(myGen !== searchGen) return;
-      popover.classList.add('popover-visible');
-      setSearchCaption(scenario.caption.fit);
-    }
-
-    await searchWait(2800);
-    if(myGen !== searchGen) return;
-    if(popover) popover.classList.remove('popover-visible');
-    if(cursor) cursor.classList.remove('cursor-visible');
-    await searchWait(500);
-    if(myGen !== searchGen) return;
-
-    // Done — return to the idle "pick a search" state and wait for the next click.
-    resetSearchStage();
-    setSearchCaption('Select a search to see it run.');
-  }
-
-  function idleSearchStage(){
-    searchGen += 1;
-    clearSearchTimers();
-    resetSearchStage();
-    fitWrapToChild('.search-stage-wrap', '.search-prompt-stage');
-    setSearchCaption('Select a search to see it run.');
-  }
-
-  function stopSearchDemo(){
-    searchGen += 1;
-    clearSearchTimers();
   }
 
   function selectSearchScenario(index){
-    searchGen += 1;
-    clearSearchTimers();
-    const myGen = searchGen;
-    runSearchScenario(index, myGen);
+    const scenario = searchScenarios[index];
+    renderSearchAccordion(scenario);
+    document.querySelector('.search-prompt-stage').classList.add('stage-hidden');
+    document.querySelector('.search-workspace-stage').classList.add('stage-visible');
+    setSearchCaption('Click a company below to see its fit assessment and decision makers.');
+  }
+
+  function idleSearchStage(){
+    document.querySelector('.search-prompt-stage').classList.remove('stage-hidden');
+    document.querySelector('.search-workspace-stage').classList.remove('stage-visible');
+    setSearchCaption('Select a search to see results.');
+  }
+
+  function stopSearchDemo(){
+    // No running animation to cancel now — kept so the tab-switch handler still works.
   }
 
   document.querySelectorAll('.search-suggestion-card').forEach(card => {
@@ -1710,245 +1375,105 @@
     });
   });
 
+  document.getElementById('search-back-btn').addEventListener('click', idleSearchStage);
+
   idleSearchStage();
 
   /* ---------- Biopharma R&D: asset table + quick view + full profile ---------- */
-  const RND_DIMENSIONS = [
-    { key:'timing', label:'Manufacturing timing', weight:16 },
-    { key:'modality', label:'Modality fit', weight:14 },
-    { key:'momentum', label:'Program momentum', weight:12 },
-    { key:'whitespace', label:'No committed partner', weight:12 },
-    { key:'commercial', label:'Commercial potential', weight:11 },
-    { key:'regulatory', label:'Regulatory clarity', weight:9 },
-    { key:'scaleup', label:'Scale-up complexity', weight:8 },
-    { key:'resourcing', label:'Originator resourcing', weight:8 },
-    { key:'competitive', label:'CDMO landscape', weight:6 },
-    { key:'longterm', label:'Partnership upside', weight:4 }
-  ];
-
-  const RND_ASSETS = [
-    {
-      name:'APG777', originator:'Apogee Therapeutics',
-      modality:'Humanized IgG1 monoclonal antibody', indication:'Atopic dermatitis (Phase 2); COPD program earlier in development',
-      stage:'Phase 2', decision:'Go', overall:'High', score:8.2,
-      dims:{timing:'H',modality:'H',momentum:'H',whitespace:'H',commercial:'H',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'H'},
-      assessment:"Apogee's lead program is advancing through Phase 2 with strong modality fit and no disclosed manufacturing partner, and the company has completed multiple financings since its 2023 IPO, indicating the ability to fund a CDMO partnership. A high-priority account for early relationship-building."
-    },
-    {
-      name:'Sonelokimab', originator:'MoonLake Immunotherapeutics',
-      modality:'Trivalent Nanobody (single-domain antibody)', indication:'Hidradenitis suppurativa, psoriatic arthritis (Phase 3)',
-      stage:'Phase 3', decision:'Go', overall:'High', score:8.6,
-      dims:{timing:'H',modality:'M',momentum:'H',whitespace:'H',commercial:'H',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'H'},
-      assessment:"MoonLake's lead asset is nearing a Phase 3 filing with urgent manufacturing scale-up needs and no committed commercial partner announced to date. A high-priority, time-sensitive account."
-    },
-    {
-      name:'Efruxifermin', originator:'Akero Therapeutics',
-      modality:'Fc-fusion protein (FGF21 analog)', indication:'MASH (Phase 3)',
-      stage:'Phase 3', decision:'Conditional Go', overall:'High', score:7.9,
-      dims:{timing:'H',modality:'M',momentum:'H',whitespace:'M',commercial:'H',regulatory:'M',scaleup:'M',resourcing:'H',competitive:'H',longterm:'M'},
-      assessment:'A well-funded Phase 3 program in a large, competitive MASH landscape. Some public commentary suggests manufacturing discussions may already be underway with another partner, so status here is less certain.'
-    },
-    {
-      name:'CLN-978', originator:'Cullinan Therapeutics',
-      modality:'Bispecific antibody (CD19 x CD3 T-cell engager)', indication:'B-cell malignancies; autoimmune disease (Phase 1)',
-      stage:'Phase 1', decision:'Conditional Go', overall:'Medium', score:7.2,
-      dims:{timing:'M',modality:'H',momentum:'M',whitespace:'H',commercial:'M',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'L',longterm:'H'},
-      assessment:'An early-stage bispecific program with low competitive pressure today. A good candidate for building the relationship ahead of later-phase manufacturing needs.'
-    },
-    {
-      name:'Luvelta (STRO-002)', originator:'Sutro Biopharma',
-      modality:'Antibody-drug conjugate (folate receptor alpha)', indication:'Ovarian cancer (Phase 2)',
-      stage:'Phase 2', decision:'Conditional Go', overall:'Medium', score:7.0,
-      dims:{timing:'M',modality:'H',momentum:'M',whitespace:'H',commercial:'M',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'M'},
-      assessment:"A mid-stage ADC program built on Sutro's proprietary cell-free conjugation platform. The account may prefer a partner who can integrate with their existing technology rather than a fully outsourced model."
-    },
-    {
-      name:'VIR-5818', originator:'Vir Biotechnology',
-      modality:'T-cell engager (multispecific biologic)', indication:'Solid tumors (Phase 1)',
-      stage:'Phase 1', decision:'Watch', overall:'Medium', score:6.4,
-      dims:{timing:'L',modality:'M',momentum:'M',whitespace:'M',commercial:'M',regulatory:'M',scaleup:'M',resourcing:'M',competitive:'M',longterm:'M'},
-      assessment:'Still early in Phase 1, with manufacturing decisions likely more than two years away. Best treated as a watch-list account to revisit as the program advances.'
-    },
-    {
-      name:'Zanidatamab (Ziihera)', originator:'Zymeworks / Jazz Pharmaceuticals',
-      modality:'Bispecific antibody (HER2)', indication:'Biliary tract cancer (approved); other HER2+ cancers in development',
-      stage:'Approved', decision:'Watch', overall:'Low', score:4.8,
-      dims:{timing:'L',modality:'H',momentum:'L',whitespace:'L',commercial:'M',regulatory:'H',scaleup:'L',resourcing:'H',competitive:'L',longterm:'M'},
-      assessment:'Already approved and commercial since 2024, so manufacturing is almost certainly locked in. Limited near-term opportunity beyond monitoring for future expansion-indication capacity.'
-    },
-    {
-      name:'Loncastuximab tesirine (ZYNLONTA)', originator:'ADC Therapeutics',
-      modality:'Antibody-drug conjugate (CD19)', indication:'Diffuse large B-cell lymphoma (approved)',
-      stage:'Approved', decision:'Drop', overall:'Low', score:4.2,
-      dims:{timing:'L',modality:'H',momentum:'L',whitespace:'L',commercial:'L',regulatory:'H',scaleup:'L',resourcing:'M',competitive:'L',longterm:'L'},
-      assessment:"A mature, approved product with an established commercial supply chain. Recommended for deprioritization in favor of earlier-stage accounts with real manufacturing whitespace."
-    }
-  ];
+  /* ---------- Biopharma R&D: interaction-led workspace (real BioLens export data) ---------- */
+  const RND_ASSETS = [{"mark": "TP", "name": "trastuzumab pamirtecan", "originator": "Duality Biologics (Suzhou) Co., Ltd. (China clinical/commercial); BioNTech SE (global); No known CDMO for fill-finish (data insufficient)", "modality": "Antibody-Drug Conjugate (ADC)", "area": "Oncology", "stage": "Phase 3 (Global) / NDA/BLA filed (China)", "decision": "Advance", "overall": "High", "score": 9.0, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "High"}, {"label": "Revenue potential", "value": "High"}, {"label": "Competitive advantage", "value": "High"}, {"label": "Trigger strength", "value": "High"}], "facts": {"Route of administration": "Intravenous (IV)", "Regulatory status": "BLA Accepted (China, breast cancer); Breakthrough (US, endometrial cancer); Global Phase 3 ongoing", "Patent status": "Active composition/formulation patents (WO2025056748A1, TW202523358A)", "Market availability": "Not Yet Marketed (Outside China); China BLA review"}}, {"mark": "CG", "name": "calotatug ginistinag (XMT-2056)", "originator": "In-House Manufacturing (Mersana Therapeutics); GSK co-development/license option", "modality": "ADC (Antibody-Drug Conjugate)", "area": "Oncology (solid tumors expressing HER2)", "stage": "Phase 1", "decision": "Advance", "overall": "High", "score": 8.5, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "High"}, {"label": "Revenue potential", "value": "Medium"}, {"label": "Competitive advantage", "value": "High"}, {"label": "Trigger strength", "value": "High"}], "facts": {"Route of administration": "IV (Intravenous)", "Regulatory status": "IND-active (US); Orphan Drug (US); No regulatory filing (EU/JP/China)", "Patent status": "Active Patent", "Market availability": "Not Yet Marketed"}}, {"mark": "TG", "name": "tegoprubart", "originator": "Eledon Pharmaceuticals (in-house clinical supply); No Known CDMO", "modality": "Humanized monoclonal antibody (anti-CD40L)", "area": "Transplant immunology, Rare/Genetic Disease, Neurology", "stage": "Phase 2 completed; Phase 3 initiation pending (kidney transplant); IND filed for islet cell transplant; Phase 2a completed (ALS)", "decision": "Advance", "overall": "High", "score": 8.5, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "High"}, {"label": "Revenue potential", "value": "High"}, {"label": "Competitive advantage", "value": "Medium"}, {"label": "Trigger strength", "value": "High"}], "facts": {"Route of administration": "Intravenous (IV) infusion", "Regulatory status": "IND-active (US); Orphan Drug Designation (US, ALS); No regulatory filing (EU, JP, CN)", "Patent status": "Active Patent (composition, use, formulation; various jurisdictions)", "Market availability": "Not Yet Marketed"}}, {"mark": "IM", "name": "imneskibart", "originator": "Aulos Bioscience (In-house Manufacturing; R&D/clinical supply)", "modality": "Monoclonal Antibody (mAb)", "area": "Oncology (Melanoma, NSCLC)", "stage": "Phase 2", "decision": "Advance", "overall": "High", "score": 8.0, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "High"}, {"label": "Revenue potential", "value": "Medium"}, {"label": "Competitive advantage", "value": "Medium"}, {"label": "Trigger strength", "value": "High"}], "facts": {"Route of administration": "Intravenous (IV)", "Regulatory status": "No regulatory filing (US/EU); IND-active (US)", "Patent status": "No Patent Data", "Market availability": "Not Yet Marketed"}}, {"mark": "IS", "name": "ISB 2001", "originator": "AbbVie (Global lead), IGI Therapeutics SA (Ichnos Glenmark Innovation Inc.)", "modality": "Trispecific Antibody (T-cell engager)", "area": "Oncology\u2014Multiple Myeloma", "stage": "Phase 1", "decision": "Advance", "overall": "High", "score": 8.0, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "Medium"}, {"label": "Revenue potential", "value": "Medium"}, {"label": "Competitive advantage", "value": "High"}, {"label": "Trigger strength", "value": "High"}], "facts": {"Route of administration": "Subcutaneous", "Regulatory status": "IND-active; Orphan Drug; Fast Track (US)", "Patent status": "Active Patent (composition of matter, BEAT platform)", "Market availability": "Not Yet Marketed"}}, {"mark": "IZ", "name": "izokibep", "originator": "Affibody AB (discovery, initial development); ACELYRIN, Inc. (lead sponsor for pivotal trials); No Known Commercial CDMO", "modality": "Engineered Protein (Affibody-derived IL-17A inhibitor)", "area": "Immunology / Autoimmune (primary indications: hidradenitis suppurativa, psoriatic arthritis, uveitis, axial spondyloarthritis)", "stage": "Phase 3 (pivotal for hidradenitis suppurativa, Phase 2b/3 for other indications)", "decision": "Advance", "overall": "High", "score": 8.0, "dims": [{"label": "Modality-service fit", "value": "Medium"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "High"}, {"label": "Revenue potential", "value": "High"}, {"label": "Competitive advantage", "value": "Medium"}, {"label": "Trigger strength", "value": "High"}], "facts": {"Route of administration": "Subcutaneous injection", "Regulatory status": "IND-active, Orphan Drug Eligible; No Marketing Approval to Date", "Patent status": "Active Patent (composition of matter claims and use)", "Market availability": "Not Yet Marketed"}}, {"mark": "EA", "name": "efineptakin alfa", "originator": "NeoImmuneTech (developer, North America/EU); Genexine (Asia ex-China); Tolerance Bio (licensed for thymic indications, US/EU only)", "modality": "Engineered Cytokine (long-acting IL-7 Fc-fusion protein)", "area": "Oncology, Immunology / Autoimmune, Infectious Disease, Rare / Genetic Disease", "stage": "Phase 2 (Oncology/Immunology); Licensing transition to Phase 2 in Thymus-Related Indications", "decision": "Conditional", "overall": "High", "score": 7.5, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "High"}, {"label": "Revenue potential", "value": "Medium"}, {"label": "Competitive advantage", "value": "Medium"}, {"label": "Trigger strength", "value": "Medium"}], "facts": {"Route of administration": "Intramuscular (IM); Intravenous (IV in some trials)", "Regulatory status": "IND-active; Orphan Drug (US/EU); No Marketing Approval", "Patent status": "Active Patent", "Market availability": "Not Yet Marketed"}}, {"mark": "IV", "name": "imvotamab", "originator": "IGM Biosciences, Inc.", "modality": "Bispecific IgM antibody", "area": "Oncology (relapsed/refractory B cell NHL, follicular lymphoma, diffuse large B cell lymphoma)", "stage": "Phase 1/2 clinical", "decision": "Conditional", "overall": "High", "score": 7.5, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "Medium"}, {"label": "Revenue potential", "value": "Medium"}, {"label": "Competitive advantage", "value": "High"}, {"label": "Trigger strength", "value": "Medium"}], "facts": {"Route of administration": "IV infusion", "Regulatory status": "No regulatory filing; Investigational drug, not FDA/EMA/PMDA/NMPA approved", "Patent status": "Active patent coverage; composition of matter and method of use claims for bispecific IgM antibodies including imvotamab", "Market availability": "Not Yet Marketed"}}, {"mark": "VD", "name": "vic-trastuzumab duocarmazine", "originator": "Byondis B.V. (Netherlands, Sponsor); Medac GmbH (EU commercial supply post-approval)", "modality": "Antibody-Drug Conjugate (ADC)", "area": "Oncology (HER2+ unresectable locally advanced/metastatic breast cancer, HER2+ solid tumors)", "stage": "Phase III (completed); Biologics License Application filed; FDA Complete Response Letter issued; Not yet approved", "decision": "Conditional", "overall": "High", "score": 7.5, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "Medium"}, {"label": "Outsourcing likelihood", "value": "Medium"}, {"label": "Revenue potential", "value": "High"}, {"label": "Competitive advantage", "value": "High"}, {"label": "Trigger strength", "value": "Medium"}], "facts": {"Route of administration": "Intravenous (IV)", "Regulatory status": "FDA BLA submitted (2022), Fast Track designation granted, FDA issued Complete Response Letter (2023); not approved US/EU as of Sep 2026. No orphan/priority status confirmed.", "Patent status": "Active patent protection globally; patent claims for composition, method, and ADC technology; biosimilar eligibility pending regulatory approval; no orphan exclusivity confirmed.", "Market availability": "Not Yet Marketed; no commercial launches US/EU/ROW as of Sep 2026"}}, {"mark": "NA", "name": "nadunolimab", "originator": "In-House Manufacturing (Cantargia AB); No Known CDMO", "modality": "Monoclonal Antibody (mAb), fully humanized, ADCC-enhanced IgG1", "area": "Oncology, Hematology, Immunology / Autoimmune", "stage": "Phase 2", "decision": "Conditional", "overall": "Medium", "score": 7.0, "dims": [{"label": "Modality-service fit", "value": "High"}, {"label": "Manufacturing timing", "value": "High"}, {"label": "Outsourcing likelihood", "value": "Medium"}, {"label": "Revenue potential", "value": "Medium"}, {"label": "Competitive advantage", "value": "Medium"}, {"label": "Trigger strength", "value": "Medium"}], "facts": {"Route of administration": "Intravenous (IV)", "Regulatory status": "IND-active; No FDA/EU marketing approval; ongoing Phase 2 US/EU clinical trials", "Patent status": "Active Patent", "Market availability": "Not Yet Marketed"}}]
+;
 
   function rndDecisionClass(decision){
-    if(decision === 'Go') return 'rnd-pill-go';
-    if(decision === 'Conditional Go') return 'rnd-pill-conditional';
+    if(decision === 'Advance') return 'rnd-pill-go';
+    if(decision === 'Conditional') return 'rnd-pill-conditional';
     if(decision === 'Watch') return 'rnd-pill-watch';
     return 'rnd-pill-drop';
   }
-  function rndHmlClass(v){
-    if(v === 'High' || v === 'H') return 'rnd-hml-h';
-    if(v === 'Medium' || v === 'M') return 'rnd-hml-m';
-    return 'rnd-hml-l';
+  function rndDotClass(v){
+    const s = (v || '').toLowerCase();
+    return s === 'high' ? 'h' : (s === 'medium' ? 'm' : 'l');
   }
-  function rndDotClass(v){ return v === 'H' ? 'h' : (v === 'M' ? 'm' : 'l'); }
-  function rndWord(v){ return v === 'H' ? 'High' : (v === 'M' ? 'Medium' : 'Low'); }
-  function rndColor(v){ return v === 'H' ? '#1a7a41' : (v === 'M' ? '#c8860a' : '#c23b34'); }
-
-  function rndBuildDonut(dims){
-    let acc = 0;
-    const stops = RND_DIMENSIONS.map(d => {
-      const start = acc;
-      acc += (d.weight / 100) * 360;
-      return `${rndColor(dims[d.key])} ${start}deg ${acc}deg`;
-    });
-    return `conic-gradient(${stops.join(', ')})`;
+  function rndScoreColor(score){
+    if(score >= 8) return '#1a7a41';
+    if(score >= 6.5) return '#c8860a';
+    return '#c23b34';
+  }
+  function rndScoreDonut(score){
+    const pct = Math.max(0, Math.min(100, score * 10));
+    return `conic-gradient(${rndScoreColor(score)} ${pct}%, #e9e7e0 0)`;
   }
 
-  function renderRndTable(){
-    const wrap = document.getElementById('rnd-rows-wrap');
+  function renderRndAccordion(){
+    document.getElementById('rnd-found-count').textContent = `${RND_ASSETS.length} programs above 6.0`;
+
+    const wrap = document.getElementById('rnd-accordion');
     wrap.innerHTML = RND_ASSETS.map((a, i) => `
-      <div class="rnd-body-row rnd-row-grid" data-idx="${i}">
-        <div>
-          <div class="rnd-program-name">${a.name}</div>
-          <div class="rnd-program-originator">${a.originator}</div>
+      <div class="search-acc-item" id="rnd-acc-${i}">
+        <button class="search-acc-header" onclick="toggleRndAcc(${i})" aria-expanded="false">
+          <span class="search-company-mark">${a.mark}</span>
+          <span class="search-acc-name">${a.name}</span>
+          <span class="search-tier-pill tier-${a.overall.toLowerCase()}">${a.overall}</span>
+          <span class="rnd-pill ${rndDecisionClass(a.decision)}">${a.decision}</span>
+          <span class="rnd-acc-score">${a.score.toFixed(1)}<span class="of"> /10</span></span>
+          <span class="search-acc-stage">${a.stage}</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="search-acc-body">
+          <div class="search-acc-body-inner">
+            <div class="rnd-donut-row">
+              <div class="rnd-donut" style="background:${rndScoreDonut(a.score)};">
+                <div class="rnd-donut-inner"><span class="num">${a.score.toFixed(1)}</span><span class="of">/ 10</span></div>
+              </div>
+              <div>
+                <div class="rnd-donut-label"><h4>Opportunity score</h4></div>
+                <p class="rnd-donut-desc">${a.modality} &middot; ${a.area}</p>
+              </div>
+            </div>
+            <p class="search-acc-label">Assessment dimensions</p>
+            <div class="rnd-legend">
+              ${a.dims.map(d => `<span class="rnd-legend-item"><span class="rnd-dim-dot ${rndDotClass(d.value)}"></span>${d.label} &middot; ${d.value}</span>`).join('')}
+            </div>
+            <p class="search-acc-label">Program details</p>
+            <div class="rnd-fact-grid">
+              <div class="rnd-fact"><span class="k">Manufacturer</span><span class="v">${a.originator}</span></div>
+              <div class="rnd-fact"><span class="k">Route of administration</span><span class="v">${a.facts['Route of administration']}</span></div>
+              <div class="rnd-fact"><span class="k">Regulatory status</span><span class="v">${a.facts['Regulatory status']}</span></div>
+              <div class="rnd-fact"><span class="k">Patent status</span><span class="v">${a.facts['Patent status']}</span></div>
+              <div class="rnd-fact rnd-fact-wide"><span class="k">Market availability</span><span class="v">${a.facts['Market availability']}</span></div>
+            </div>
+          </div>
         </div>
-        <div><span class="rnd-hml ${rndHmlClass(a.overall)}">${a.overall}</span></div>
-        <div class="rnd-score">${a.score.toFixed(1)}<span class="of"> / 10</span></div>
-        <div><span class="rnd-pill ${rndDecisionClass(a.decision)}">${a.decision}</span></div>
-        <div class="rnd-col-dim"><span class="rnd-hml ${rndHmlClass(a.dims.timing)}">${a.dims.timing}</span></div>
-        <div class="rnd-col-dim"><span class="rnd-hml ${rndHmlClass(a.dims.modality)}">${a.dims.modality}</span></div>
-        <div class="rnd-col-dim"><span class="rnd-hml ${rndHmlClass(a.dims.whitespace)}">${a.dims.whitespace}</span></div>
       </div>
     `).join('');
   }
 
-  function renderRndProfile(asset){
-    const legendHtml = RND_DIMENSIONS.slice(0, 6).map(d => `
-      <span class="rnd-legend-item"><span class="rnd-dim-dot ${rndDotClass(asset.dims[d.key])}"></span>${d.label} &middot; ${rndWord(asset.dims[d.key])}</span>
-    `).join('');
-    document.getElementById('rnd-profile-body').innerHTML = `
-      <div class="rnd-full-header">
-        <div>
-          <h3>${asset.name}</h3>
-          <p class="rnd-full-sub">${asset.originator} &middot; ${asset.stage}</p>
-        </div>
-        <button class="rnd-generate-btn">Generate report</button>
-      </div>
-      <div class="rnd-quick-badges">
-        <span class="rnd-field-tag">${asset.modality}</span>
-        <span class="rnd-field-tag">${asset.indication}</span>
-      </div>
-      <div class="rnd-donut-row">
-        <div class="rnd-donut" style="background:${rndBuildDonut(asset.dims)};">
-          <div class="rnd-donut-inner"><span class="num">${asset.score.toFixed(1)}</span><span class="of">/ 10</span></div>
-        </div>
-        <div>
-          <div class="rnd-donut-label"><h4>Opportunity score</h4><span class="rnd-pill ${rndDecisionClass(asset.decision)}">${asset.decision}</span></div>
-          <p class="rnd-donut-desc">Weighted across ${RND_DIMENSIONS.length} reasoning dimensions.</p>
-        </div>
-      </div>
-      <div class="rnd-legend">${legendHtml}</div>
-      <p class="rnd-assessment">${asset.assessment}</p>
-    `;
-  }
-
-  let rndDemoRunning = false;
-  let rndTimers = [];
-  let rndGen = 0;
-
-  function rndWait(ms){
-    return new Promise(resolve => {
-      const t = setTimeout(resolve, ms);
-      rndTimers.push(t);
-    });
-  }
-
-  function clearRndTimers(){
-    rndTimers.forEach(t => clearTimeout(t));
-    rndTimers = [];
-  }
-
-  function setRndCaption(text){
-    const el = document.getElementById('rnd-caption-text');
-    if(el) el.textContent = text;
-  }
-
-  function resetRndStage(){
-    document.getElementById('rnd-rows-wrap').innerHTML = '';
-    document.getElementById('rnd-profile-body').innerHTML = '';
-    document.getElementById('rnd-table-stage').classList.remove('stage-hidden');
-    document.getElementById('rnd-profile-stage').classList.remove('stage-visible');
-  }
-
-  async function runRndCycle(idx, myGen){
-    const asset = RND_ASSETS[idx];
-    resetRndStage();
-    renderRndTable();
-    fitWrapToChild('.rnd-stage-wrap', '.rnd-table-stage');
-    setRndCaption(`Scoring ${RND_ASSETS.length} biologics programs against WuXi Biologics' partnership criteria.`);
-
-    await rndWait(400);
-    if(myGen !== rndGen) return;
-
-    const rows = document.querySelectorAll('.rnd-body-row');
-    for(const row of rows){
-      if(myGen !== rndGen) return;
-      row.classList.add('row-visible');
-      await rndWait(180);
-    }
-    if(myGen !== rndGen) return;
-
-    await rndWait(500);
-    if(myGen !== rndGen) return;
-
-    const targetRow = document.querySelector(`.rnd-body-row[data-idx="${idx}"]`);
-    if(targetRow) targetRow.classList.add('rnd-row-selected');
-    setRndCaption(`Selecting ${asset.name} for a full opportunity assessment.`);
-    await rndWait(700);
-    if(myGen !== rndGen) return;
-
-    document.getElementById('rnd-table-stage').classList.add('stage-hidden');
-    await rndWait(320);
-    if(myGen !== rndGen) return;
-
-    renderRndProfile(asset);
-    document.getElementById('rnd-profile-stage').classList.add('stage-visible');
-    fitWrapToChild('.rnd-stage-wrap', '.rnd-profile-stage');
-    setRndCaption(`Reviewing opportunity score and assessment for ${asset.name}.`);
-    await rndWait(3400);
-    if(myGen !== rndGen) return;
-
-    document.getElementById('rnd-profile-stage').classList.remove('stage-visible');
-    await rndWait(450);
-    if(myGen !== rndGen) return;
-  }
-
-  async function runRndLoop(myGen){
-    let i = 0;
-    while(rndDemoRunning && myGen === rndGen){
-      await runRndCycle(i % RND_ASSETS.length, myGen);
-      if(myGen !== rndGen) return;
-      i += 1;
+  function toggleRndAcc(i){
+    const item = document.getElementById(`rnd-acc-${i}`);
+    if(!item) return;
+    const body = item.querySelector('.search-acc-body');
+    const inner = item.querySelector('.search-acc-body-inner');
+    const btn = item.querySelector('.search-acc-header');
+    const isOpen = item.classList.contains('acc-open');
+    if(isOpen){
+      body.style.maxHeight = '0px';
+      item.classList.remove('acc-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }else{
+      item.classList.add('acc-open');
+      body.style.maxHeight = inner.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
     }
   }
+
+  renderRndAccordion();
 
   function startRndDemo(){
-    if(rndDemoRunning) return;
-    rndDemoRunning = true;
-    const myGen = rndGen;
-    runRndLoop(myGen);
+    // No animation — the accordion is already rendered; kept so the tab-switch handler still works.
   }
 
   function stopRndDemo(){
-    rndDemoRunning = false;
-    rndGen += 1;
-    clearRndTimers();
+    // No running animation to cancel now — kept so the tab-switch handler still works.
   }
 
   /* ---------- CDMO BD & outreach: company -> decision makers -> draft outreach ---------- */
