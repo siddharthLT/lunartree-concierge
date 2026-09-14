@@ -387,18 +387,18 @@
     .rnd-donut-inner{width:60px;height:60px;}
     .rnd-donut-inner .num{font-size:17px;}
   }
-  /* ---------- CDMO BD & outreach demo ---------- */
-  .cdmo-stage-wrap{position:relative;min-height:420px;}
-  @media(max-width:700px){
-    .cdmo-stage-wrap{min-height:560px;}
+  /* ---------- CDMO BD & outreach: interaction-led workspace (real account data) ---------- */
+  .cdmo-companies{display:flex;flex-direction:column;gap:20px;}
+  .cdmo-assign-btn{
+    display:inline-flex;align-items:center;gap:4px;border:1px dashed var(--line-strong);
+    border-radius:999px;padding:6px 12px;font-size:12.5px;color:var(--ink-faint);background:none;
   }
-  .cdmo-substage{
-    position:absolute;inset:0;
-    opacity:0;transform:translateY(12px) scale(.99);pointer-events:none;
-    transition:opacity 350ms ease, transform 350ms ease;
-    overflow:visible;
-  }
-  .cdmo-substage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
+  .cdmo-viewdm-row{margin-top:18px;}
+  .cdmo-contacts-wrap{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);}
+  .cdmo-contacts-wrap .cdmo-contact-card{margin-bottom:14px;}
+  .cdmo-contacts-wrap .cdmo-contact-card:last-of-type{margin-bottom:18px;}
+  .cdmo-compose-wrap{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);}
+  .cdmo-no-email{font-size:12px;color:var(--ink-faint);font-style:italic;}
 
   .cdmo-card{
     background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
@@ -856,142 +856,13 @@
   <section class="usecase-panel" id="panel-cdmo">
     <div class="usecase-head">
       <h2>CDMO BD &amp; outreach</h2>
-      <p>As WuXi Biologics, turn a high-priority account signal into a drafted outreach email to the right decision maker.</p>
+      <p>As WuXi Biologics, turn a high-priority account signal into drafted outreach to the right decision maker.</p>
     </div>
 
-    <p class="search-caption" id="cdmo-caption"><span id="cdmo-caption-text">Reviewing AbCellera Biologics Inc. for outreach priority.</span></p>
+    <p class="search-caption" id="cdmo-caption"><span id="cdmo-caption-text">6 high-priority accounts flagged for manufacturing outreach.</span></p>
 
     <div class="cdmo-stage-wrap">
-
-      <!-- STAGE 1: Company -->
-      <div class="cdmo-substage stage-visible" id="cdmo-company-stage">
-        <div class="cdmo-card">
-          <div class="cdmo-company-head">
-            <h3>AbCellera Biologics Inc.</h3>
-            <span class="cdmo-signals-pill"><span class="dot"></span>+24 Signals</span>
-            <span class="cdmo-target-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
-            </span>
-          </div>
-          <div class="cdmo-meta-row">
-            <span>&#127464;&#127462; British Columbia, Canada</span>
-            <a href="https://www.abcellera.com" target="_blank" rel="noopener">&#127760; abcellera.com &#8599;</a>
-            <span class="cdmo-status-pill">New &#8964;</span>
-            <span class="cdmo-assignee-chip"><span class="avatar">WB</span>WuXi Biologics BD</span>
-          </div>
-
-          <div class="cdmo-about-title">About AbCellera Biologics Inc.</div>
-          <div class="cdmo-pill-row">
-            <span class="cdmo-info-pill">&#128197; 2012</span>
-            <span class="cdmo-info-pill">&#129513; Phase 2</span>
-            <span class="cdmo-info-pill">&#128101; 561</span>
-            <span class="cdmo-info-pill">&#128176; Public Company</span>
-            <span class="cdmo-info-pill">&#127919; Women's Health, Immunology, Oncology</span>
-          </div>
-
-          <div class="cdmo-trigger-box">
-            <div class="cdmo-trigger-label">High priority trigger</div>
-            <h4 class="cdmo-trigger-title">Initiate Strategic Outreach to AbCellera Post-Funding and Clinical Milestones</h4>
-            <p class="cdmo-trigger-body">AbCellera's $200M offering and strong Phase 2 results signal an urgent window to position WuXi Biologics as a manufacturing partner for late-stage and commercial-scale needs.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- STAGE 2: Decision makers -->
-      <div class="cdmo-substage" id="cdmo-contacts-stage">
-        <div class="cdmo-card">
-          <div class="cdmo-section-head">
-            <h3>Operations &amp; Manufacturing</h3>
-            <div class="cdmo-section-sub">2 decision makers &middot; <span class="suggested">2 suggested</span></div>
-          </div>
-
-          <div class="cdmo-tier-pills">
-            <span class="cdmo-tier-pill"><span class="cdmo-tier-badge t2">T2</span>VP / Head &middot; 1</span>
-            <span class="cdmo-tier-pill"><span class="cdmo-tier-badge t3">T3</span>Director &middot; 1</span>
-          </div>
-
-          <div class="cdmo-tier-group">
-            <div class="cdmo-tier-group-head"><span class="cdmo-tier-badge t2">T2</span>VP / Head &middot; 1</div>
-            <div class="cdmo-suggested-label">&#10022; Suggested for outreach &middot; 1</div>
-            <div class="cdmo-contact-card">
-              <div class="cdmo-contact-top">
-                <span class="cdmo-contact-checkbox"></span>
-                <span class="cdmo-contact-avatar">MS</span>
-                <div>
-                  <div class="cdmo-contact-name">Mark Skoog</div>
-                  <div class="cdmo-contact-title">Vice President of Manufacturing</div>
-                </div>
-                <span class="cdmo-linkedin-btn">in</span>
-              </div>
-              <div class="cdmo-contact-rationale">Mark Skoog is Site Head and VP, Manufacturing, directly overseeing manufacturing operations and scale-up decisions.</div>
-              <div class="cdmo-contact-bottom">
-                <span class="cdmo-email-box">&#9993; mark.skoog@abcellera.com</span>
-                <button class="cdmo-write-btn" data-contact="mark">&#10022; Write outreach</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="cdmo-tier-group">
-            <div class="cdmo-tier-group-head"><span class="cdmo-tier-badge t3">T3</span>Director &middot; 1</div>
-            <div class="cdmo-suggested-label">&#10022; Suggested for outreach &middot; 1</div>
-            <div class="cdmo-contact-card">
-              <div class="cdmo-contact-top">
-                <span class="cdmo-contact-checkbox"></span>
-                <span class="cdmo-contact-avatar">MH</span>
-                <div>
-                  <div class="cdmo-contact-name">Mary Helstad</div>
-                  <div class="cdmo-contact-title">Senior Director, Manufacturing Operations</div>
-                </div>
-                <span class="cdmo-linkedin-btn">in</span>
-              </div>
-              <div class="cdmo-contact-rationale">Mary Helstad holds the position Senior Director of Manufacturing Operations, responsible for day-to-day operational execution.</div>
-              <div class="cdmo-contact-bottom">
-                <span class="cdmo-email-box">&#9993; mary.helstad@abcellera.com</span>
-                <button class="cdmo-write-btn" data-contact="mary">&#10022; Write outreach</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STAGE 3: Compose -->
-      <div class="cdmo-substage" id="cdmo-compose-stage">
-        <div class="cdmo-card">
-          <div class="cdmo-compose-head">
-            <h3 id="cdmo-compose-name">Mark Skoog at AbCellera Biologics Inc.</h3>
-          </div>
-
-          <div class="cdmo-field">
-            <label>Company</label>
-            <div class="cdmo-field-box">AbCellera Biologics Inc. <span>&#8597;</span></div>
-          </div>
-          <div class="cdmo-field">
-            <label>To</label>
-            <div class="cdmo-field-box"><span id="cdmo-compose-to">Mark Skoog &middot; Vice President of Manufacturing</span> <span>&#8597;</span></div>
-          </div>
-          <div class="cdmo-field">
-            <label>Sending to (editable)</label>
-            <input type="text" id="cdmo-compose-sendingto" value="mark.skoog@abcellera.com">
-          </div>
-          <div class="cdmo-field">
-            <label>Subject</label>
-            <input type="text" id="cdmo-compose-subject" value="Manufacturing support for ABCL635 and ABCL575">
-          </div>
-          <div class="cdmo-field">
-            <label>Message</label>
-            <div class="cdmo-message-box" id="cdmo-compose-message"></div>
-          </div>
-
-          <button class="cdmo-send-btn" id="cdmo-send-btn" hidden>Send email</button>
-          <div class="cdmo-done" id="cdmo-done" hidden>
-            <span class="check">&#10003;</span> Outreach Done
-          </div>
-          <div style="margin-top:14px;">
-            <button class="cdmo-link-btn" id="cdmo-draft-another">&larr; Back to decision makers</button>
-          </div>
-        </div>
-      </div>
-
+      <div class="cdmo-companies" id="cdmo-companies"></div>
     </div>
   </section>
 
@@ -1477,52 +1348,106 @@
   }
 
   /* ---------- CDMO BD & outreach: company -> decision makers -> draft outreach ---------- */
-  const CDMO_CONTACTS = {
-    mark: {
-      name: 'Mark Skoog',
-      title: 'Vice President of Manufacturing',
-      email: 'mark.skoog@abcellera.com',
-      subject: 'Manufacturing support for ABCL635 and ABCL575',
-      message: "Congrats on ABCL635's positive Phase 2 readout and ABCL575 dosing completion.\n\nAt WuXi Biologics, we offer cell line/process development and GMP clinical-to-commercial manufacturing.\n\nCan I send a short capacity and timeline snapshot?\n\nBest,"
-    },
-    mary: {
-      name: 'Mary Helstad',
-      title: 'Senior Director, Manufacturing Operations',
-      email: 'mary.helstad@abcellera.com',
-      subject: 'Manufacturing support for ABCL635 and ABCL575',
-      message: "Congrats on ABCL635's positive Phase 2 readout and ABCL575 dosing completion.\n\nAt WuXi Biologics, we offer cell line/process development and GMP clinical-to-commercial manufacturing.\n\nCan I send a short capacity and timeline snapshot?\n\nBest,"
+  /* ---------- CDMO BD & outreach: interaction-led workspace (real account data) ---------- */
+  const CDMO_COMPANIES = [{"id": "ollin", "name": "Ollin Biosciences, Inc.", "signals": "+13 Signals", "flag": "🇺🇸", "location": "Texas, United States", "website": "https://ollin.bio/", "websiteLabel": "ollin.bio", "assignee": "Poorvi Vacchani", "assigneeInitials": "PV", "pills": ["📅 2023", "🧬 Phase 3", "👥 30", "💰 Series B (Private)", "🎯 Ophthalmology"], "triggerTitle": "Initiate Outreach for Phase 3 Manufacturing Partnership", "triggerBody": "Ollin Biosciences has registered global Phase 3 trials for OLN324 and secured $330M Series B funding, signaling immediate need for GMP manufacturing support. WuXi Biologics should proactively engage to position its integrated CRDMO capabilities for late-stage and commercial supply.", "programRef": "OLN324", "hook": "the global Phase 3 launch for OLN324 and your $330M Series B raise", "need": "late-stage and commercial-scale GMP manufacturing", "contacts": [{"name": "Dengfeng Liu", "title": "VP, Head of CMC", "email": "dliu@ollin.bio", "linkedin": "http://www.linkedin.com/in/dengfeng-liu-aa769114"}, {"name": "Alexandra Haagensen", "title": "Vice President", "email": "ahaagensen@ollin.bio", "linkedin": "http://www.linkedin.com/in/alexandra-haagensen-md-mba-2b4099112"}, {"name": "Yu-Ling Yan", "title": "VP, Head of Quality", "email": "yyan@ollin.bio", "linkedin": "http://www.linkedin.com/in/yu-ling-yan-1823544"}, {"name": "Hao Liu", "title": "Senior Director, Alliance and Program Management", "email": "hliu@ollin.bio", "linkedin": "http://www.linkedin.com/in/haoliu-bio"}, {"name": "Alaric Falcon", "title": "Senior Director", "email": "afalcon@ollin.bio", "linkedin": "http://www.linkedin.com/in/alaricf"}]}, {"id": "shattuck", "name": "Shattuck Labs, Inc.", "signals": "+18 Signals", "flag": "🇺🇸", "location": "Texas, United States", "website": "https://www.shattucklabs.com/", "websiteLabel": "shattucklabs.com", "assignee": "Poorvi Vacchani", "assigneeInitials": "PV", "pills": ["📅 2016", "🧬 Phase 1", "👥 42", "💰 Public Company (NASDAQ: STTK)", "🎯 Immunology"], "triggerTitle": "Engage Shattuck Labs for Phase 2b Manufacturing Partnership", "triggerBody": "Shattuck Labs' recent $75M public offering, warrant exercise, and launch of a Phase 2b trial for SL-325 create a high-impact window for WuXi Biologics to position as their manufacturing partner. Immediate outreach is recommended to align with their clinical supply scale-up needs.", "programRef": "SL-325", "hook": "your $75M public offering and the new Phase 2b trial for SL-325", "need": "clinical supply scale-up for SL-325", "contacts": [{"name": "Tom Lampkin", "title": "Sr Vice President", "email": "tlampkin@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/tom-lampkin-b7360678"}, {"name": "Kelli Collin", "title": "Senior Vice President, Quality", "email": "kcollin@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/kelli-collin-mba-954a619"}, {"name": "Purna Koppu", "title": "Senior Process Development Associate", "email": "pkoppu@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/purna-koppu-256a49132"}, {"name": "Christopher Miller", "title": "Senior Director, Purification and Manufacturing Sciences", "email": "cmiller@shattucklabs.com", "linkedin": "http://www.linkedin.com/in/christopher-miller-5235bb9"}, {"name": "Abhinav A. Shukla, PhD", "title": "Chief Technical Officer", "email": "", "linkedin": ""}, {"name": "Suresh de Silva, PhD", "title": "Chief Scientific Officer", "email": "", "linkedin": ""}, {"name": "Thomas Lampkin, PharmD", "title": "Senior Vice President of Regulatory Affairs", "email": "", "linkedin": ""}]}, {"id": "diagonal", "name": "Diagonal Therapeutics, Inc.", "signals": "+11 Signals", "flag": "🇺🇸", "location": "Massachusetts, United States", "website": "https://www.diagonaltx.com/", "websiteLabel": "diagonaltx.com", "assignee": null, "assigneeInitials": null, "pills": ["📅 2022", "🧬 Phase 1", "👥 26", "💰 Series B", "🎯 Rare Diseases, Hematology, Cardiovascular"], "triggerTitle": "Initiate Outreach to Diagonal Therapeutics for Clinical Manufacturing Partnership", "triggerBody": "Diagonal Therapeutics has entered clinical trials for DIAG723 and secured $125M Series B funding, indicating an urgent need for GMP manufacturing and CMC support. Immediate outreach positions WuXi Biologics for CDMO engagement during their vendor selection window.", "programRef": "DIAG723", "hook": "DIAG723 entering the clinic and your $125M Series B raise", "need": "GMP manufacturing and CMC support for DIAG723", "contacts": [{"name": "Patrick Andre", "title": "Chief Scientific Officer", "email": "patrick@diagonaltx.com", "linkedin": "http://www.linkedin.com/in/patrick-andre-ba91032"}, {"name": "Benjamin Hutchins", "title": "Vice President, CMC", "email": "ben@diagonaltx.com", "linkedin": "http://www.linkedin.com/in/benjaminmhutchins"}, {"name": "Melissa Geddie", "title": "VP, Drug Discovery", "email": "", "linkedin": "http://www.linkedin.com/in/melissageddie"}, {"name": "Carrie Margulies", "title": "Director, Program Development", "email": "carrie@diagonaltx.com", "linkedin": "http://www.linkedin.com/in/carriemargulies"}, {"name": "Sean Guo", "title": "Associate Director", "email": "", "linkedin": "http://www.linkedin.com/in/guo-sean"}]}, {"id": "kivu", "name": "Kivu Bioscience", "signals": "+8 Signals", "flag": "🇺🇸", "location": "California, United States", "website": "https://kivubioscience.com/", "websiteLabel": "kivubioscience.com", "assignee": null, "assigneeInitials": null, "pills": ["📅 2024", "🧬 Phase 1", "👥 11-50", "💰 Series A", "🎯 Oncology"], "triggerTitle": "Engage Kivu Bioscience on ADC Clinical Manufacturing Needs", "triggerBody": "Kivu Bioscience has initiated a second Phase I ADC trial and strengthened its BD leadership, signaling an active vendor evaluation window for clinical and future commercial manufacturing. Immediate outreach is recommended to position WuXi Biologics as a partner for their expanding ADC pipeline.", "programRef": "KIVU-107 / KIVU-305", "hook": "your second Phase I ADC trial and the recent growth of your BD team", "need": "clinical and future commercial ADC manufacturing", "contacts": [{"name": "Brunilda Shtylla", "title": "Chief Business Officer", "email": "bshtylla@kivubioscience.com", "linkedin": "http://www.linkedin.com/in/brunildashtylla"}, {"name": "Liangyi Zhang", "title": "VP and Head of CMC", "email": "lzhang@kivubioscience.com", "linkedin": "http://www.linkedin.com/in/liangyi-zhang-52457411"}, {"name": "Xiaoyue Jiang", "title": "Director of Analytical Development and Quality Control", "email": "xjiang@kivubioscience.com", "linkedin": "http://www.linkedin.com/in/xiaoyue-jiang-045b9b25"}]}, {"id": "phrontline", "name": "Phrontline Biopharma", "signals": "+3 Signals", "flag": null, "location": null, "website": "https://phrontlinebio.com", "websiteLabel": "phrontlinebio.com", "assignee": "Siddharth Das", "assigneeInitials": "SD", "pills": ["📅 2022", "🧬 Phase 1", "👥 25", "💰 Pre-A+ (raised $60M in Nov 2025)", "🎯 Oncology"], "triggerTitle": "Engage Phrontline Biopharma on ADC Clinical Supply Needs", "triggerBody": "Phrontline Biopharma's launch of the TJ102 Phase I/II clinical trial and recent $60M financing create a time-sensitive window to position WuXi Biologics' ADC manufacturing capabilities. Immediate outreach to CMC leadership can secure consideration for clinical supply and future scale-up.", "programRef": "TJ102", "hook": "the TJ102 Phase I/II launch and your $60M financing", "need": "clinical supply and future scale-up for TJ102", "contacts": [{"name": "Min Zhao", "title": "CMC VP", "email": "min@phrontlinebio.com", "linkedin": "http://www.linkedin.com/in/min-zhao-9b691b68"}, {"name": "Wenchao Liu", "title": "Vice President of CMC", "email": "", "linkedin": "http://www.linkedin.com/in/wenchao-liu-956757207"}, {"name": "Shugaku Takeda", "title": "Executive Director of R&D", "email": "shugaku.takeda@inspirna.com", "linkedin": "http://www.linkedin.com/in/shugaku-takeda-phd-40473643"}]}, {"id": "pheon", "name": "Pheon Therapeutics Ltd", "signals": "+3 Signals", "flag": "🇬🇧", "location": "England, United Kingdom", "website": "https://pheontx.com/", "websiteLabel": "pheontx.com", "assignee": null, "assigneeInitials": null, "pills": ["📅 2022", "🧬 Phase 1", "👥 25", "💰 Series B", "🎯 Oncology"], "triggerTitle": "Engage Pheon Therapeutics CMC Leadership on ADC Clinical Manufacturing", "triggerBody": "Pheon Therapeutics has launched a Phase 1 trial for PHN-010 and disclosed CDCP1 as its ADC target, signaling immediate clinical manufacturing needs. WuXi Biologics should proactively reach out to CMC leadership to position its integrated ADC manufacturing capabilities and secure a role in clinical supply.", "programRef": "PHN-010", "hook": "the PHN-010 Phase 1 launch targeting CDCP1", "need": "clinical ADC manufacturing supply", "contacts": [{"name": "Chi-Ting Huang", "title": "Vice President, CMC", "email": "chi-ting.huang@pheontx.com", "linkedin": "http://www.linkedin.com/in/chi-ting-huang"}, {"name": "Siddhesh Patil", "title": "Vice President, Head of CMC", "email": "siddhesh.patil@pheontx.com", "linkedin": "http://www.linkedin.com/in/siddhesh-patil-phd-3500bb4"}, {"name": "Leigh Zawel, PhD", "title": "Chief Scientific Officer", "email": "", "linkedin": ""}]}];
+
+  function cdmoInitials(name){
+    const words = name.split(/[\s,]+/).filter(Boolean);
+    return ((words[0] ? words[0][0] : '') + (words[1] ? words[1][0] : '')).toUpperCase();
+  }
+
+  function cdmoFirstName(name){
+    return name.split(/[\s,]+/)[0];
+  }
+
+  function cdmoBuildDraft(company, person){
+    const title = (person.title || '').toLowerCase();
+    let variant;
+    if(/chief|cso|ceo|cto|cbo/.test(title)){
+      variant = `We'd welcome the chance to discuss how an integrated CRDMO partnership could support ${company.name.split(',')[0]}'s platform strategy longer-term.`;
+    }else if(/cmc|manufactur|quality|process|purification|technical/.test(title)){
+      variant = `We'd welcome the chance to scope an RFP covering process development, analytics, and GMP manufacturing capacity for ${company.programRef}.`;
+    }else{
+      variant = `We'd welcome the chance to scope an RFP and share capacity and timelines for ${company.programRef}.`;
     }
-  };
+    const subject = `RFP scoping — ${company.programRef} manufacturing at ${company.name.split(',')[0]}`;
+    const body = `Hi ${cdmoFirstName(person.name)},\n\nCongrats on ${company.hook}. At WuXi Biologics, we offer integrated cell line development through GMP clinical-to-commercial manufacturing.\n\n${variant}\n\nCould we set up 20 minutes this week?\n\nBest,\nWuXi Biologics BD`;
+    return {subject, body};
+  }
+
+  function renderCdmoCompanies(){
+    const wrap = document.getElementById('cdmo-companies');
+    wrap.innerHTML = CDMO_COMPANIES.map((c, i) => `
+      <div class="cdmo-card" id="cdmo-co-${i}">
+        <div class="cdmo-company-head">
+          <h3>${c.name}</h3>
+          <span class="cdmo-signals-pill"><span class="dot"></span>${c.signals}</span>
+        </div>
+        <div class="cdmo-meta-row">
+          ${c.location ? `<span>${c.flag} ${c.location}</span>` : ''}
+          <a href="${c.website}" target="_blank" rel="noopener">&#127760; ${c.websiteLabel} &#8599;</a>
+          <span class="cdmo-status-pill">New</span>
+          ${c.assignee ? `<span class="cdmo-assignee-chip"><span class="avatar">${c.assigneeInitials}</span>${c.assignee}</span>` : ''}
+        </div>
+        <div class="cdmo-intel-wrap" id="cdmo-intel-${i}">
+          <div class="cdmo-about-title">About ${c.name}</div>
+          <div class="cdmo-pill-row">
+            ${c.pills.map(p => `<span class="cdmo-info-pill">${p}</span>`).join('')}
+          </div>
+          <div class="cdmo-trigger-box">
+            <div class="cdmo-trigger-label">High priority trigger</div>
+            <h4 class="cdmo-trigger-title">${c.triggerTitle}</h4>
+            <p class="cdmo-trigger-body">${c.triggerBody}</p>
+          </div>
+
+          <div class="cdmo-viewdm-row">
+            <button class="cdmo-write-btn" onclick="cdmoShowContacts(${i})">&#10022; View Decision Makers</button>
+          </div>
+        </div>
+
+        <div class="cdmo-contacts-wrap" id="cdmo-contacts-${i}" hidden>
+          <div class="cdmo-section-head">
+            <h3>Decision makers</h3>
+            <div class="cdmo-section-sub">${c.contacts.length} contacts on file</div>
+          </div>
+          ${c.contacts.map((p, j) => `
+            <div class="cdmo-contact-card">
+              <div class="cdmo-contact-top">
+                <span class="cdmo-contact-avatar">${cdmoInitials(p.name)}</span>
+                <div>
+                  <div class="cdmo-contact-name">${p.name}</div>
+                  <div class="cdmo-contact-title">${p.title}</div>
+                </div>
+                ${p.linkedin ? `<a class="cdmo-linkedin-btn" href="${p.linkedin}" target="_blank" rel="noopener" aria-label="View LinkedIn profile for ${p.name}">in</a>` : ''}
+              </div>
+              <div class="cdmo-contact-bottom">
+                ${p.email ? `
+                  <span class="cdmo-email-box">&#9993; ${p.email}</span>
+                  <button class="cdmo-write-btn" onclick="cdmoShowCompose(${i}, ${j})">&#10022; Draft outreach</button>
+                ` : `<span class="cdmo-no-email">No email on file</span>`}
+              </div>
+            </div>
+          `).join('')}
+          <button class="cdmo-link-btn" onclick="cdmoBackToTrigger(${i})">&larr; Back</button>
+        </div>
+
+        <div class="cdmo-compose-wrap" id="cdmo-compose-${i}" hidden>
+          <div class="cdmo-compose-head"><h3 id="cdmo-compose-name-${i}"></h3></div>
+          <div class="cdmo-field"><label>Company</label><div class="cdmo-field-box">${c.name} <span>&#8597;</span></div></div>
+          <div class="cdmo-field"><label>To</label><div class="cdmo-field-box"><span id="cdmo-compose-to-${i}"></span> <span>&#8597;</span></div></div>
+          <div class="cdmo-field"><label>Sending to (editable)</label><input type="text" id="cdmo-compose-sendingto-${i}"></div>
+          <div class="cdmo-field"><label>Subject</label><input type="text" id="cdmo-compose-subject-${i}"></div>
+          <div class="cdmo-field"><label>Message</label><div class="cdmo-message-box" id="cdmo-compose-message-${i}"></div></div>
+          <button class="cdmo-send-btn" id="cdmo-send-btn-${i}" onclick="cdmoSendEmail(${i})">Send email</button>
+          <div class="cdmo-done" id="cdmo-done-${i}" hidden><span class="check">&#10003;</span> Outreach Done</div>
+          <div style="margin-top:14px;"><button class="cdmo-link-btn" onclick="cdmoShowContacts(${i})">&larr; Back to decision makers</button></div>
+        </div>
+      </div>
+    `).join('');
+  }
 
   let cdmoGen = 0;
-  let cdmoTimers = [];
   let cdmoTypingTimeout = null;
-
-  function cdmoWait(ms){
-    return new Promise(resolve => {
-      const t = setTimeout(resolve, ms);
-      cdmoTimers.push(t);
-    });
-  }
-
-  function clearCdmoTimers(){
-    cdmoTimers.forEach(t => clearTimeout(t));
-    cdmoTimers = [];
-    if(cdmoTypingTimeout){ clearTimeout(cdmoTypingTimeout); cdmoTypingTimeout = null; }
-  }
-
-  function setCdmoCaption(text){
-    const el = document.getElementById('cdmo-caption-text');
-    if(el) el.textContent = text;
-  }
-
-  function showCdmoStage(name){
-    ['company', 'contacts', 'compose'].forEach(s => {
-      const el = document.getElementById('cdmo-' + s + '-stage');
-      el.classList.toggle('stage-visible', s === name);
-    });
-    fitWrapToChild('.cdmo-stage-wrap', '#cdmo-' + name + '-stage');
-  }
 
   function cdmoTypeMessage(el, text, myGen){
     el.textContent = '';
@@ -1535,7 +1460,6 @@
         i += 1;
         if(i <= text.length){
           cdmoTypingTimeout = setTimeout(step, 14);
-          cdmoTimers.push(cdmoTypingTimeout);
         }else{
           el.classList.remove('typing');
           resolve();
@@ -1545,71 +1469,61 @@
     });
   }
 
-  async function runCdmoIntro(myGen){
-    showCdmoStage('company');
-    setCdmoCaption('Reviewing AbCellera Biologics Inc. for outreach priority.');
-    await cdmoWait(1800);
-    if(myGen !== cdmoGen) return;
-    showCdmoStage('contacts');
-    setCdmoCaption('Choose a decision maker to draft outreach.');
+  function cdmoShowContacts(i){
+    cdmoGen += 1;
+    if(cdmoTypingTimeout){ clearTimeout(cdmoTypingTimeout); cdmoTypingTimeout = null; }
+    document.getElementById(`cdmo-intel-${i}`).hidden = true;
+    document.getElementById(`cdmo-contacts-${i}`).hidden = false;
+    document.getElementById(`cdmo-compose-${i}`).hidden = true;
   }
 
-  function startCdmoDemo(){
+  function cdmoBackToTrigger(i){
     cdmoGen += 1;
-    clearCdmoTimers();
+    if(cdmoTypingTimeout){ clearTimeout(cdmoTypingTimeout); cdmoTypingTimeout = null; }
+    document.getElementById(`cdmo-intel-${i}`).hidden = false;
+    document.getElementById(`cdmo-contacts-${i}`).hidden = true;
+    document.getElementById(`cdmo-compose-${i}`).hidden = true;
+  }
+
+  async function cdmoShowCompose(i, j){
+    cdmoGen += 1;
+    if(cdmoTypingTimeout){ clearTimeout(cdmoTypingTimeout); cdmoTypingTimeout = null; }
     const myGen = cdmoGen;
-    document.getElementById('cdmo-send-btn').hidden = true;
-    document.getElementById('cdmo-done').hidden = true;
-    runCdmoIntro(myGen);
+    const c = CDMO_COMPANIES[i];
+    const p = c.contacts[j];
+    const draft = cdmoBuildDraft(c, p);
+
+    document.getElementById(`cdmo-contacts-${i}`).hidden = true;
+    document.getElementById(`cdmo-compose-${i}`).hidden = false;
+
+    document.getElementById(`cdmo-compose-name-${i}`).textContent = `${p.name} at ${c.name}`;
+    document.getElementById(`cdmo-compose-to-${i}`).textContent = `${p.name} · ${p.title}`;
+    document.getElementById(`cdmo-compose-sendingto-${i}`).value = p.email;
+    document.getElementById(`cdmo-compose-subject-${i}`).value = draft.subject;
+    document.getElementById(`cdmo-send-btn-${i}`).hidden = true;
+    document.getElementById(`cdmo-done-${i}`).hidden = true;
+
+    const msgEl = document.getElementById(`cdmo-compose-message-${i}`);
+    await cdmoTypeMessage(msgEl, draft.body, myGen);
+    if(myGen !== cdmoGen) return;
+    document.getElementById(`cdmo-send-btn-${i}`).hidden = false;
+  }
+
+  function cdmoSendEmail(i){
+    document.getElementById(`cdmo-send-btn-${i}`).hidden = true;
+    document.getElementById(`cdmo-done-${i}`).hidden = false;
+  }
+
+  renderCdmoCompanies();
+
+  function startCdmoDemo(){
+    // No animation — the accounts are already rendered; kept so the tab-switch handler still works.
   }
 
   function stopCdmoDemo(){
     cdmoGen += 1;
-    clearCdmoTimers();
+    if(cdmoTypingTimeout){ clearTimeout(cdmoTypingTimeout); cdmoTypingTimeout = null; }
   }
-
-  async function startCdmoCompose(key){
-    cdmoGen += 1;
-    clearCdmoTimers();
-    const myGen = cdmoGen;
-    const c = CDMO_CONTACTS[key];
-
-    document.getElementById('cdmo-compose-name').textContent = `${c.name} at AbCellera Biologics Inc.`;
-    document.getElementById('cdmo-compose-to').textContent = `${c.name} · ${c.title}`;
-    document.getElementById('cdmo-compose-sendingto').value = c.email;
-    document.getElementById('cdmo-compose-subject').value = c.subject;
-    document.getElementById('cdmo-send-btn').hidden = true;
-    document.getElementById('cdmo-done').hidden = true;
-
-    const msgEl = document.getElementById('cdmo-compose-message');
-    showCdmoStage('compose');
-    setCdmoCaption(`Drafting outreach to ${c.name}.`);
-    await cdmoWait(350);
-    if(myGen !== cdmoGen) return;
-    await cdmoTypeMessage(msgEl, c.message, myGen);
-    if(myGen !== cdmoGen) return;
-    document.getElementById('cdmo-send-btn').hidden = false;
-    fitWrapToChild('.cdmo-stage-wrap', '#cdmo-compose-stage');
-    setCdmoCaption('Review the draft, then send when ready.');
-  }
-
-  document.querySelectorAll('.cdmo-write-btn').forEach(btn => {
-    btn.addEventListener('click', () => startCdmoCompose(btn.dataset.contact));
-  });
-
-  document.getElementById('cdmo-send-btn').addEventListener('click', () => {
-    document.getElementById('cdmo-send-btn').hidden = true;
-    document.getElementById('cdmo-done').hidden = false;
-    fitWrapToChild('.cdmo-stage-wrap', '#cdmo-compose-stage');
-    setCdmoCaption('Outreach sent.');
-  });
-
-  document.getElementById('cdmo-draft-another').addEventListener('click', () => {
-    cdmoGen += 1;
-    clearCdmoTimers();
-    showCdmoStage('contacts');
-    setCdmoCaption('Choose a decision maker to draft outreach.');
-  });
 
   /* ---------- Competitive intelligence: AI copilot Q&A ---------- */
   const CI_QUESTIONS = [
