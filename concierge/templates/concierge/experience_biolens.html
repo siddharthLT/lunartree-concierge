@@ -176,8 +176,15 @@
   /* No window chrome, no card frame — this sits directly on the page,
      scaled up so it reads as a close-in view of the product, not a thumbnail. */
   .search-caption{
-    font-size:14.5px;color:var(--ink-dim);
-    margin:-4px 0 20px;min-height:22px;
+    display:flex;align-items:center;gap:10px;
+    background:#e3f4f2;border:1px solid #a9ded6;color:#0f5f57;
+    font-size:13.5px;font-weight:600;line-height:1.5;
+    padding:12px 18px;border-radius:12px;
+    margin:0 0 22px;min-height:22px;
+  }
+  .search-caption::before{
+    content:"";flex-shrink:0;width:7px;height:7px;border-radius:50%;
+    background:#1a8a7a;
   }
   .search-demo-stage{
     min-height:480px;overflow:visible;
@@ -283,6 +290,10 @@
   }
   .search-cols-head > div{padding:11px 18px;}
   .search-rows-wrap{position:relative;flex:1;overflow:visible;}
+
+  /* Shared: let a fixed-column table scroll horizontally rather than clip
+     or squash its columns when the container is narrower than its content. */
+  .table-hscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
   .search-company-row{
     border-bottom:1px solid var(--line);
     opacity:0;transform:translateY(8px);
@@ -742,7 +753,14 @@
   }
   .crm-substage.stage-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
 
-  .crm-company-card{max-width:480px;}
+  .crm-company-grid{
+    display:grid;grid-template-columns:repeat(3, 1fr);gap:16px;
+  }
+  .crm-company-card{display:flex;flex-direction:column;}
+  .crm-company-card .crm-add-btn{margin-top:auto;align-self:flex-start;}
+  @media(max-width:900px){
+    .crm-company-grid{grid-template-columns:1fr;}
+  }
   .crm-company-name{margin:0 0 12px;font-size:19px;font-weight:800;color:var(--ink);}
   .crm-company-summary{font-size:13px;color:var(--ink-dim);line-height:1.6;margin:0 0 22px;}
   .crm-add-btn{
@@ -915,14 +933,16 @@
             <h4 id="search-results-title">Top matches</h4>
             <span class="search-found-pill"><span class="dot"></span><span id="search-found-count">0 accounts found</span></span>
           </div>
-          <div class="search-cols-head search-row-grid">
-            <div>Company</div>
-            <div>Fit</div>
-            <div>Stage</div>
-            <div class="search-col-location">Location</div>
-            <div class="search-col-evidence">Evidence</div>
+          <div class="table-hscroll">
+            <div class="search-cols-head search-row-grid">
+              <div>Company</div>
+              <div>Fit</div>
+              <div>Stage</div>
+              <div class="search-col-location">Location</div>
+              <div class="search-col-evidence">Evidence</div>
+            </div>
+            <div class="search-rows-wrap" id="search-rows-wrap"></div>
           </div>
-          <div class="search-rows-wrap" id="search-rows-wrap"></div>
 
           <div class="search-cursor" id="search-cursor">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#18170f" stroke="#fff" stroke-width="1"><path d="M5 3l14 8-6 2-2 6-6-16z"/></svg>
@@ -945,16 +965,18 @@
     <div class="rnd-stage-wrap">
       <div class="rnd-table-stage" id="rnd-table-stage">
         <div class="rnd-table" id="rnd-table">
-          <div class="rnd-row rnd-head-row rnd-row-grid">
-            <div>Program</div>
-            <div>Overall</div>
-            <div>Score</div>
-            <div>Decision</div>
-            <div class="rnd-col-dim">Manufacturing<br>timing <span class="rnd-weight">16%</span></div>
-            <div class="rnd-col-dim">Modality<br>fit <span class="rnd-weight">14%</span></div>
-            <div class="rnd-col-dim">No committed<br>partner <span class="rnd-weight">12%</span></div>
+          <div class="table-hscroll">
+            <div class="rnd-row rnd-head-row rnd-row-grid">
+              <div>Program</div>
+              <div>Overall</div>
+              <div>Score</div>
+              <div>Decision</div>
+              <div class="rnd-col-dim">Manufacturing<br>timing <span class="rnd-weight">16%</span></div>
+              <div class="rnd-col-dim">Modality<br>fit <span class="rnd-weight">14%</span></div>
+              <div class="rnd-col-dim">No committed<br>partner <span class="rnd-weight">12%</span></div>
+            </div>
+            <div id="rnd-rows-wrap"></div>
           </div>
-          <div id="rnd-rows-wrap"></div>
         </div>
       </div>
 
@@ -1114,6 +1136,8 @@
       <p>As WuXi Biologics, monitor account signals and ask an AI copilot how to act on them.</p>
     </div>
 
+    <p class="search-caption" id="ci-caption"><span id="ci-caption-text">Reviewing Biohaven's account signals and recommended AI copilot questions.</span></p>
+
     <div class="ci-grid">
 
       <!-- COLUMN 1: Account -->
@@ -1225,24 +1249,53 @@
       <p>As WuXi Biologics, push BioLens account intelligence straight into your Salesforce CRM.</p>
     </div>
 
-    <p class="search-caption" id="crm-caption"><span id="crm-caption-text">Review AbCellera Biologics Inc. in BioLens, then push it to Salesforce.</span></p>
+    <p class="search-caption" id="crm-caption"><span id="crm-caption-text">Review an account in BioLens, then push it to Salesforce.</span></p>
 
     <div class="crm-stage-wrap">
 
-      <!-- STAGE 1: BioLens company card -->
+      <!-- STAGE 1: BioLens company cards -->
       <div class="crm-substage stage-visible" id="crm-company-stage">
-        <div class="cdmo-card crm-company-card">
-          <h3 class="crm-company-name">AbCellera Biologics Inc.</h3>
-          <div class="cdmo-meta-row" style="margin-bottom:14px;">
-            <span>&#127464;&#127462; British Columbia, Canada</span>
-            <span>&#128197; 2012</span>
-            <span>&#128101; 561</span>
+        <div class="crm-company-grid">
+          <div class="cdmo-card crm-company-card">
+            <h3 class="crm-company-name">AbCellera Biologics Inc.</h3>
+            <div class="cdmo-meta-row" style="margin-bottom:14px;">
+              <span>&#127464;&#127462; British Columbia, Canada</span>
+              <span>&#128197; 2012</span>
+              <span>&#128101; 561</span>
+            </div>
+            <p class="crm-company-summary">High-priority BD target: $200M public offering, strong Phase 2 results, and an active manufacturing vendor evaluation window.</p>
+            <button class="crm-add-btn" data-company="abcellera">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 15 8.05 4.5 4.5 0 0 1 17.5 17H6Z"/></svg>
+              Add to Salesforce
+            </button>
           </div>
-          <p class="crm-company-summary">High-priority BD target: $200M public offering, strong Phase 2 results, and an active manufacturing vendor evaluation window.</p>
-          <button class="crm-add-btn" id="crm-add-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 15 8.05 4.5 4.5 0 0 1 17.5 17H6Z"/></svg>
-            Add to Salesforce
-          </button>
+
+          <div class="cdmo-card crm-company-card">
+            <h3 class="crm-company-name">Biohaven, Ltd.</h3>
+            <div class="cdmo-meta-row" style="margin-bottom:14px;">
+              <span>&#127482;&#127480; New Haven, Connecticut</span>
+              <span>&#128197; 2022</span>
+              <span>&#128101; 274</span>
+            </div>
+            <p class="crm-company-summary">High-priority BD target: $400M non-dilutive funding from SK Biopharmaceuticals and a pivotal-stage biologics pipeline.</p>
+            <button class="crm-add-btn" data-company="biohaven">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 15 8.05 4.5 4.5 0 0 1 17.5 17H6Z"/></svg>
+              Add to Salesforce
+            </button>
+          </div>
+
+          <div class="cdmo-card crm-company-card">
+            <h3 class="crm-company-name">Apogee Therapeutics</h3>
+            <div class="cdmo-meta-row" style="margin-bottom:14px;">
+              <span>&#127482;&#127480; Waltham, Massachusetts</span>
+              <span>&#128197; 2022</span>
+            </div>
+            <p class="crm-company-summary">High-priority BD target: Phase 2 mAb pipeline with strong modality fit and no disclosed manufacturing partner.</p>
+            <button class="crm-add-btn" data-company="apogee">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 15 8.05 4.5 4.5 0 0 1 17.5 17H6Z"/></svg>
+              Add to Salesforce
+            </button>
+          </div>
         </div>
       </div>
 
@@ -1273,7 +1326,7 @@
               <div class="crm-sf-account-header">
                 <div>
                   <div class="crm-sf-breadcrumb">Account</div>
-                  <h4>AbCellera Biologics Inc.</h4>
+                  <h4 id="crm-sf-account-name">AbCellera Biologics Inc.</h4>
                 </div>
                 <div class="crm-sf-header-btns"><span>Follow</span><span>Edit</span></div>
               </div>
@@ -2092,6 +2145,11 @@
     });
   }
 
+  function setCiCaption(text){
+    const el = document.getElementById('ci-caption-text');
+    if(el) el.textContent = text;
+  }
+
   async function askCiQuestion(idx){
     ciGen += 1;
     clearCiTimers();
@@ -2104,12 +2162,14 @@
     document.getElementById('ci-report-card').hidden = true;
     document.getElementById('ci-report-card').classList.remove('shown');
     document.getElementById('ci-report-name').textContent = q.report;
+    setCiCaption('Asking the AI copilot to answer the selected question.');
 
     const answerEl = document.getElementById('ci-answer-text');
     await ciWait(300);
     if(myGen !== ciGen) return;
     await ciTypeAnswer(answerEl, q.answer, myGen);
     if(myGen !== ciGen) return;
+    setCiCaption('Reviewing the AI copilot\'s recommendation.');
 
     await ciWait(400);
     if(myGen !== ciGen) return;
@@ -2118,6 +2178,7 @@
     await ciWait(30);
     if(myGen !== ciGen) return;
     reportCard.classList.add('shown');
+    setCiCaption('Report generated and ready to download.');
   }
 
   function resetCiDemo(){
@@ -2125,6 +2186,7 @@
     clearCiTimers();
     document.getElementById('ci-copilot-answer').classList.remove('active');
     document.getElementById('ci-copilot-idle').classList.remove('hidden-away');
+    setCiCaption("Reviewing Biohaven's account signals and recommended AI copilot questions.");
   }
 
   document.querySelectorAll('.ci-question-card').forEach(card => {
@@ -2134,33 +2196,72 @@
   document.getElementById('ci-back-btn').addEventListener('click', resetCiDemo);
 
   /* ---------- CRM sync: BioLens -> Salesforce ---------- */
-  const CRM_LIST_ROWS = [
-    { name: 'Apogee Therapeutics', industry: 'Biotechnology', owner: 'bpfaff' },
+  const CRM_FILLER_ROWS = [
     { name: 'MoonLake Immunotherapeutics', industry: 'Biotechnology', owner: 'bpfaff' },
     { name: 'Cullinan Therapeutics', industry: 'Biotechnology', owner: 'jwams' },
     { name: 'Sutro Biopharma', industry: 'Biotechnology', owner: 'jwams' },
     { name: 'Vir Biotechnology', industry: 'Biotechnology', owner: 'tsham' },
-    { name: 'Adagene', industry: 'Biotechnology', owner: 'tsham' },
-    { name: 'AbCellera Biologics Inc.', industry: 'Biotechnology', owner: 'WuXi BD', isNew: true }
+    { name: 'Adagene', industry: 'Biotechnology', owner: 'tsham' }
   ];
 
-  const CRM_FIELDS = [
-    { label: 'Account Owner', value: 'WuXi Biologics BD' },
-    { label: 'Website', value: 'abcellera.com' },
-    { label: 'Employees', value: '561' },
-    { label: 'Founded', value: '2012' },
-    { label: 'Type', value: 'Public Company' },
-    { label: 'BioLens Priority Score', value: 'High &middot; 24 signals', synced: true },
-    { label: 'Primary Focus (BioLens)', value: "Women's Health, Immunology, Oncology", synced: true },
-    { label: 'Recommended Action (BioLens)', value: 'Initiate manufacturing partnership outreach', synced: true }
-  ];
-
-  const CRM_CONTACTS = [
-    { name: 'Mark Skoog', title: 'Vice President of Manufacturing', email: 'mark.skoog@abcellera.com' },
-    { name: 'Mary Helstad', title: 'Senior Director, Manufacturing Operations', email: 'mary.helstad@abcellera.com' },
-    { name: 'David Chen', title: 'Chief Executive Officer', email: 'david.chen@abcellera.com' },
-    { name: 'Priya Nandakumar', title: 'Chief Scientific Officer', email: 'priya.nandakumar@abcellera.com' }
-  ];
+  const CRM_COMPANIES = {
+    abcellera: {
+      name: 'AbCellera Biologics Inc.',
+      fields: [
+        { label: 'Account Owner', value: 'WuXi Biologics BD' },
+        { label: 'Website', value: 'abcellera.com' },
+        { label: 'Employees', value: '561' },
+        { label: 'Founded', value: '2012' },
+        { label: 'Type', value: 'Public Company' },
+        { label: 'BioLens Priority Score', value: 'High &middot; 24 signals', synced: true },
+        { label: 'Primary Focus (BioLens)', value: "Women's Health, Immunology, Oncology", synced: true },
+        { label: 'Recommended Action (BioLens)', value: 'Initiate manufacturing partnership outreach', synced: true }
+      ],
+      contacts: [
+        { name: 'Mark Skoog', title: 'Vice President of Manufacturing', email: 'mark.skoog@abcellera.com' },
+        { name: 'Mary Helstad', title: 'Senior Director, Manufacturing Operations', email: 'mary.helstad@abcellera.com' },
+        { name: 'David Chen', title: 'Chief Executive Officer', email: 'david.chen@abcellera.com' },
+        { name: 'Priya Nandakumar', title: 'Chief Scientific Officer', email: 'priya.nandakumar@abcellera.com' }
+      ]
+    },
+    biohaven: {
+      name: 'Biohaven, Ltd.',
+      fields: [
+        { label: 'Account Owner', value: 'WuXi Biologics BD' },
+        { label: 'Website', value: 'biohaven.com' },
+        { label: 'Employees', value: '274' },
+        { label: 'Founded', value: '2022' },
+        { label: 'Type', value: 'Public Company' },
+        { label: 'BioLens Priority Score', value: 'High &middot; 27 signals', synced: true },
+        { label: 'Primary Focus (BioLens)', value: 'ADCs, recombinant protein degraders', synced: true },
+        { label: 'Recommended Action (BioLens)', value: 'Initiate outreach following $400M funding round', synced: true }
+      ],
+      contacts: [
+        { name: 'Elena Marsh', title: 'VP, Manufacturing &amp; Supply Chain', email: 'elena.marsh@biohaven.com' },
+        { name: 'Tom Reyes', title: 'Director, CMC Operations', email: 'tom.reyes@biohaven.com' },
+        { name: 'Sarah Kim', title: 'Chief Executive Officer', email: 'sarah.kim@biohaven.com' },
+        { name: 'James Whitfield', title: 'Chief Scientific Officer', email: 'james.whitfield@biohaven.com' }
+      ]
+    },
+    apogee: {
+      name: 'Apogee Therapeutics',
+      fields: [
+        { label: 'Account Owner', value: 'WuXi Biologics BD' },
+        { label: 'Website', value: 'apogeetherapeutics.com' },
+        { label: 'Founded', value: '2022' },
+        { label: 'Type', value: 'Public Company' },
+        { label: 'BioLens Priority Score', value: 'High', synced: true },
+        { label: 'Primary Focus (BioLens)', value: 'Atopic dermatitis, IL-13/IL-31 monoclonal antibodies', synced: true },
+        { label: 'Recommended Action (BioLens)', value: 'Position for late-stage manufacturing ahead of Phase 3', synced: true }
+      ],
+      contacts: [
+        { name: 'Michael Torres', title: 'VP, Manufacturing', email: 'michael.torres@apogeetherapeutics.com' },
+        { name: 'Lisa Chen', title: 'Director, Process Development', email: 'lisa.chen@apogeetherapeutics.com' },
+        { name: 'Robert Hayes', title: 'Chief Executive Officer', email: 'robert.hayes@apogeetherapeutics.com' },
+        { name: 'Anita Desai', title: 'Chief Scientific Officer', email: 'anita.desai@apogeetherapeutics.com' }
+      ]
+    }
+  };
 
   let crmGen = 0;
   let crmTimers = [];
@@ -2202,8 +2303,11 @@
     btn.addEventListener('click', () => showCrmSubtab(btn.dataset.sub));
   });
 
-  function renderCrmSalesforce(){
-    document.getElementById('crm-sf-list').innerHTML = CRM_LIST_ROWS.map(r => `
+  function renderCrmSalesforce(company){
+    const listRows = CRM_FILLER_ROWS.concat([
+      { name: company.name, industry: 'Biotechnology', owner: 'WuXi BD', isNew: true }
+    ]);
+    document.getElementById('crm-sf-list').innerHTML = listRows.map(r => `
       <div class="crm-sf-row${r.isNew ? ' crm-sf-row-new' : ''}" ${r.isNew ? 'id="crm-sf-new-row"' : ''}>
         <span>${r.name}${r.isNew ? '<span class="crm-new-badge">New</span>' : ''}</span>
         <span>${r.industry}</span>
@@ -2211,14 +2315,18 @@
       </div>
     `).join('');
 
-    document.getElementById('crm-sf-fields').innerHTML = CRM_FIELDS.map(f => `
+    document.getElementById('crm-sf-account-name').textContent = company.name;
+
+    document.getElementById('crm-sf-fields').innerHTML = company.fields.map(f => `
       <div class="crm-field-row${f.synced ? ' synced' : ''}">
         <span class="crm-field-label">${f.synced ? '<span class="bolt">&#9889;</span>' : ''}${f.label}</span>
         <span class="crm-field-value">${f.value}</span>
       </div>
     `).join('');
 
-    document.getElementById('crm-sf-contacts').innerHTML = CRM_CONTACTS.map(c => `
+    const contactsHead = document.querySelector('#crm-sub-contacts .crm-sf-section-title');
+    if(contactsHead) contactsHead.textContent = `Related Contacts (${company.contacts.length})`;
+    document.getElementById('crm-sf-contacts').innerHTML = company.contacts.map(c => `
       <div class="crm-contact-row">
         <span>${c.name}</span>
         <span>${c.title}</span>
@@ -2228,11 +2336,12 @@
     `).join('');
   }
 
-  async function runCrmSync(myGen){
-    renderCrmSalesforce();
+  async function runCrmSync(companyKey, myGen){
+    const company = CRM_COMPANIES[companyKey];
+    renderCrmSalesforce(company);
     showCrmStage('sf');
     showCrmSubtab('accounts');
-    setCrmCaption('Pushing AbCellera Biologics Inc. to Salesforce.');
+    setCrmCaption(`Pushing ${company.name} to Salesforce.`);
 
     await crmWait(350);
     if(myGen !== crmGen) return;
@@ -2246,7 +2355,7 @@
     if(myGen !== crmGen) return;
     const newRow = document.getElementById('crm-sf-new-row');
     if(newRow) newRow.classList.add('pulse');
-    setCrmCaption('AbCellera Biologics Inc. added as a new account.');
+    setCrmCaption(`${company.name} added as a new account.`);
     await crmWait(750);
     if(myGen !== crmGen) return;
 
@@ -2278,21 +2387,23 @@
       fitWrapToChild('.crm-stage-wrap', '#crm-sf-stage');
     }
     if(myGen !== crmGen) return;
-    setCrmCaption('AbCellera Biologics Inc. and its decision makers are now synced to Salesforce.');
+    setCrmCaption(`${company.name} and its decision makers are now synced to Salesforce.`);
   }
 
   function resetCrmDemo(){
     crmGen += 1;
     clearCrmTimers();
     showCrmStage('company');
-    setCrmCaption('Review AbCellera Biologics Inc. in BioLens, then push it to Salesforce.');
+    setCrmCaption('Review an account in BioLens, then push it to Salesforce.');
   }
 
-  document.getElementById('crm-add-btn').addEventListener('click', () => {
-    crmGen += 1;
-    clearCrmTimers();
-    const myGen = crmGen;
-    runCrmSync(myGen);
+  document.querySelectorAll('.crm-add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      crmGen += 1;
+      clearCrmTimers();
+      const myGen = crmGen;
+      runCrmSync(btn.dataset.company, myGen);
+    });
   });
 
   document.getElementById('crm-back-btn').addEventListener('click', resetCrmDemo);
