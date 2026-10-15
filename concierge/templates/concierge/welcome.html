@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root{
     --ink:#0f172a;
@@ -400,6 +401,40 @@
     });
   }
 
+  // ---------- notification ----------
+  // Same EmailJS mechanism as the workspace request on the home page.
+  const EMAILJS_PUBLIC_KEY = '0ocTm7GezyqScofEq';
+  const EMAILJS_SERVICE_ID = 'service_3pw84b6';
+  const EMAILJS_TEMPLATE_ID = 'template_gink26n';
+  try { emailjs.init({publicKey: EMAILJS_PUBLIC_KEY}); } catch (e) {}
+
+  async function notifyWelcome(info) {
+    const labelOf = (list, ids) => ids.map(id => (list.find(o => o.id === id) || {label: id}).label).join(', ') || '—';
+    const summary = [
+      `title: ${info.title || '—'}`,
+      `domain: ${info.domain || '—'}`,
+      `on attendee list: ${info.listed ? 'yes' : 'no'}`,
+      `modality focus: ${labelOf(MODALITIES, info.modalities)}`,
+      `programs: ${labelOf(PHASES, info.phases)}`,
+      `geographies: ${labelOf(GEOS, info.geos)}`,
+    ].join(', ');
+    try {
+      // Race a timeout so a slow send can't hold the visitor on this screen.
+      await Promise.race([
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          subject: 'BioLens Concierge — Welcome questions completed',
+          guest_name: info.name,
+          guest_email: info.email,
+          organization: info.company,
+          details_summary: summary,
+        }),
+        sleep(4000),
+      ]);
+    } catch (err) {
+      console.log('Email notification failed (non-blocking):', err);
+    }
+  }
+
   // ---------- persistence ----------
   async function save(fields) {
     const body = {...fields};
@@ -514,8 +549,13 @@
     setProgress(6);
 
     const first = (done.first_name || person.name.split(' ')[0] || '').trim();
+    const finalEmail = useDirEmail ? (person.email || '') : email;
+    const notified = notifyWelcome({
+      name: person.name, title, company, domain, email: finalEmail,
+      listed: !!person.id, modalities: mods, phases, geos,
+    });
     await bot(`You’re all set${first ? ', ' + first : ''} ✨`, 'Opening your concierge…');
-    await sleep(1400);
+    await Promise.all([sleep(1400), notified]);
     location.replace('/');
   }
 
