@@ -6,21 +6,51 @@ so it is gitignored. If it's missing the welcome flow still works through the
 """
 import json
 import re
-from functools import lru_cache
 from pathlib import Path
 
 DATA_PATH = Path(__file__).resolve().parent / 'data' / 'cdmo_live_directory.json'
 
 
-@lru_cache(maxsize=1)
-def _load():
+_cache = None
+
+
+def _from_db():
+    from .models import DirectoryCompany, DirectoryPerson
+    companies = {c.key: {'name': c.name, 'segment': c.segment, 'domain': c.domain,
+                         'modalities': c.modalities, 'exhibitor': c.exhibitor}
+                 for c in DirectoryCompany.objects.all()}
+    if not companies:
+        return None
+    people = {p.id: {'id': p.id, 'name': p.name, 'title': p.title, 'company': p.company_id, 'email': p.email}
+              for p in DirectoryPerson.objects.all()}
+    return companies, people
+
+
+def _from_file():
     try:
         raw = json.loads(DATA_PATH.read_text())
     except (OSError, ValueError):
+        return None
+    return raw['companies'], {p['id']: p for p in raw['people']}
+
+
+def _load():
+    """Directory from the database (what production uses), else the local JSON.
+    An empty result isn't cached, so loading the data takes effect without a restart."""
+    global _cache
+    if _cache is not None:
+        return _cache
+    try:
+        loaded = _from_db()
+    except Exception:  # tables not migrated yet
+        loaded = None
+    loaded = loaded or _from_file()
+    if not loaded:
         return {'companies': {}, 'people': {}, 'index': []}
-    people = {p['id']: p for p in raw['people']}
-    index = [(p['id'], f"{p['name']} {raw['companies'][p['company']]['name']}".lower()) for p in raw['people']]
-    return {'companies': raw['companies'], 'people': people, 'index': index}
+    companies, people = loaded
+    index = [(pid, f"{p['name']} {companies[p['company']]['name']}".lower()) for pid, p in people.items()]
+    _cache = {'companies': companies, 'people': people, 'index': index}
+    return _cache
 
 
 def _company_for(person):

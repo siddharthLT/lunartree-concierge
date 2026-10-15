@@ -69,3 +69,33 @@ class Visitor(models.Model):
     def first_name(self):
         parts = [p for p in self.name.split() if p.lower().rstrip('.') not in {'dr', 'mr', 'ms', 'mrs', 'prof', 'professor'}]
         return parts[0] if parts else ''
+
+
+class DirectoryCompany(models.Model):
+    """CDMO Live attendee company (seller side). Loaded by `manage.py load_directory`."""
+    key = models.CharField(max_length=200, primary_key=True)
+    name = models.CharField(max_length=200)
+    segment = models.CharField(max_length=40, blank=True)
+    domain = models.CharField(max_length=200, blank=True)
+    modalities = models.JSONField(default=list, blank=True)
+    exhibitor = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'directory companies'
+
+    def __str__(self):
+        return self.name
+
+
+class DirectoryPerson(models.Model):
+    id = models.CharField(max_length=40, primary_key=True)
+    name = models.CharField(max_length=200)
+    title = models.CharField(max_length=300, blank=True)
+    company = models.ForeignKey(DirectoryCompany, on_delete=models.CASCADE, related_name='people')
+    email = models.CharField(max_length=254, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'directory people'
+
+    def __str__(self):
+        return f"{self.name} ({self.company_id})"
