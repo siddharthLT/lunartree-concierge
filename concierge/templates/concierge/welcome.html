@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Welcome — Lunartree Concierge</title>
+<link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f172a;
+    --ink-dim:#475569;
+    --ink-faint:#94a3b8;
+    --bg:#f1f5f9;
+    --panel:#ffffff;
+    --chip:#e2e8f0;
+    --line:rgba(15,23,42,0.10);
+    --accent:#3654e0;
+    --error:#c23b34;
+    --shadow-card:0 1px 2px rgba(15,23,42,.05), 0 10px 28px -14px rgba(15,23,42,.18);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  [hidden]{display:none !important;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 45%,#e2e8f0 100%) fixed;
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.4;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    min-height:100dvh;
+  }
+  button,input{font:inherit;color:inherit;}
+
+  #particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .app{
+    position:relative;z-index:1;
+    max-width:520px;
+    margin:0 auto;
+    min-height:100dvh;
+    padding:max(20px, env(safe-area-inset-top)) 20px 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:18px;letter-spacing:-0.01em;}
+  .brand img{width:38px;height:38px;border-radius:11px;display:block;background:#fff;padding:3px;border:1px solid var(--line);box-shadow:0 2px 6px rgba(15,23,42,.10), 0 8px 20px -8px rgba(15,23,42,.25);}
+  .event{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
+    border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:600;
+  }
+  .progress{height:3px;background:var(--chip);border-radius:3px;overflow:hidden;margin-bottom:36px;}
+  .progress i{display:block;height:100%;width:0;background:var(--ink);border-radius:3px;transition:width .5s cubic-bezier(.2,.8,.2,1);}
+
+  #chat{flex:1;display:flex;flex-direction:column;gap:18px;padding-bottom:40px;}
+
+  /* ---------- Messages ---------- */
+  .msg{animation:rise .45s cubic-bezier(.2,.8,.2,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .msg.bot{font-size:30px;font-weight:800;letter-spacing:-0.03em;line-height:1.12;}
+  .msg.bot .muted{color:var(--ink-faint);}
+  .msg.bot.small{font-size:20px;}
+  .typing{display:inline-flex;gap:5px;padding:10px 0;}
+  .typing i{width:8px;height:8px;border-radius:50%;background:var(--ink-faint);animation:blink 1s infinite ease-in-out;}
+  .typing i:nth-child(2){animation-delay:.15s;}
+  .typing i:nth-child(3){animation-delay:.3s;}
+  @keyframes blink{0%,80%,100%{opacity:.25;transform:scale(.85);}40%{opacity:1;transform:scale(1);}}
+
+  .msg.user{
+    align-self:flex-end;
+    background:var(--ink);color:#fff;
+    border-radius:20px 20px 6px 20px;
+    padding:11px 16px;
+    font-size:15px;font-weight:600;
+    max-width:88%;
+    display:flex;align-items:center;gap:8px;
+  }
+  .msg.user img{width:18px;height:18px;border-radius:4px;background:#fff;}
+
+  /* ---------- Option pills ---------- */
+  .options{display:flex;flex-wrap:wrap;gap:9px;}
+  .options.stack{flex-direction:column;align-items:stretch;}
+  .pill{
+    appearance:none;border:1px solid var(--line);background:var(--panel);
+    border-radius:999px;padding:12px 17px;
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:15px;font-weight:600;letter-spacing:-0.01em;
+    cursor:pointer;
+    box-shadow:var(--shadow-card);
+    animation:rise .4s cubic-bezier(.2,.8,.2,1) both;
+    transition:transform .12s, background .15s, color .15s, border-color .15s;
+    text-align:left;
+  }
+  .pill:active{transform:scale(.97);}
+  .pill .ico{font-size:18px;line-height:1;}
+  .pill .ico-img{width:20px;height:20px;border-radius:5px;display:block;}
+  .pill .side{margin-left:auto;padding-left:10px;font-size:12px;font-weight:500;color:var(--ink-faint);}
+  .pill .sub{font-size:12px;font-weight:500;color:var(--ink-faint);}
+  .pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .pill.on .sub,.pill.on .side{color:rgba(255,255,255,.6);}
+  .pill.on::after{content:'✓';font-size:13px;margin-left:2px;}
+  .pill.wide{justify-content:flex-start;border-radius:18px;padding:13px 16px;}
+  .pill.ghost{background:transparent;box-shadow:none;border-style:dashed;color:var(--ink-dim);}
+  .pill.ghost.on{background:var(--ink);color:#fff;}
+
+  .cta-row{display:flex;gap:10px;margin-top:4px;animation:rise .4s .1s both;}
+  .cta{
+    flex:1;appearance:none;border:0;cursor:pointer;
+    background:var(--ink);color:#fff;
+    border-radius:16px;padding:16px;
+    font-size:15px;font-weight:700;letter-spacing:-0.01em;
+    transition:transform .12s, opacity .15s;
+  }
+  .cta:active{transform:scale(.98);}
+  .cta[disabled]{opacity:.35;cursor:default;}
+  .cta.light{flex:0 0 auto;background:var(--chip);color:var(--ink);padding:16px 20px;}
+
+  /* ---------- Search + text input ---------- */
+  .field{
+    display:flex;align-items:center;gap:10px;
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    padding:0 16px;box-shadow:var(--shadow-card);
+    animation:rise .4s both;
+  }
+  .field:focus-within{border-color:var(--ink);}
+  .field svg{flex:none;color:var(--ink-faint);}
+  .field input{
+    flex:1;min-width:0;border:0;outline:0;background:transparent;
+    padding:17px 0;font-size:16px;font-weight:500; /* 16px stops iOS zoom */
+  }
+  .field button{
+    appearance:none;border:0;background:var(--ink);color:#fff;border-radius:12px;
+    padding:9px 14px;font-weight:700;font-size:14px;cursor:pointer;
+  }
+  .field-error{color:var(--error);font-size:13px;font-weight:500;margin-top:-8px;}
+  .results{display:flex;flex-direction:column;gap:8px;}
+  .avatar{
+    flex:none;width:34px;height:34px;border-radius:50%;
+    background:var(--chip);display:grid;place-items:center;
+    font-size:13px;font-weight:700;color:var(--ink-dim);
+  }
+  .pill.on .avatar{background:rgba(255,255,255,.18);color:#fff;}
+  .who{display:flex;flex-direction:column;min-width:0;line-height:1.25;}
+  .who b{font-weight:700;font-size:15px;}
+  .who span{font-size:12px;font-weight:500;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .empty{font-size:13px;color:var(--ink-faint);padding:2px 4px;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand">
+      <img src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="">
+      <span>Lunartree</span>
+    </div>
+    <span class="event">CDMO Live</span>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  <main id="chat" aria-live="polite"></main>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const TOTAL_STEPS = 6;
+  const MODALITIES = [
+    {id:'api', icon:'💊', label:'APIs'},
+    {id:'small', icon:'⚗️', label:'Small molecule'},
+    {id:'mab', icon:'🛡️', label:'mAbs'},
+    {id:'bispecific', icon:'🔗', label:'Bispecifics'},
+    {id:'adc', icon:'🎯', label:'ADCs'},
+    {id:'protein', icon:'🧪', label:'Recombinant protein'},
+    {id:'biosimilar', icon:'🔁', label:'Biosimilars'},
+    {id:'cell', icon:'🧫', label:'Cell therapy'},
+    {id:'gene', icon:'🧬', label:'Gene therapy'},
+    {id:'editing', icon:'✂️', label:'Gene editing'},
+    {id:'radio', icon:'☢️', label:'Radiopharma'},
+    {id:'microbiome', icon:'🦠', label:'Microbiome'},
+    {id:'device', icon:'🩺', label:'Medical device'},
+    {id:'digital', icon:'📱', label:'Digital therapeutics'},
+  ];
+  const PHASES = [
+    {id:'discovery', icon:'🔬', label:'Discovery'},
+    {id:'preclinical', icon:'🐭', label:'Preclinical'},
+    {id:'phase1', icon:'1️⃣', label:'Phase 1'},
+    {id:'phase2', icon:'2️⃣', label:'Phase 2'},
+    {id:'phase3', icon:'3️⃣', label:'Phase 3'},
+    {id:'commercial', icon:'🏭', label:'Commercial'},
+  ];
+  const GEOS = [
+    {id:'nam', icon:'🌎', label:'NAM', sub:'North America'},
+    {id:'eu', icon:'🇪🇺', label:'EU', sub:'Europe'},
+    {id:'apac', icon:'🌏', label:'APAC', sub:'Asia-Pacific'},
+    {id:'mea', icon:'🌍', label:'MEA', sub:'Middle East & Africa'},
+    {id:'anz', icon:'🦘', label:'ANZ', sub:'Australia & NZ'},
+  ];
+
+  const chat = document.getElementById('chat');
+  const bar = document.getElementById('bar');
+  const SWITCHING = new URLSearchParams(location.search).has('switch');
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const state = {fresh: true, person: null};
+
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+  const cookie = name => (document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)')) || [])[1] || '';
+  const scrollDown = () => window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'smooth'});
+  const setProgress = n => { bar.style.width = (n / TOTAL_STEPS * 100) + '%'; };
+  const faviconUrl = d => `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`;
+  const initials = n => n.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+
+  async function api(path, body) {
+    const opts = body === undefined ? {} : {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'X-CSRFToken': cookie('csrftoken')},
+      body: JSON.stringify(body),
+    };
+    const res = await fetch(path, opts);
+    return res.json().catch(() => ({ok: false}));
+  }
+
+  // ---------- chat primitives ----------
+  async function bot(strong, muted, {small = false, hold = 520} = {}) {
+    const m = el('div', 'msg bot' + (small ? ' small' : ''));
+    const dots = el('span', 'typing');
+    dots.append(el('i'), el('i'), el('i'));
+    m.append(dots);
+    chat.append(m);
+    scrollDown();
+    await sleep(hold);
+    m.textContent = '';
+    m.append(document.createTextNode(strong));
+    if (muted) m.append(document.createTextNode(' '), el('span', 'muted', muted));
+    return m;
+  }
+
+  function userSay(text, iconNode) {
+    const m = el('div', 'msg user');
+    if (iconNode) m.append(iconNode);
+    m.append(document.createTextNode(text));
+    chat.append(m);
+    scrollDown();
+  }
+
+  function pillContent(o) {
+    const frag = document.createDocumentFragment();
+    if (o.avatar) frag.append(el('span', 'avatar', o.avatar));
+    if (o.favicon) {
+      const img = el('img', 'ico-img');
+      img.src = o.favicon; img.alt = ''; img.onerror = () => img.remove();
+      frag.append(img);
+    } else if (o.icon) frag.append(el('span', 'ico', o.icon));
+    if (o.title) {
+      const w = el('span', 'who');
+      w.append(el('b', '', o.label), el('span', '', o.title));
+      frag.append(w);
+    } else {
+      frag.append(el('span', '', o.label));
+      if (o.sub) frag.append(el('span', 'sub', o.sub));
+    }
+    if (o.side) frag.append(el('span', 'side', o.side));
+    return frag;
+  }
+
+  function makePills(opts, {multi = false, selected = [], stack = false} = {}) {
+    const wrap = el('div', 'options' + (stack ? ' stack' : ''));
+    const chosen = new Set(selected);
+    opts.forEach((o, i) => {
+      const b = el('button', 'pill' + (stack ? ' wide' : '') + (o.ghost ? ' ghost' : ''));
+      b.type = 'button';
+      b.style.animationDelay = (i * 55) + 'ms';
+      b.append(pillContent(o));
+      if (multi && chosen.has(o.id)) b.classList.add('on');
+      b.dataset.id = o.id;
+      wrap.append(b);
+    });
+    return {wrap, chosen};
+  }
+
+  // Single or multi choice. Resolves with array of chosen ids.
+  function askPills(opts, {multi = false, selected = [], stack = false, cta = 'Continue', skip = false, echo} = {}) {
+    return new Promise(resolve => {
+      const {wrap, chosen} = makePills(opts, {multi, selected, stack});
+      chat.append(wrap);
+      let row = null, go = null;
+      const finish = ids => {
+        wrap.remove(); if (row) row.remove();
+        const picked = opts.filter(o => ids.includes(o.id));
+        if (echo) echo(picked); else defaultEcho(picked);
+        resolve(ids);
+      };
+      wrap.addEventListener('click', e => {
+        const b = e.target.closest('.pill'); if (!b) return;
+        const id = b.dataset.id;
+        if (!multi) return finish([id]);
+        chosen.has(id) ? chosen.delete(id) : chosen.add(id);
+        b.classList.toggle('on');
+        go.disabled = !skip && chosen.size === 0;
+        go.textContent = chosen.size ? `${cta} · ${chosen.size}` : cta;
+      });
+      if (multi) {
+        row = el('div', 'cta-row');
+        go = el('button', 'cta', chosen.size ? `${cta} · ${chosen.size}` : cta);
+        go.type = 'button';
+        go.disabled = !skip && chosen.size === 0;
+        go.addEventListener('click', () => finish([...chosen]));
+        row.append(go);
+        if (skip) {
+          const s = el('button', 'cta light', 'Skip'); s.type = 'button';
+          s.addEventListener('click', () => finish([]));
+          row.append(s);
+        }
+        chat.append(row);
+      }
+      scrollDown();
+    });
+  }
+
+  function defaultEcho(picked) {
+    if (!picked.length) return userSay('Skip');
+    const lead = picked.slice(0, 3).map(o => (o.icon ? o.icon + ' ' : '') + o.label).join(', ');
+    userSay(picked.length > 3 ? `${lead} +${picked.length - 3}` : lead);
+  }
+
+  function askText({placeholder, type = 'text', button = 'Next', validate, prefill = ''}) {
+    return new Promise(resolve => {
+      const f = el('form', 'field');
+      f.noValidate = true;
+      const input = el('input'); input.type = type; input.placeholder = placeholder; input.value = prefill;
+      input.autocomplete = type === 'email' ? 'email' : 'off';
+      if (type === 'email') input.inputMode = 'email';
+      input.autocapitalize = type === 'text' ? 'words' : 'none';
+      const btn = el('button', '', button); btn.type = 'submit';
+      f.append(input, btn);
+      const err = el('div', 'field-error'); err.hidden = true;
+      chat.append(f, err);
+      scrollDown();
+      input.focus({preventScroll: true});
+      f.addEventListener('submit', e => {
+        e.preventDefault();
+        const v = input.value.trim();
+        const problem = validate ? validate(v) : (v ? '' : 'Required');
+        if (problem) { err.textContent = problem; err.hidden = false; return; }
+        f.remove(); err.remove();
+        resolve(v);
+      });
+    });
+  }
+
+  // Name search against the attendee directory.
+  function askSearch() {
+    return new Promise(resolve => {
+      const f = el('div', 'field');
+      f.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+      const input = el('input'); input.type = 'search'; input.placeholder = 'Type your name or company';
+      input.autocomplete = 'off'; input.autocapitalize = 'words'; input.enterKeyHint = 'search';
+      f.append(input);
+      const results = el('div', 'results');
+      const none = el('button', 'pill ghost wide'); none.type = 'button';
+      none.append(el('span', 'ico', '🙋'), el('span', '', "I'm not on the list"));
+      none.style.animationDelay = '200ms';
+      chat.append(f, results, none);
+      scrollDown();
+      input.focus({preventScroll: true});
+
+      let timer = 0, seq = 0;
+      input.addEventListener('input', () => {
+        clearTimeout(timer);
+        const q = input.value.trim();
+        if (q.length < 2) { results.replaceChildren(); return; }
+        timer = setTimeout(async () => {
+          const mine = ++seq;
+          const data = await fetch('/api/welcome/search/?q=' + encodeURIComponent(q)).then(r => r.json()).catch(() => ({results: []}));
+          if (mine !== seq) return;
+          results.replaceChildren();
+          if (!data.results.length) { results.append(el('div', 'empty', 'No match — try another spelling, or pick “not on the list”.')); return; }
+          data.results.forEach((p, i) => {
+            const b = el('button', 'pill wide'); b.type = 'button';
+            b.style.animationDelay = (i * 40) + 'ms';
+            b.append(pillContent({avatar: initials(p.name), label: p.name, title: [p.title, p.company].filter(Boolean).join(' · ')}));
+            b.addEventListener('click', () => { cleanup(); resolve({id: p.id, name: p.name}); });
+            results.append(b);
+          });
+        }, 160);
+      });
+      none.addEventListener('click', () => { cleanup(); resolve(null); });
+      function cleanup() { f.remove(); results.remove(); none.remove(); }
+    });
+  }
+
+  // ---------- persistence ----------
+  async function save(fields) {
+    const body = {...fields};
+    if (state.fresh) { body.fresh = true; }
+    const res = await api('/api/welcome/save/', body);
+    if (res.ok) {
+      state.fresh = false;
+      try { localStorage.setItem('cl_visitor', JSON.stringify({token: res.token, name: res.first_name})); } catch (e) {}
+    }
+    return res;
+  }
+
+  // ---------- the conversation ----------
+  async function run() {
+    // Cookie missing but localStorage remembers us (e.g. cookies purged)? Restore silently.
+    if (!SWITCHING) {
+      try {
+        const saved = JSON.parse(localStorage.getItem('cl_visitor') || 'null');
+        if (saved && saved.token) {
+          const r = await api('/api/welcome/restore/', {token: saved.token});
+          if (r.ok && r.completed) { location.replace('/'); return; }
+        }
+      } catch (e) {}
+    }
+
+    // 1 — who
+    setProgress(0);
+    await bot('Hi 👋 Who are you?', 'Find yourself in the attendee list.');
+    const hit = await askSearch();
+    let person = null, company, domain = '', segment = '', email = '', useDirEmail = false, modalities = [], title = '';
+
+    if (hit) {
+      userSay(hit.name);
+      const res = await api('/api/welcome/person/' + encodeURIComponent(hit.id) + '/');
+      person = res.person;
+    }
+    setProgress(1);
+
+    if (person) {
+      title = person.title; segment = person.segment; modalities = person.modalities || [];
+      // 2 — company
+      await bot('Is this your company?');
+      const cOpts = [
+        {id: 'yes', label: person.company.name, favicon: person.company.domain ? faviconUrl(person.company.domain) : '', icon: '🏢', side: person.company.domain},
+        {id: 'other', label: 'Other', icon: '✏️', ghost: true},
+      ];
+      const [c] = await askPills(cOpts, {stack: true, echo: () => {}});
+      if (c === 'yes') {
+        company = person.company.name; domain = person.company.domain;
+        userSay(company, domain ? Object.assign(el('img'), {src: faviconUrl(domain)}) : null);
+      } else {
+        await bot('Which company?', '', {small: true, hold: 300});
+        company = await askText({placeholder: 'Company name'});
+        modalities = []; domain = ''; segment = '';
+        userSay(company);
+      }
+      setProgress(2);
+
+      // 3 — email
+      if (person.email) {
+        await bot('Is this your email?');
+        const [e] = await askPills([
+          {id: 'yes', label: person.email, icon: '✉️'},
+          {id: 'other', label: 'Use another', icon: '✏️', ghost: true},
+        ], {stack: true, echo: picked => picked[0].id === 'yes' ? userSay('✉️ Yes, that’s me') : null});
+        if (e === 'yes') useDirEmail = true;
+      }
+      if (!useDirEmail) {
+        await bot('Your work email?', '', {small: !!person.email});
+        email = await askText({placeholder: 'name@company.com', type: 'email', validate: v => /^\S+@\S+\.\S+$/.test(v) ? '' : 'Enter a valid email'});
+        userSay('✉️ ' + email);
+      }
+    } else {
+      // Not on the list — three quick questions.
+      userSay('🙋 Not on the list');
+      await bot('No problem. Your name?');
+      const name = await askText({placeholder: 'Full name'});
+      userSay(name);
+      person = {id: '', name};
+      await bot('Your company?');
+      company = await askText({placeholder: 'Company name'});
+      userSay(company);
+      await bot('Your work email?');
+      email = await askText({placeholder: 'name@company.com', type: 'email', validate: v => /^\S+@\S+\.\S+$/.test(v) ? '' : 'Enter a valid email'});
+      userSay('✉️ ' + email);
+      setProgress(2);
+    }
+
+    await save({
+      name: person.name, title, company, company_domain: domain, segment,
+      directory_id: person.id || '', email, use_directory_email: useDirEmail,
+    });
+    setProgress(3);
+
+    // 4 — modality focus (prefilled from research)
+    const prefilled = modalities.length > 0;
+    await bot('Your modality focus', prefilled ? 'Pre-filled for ' + company + '. Tweak it.' : 'Pick all that apply.');
+    const mods = await askPills(MODALITIES, {multi: true, selected: modalities, skip: true});
+    await save({modalities: mods});
+    setProgress(4);
+
+    // 5 — program stage
+    await bot('Which programs are you after?', 'Pick all that fit.');
+    const phases = await askPills(PHASES, {multi: true, skip: true});
+    await save({phases});
+    setProgress(5);
+
+    // 6 — geography
+    await bot('Where should we look?', 'Pick your regions.');
+    const geos = await askPills(GEOS, {multi: true, skip: true, cta: 'Finish'});
+    const done = await save({geographies: geos, completed: true});
+    setProgress(6);
+
+    const first = (done.first_name || person.name.split(' ')[0] || '').trim();
+    await bot(`You’re all set${first ? ', ' + first : ''} ✨`, 'Opening your concierge…');
+    await sleep(1400);
+    location.replace('/');
+  }
+
+  run();
+})();
+</script>
+{% include 'concierge/_particles.html' %}
+</body>
+</html>

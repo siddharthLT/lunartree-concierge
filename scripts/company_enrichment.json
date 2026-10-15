@@ -1,0 +1,849 @@
+{
+ "aarti pharmalabs": {
+  "domain": "aartipharmalabs.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "adare pharma solutions": {
+  "domain": "adareps.com",
+  "modalities": [
+   "small",
+   "device"
+  ]
+ },
+ "afton scientific": {
+  "domain": "aftonscientific.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "small"
+  ]
+ },
+ "alcami": {
+  "domain": "alcami.com",
+  "modalities": [
+   "small",
+   "api"
+  ]
+ },
+ "alfasigma": {
+  "domain": "alfasigma.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "allos": {
+  "domain": "",
+  "modalities": [
+   "small"
+  ]
+ },
+ "almac": {
+  "domain": "almacgroup.com",
+  "modalities": [
+   "api",
+   "small",
+   "protein"
+  ]
+ },
+ "api innovation center": {
+  "domain": "apicenter.org",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "aspen api": {
+  "domain": "aspenapi.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "august bioservices at august bio": {
+  "domain": "augustbio.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "small"
+  ]
+ },
+ "austinpx": {
+  "domain": "austinpx.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "axplora": {
+  "domain": "axplora.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "be biosol be biosol": {
+  "domain": "bebiosol.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "biosimilar"
+  ]
+ },
+ "bioduro": {
+  "domain": "bioduro.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "boehringer ingelheim bioxcellence": {
+  "domain": "boehringer-ingelheim.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "gene"
+  ]
+ },
+ "bora biologics": {
+  "domain": "borabiologics.com",
+  "modalities": [
+   "mab",
+   "protein"
+  ]
+ },
+ "bora pharmaceuticals and bora biologics": {
+  "domain": "boracdmo.com",
+  "modalities": [
+   "small",
+   "mab",
+   "protein"
+  ]
+ },
+ "boryung": {
+  "domain": "boryung.co.kr",
+  "modalities": [
+   "small"
+  ]
+ },
+ "bsp pharmaceuticals": {
+  "domain": "bsppharmaceuticals.com",
+  "modalities": [
+   "small",
+   "adc"
+  ]
+ },
+ "cambrex": {
+  "domain": "cambrex.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "carbogen amcis": {
+  "domain": "carbogen-amcis.com",
+  "modalities": [
+   "api",
+   "adc",
+   "small"
+  ]
+ },
+ "catachem": {
+  "domain": "catacheminc.com",
+  "modalities": [
+   "protein"
+  ]
+ },
+ "catalent": {
+  "domain": "catalent.com",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "gene",
+   "device"
+  ]
+ },
+ "catsci": {
+  "domain": "catsci.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "cerbios pharma": {
+  "domain": "cerbios.ch",
+  "modalities": [
+   "api",
+   "adc",
+   "small"
+  ]
+ },
+ "charles river": {
+  "domain": "criver.com",
+  "modalities": [
+   "cell",
+   "gene",
+   "mab",
+   "protein"
+  ]
+ },
+ "cohance lifesciences": {
+  "domain": "cohance.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "cramsn research": {
+  "domain": "cramsn.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "cramsn research park at cramsn research park": {
+  "domain": "cramsn.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "curia global": {
+  "domain": "curiaglobal.com",
+  "modalities": [
+   "api",
+   "small",
+   "mab",
+   "protein"
+  ]
+ },
+ "cytovance biologics": {
+  "domain": "cytovance.com",
+  "modalities": [
+   "mab",
+   "protein"
+  ]
+ },
+ "delpharm": {
+  "domain": "delpharm.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "dottikon exclusive synthesis": {
+  "domain": "dottikon.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "dr hotha s life sciences": {
+  "domain": "",
+  "modalities": []
+ },
+ "esteve cdmo": {
+  "domain": "esteve.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "eurofins cdmo alphora": {
+  "domain": "eurofins.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "f i s fabbrica italiana sintetici": {
+  "domain": "fisvi.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "fareva": {
+  "domain": "fareva.com",
+  "modalities": [
+   "small",
+   "device"
+  ]
+ },
+ "fermion": {
+  "domain": "fermion.fi",
+  "modalities": [
+   "api"
+  ]
+ },
+ "ferndale labs cdmo": {
+  "domain": "ferndalelabsmfg.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "fis": {
+  "domain": "fisvi.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "fisiopharma s r l": {
+  "domain": "fisiopharma.com",
+  "modalities": [
+   "small",
+   "api"
+  ]
+ },
+ "flamma": {
+  "domain": "flammagroup.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "forma life sciences": {
+  "domain": "formalifesciences.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "formulated solutions": {
+  "domain": "formulatedsolutions.com",
+  "modalities": [
+   "small",
+   "device"
+  ]
+ },
+ "fresenius kabi": {
+  "domain": "fresenius-kabi.com",
+  "modalities": [
+   "small",
+   "protein",
+   "biosimilar"
+  ]
+ },
+ "grand river aseptic manufacturing": {
+  "domain": "grandriverasepticmfg.com",
+  "modalities": [
+   "small",
+   "mab",
+   "protein"
+  ]
+ },
+ "grifols": {
+  "domain": "grifols.com",
+  "modalities": [
+   "protein"
+  ]
+ },
+ "haizhou pharma": {
+  "domain": "",
+  "modalities": [
+   "api"
+  ]
+ },
+ "halden pharma": {
+  "domain": "halden-pharma.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "honour lab": {
+  "domain": "honourlab.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "idt biologika": {
+  "domain": "idt-biologika.de",
+  "modalities": [
+   "gene",
+   "mab",
+   "protein"
+  ]
+ },
+ "incog biopharma services": {
+  "domain": "incogbiopharma.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "small"
+  ]
+ },
+ "indenausa com": {
+  "domain": "indena.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "jubilant ingrevia": {
+  "domain": "jubilantingrevia.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "just evotec biologics": {
+  "domain": "evotec.com",
+  "modalities": [
+   "mab",
+   "bispecific",
+   "protein"
+  ]
+ },
+ "kaneka americas holding": {
+  "domain": "kaneka.com",
+  "modalities": [
+   "api",
+   "gene"
+  ]
+ },
+ "kaneka eurogentec": {
+  "domain": "eurogentec.com",
+  "modalities": [
+   "gene",
+   "mab",
+   "protein",
+   "small"
+  ]
+ },
+ "kemwell biopharma": {
+  "domain": "kemwellbiopharma.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "small"
+  ]
+ },
+ "kimball solutions": {
+  "domain": "kimballelectronics.com",
+  "modalities": [
+   "device"
+  ]
+ },
+ "kindeva drug delivery": {
+  "domain": "kindevadd.com",
+  "modalities": [
+   "device",
+   "small"
+  ]
+ },
+ "lgm pharma": {
+  "domain": "lgmpharma.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "lifecore biomedical": {
+  "domain": "lifecore.com",
+  "modalities": [
+   "small",
+   "protein",
+   "device"
+  ]
+ },
+ "lonza": {
+  "domain": "lonza.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "cell",
+   "gene",
+   "adc"
+  ]
+ },
+ "mabxcience": {
+  "domain": "mabxience.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "biosimilar"
+  ]
+ },
+ "malta development labs": {
+  "domain": "",
+  "modalities": [
+   "small"
+  ]
+ },
+ "medichemusa com": {
+  "domain": "medichem.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "microsize micronization particle size engineering pharmaceutical development": {
+  "domain": "microsize.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "mikart": {
+  "domain": "mikart.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "milliporesigma": {
+  "domain": "sigmaaldrich.com",
+  "modalities": [
+   "api",
+   "adc",
+   "mab",
+   "gene",
+   "protein"
+  ]
+ },
+ "neuland labs": {
+  "domain": "neulandlabs.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "nextpharma": {
+  "domain": "nextpharma.com",
+  "modalities": [
+   "small",
+   "device"
+  ]
+ },
+ "olon s p a": {
+  "domain": "olonspa.it",
+  "modalities": [
+   "api",
+   "adc",
+   "small"
+  ]
+ },
+ "onyx scientific": {
+  "domain": "onyxipca.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "ophtapharm": {
+  "domain": "ophtapharm.ch",
+  "modalities": [
+   "small"
+  ]
+ },
+ "pathoquest": {
+  "domain": "pathoquest.com",
+  "modalities": [
+   "cell",
+   "gene",
+   "mab",
+   "protein"
+  ]
+ },
+ "pharmaron": {
+  "domain": "pharmaron.com",
+  "modalities": [
+   "api",
+   "small",
+   "cell",
+   "gene"
+  ]
+ },
+ "pi health sciences": {
+  "domain": "pihealthsciences.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "piramal pharma solutions": {
+  "domain": "piramalpharmasolutions.com",
+  "modalities": [
+   "adc",
+   "api",
+   "small"
+  ]
+ },
+ "porton pharma solutions": {
+  "domain": "portonpharma.com",
+  "modalities": [
+   "api",
+   "small",
+   "adc",
+   "gene"
+  ]
+ },
+ "probio": {
+  "domain": "probiocdmo.com",
+  "modalities": [
+   "gene",
+   "cell",
+   "mab",
+   "protein"
+  ]
+ },
+ "procos": {
+  "domain": "procos.it",
+  "modalities": [
+   "api"
+  ]
+ },
+ "quotient sciences": {
+  "domain": "quotientsciences.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "recipharm": {
+  "domain": "recipharm.com",
+  "modalities": [
+   "small",
+   "device"
+  ]
+ },
+ "rentschler biopharma se": {
+  "domain": "rentschler-biopharma.com",
+  "modalities": [
+   "mab",
+   "protein"
+  ]
+ },
+ "resilience": {
+  "domain": "resilience.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "gene",
+   "cell"
+  ]
+ },
+ "resilience biotechnologies": {
+  "domain": "resilience.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "gene",
+   "cell"
+  ]
+ },
+ "richman chemical": {
+  "domain": "richmanchemical.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "richman chemical at richman chemical": {
+  "domain": "richmanchemical.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "ritedose": {
+  "domain": "ritedose.com",
+  "modalities": [
+   "small",
+   "device"
+  ]
+ },
+ "rochem international": {
+  "domain": "",
+  "modalities": [
+   "api"
+  ]
+ },
+ "rois": {
+  "domain": "roiscdmo.com",
+  "modalities": [
+   "adc",
+   "small",
+   "device"
+  ]
+ },
+ "ropack": {
+  "domain": "ropack.com",
+  "modalities": [
+   "device",
+   "small"
+  ]
+ },
+ "rottendorf pharma": {
+  "domain": "rottendorf.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "sai life sciences": {
+  "domain": "sailife.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "sentiss pharmaceuticals": {
+  "domain": "sentisspharma.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "seqens": {
+  "domain": "seqens.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "ser n bioscience": {
+  "domain": "seranbio.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "sharp": {
+  "domain": "sharpservices.com",
+  "modalities": [
+   "device",
+   "small"
+  ]
+ },
+ "sinochem": {
+  "domain": "sinochem.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "sk pharmteco": {
+  "domain": "skpt.com",
+  "modalities": [
+   "api",
+   "small",
+   "cell",
+   "gene"
+  ]
+ },
+ "skyepharma": {
+  "domain": "skyepharma.fr",
+  "modalities": [
+   "small"
+  ]
+ },
+ "solvias": {
+  "domain": "solvias.com",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "cell",
+   "gene"
+  ]
+ },
+ "sterling pharma solutions": {
+  "domain": "sterlingpharmasolutions.com",
+  "modalities": [
+   "api",
+   "adc",
+   "small"
+  ]
+ },
+ "steroid s p a": {
+  "domain": "steroid.it",
+  "modalities": [
+   "api"
+  ]
+ },
+ "steroid": {
+  "domain": "steroid.it",
+  "modalities": [
+   "api"
+  ]
+ },
+ "suanfarma": {
+  "domain": "suanfarma.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "suanfarma cdmo": {
+  "domain": "suanfarma.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "syngene intl": {
+  "domain": "syngeneintl.com",
+  "modalities": [
+   "api",
+   "small",
+   "mab",
+   "protein"
+  ]
+ },
+ "tcg green chem": {
+  "domain": "tcggreenchem.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "tcg greenchem": {
+  "domain": "tcggreenchem.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "rosechem": {
+  "domain": "",
+  "modalities": [
+   "api"
+  ]
+ },
+ "tianyu pharmaq": {
+  "domain": "tianyupharm.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "upperton pharma solutions": {
+  "domain": "upperton.com",
+  "modalities": [
+   "small"
+  ]
+ },
+ "vetter": {
+  "domain": "vetter-pharma.com",
+  "modalities": [
+   "mab",
+   "protein",
+   "small",
+   "device"
+  ]
+ },
+ "vivabiotech": {
+  "domain": "vivabiotech.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "wilmington pharmatech": {
+  "domain": "wilmingtonpharmatech.com",
+  "modalities": [
+   "api",
+   "small"
+  ]
+ },
+ "zhejiang tianyu pharmaceutical": {
+  "domain": "tianyupharm.com",
+  "modalities": [
+   "api"
+  ]
+ },
+ "": {
+  "domain": "",
+  "modalities": []
+ }
+}

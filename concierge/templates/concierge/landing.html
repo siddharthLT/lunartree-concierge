@@ -20,14 +20,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   :root{
-    --ink:#18170f;
-    --ink-dim:#68665c;
-    --ink-faint:#8f8c80;
-    --bg:#f0eee8;
+    --ink:#0f172a;
+    --ink-dim:#475569;
+    --ink-faint:#94a3b8;
+    --bg:#f1f5f9;
     --panel:#ffffff;
-    --panel-hover:#fbfaf7;
-    --line:rgba(24,23,15,0.10);
-    --line-strong:rgba(24,23,15,0.18);
+    --panel-hover:#f8fafc;
+    --line:rgba(15,23,42,0.10);
+    --line-strong:rgba(15,23,42,0.18);
     --accent:#3654e0;
     --accent-bright:#2643c2;
     --accent-soft:rgba(54,84,224,0.08);
@@ -36,6 +36,16 @@
     --radius-sm:10px;
     --shadow-card:0 1px 2px rgba(24,23,15,.04), 0 10px 28px -14px rgba(24,23,15,.14);
     --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
+  }
+
+  body{background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 45%,#e2e8f0 100%) fixed;}
+  #particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  #particles-bg canvas{display:block;}
+  .brand-logo{
+    width:38px;height:38px;border-radius:11px;display:block;
+    background:#fff;padding:3px;
+    border:1px solid var(--line);
+    box-shadow:0 2px 6px rgba(15,23,42,.10), 0 8px 20px -8px rgba(15,23,42,.25);
   }
   *{box-sizing:border-box;}
   [hidden]{display:none;}
@@ -52,6 +62,7 @@
   ::selection{background:var(--accent);color:#ffffff;}
 
   .app{
+    position:relative;z-index:1;
     max-width:1120px;
     margin:0 auto;
     min-height:100vh;
@@ -75,13 +86,16 @@
     display:flex;align-items:center;gap:10px;
   }
   .topbar img.logo{
-    width:26px;height:26px;
-    border-radius:7px;
+    width:38px;height:38px;
+    border-radius:11px;
     display:block;
+    background:#fff;padding:3px;
+    border:1px solid var(--line);
+    box-shadow:0 2px 6px rgba(15,23,42,.10), 0 8px 20px -8px rgba(15,23,42,.25);
   }
   .topbar .brand-name{
-    font-weight:600;
-    font-size:15px;
+    font-weight:700;
+    font-size:17px;
     color:var(--ink);
     letter-spacing:-0.01em;
   }
@@ -324,6 +338,50 @@
     max-width:170px;
     object-fit:contain;
     display:block;
+  }
+
+  .conference-banner{
+    margin-bottom:28px;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-card);
+    aspect-ratio:3/1;
+  }
+  .conference-banner img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 58%;
+  }
+  .conference-strip{
+    display:none;
+    align-items:center;
+    gap:8px;
+    align-self:flex-start;
+    margin-bottom:18px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:#fff;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-card);
+    font-size:12px;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:.01em;
+  }
+  .conference-strip i{width:8px;height:8px;border-radius:50%;background:#ea6a33;display:block;}
+  .conference-strip span{color:var(--ink-dim);font-weight:500;}
+  h1.welcome-name{
+    font-size:clamp(44px,8vw,76px);
+    line-height:1.02;
+    letter-spacing:-0.04em;
+    margin:0 0 10px;
+  }
+  @media(max-width:640px){
+    .conference-banner{display:none;}
+    .conference-strip{display:inline-flex;}
   }
 
   /* ---------- Dining list ---------- */
@@ -623,14 +681,12 @@
   <!-- MENU -->
   <section id="screen-menu" class="screen">
     <div class="menu-hero">
-      <div class="conference-badges">
-        <div class="conference-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTetj3U0ei_Cyh5KZ-9TW2B2_qqeh8p_EiGyQ3UFY4rX_5q51sjsSBmS48n&s=10" alt="Global DDF Summit"></div>
-        <div class="conference-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_gu-XhanJFuvUg9v6z3zsCCe3DrgDBI69JBhyYlfTDah9V_ZVFTxpbKRt&s=10" alt="CAR-TCR Summit"></div>
-        <div class="conference-logo"><img src="https://media.licdn.com/dms/image/v2/C4D0BAQHPX46IT2dfQg/company-logo_200_200/company-logo_200_200/0/1646416881012/contract_pharma_logo?e=2147483647&v=beta&t=L6EyPmm-jHfXccQz802HMm8hpXHkCvC1nZO4MvItovQ" alt="Contract Pharma"></div>
-      </div>
-      <p class="eyebrow">Welcome to Lunartree Concierge</p>
-      <h1 class="title menu-title">How may we assist you?</h1>
+      <div class="conference-banner"><img src="https://pharmasource.global/wp-content/uploads/2024/09/Untitled-design-26.png" alt="CDMO Live Americas"></div>
+      <div class="conference-strip"><i></i>CDMO Live Americas <span>· Boston</span></div>
+      {% if visitor %}<h1 class="title welcome-name">Welcome, {{ visitor.first_name }} 👋</h1>{% else %}<p class="eyebrow">Welcome to Lunartree Concierge</p>{% endif %}
+      <{% if visitor %}p{% else %}h1{% endif %} class="title menu-title"{% if visitor %} style="font-weight:600;color:var(--ink-dim);font-size:22px;"{% endif %}>How may we assist you?</{% if visitor %}p{% else %}h1{% endif %}>
       <p class="lede" style="margin-bottom:0;">Request your pick and we'll take it from there</p>
+      {% if visitor %}<a href="{% url 'concierge:welcome' %}?switch=1" style="font-size:12px;color:var(--ink-faint);">Not {{ visitor.first_name }}? Switch</a>{% endif %}
     </div>
 
     <div class="menu-grid">
@@ -1181,5 +1237,6 @@
     if(e.key === 'Escape' && wsOverlay.classList.contains('open')) closeWorkspaceModal();
   });
 </script>
+{% include 'concierge/_particles.html' %}
 </body>
 </html>
