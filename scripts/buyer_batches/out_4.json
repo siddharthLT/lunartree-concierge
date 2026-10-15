@@ -1,0 +1,446 @@
+{
+ "eli lilly and": {
+  "domain": "lilly.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "gene",
+   "editing",
+   "radio",
+   "device"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global pharma: diabetes/obesity, oncology, neuro, immunology; large in-house + external network",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.lilly.com"
+ },
+ "quralis": {
+  "domain": "quralis.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Neurodegeneration biotech (ALS, FTD); small molecules and antibodies, Phase 1 lead",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.quralis.com"
+ },
+ "sanofi": {
+  "domain": "sanofi.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "protein",
+   "cell",
+   "gene",
+   "device"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global pharma: immunology, vaccines, rare disease, mRNA/LNP, cell and gene therapy",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.sanofi.com"
+ },
+ "pfizer": {
+  "domain": "pfizer.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "adc",
+   "bispecific",
+   "protein",
+   "gene",
+   "device"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global pharma: oncology (ADCs), vaccines, inflammation, rare disease",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.pfizer.com"
+ },
+ "rondaxe pharma": {
+  "domain": "rondaxe.com",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Syracuse NY CMC/regulatory/supply chain consultancy, not a drug developer",
+  "outsources": "mixed",
+  "confidence": "low",
+  "source": "https://www.fiercepharma.com/pharma/alvarez-marsal-healthcare-industry-group-forms-strategic-alliance-rondaxe-alliance-aims-to"
+ },
+ "acadia pharmaceuticals": {
+  "domain": "acadia.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial neuro company (Nuplazid, Daybue); small molecules for CNS and rare disease",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.acadia.com"
+ },
+ "": {
+  "domain": "fennecpharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "Ambiguous entry covering Fennec (Pedmarqi, commercial oncology supportive care) and Tonix (CNS/immunology); Fennec used",
+  "outsources": "mixed",
+  "confidence": "low",
+  "source": "https://www.fennecpharma.com"
+ },
+ "dorinano": {
+  "domain": "dorinano.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "DNA-origami nanoparticle delivery platform; lead DoriVac cancer vaccine, pre-seed/seed",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.massbio.org/mb-drive-participant/dorinano"
+ },
+ "olix": {
+  "domain": "olixpharma.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2"
+  ],
+  "summary": "Korean RNAi/siRNA oligo developer (MASH deal with Lilly, scars, alopecia); US arm",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.pharmaceutical-technology.com/newsletters/eli-lilly-pledges-630m-on-olixs-phase-i-rna-candidate-for-mash"
+ },
+ "alkermes": {
+  "domain": "alkermes.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial neuroscience pharma (Vivitrol, Lybalvi, orexin agonist) with long-acting injectables",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.alkermes.com"
+ },
+ "fresenius medical care north america": {
+  "domain": "fmcna.com",
+  "hq_region": "nam",
+  "modalities": [
+   "device",
+   "small"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "Dialysis services/products arm of Fresenius Medical Care; renal devices and drugs, not a classic drug developer",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.fmcna.com"
+ },
+ "vanqua bio": {
+  "domain": "vanquabio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Chicago CNS/neuroinflammation small-molecule biotech; C5aR1 program licensed to Biogen",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.biospace.com/deals/biogen-grows-immunology-pipeline-with-vanquas-anti-inflammatory-molecule"
+ },
+ "kiniksa pharmaceuticals": {
+  "domain": "kiniksa.com",
+  "hq_region": "nam",
+  "modalities": [
+   "mab",
+   "protein"
+  ],
+  "stages": [
+   "phase2",
+   "commercial"
+  ],
+  "summary": "Commercial biologics (Arcalyst) plus KPL-387 for recurrent pericarditis",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.kiniksa.com"
+ },
+ "amphastar pharmaceuticals": {
+  "domain": "amphastar.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "device",
+   "biosimilar"
+  ],
+  "stages": [
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Specialty/generic injectables, inhalation, insulin/biosimilar pipeline; in-house manufacturing",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.amphastar.com"
+ },
+ "halozyme": {
+  "domain": "halozyme.com",
+  "hq_region": "nam",
+  "modalities": [
+   "protein",
+   "device"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "ENHANZE drug-delivery tech (hyaluronidase) and auto-injectors; royalty-driven",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.halozyme.com"
+ },
+ "xeris pharmaceuticals": {
+  "domain": "xerispharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein",
+   "device"
+  ],
+  "stages": [
+   "phase2",
+   "commercial"
+  ],
+  "summary": "Commercial specialty pharma (Gvoke, Recorlev, Keveyis); XP-8121 in development",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.xerispharma.com"
+ },
+ "sarepta": {
+  "domain": "sarepta.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene",
+   "small",
+   "editing"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Rare neuromuscular: Elevidys gene therapy and PMO/siRNA oligos",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.sarepta.com"
+ },
+ "takeda pharmcaeuticals": {
+  "domain": "takeda.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "cell",
+   "gene"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global pharma: GI, rare disease, plasma-derived, oncology, neuroscience",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.takeda.com"
+ },
+ "altimmune": {
+  "domain": "altimmune.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2",
+   "phase3"
+  ],
+  "summary": "Clinical-stage peptide biotech; pemvidutide for MASH and obesity/AUD",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.altimmune.com"
+ },
+ "bpgbio": {
+  "domain": "bpgbio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "phase2",
+   "phase3"
+  ],
+  "summary": "AI-driven clinical-stage biotech; BPM31510 oncology/rare disease, biologics",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.bpgbio.com"
+ },
+ "terrestrial bio": {
+  "domain": "terrestrial.bio",
+  "hq_region": "nam",
+  "modalities": [
+   "device",
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Microarray-patch delivery platform (ex-Vaxess); lead GLP-1 patch, Series C",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://raising.fi/news/terrestrial-bio-series-c-march-2026"
+ },
+ "gv20": {
+  "domain": "gv20tx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "mab",
+   "bispecific",
+   "adc"
+  ],
+  "stages": [
+   "phase1",
+   "phase2"
+  ],
+  "summary": "AI-designed IO antibodies; lead GV20-0251 (IGSF8) Ph1/2, bispecifics and ADCs",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://clinicaltrials.gov/study/NCT07106827"
+ },
+ "healis therapeutics": {
+  "domain": "healistx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "protein"
+  ],
+  "stages": [
+   "phase2"
+  ],
+  "summary": "Botulinum-toxin neuromodulators for depression/PTSD; CKDB-501 licensed from CKD Bio",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.biospace.com/healis-therapeutics-acquires-ownership-of-key-botulinum-toxin-patent"
+ },
+ "stoke therapeutics": {
+  "domain": "stoketherapeutics.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase3"
+  ],
+  "summary": "Antisense oligo (TANGO) developer; zorevunersen for Dravet syndrome in Phase 3",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.stoketherapeutics.com"
+ },
+ "vertex pharmaceuticals": {
+  "domain": "vrtx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "cell",
+   "gene",
+   "editing",
+   "protein"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "CF, pain (suzetrigine), sickle cell (Casgevy), kidney; small-molecule focus plus cell/gene",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.vrtx.com"
+ },
+ "lysoway therapeutics": {
+  "domain": "lysoway.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Small-molecule lysosomal ion channel modulators (TRPML1, TMEM175) for neurodegeneration",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://allsci.com/news/clinical-trials/lysoways-trpml1-agonist-enters-clinic-aiming-to-validate-autophagy-pathway-in-neurodegeneration/"
+ }
+}

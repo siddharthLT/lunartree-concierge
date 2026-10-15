@@ -1,0 +1,315 @@
+[
+ {
+  "key": "afton scientific",
+  "name": "Afton Scientific",
+  "segment": "CDMO",
+  "domain": "aftonscientific.com",
+  "modalities": [
+   "protein",
+   "small"
+  ],
+  "evidence": "Aseptic manufacturing for biologics and small molecules; vials, syringes, cartridges. mAbs not named.",
+  "event_blurb": "Afton Scientific provides aseptic fill-finish services for sterile injectable products, supporting both biologic and small molecule formulations across vials, syringes, and cartridges. Our capabilities span clinical through commercial manufacturing, giving partners a single, reliable source from early-phase development through full-scale production.\nCore services include sterile filling, inspection, and packaging, backed by an in-house analytical and microbiology laboratory that supports method development, testing, and release activities without reliance on third-party labs. This integrated l",
+  "attendee_titles": [
+   "Chief Commercial Officer",
+   "Associate Director, Marketing"
+  ]
+ },
+ {
+  "key": "aspen api",
+  "name": "Aspen API",
+  "segment": "CDMO",
+  "domain": "aspenapi.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "High potency & oncology APIs, peptides, 60+ APIs portfolio",
+  "event_blurb": "For companies sourcing generic commercial APIs and / or advancing with new molecule APIs through Phase IIb and Phase III, Aspen API offers the ideal balance of development expertise, manufacturing excellence, and commercial readiness. We are specialized in HP-APIs, Peptides and Steroids, either by tech transfers or own development.\nAs a mid-sized partner, we provide direct access to experts and full customer attention\u2014without the complexity often associated with larger suppliers. Our proven capabilities in complex APIs, scalable and sustainable manufacturing, regulatory support and reliable su",
+  "attendee_titles": [
+   "Commercial Project manager",
+   "Board Member"
+  ]
+ },
+ {
+  "key": "boehringer ingelheim bioxcellence",
+  "name": "Boehringer Ingelheim BioXcellence\u2122",
+  "segment": "CDMO",
+  "domain": "boehringer-ingelheim.com",
+  "modalities": [
+   "mab",
+   "protein"
+  ],
+  "evidence": "Biologics CMO using microbial and mammalian cell culture, incl. aseptic filling (event blurb; BI site unfetchable)",
+  "event_blurb": "At Boehringer Ingelheim BioXcellence\u2122, we specialize in biologics contract manufacturing, producing biopharmaceuticals based on microorganisms as well as mammalian cell cultures. In collaboration with our partners, we manufacture innovative therapies for some of the world\u2019s most challenging diseases. We have extensive experience with a variety of different host cells, producing a broad range of molecules in accordance with cGMP manufacturing guidelines and covering all stages of development, including aseptic filling. Our focus is on creating value for our customers through robust processes, o",
+  "attendee_titles": [
+   "Global Senior Communications & Touchpoints Manager | BioXcellence Contract Manufacturing Business",
+   "Director, Business Development and Key Account Management",
+   "Director, Business Development and Key Account Management"
+  ]
+ },
+ {
+  "key": "carbogen amcis",
+  "name": "CARBOGEN AMCIS",
+  "segment": "CDMO",
+  "domain": "carbogen-amcis.com",
+  "modalities": [
+   "api",
+   "adc",
+   "small"
+  ],
+  "evidence": "API/HiPo API development, ADC & Bioconjugation expertise, injectable drug product",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Divisional Sales Manager Eastern United States"
+  ]
+ },
+ {
+  "key": "cohance lifesciences",
+  "name": "Cohance Lifesciences",
+  "segment": "CDMO",
+  "domain": "cohance.com",
+  "modalities": [
+   "api",
+   "small",
+   "adc"
+  ],
+  "evidence": "Specialized in ADCs, nucleic acid chemistry (phosphoramidites) and small molecules; APIs",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Vice President"
+  ]
+ },
+ {
+  "key": "dottikon exclusive synthesis",
+  "name": "Dottikon Exclusive Synthesis AG",
+  "segment": "CDMO",
+  "domain": "dottikon.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "Exclusive synthesis of intermediates, performance chemicals and APIs, multi-ton cGMP",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Chemistry and Technology Specialist"
+  ]
+ },
+ {
+  "key": "fermion",
+  "name": "Fermion",
+  "segment": "CDMO",
+  "domain": "fermion.fi",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Develops/manufactures APIs; also contract finished dosage (semi-solid, liquid, oral solids)",
+  "event_blurb": "Depending on the customer\u2019s needs, Fermion\u2019s R&D can support drug development at all stages. Fermion has extensive experience in e.g. tech transfers, with SOPs in place to ensure as-smoothly-as-possible transfer of a validated or well developed process to one of Fermion\u2019s sites.\nHowever, at any time also a retrosynthesis as well as quick and time saving testing can be performed to identify the best Route of Synthesis (ROS). Once the ROS is fixed, reactions, work-ups and isolations are optimized using a designed approach. Parallel experimentation is applied to save time and get more meaningful ",
+  "attendee_titles": [
+   "Business Development Manager",
+   "Drug Substance Development and Manufacturing Services - North America"
+  ]
+ },
+ {
+  "key": "formulated solutions",
+  "name": "Formulated Solutions",
+  "segment": "CDMO",
+  "domain": "formulatedsolutions.com",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "evidence": "Non-sterile Rx/OTC, Class I/II medical devices; nasal sprays, aerosols, airless containers",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Chief Commercial Officer"
+  ]
+ },
+ {
+  "key": "honour lab",
+  "name": "Honour Lab",
+  "segment": "CDMO",
+  "domain": "honourlab.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "NCE/generic API; blurb: small molecule APIs, peptides, oligonucleotides, amidites",
+  "event_blurb": "Honour is a global CDMO supporting pharmaceutical and biotechnology companies from early development through commercial manufacturing. With eight cGMP-compliant manufacturing facilities, over 5,000 KL of manufacturing capacity, and a team of 3,500+ employees including approximately 300 scientists, Honour provides integrated capabilities across process development, analytical development, scale-up, technology transfer, and GMP manufacturing.\nOur expertise spans small molecule APIs, complex chemistries, peptides, oligonucleotides, custom amidites, modified nucleosides, and related advanced modal",
+  "attendee_titles": [
+   "Associate Director",
+   "Associate Vice President - Head of Europe - Business Development"
+  ]
+ },
+ {
+  "key": "kaneka americas holding",
+  "name": "Kaneka Americas Holding",
+  "segment": "CDMO",
+  "domain": "kaneka.com",
+  "modalities": [
+   "api",
+   "small",
+   "gene",
+   "protein"
+  ],
+  "evidence": "Small molecule APIs/intermediates; biologics: plasmid DNA, mRNA, recombinant proteins, peptides, oligos (event blurb, Kaneka Eurogentec)",
+  "event_blurb": "Kaneka is a Japanese technology-driven chemical company offering custom synthesis services from its Health Care Business Unit positioned as a specialist CDMO partner.\nWe focus on small molecule chemistry with over 40 years of experience in process development, scale-up and manufacturing of Regulatory Starting Materials, GMP intermediates and APIs and support the entire drug lifecycle.\nFrom our 4 research centers and 4 manufacturing sites in Japan and Singapore, we offer a full range of custom synthesis services based on our core technology platforms of chemical syntheses, biocatalytic transfor",
+  "attendee_titles": [
+   "Director, Marketing & Business Development",
+   "Vice President, Pharma Division"
+  ]
+ },
+ {
+  "key": "lifecore biomedical",
+  "name": "Lifecore Biomedical",
+  "segment": "CDMO",
+  "domain": "lifecore.com",
+  "modalities": [
+   "small",
+   "protein",
+   "device"
+  ],
+  "evidence": "Aseptic fill-finish for drugs, biologics, devices, combination products; hyaluronate",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Director Of New Business Development",
+   "New Business Development Director"
+  ]
+ },
+ {
+  "key": "mikart",
+  "name": "Mikart, LLC",
+  "segment": "CDMO",
+  "domain": "mikart.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Oral solid and nonsterile oral liquid dosage forms, controlled substances",
+  "event_blurb": "Mikart\u2019s 50 years of experience as a CDMO in oral solid and nonsterile oral liquid dosage forms and specialization in pediatric, geriatric, and controlled-substance make us the ideal contract development and manufacturing organization partner \u2014 from formulation development through commercialization. We value long-lasting relationships and a personalized approach; bringing both the reliability and flexibility to meet your needs and exceed your expectations.\nMikart\u2019s ability to scale proof of concept dosage forms through to commercialization has benefitted our clients with product line extension",
+  "attendee_titles": [
+   "CEO",
+   "VP Business Development"
+  ]
+ },
+ {
+  "key": "ophtapharm",
+  "name": "Ophtapharm AG",
+  "segment": "CDMO",
+  "domain": "ophtapharm.ch",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Sterile ophthalmic, otic and topical products; no biologics/devices mentioned",
+  "event_blurb": "With a focus on ophthalmic, otic, and topical products, Ophtapharm is proud to be an FDA-approved facility offering contract manufacturing services to customers in North America, Europe, and beyond. We have over 40 years of experience producing ophthalmic solutions, suspensions, and emulsions, including eye ointments, gels, sterile topical and otic products",
+  "attendee_titles": [
+   "Head of CDMO Sales"
+  ]
+ },
+ {
+  "key": "probio",
+  "name": "ProBio Inc.",
+  "segment": "CDMO",
+  "domain": "probiocdmo.com",
+  "modalities": [
+   "gene",
+   "cell",
+   "mab",
+   "bispecific",
+   "adc"
+  ],
+  "evidence": "Cell/gene therapy, lentiviral, plasmid, mRNA-LNP, mAb & bispecific, ADC solutions",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business Development Manager"
+  ]
+ },
+ {
+  "key": "resilience biotechnologies",
+  "name": "Resilience Biotechnologies Inc.",
+  "segment": "CDMO",
+  "domain": "resilience.com",
+  "modalities": [
+   "mab",
+   "protein"
+  ],
+  "evidence": "Production of mAbs, recombinant proteins in single-use bioreactors; fill-finish; no viral/cell listed",
+  "event_blurb": "Resilience is a biomanufacturing and technology company founded in 2020, dedicated to broadening access to complex medicines and protecting biopharmaceutical supply chains. They develop cyber security tools and high-tech manufacturing solutions for qui...",
+  "attendee_titles": [
+   "Senior Manager, MSAT"
+  ]
+ },
+ {
+  "key": "ropack",
+  "name": "Ropack, Inc.",
+  "segment": "CDMO",
+  "domain": "ropack.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Solid oral dose manufacturing and blister/bottle packaging; clinical supply (site 403; blurb + search)",
+  "event_blurb": "Ropack Pharma Solutions is a leading contract manufacturing and packaging organization based in Montreal, Quebec. With nearly 50 years of experience, Ropack specializes in solid oral dose formats for pharmaceutical, nutraceutical, and food products serving markets including North America, Western Europe and beyond. Our services include manufacturing, packaging, and clinical trial support across all phases of the drug development process. With four state-of-the-art facilities, Ropack is trusted by top organizations in the industry as we continuously innovate to tackle our partners biggest chall",
+  "attendee_titles": [
+   "Associ\u00e9e au D\u00e9veloppement Commercial et Marketing"
+  ]
+ },
+ {
+  "key": "sharp",
+  "name": "Sharp",
+  "segment": "CDMO",
+  "domain": "sharpservices.com",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "evidence": "Sterile vial/syringe/cartridge fill, autoinjector/PFS assembly, commercial & clinical packaging",
+  "event_blurb": "Sharp helps biopharma companies bring therapies to life from pre-clinical development to commercial launch and beyond. As a specialist CDMO, we deliver commercial packaging, clinical trial, and sterile manufacturing solutions designed to reduce complexity. With facilities in the US, UK, Belgium, and the Netherlands, and a global network of 30 clinical depots, we extend your reach to your patients. Backed by 70+ years of experience and continued investment in facilities, capabilities, and people, we offer quality by design, engineering know-how that scales, and the precision and reliability our",
+  "attendee_titles": [
+   "Account Executive"
+  ]
+ },
+ {
+  "key": "steroid s p a",
+  "name": "Steroid S.p.A.",
+  "segment": "Supplier",
+  "domain": "steroid.it",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "Manufacturer of steroid APIs for 60+ years, custom synthesis",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Executive Chairman"
+  ]
+ },
+ {
+  "key": "tcg greenchem",
+  "name": "TCG GreenChem Inc",
+  "segment": "CDMO",
+  "domain": "tcggreenchem.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Complex intermediates and APIs, drug product development, flow chemistry",
+  "event_blurb": "From our Princeton facility, TCG GreenChem supports pharmaceutical and biotech companies' Small Molecule Discovery and CMC needs through services spanning\n- Process R&D via Route Scouting and Optimization\n- Non-GMP and cGMP scale-up for clinical and pre-clinical programs from our Princeton facility\n- Analytical Services and ICH Stability Studies\n- Solid-State Characterization and Particle Engineering\n- Continuous Flow Chemistry\n- Catalysis and Electrochemistry\n- Discovery Chemistry\nFrom our facilities in India, we offer\n- Discovery chemistry and biology\n- Economical Manufacturing of KSMs, RSMs",
+  "attendee_titles": [
+   "Vice President, Head of Business Development"
+  ]
+ },
+ {
+  "key": "wilmington pharmatech",
+  "name": "Wilmington PharmaTech",
+  "segment": "CDMO",
+  "domain": "wilmingtonpharmatech.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "API & HPAPI development/GMP manufacturing; peptides in custom synthesis",
+  "event_blurb": "Better API Science. Reliable American Supply. Wilmington PharmaTech (WPT) is a U.S.-based contract research, development, and manufacturing organization (CRDMO) specializing in small molecule and high-potency API development and cGMP manufacturing. Founded in 2003 and headquartered in Newark, Delaware, WPT provides end-to-end services from discovery through commercial supply, including custom synthesis, process development, scale-up, and analytical testing for pharmaceutical and biotech companies.",
+  "attendee_titles": [
+   "Senior VP",
+   "CCO"
+  ]
+ }
+]

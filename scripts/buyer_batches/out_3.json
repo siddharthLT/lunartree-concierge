@@ -1,0 +1,441 @@
+{
+ "insmed": {
+  "domain": "insmed.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "gene"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial-stage rare/pulmonary pharma (Brinsupri/brensocatib, Arikayce); TPIP, gene therapy",
+  "outsources": "mixed",
+  "confidence": "medium",
+  "source": "https://www.insmed.com"
+ },
+ "astellas": {
+  "domain": "astellas.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "mab",
+   "adc",
+   "gene",
+   "cell"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Japanese global pharma: oncology, urology, ophthalmology; broad modality pipeline",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.astellas.com"
+ },
+ "bms": {
+  "domain": "bms.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "adc",
+   "cell",
+   "radio"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global biopharma: oncology, hematology, immunology, cardiovascular, neuroscience",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.bms.com"
+ },
+ "acella pharmaceuticals": {
+  "domain": "acellapharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "US specialty/generic pharma, branded and generic oral products",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.acellapharma.com"
+ },
+ "sinopharm": {
+  "domain": "sinopharm.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "protein",
+   "mab"
+  ],
+  "stages": [
+   "phase3",
+   "commercial"
+  ],
+  "summary": "China state pharma group: vaccines, biologics, plasma products, distribution",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.sinopharm.com"
+ },
+ "amgen": {
+  "domain": "amgen.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "biosimilar",
+   "protein"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global biotech: oncology, inflammation, cardiometabolic, biosimilars; large in-house biologics mfg",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.amgen.com"
+ },
+ "novo nordisk": {
+  "domain": "novonordisk.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "protein",
+   "cell",
+   "gene"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Danish pharma: GLP-1/diabetes/obesity peptides, rare disease, cell and gene therapy",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.novonordisk.com"
+ },
+ "kifa therapeutics": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical"
+  ],
+  "summary": "Tiny private biotech developing brain-penetrant LRRK2 kinase inhibitors for Parkinson's (Vanderbilt-licensed)",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.vanderbilt.edu/cttc/driving-therapeutic-innovation-kifa-therapeutics-and-parkinsons-research/"
+ },
+ "aurora therapeutics": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [
+   "editing"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Seed-stage personalized CRISPR gene editing for PKU (Doudna/Urnov co-founded, 2026)",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://businesswire.com/news/home/20260109250069/en/Aurora-Therapeutics-Launches-to-Realize-Potential-of-Personalized-Gene-Editing-for-Millions-of-Patients-with-Rare-Diseases"
+ },
+ "bayer": {
+  "domain": "bayer.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "mab",
+   "cell",
+   "gene",
+   "radio"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global life-science group: pharma (oncology, cardiology, women's health) plus consumer health, crop science",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.bayer.com"
+ },
+ "anivive lifesciences": {
+  "domain": "anivive.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Veterinary biotech (Long Beach): Valley fever vaccine, feline FIP, pet oncology/antivirals",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.azbio.org/?p=47733"
+ },
+ "neurotrauma sciences": {
+  "domain": "neurotraumasciences.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2"
+  ],
+  "summary": "Private clinical-stage neuroprotectives (neurosteroid prodrugs NTS-104/105) for stroke and TBI",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://mtec-sc.org/life-sciences/neurotrauma-sciences"
+ },
+ "f2 bio": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Unidentified biotech; no web evidence found (possibly confused with F2G antifungals)",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://www.bioworld.com/content/f2gs-30m-round-support-new-f3-antifungal-program-1"
+ },
+ "emergent biosolutions": {
+  "domain": "emergentbiosolutions.com",
+  "hq_region": "nam",
+  "modalities": [
+   "protein",
+   "small",
+   "device"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "Public health biodefense: anthrax/smallpox vaccines, Narcan; in-house CDMO",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.emergentbiosolutions.com"
+ },
+ "hillstar bio": {
+  "domain": "hillstarbio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "mab"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Boston autoimmune biotech, HSB-101 targeting TRBV9+ T cells (antibody-based), $67M Series A",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.biospace.com/drug-development/hillstar-bio-nets-67m-series-a-to-advance-autoimmune-and-arthritis-pipeline"
+ },
+ "noven pharmaceuticals": {
+  "domain": "noven.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "Hisamitsu subsidiary: transdermal patch and specialty products (women's health, CNS)",
+  "outsources": "mixed",
+  "confidence": "medium",
+  "source": "https://www.noven.com"
+ },
+ "aviceda therapeutics": {
+  "domain": "aviceda.com",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [
+   "phase2",
+   "phase3"
+  ],
+  "summary": "Clinical-stage glyco-immune nanoparticle AVD-104 for geographic atrophy; $207M Series C",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.fiercebiotech.com/biotech/aviceda-raises-207m-series-c-take-geographic-atrophy-drug-through-phase-3"
+ },
+ "moderna": {
+  "domain": "modernatx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene"
+  ],
+  "stages": [
+   "phase3",
+   "commercial"
+  ],
+  "summary": "mRNA medicines and vaccines (respiratory, oncology, rare disease); in-house mfg",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.modernatx.com"
+ },
+ "therabiome": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [
+   "microbiome"
+  ],
+  "stages": [],
+  "summary": "Unverified; no web evidence found, name suggests microbiome therapeutics",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://www.labiotech.eu/best-biotech/microbiome-biotech-companies/"
+ },
+ "bill melinda gates medical research institute": {
+  "domain": "gatesmri.org",
+  "hq_region": "nam",
+  "modalities": [
+   "mab",
+   "protein",
+   "small"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3"
+  ],
+  "summary": "Non-profit clinical-stage biotech: TB, malaria, enteric disease vaccines and mAbs for global health",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.gatesmri.org"
+ },
+ "ptc therapeutics": {
+  "domain": "ptcbio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "gene"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Rare disease pharma (Translarna, Evrysdi royalty, Sephience, Kebilidi gene therapy)",
+  "outsources": "mixed",
+  "confidence": "medium",
+  "source": "https://www.ptcbio.com"
+ },
+ "johnson johnson": {
+  "domain": "jnj.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "adc",
+   "cell",
+   "gene",
+   "device"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global healthcare: Innovative Medicine (oncology, immunology, neuroscience) and MedTech",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.jnj.com"
+ },
+ "crescent biopharma": {
+  "domain": "crescentbiopharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "bispecific",
+   "adc"
+  ],
+  "stages": [
+   "phase1"
+  ],
+  "summary": "Clinical-stage oncology: PD-1xVEGF bispecific CR-001 and ADCs CR-002/003",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://investors.crescentbiopharma.com/news-releases/news-release-details/crescent-biopharma-reports-second-quarter-2026-financial-results"
+ },
+ "let s combinate bioworks": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Unidentified; no evidence found of drug developer (BioWorks hits are unrelated biopesticides)",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://www.biobest.com/news/biobest-completes-acquisition-of-bio-works"
+ },
+ "midas pharmaceuticals": {
+  "domain": "midaspharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "api"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "US arm of German Midas Pharma: generic APIs, finished dose, supply and sourcing; not a pure developer",
+  "outsources": "mixed",
+  "confidence": "low",
+  "source": "https://bio.german-pavilion.com/en/sites/exhibitors/103140"
+ },
+ "orion pharma": {
+  "domain": "orionpharma.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Finnish pharma: Nubeqa (darolutamide), Parkinson's, generics; in-house manufacturing",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.orionpharma.com"
+ },
+ "abimmune": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [
+   "mab"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Early startup (Abimmune Biopharma) developing nanobody-based candidates for immuno-oncology; thin evidence",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://www.stradlinglaw.com/experience/abimmune-biopharma-inc-completes-convertible-note-financing.html"
+ }
+}

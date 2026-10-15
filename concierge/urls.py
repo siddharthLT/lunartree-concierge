@@ -13,5 +13,6 @@ urlpatterns = [
     path('api/welcome/restore/', views.welcome_restore, name='welcome_restore'),
     path('ddf-intel/', views.ddf_intel, name='ddf_intel'),
     path('experience-biolens/', views.experience_biolens, name='experience_biolens'),
+    path('api/search-interest/', views.search_interest, name='search_interest'),
     path('api/requests/', views.submit_request, name='submit_request'),
 ]

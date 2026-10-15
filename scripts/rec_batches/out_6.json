@@ -1,0 +1,1209 @@
+{
+ "allos": {
+  "day1": [
+   {
+    "id": "320134",
+    "reason": "Allos sells risk-shared 505(b)(2)/NCE development, so this roundtable on contract structures beyond fee-for-service is your pitch rehearsal. Fresenius Kabi is presenting; find out how sponsors price milestone or equity-linked deals.",
+    "meet": [
+     "Fresenius Kabi",
+     "Meitheal Pharmaceuticals",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320127",
+    "reason": "Your first-to-US sterile products and long-acting depots depend on sterile capacity; AstraZeneca and the Gates MRI are on this panel talking supply resilience, so ask where specialty injectables are failing to find slots.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Xeris Pharmaceuticals Inc."
+    ]
+   },
+   {
+    "id": "320123",
+    "reason": "Four analysts give their view of what sponsors will buy next in outsourcing; useful for positioning an AI-native 505(b)(2) model against conventional CDMOs when you meet specialty pharma.",
+    "meet": [
+     "Meitheal Pharmaceuticals",
+     "Acadia Pharmaceuticals"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320147",
+    "reason": "Allos leads with causal AI, so a roundtable testing AI in formulation and CMC for real value versus hype is where buyers will challenge your claims. Come with a case study. Only the title is published.",
+    "meet": [
+     "Alkermes",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320125",
+    "reason": "Allos takes candidates from idea to filing; startup-to-CDMO partnering for early CMC (title only) is where small biotechs with NCE assets decide whether to hand over formulation as well.",
+    "meet": [
+     "Newleos",
+     "Lysoway Therapeutics, Inc.",
+     "Kifa Therapeutics"
+    ]
+   },
+   {
+    "id": "320142",
+    "reason": "Investor-readiness of CMC (title only) matters to your CEO and CCO because funded virtual biotechs buy formulation work once CMC gaps are flagged; find those with weak formulation packages.",
+    "meet": [
+     "Altrixbio Inc",
+     "Vanqua Bio"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule biotechs in {geo} needing 505(b)(2) reformulation",
+   "specialty pharma with NCE needing DPI, nasal or oral liquid formulation development",
+   "{geo} companies seeking long-acting injectable or depot formulation partner",
+   "virtual biotechs with small-molecule assets outsourcing formulation through filing",
+   "{geo} sterile injectable lifecycle-management programs needing first-to-market CDMO partner"
+  ]
+ },
+ "axplora": {
+  "day1": [
+   {
+    "id": "320118",
+    "reason": "Your team is sponsoring this ADC panel. Crescent Biopharma's ADC CMC lead and Oliyai Consulting are on it; approach Crescent afterwards to offer payload and linker development, and use the DAR/analytics debate as your opener.",
+    "meet": [
+     "Crescent Biopharma",
+     "Oliyai Consulting",
+     "GV20"
+    ]
+   },
+   {
+    "id": "320130",
+    "reason": "High-potency roundtable covering ADCs and HPAPIs, exactly Axplora's cytotoxic payload and API book. MDL is the sponsor; take the seat to meet pharma teams comparing containment capacity in Europe.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "Pfizer",
+     "Astellas Pharma"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "Tariffs and reshoring dominate this keynote; as a European API/ADC site network with a North America lead, you need the story for buyers weighing EU versus US supply (Takeda is speaking).",
+    "meet": [
+     "Takeda",
+     "Merck"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320144",
+    "reason": "High-potency capacity expansion playbook (title only) is directly your HPAPI and ADC payload offer; look for sponsors and CDMOs discussing legacy asset integration and compare how they position.",
+    "meet": [
+     "AstraZeneca",
+     "Johnson & Johnson",
+     "Pfizer"
+    ]
+   },
+   {
+    "id": "320141",
+    "reason": "API reshoring through APIIC (title only) is the counter-narrative to your European sites; learn what US buyers ask of non-US API suppliers and how to partner rather than compete.",
+    "meet": [
+     "Midas Pharmaceuticals, Inc.",
+     "Eli Lilly And Company"
+    ]
+   },
+   {
+    "id": "320138",
+    "reason": "Small molecule CMC decision gates and supply-chain strategy; Vertex and QurAlis are on stage, both outsourcing API, so use it to find gate points where route and electrochemistry/chromatography expertise unlocks scale-up.",
+    "meet": [
+     "Vertex",
+     "QurAlis",
+     "Kymera Therapeutics"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} ADC biotechs in {geo} outsourcing payload-linker CMC",
+   "bispecific or ADC programs needing cytotoxic payload and HPAPI supply at GMP scale",
+   "{geo} pharma dual-sourcing HPAPI manufacturing from European sites",
+   "virtual biotechs with outsourced ADC network needing API through conjugation partner",
+   "{geo} small-molecule API programs with difficult chemistry needing chromatography or electrochemistry"
+  ]
+ },
+ "boryung": {
+  "day1": [
+   {
+    "id": "320130",
+    "reason": "Your Yesan site makes EU-GMP cytotoxic oncology vials; this roundtable on potent-compound manufacturing is where oncology sponsors compare containment partners. Ask pharma attendees what makes them add an Asian injectables source.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "Pfizer",
+     "Puma Biotechnology"
+    ]
+   },
+   {
+    "id": "320126",
+    "reason": "Lyophilization tech transfer is a common cause of delay and Boryung runs lyophilized vials; listen to BSP's model-driven approach and note what sponsors expect on batch numbers.",
+    "meet": [
+     "Meitheal Pharmaceuticals",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320127",
+    "reason": "Sterile injectable capacity shortage is your opening as a new CDMO entrant; AstraZeneca and the Gates MRI are on this panel talking supply resilience.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320144",
+    "reason": "Potent manufacturing and capacity expansion (title only) mirrors your cytotoxic vial story; use it to hear how CDMOs structure legacy asset integration and what buyers expect.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "Puma Biotechnology"
+    ]
+   },
+   {
+    "id": "320146",
+    "reason": "As you expand globally, this RFx roundtable (title only) shows how sponsors write requirements and score a new CDMO; ask what a first-time Korean supplier must show in the response.",
+    "meet": [
+     "Pfizer",
+     "Merck"
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Procurement beyond price (title only) is the argument you need against lower-cost incumbents; ask buyers which alliance criteria carry weight for sterile oncology products.",
+    "meet": [
+     "Eli Lilly And Company",
+     "Johnson & Johnson"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} oncology small-molecule programs needing cytotoxic vial fill-finish in {geo}",
+   "cytotoxic injectable CDMO with lyophilization for commercial supply to US pharma",
+   "{geo} generic and specialty oncology injectables companies seeking second source in Korea",
+   "mid-pharma with outsourced injectables network adding non-China Asian supplier",
+   "oral oncology or solution injectable products needing EU-GMP contract manufacture in {geo}"
+  ]
+ },
+ "catsci": {
+  "day1": [
+   {
+    "id": "320132",
+    "reason": "Roundtable on managing a clinical-supply CDMO (Alcami sponsors); CatSci runs small-scale GMP, so hear what biotechs say about flexibility and oversight to sharpen your offer for Phase 1 supply.",
+    "meet": [
+     "QurAlis",
+     "Kymera Therapeutics",
+     "Wave Life Sciences"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "Capacity crunch and talent wars in North America; Takeda and Oliyai Consulting speak. A UK partner needs to hear which US sponsors are looking abroad for CMC support.",
+    "meet": [
+     "Takeda",
+     "Vertex"
+    ]
+   },
+   {
+    "id": "320123",
+    "reason": "Four analysts outline outsourcing trends in eight minutes each; useful for framing integrated CMC to buyers who now prefer fewer partners from process development to GMP.",
+    "meet": [
+     "Pioneering Medicines",
+     "Lifearc Technologies"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320138",
+    "reason": "Small molecule CMC decision gates with QurAlis and Vertex on stage; this is the audience for CatSci's route design and process development. Approach QurAlis about early CMC.",
+    "meet": [
+     "QurAlis",
+     "Vertex",
+     "Reliant Life Sciences"
+    ]
+   },
+   {
+    "id": "320148",
+    "reason": "Tech transfer playbook (title only): your pitch is robust process and scale-up for tech transfer, so hear what sponsors regard as right-first-time and where transfers fail.",
+    "meet": [
+     "Wave Life Sciences",
+     "Kymera Therapeutics",
+     "Newleos"
+    ]
+   },
+   {
+    "id": "320125",
+    "reason": "Startup-CDMO partnering for early CMC (title only) is your core buyer: preclinical biotechs choosing a first CMC house. Ask about peptide or oligo needs.",
+    "meet": [
+     "Lysoway Therapeutics, Inc.",
+     "Vanqua Bio",
+     "Kifa Therapeutics"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule biotechs in {geo} needing route scouting and process development",
+   "tech transfer from academic or in-house chemistry to GMP drug substance",
+   "{geo} biotechs with peptide or oligonucleotide programs outsourcing CMC",
+   "virtual biotechs running small-scale GMP campaigns via integrated CMC partner",
+   "{geo} preclinical programs with complex synthetic modalities needing IND-enabling drug substance"
+  ]
+ },
+ "curia global": {
+  "day1": [
+   {
+    "id": "320122",
+    "reason": "Curia spans API, sterile and biologics, so the consolidation versus dual-sourcing debate is your pitch: Astellas, Biogen and Pfizer speak; ask where each holds multi-site vendor consolidation.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   },
+   {
+    "id": "320127",
+    "reason": "Your sterile drug product team should hear AstraZeneca and the Gates MRI on sterile capacity gaps; a one-stop sterile and biologics site is exactly what network planners are seeking.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Meitheal Pharmaceuticals"
+    ]
+   },
+   {
+    "id": "320134",
+    "reason": "Contract-model roundtable with Fresenius Kabi; Curia can offer bundled API-to-sterile deals, so see which incentive structures sponsors actually accept.",
+    "meet": [
+     "Fresenius Kabi",
+     "Amgen",
+     "Sanofi"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320138",
+    "reason": "Small-molecule CMC gates with Vertex, QurAlis; your API/generic API side gains from hearing how sponsors weigh global capacity and supply chain at each gate.",
+    "meet": [
+     "Vertex",
+     "QurAlis",
+     "AstraZeneca"
+    ]
+   },
+   {
+    "id": "320149",
+    "reason": "Biotech partnering fundamentals (title only): CDMO selection and scaling from Phase I; Curia's range lets you pitch one partner from API through mammalian DS, so find biotechs facing a switch.",
+    "meet": [
+     "Gates MRI",
+     "Iavi",
+     "Centivax"
+    ]
+   },
+   {
+    "id": "320140",
+    "reason": "Cell and gene panel (BlueRock, Genetix, Halozyme speak); Curia offers mRNA/DNA/LNP services, so approach the gene-therapy sponsors about plasmid and nucleic acid supply.",
+    "meet": [
+     "Genetix Biotherapeutics",
+     "BlueRock Therapeutics",
+     "Halozyme, Inc."
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule and biologic programs in {geo} wanting one CDMO from API to sterile DP",
+   "mammalian cell-culture drug substance and sterile fill-finish for {stage} antibody biotechs",
+   "{geo} pharma consolidating CDMO network across API, drug product and biologics",
+   "virtual biotechs with outsourced network needing integrated API plus sterile drug product",
+   "plasmid DNA, mRNA or LNP programs in {geo} needing GMP nucleic acid manufacturing"
+  ]
+ },
+ "eurofins cdmo alphora": {
+  "day1": [
+   {
+    "id": "320130",
+    "reason": "Eurofins' API/HPAPI and ADC lines fit this potent-compounds roundtable; the page's Alphora-specific scope is unclear, so use it to ask which parts of your offer pharma teams actually shortlist.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "Pfizer",
+     "Astellas Pharma"
+    ]
+   },
+   {
+    "id": "320118",
+    "reason": "ADC development panel: Crescent Biopharma and Oliyai Consulting speak, and Eurofins lists ADCs; find where analytical and conjugation gaps leave buyers needing a testing-plus-CDMO partner.",
+    "meet": [
+     "Crescent Biopharma",
+     "Oliyai Consulting",
+     "GV20"
+    ]
+   },
+   {
+    "id": "320122",
+    "reason": "Eurofins pitches an integrated network across APIs, drug product and biologics; hear Astellas, Biogen and Pfizer on consolidation versus dual-sourcing to see how that is received.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320144",
+    "reason": "High-potency expansion strategy (title only) matches HPAPI offering; look for sponsors adding potent capacity.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "AstraZeneca"
+    ]
+   },
+   {
+    "id": "320138",
+    "reason": "Small molecule CMC with Vertex and QurAlis speaking; use it to find API programs at decision gates that need route development and analytics.",
+    "meet": [
+     "Vertex",
+     "QurAlis"
+    ]
+   },
+   {
+    "id": "320149",
+    "reason": "CDMO selection and scaling from Phase I (title only); as a Senior BD, ask biotechs how they shortlist across API, biologics and testing.",
+    "meet": [
+     "Crescent Biopharma",
+     "GV20"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule and HPAPI programs in {geo} needing development and GMP API",
+   "ADC or bispecific biotechs needing antibody, payload and drug product from one network",
+   "{geo} pharma seeking analytical and CDMO services for biologics and plasmid DNA",
+   "virtual biotechs with outsourced portfolio of API, antibody and drug product work",
+   "live biotherapeutic or microbiome programs in {geo} needing GMP manufacturing"
+  ]
+ },
+ "fisiopharma s r l": {
+  "day1": [
+   {
+    "id": "320116",
+    "reason": "FIS is an Italian small-molecule DS house; this North America outlook with Takeda and Oliyai Consulting shows how tariffs and reshoring change what US buyers ask of European API suppliers.",
+    "meet": [
+     "Takeda",
+     "Merck"
+    ]
+   },
+   {
+    "id": "320122",
+    "reason": "Consolidate, regionalize or dual-source: Astellas, Biogen and Pfizer speak. Your pitch is a second-source European API site; ask them which APIs they dual-source.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   },
+   {
+    "id": "320133",
+    "reason": "Capacity planning for launch (BE BIOSOL sponsors) fits FIS's commercial-scale validation; find sponsors reserving API capacity for Phase 3 and approvals.",
+    "meet": [
+     "Amylyx Pharmaceuticals",
+     "Stoke Therapeutics",
+     "Altimmune"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320138",
+    "reason": "Small-molecule CMC decision gates with Vertex and QurAlis; FIS offers process optimization and scale-up, so use it to find programs where route unworkability is the risk.",
+    "meet": [
+     "Vertex",
+     "QurAlis",
+     "Kymera Therapeutics"
+    ]
+   },
+   {
+    "id": "320136",
+    "reason": "Almac's case on DS-to-DP particle size is directly adjacent to FIS spray drying; see how a competitor frames integrated particle engineering.",
+    "meet": [
+     "Alkermes",
+     "Insmed"
+    ]
+   },
+   {
+    "id": "320148",
+    "reason": "Tech transfer playbook (title only): FIS's 70 years of transfer and validation is the pitch; find sponsors who have had a failed transfer.",
+    "meet": [
+     "Stoke Therapeutics",
+     "Amylyx Pharmaceuticals",
+     "Acadia Pharmaceuticals"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule drug substance programs in {geo} needing tech transfer and scale-up",
+   "peptide programs using liquid-phase peptide synthesis for GMP drug substance",
+   "{geo} pharma seeking European second source for commercial API",
+   "mid-pharma with outsourced API network needing spray drying or flow chemistry",
+   "{geo} Phase 3 small-molecule assets needing validated commercial API supply"
+  ]
+ },
+ "grifols": {
+  "day1": [
+   {
+    "id": "320127",
+    "reason": "Sterile injectable supply resilience with AstraZeneca and Gates MRI speaking; Grifols' bags and vials are what network planners want when capacity is short.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Meitheal Pharmaceuticals"
+    ]
+   },
+   {
+    "id": "320134",
+    "reason": "Contract-model roundtable with Fresenius Kabi (a bag and IV peer); hear what incentive structures buyers want from a sterile CDMO.",
+    "meet": [
+     "Fresenius Kabi",
+     "Amphastar Pharmaceuticals, Inc.",
+     "Meitheal Pharmaceuticals"
+    ]
+   },
+   {
+    "id": "320126",
+    "reason": "BSP's lyophilization tech transfer talk covers vial processes; Grifols fills vials, so check how sponsors judge scale-up readiness.",
+    "meet": [
+     "Amphastar Pharmaceuticals, Inc.",
+     "Xeris Pharmaceuticals Inc."
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320137",
+    "reason": "Shock-proof supply (mAbxience, Vertex, Rx360 speak): designing CDMO partnerships for capacity shocks; your IV-bag capacity is a hedge, so approach Vertex.",
+    "meet": [
+     "Vertex",
+     "Rx360",
+     "Emergent BioSolutions"
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Procurement beyond price (title only): Grifols' pitch is added-value injectables, not lowest cost; hear buyers' non-price criteria.",
+    "meet": [
+     "Fresenius Medical Care North America",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320146",
+    "reason": "The perfect RFx process (title only): learn how buyers write sterile injectable requirements so Grifols' responses score well.",
+    "meet": [
+     "Meitheal Pharmaceuticals",
+     "Pfizer"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule injectable programs in {geo} needing flexible bag or vial fill-finish",
+   "ready-to-use IV solution products needing sterile contract manufacturing in flexible bags",
+   "{geo} generic injectable companies seeking added-value sterile CDMO partner",
+   "mid-pharma with outsourced sterile network wanting second source for vials",
+   "premixed or large-volume parenteral lifecycle projects in {geo}"
+  ]
+ },
+ "indenausa com": {
+  "day1": [
+   {
+    "id": "320120",
+    "reason": "Raw-material strategy and supplier/CDMO partnerships; Indena sells botanical raw materials and CDMO services, so this is the one session built for both of your roles. Haizhou Pharma sponsors; speak to sourcing teams.",
+    "meet": [
+     "Haizhou Pharma",
+     "Pfizer",
+     "Bimeda"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America contract manufacturing outlook (Takeda, Oliyai Consulting): tariffs and supply concerns shape appetite for a European complex-API source.",
+    "meet": [
+     "Takeda",
+     "Merck"
+    ]
+   },
+   {
+    "id": "320122",
+    "reason": "Consolidation versus dual-sourcing (Astellas, Biogen, Pfizer): a CDMO for complex APIs is often a second source; ask which molecules they dual-source.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320138",
+    "reason": "Small molecule CMC and supply chain with Vertex and QurAlis; Indena's complex-API CDMO pitch needs buyers at route-and-supply decisions.",
+    "meet": [
+     "Vertex",
+     "QurAlis"
+    ]
+   },
+   {
+    "id": "320141",
+    "reason": "APIIC and API reshoring (title only): see how US buyers evaluate foreign suppliers and where specialty-API partners fit.",
+    "meet": [
+     "Midas Pharmaceuticals, Inc.",
+     "Eli Lilly And Company"
+    ]
+   },
+   {
+    "id": "320146",
+    "reason": "RFx roundtable (title only): learn how sponsors specify complex API suppliers so your CDMO bids hit scoring criteria.",
+    "meet": [
+     "Pfizer",
+     "Merck"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule programs in {geo} needing complex natural-product-derived APIs",
+   "botanical or plant-derived API supply for pharma needing GMP extraction and purification",
+   "{geo} pharma seeking European CDMO for complex API with difficult supply chain",
+   "mid-pharma with outsourced API network wanting specialty complex-chemistry partner",
+   "bioavailability-enhancement or phytosome-style delivery projects for nutraceutical-to-pharma teams in {geo}"
+  ]
+ },
+ "kimball solutions": {
+  "day1": [
+   {
+    "id": "320133",
+    "reason": "Capacity planning for launch (BE BIOSOL sponsors): device assembly lines have long tooling and validation lead times; find launch teams reserving combination-product capacity.",
+    "meet": [
+     "Halozyme, Inc.",
+     "Xeris Pharmaceuticals Inc.",
+     "Emergent BioSolutions"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America manufacturing outlook (Takeda, Oliyai Consulting): reshoring and tariff impacts matter to a US device assembler with electronics expertise.",
+    "meet": [
+     "Takeda",
+     "Merck"
+    ]
+   },
+   {
+    "id": "320123",
+    "reason": "Trend Briefings: analysts' outsourcing trends help position device and combination-product CDMO against drug-product players.",
+    "meet": [
+     "Sanofi",
+     "Johnson & Johnson"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320148",
+    "reason": "Tech transfer playbook (title only): for device and combination products, design and process transfer is your bottleneck; hear what sponsors call right first time.",
+    "meet": [
+     "Sanofi",
+     "Merck",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Strategic procurement (title only): buyers of device assembly weigh cost heavily; learn which non-price factors carry weight.",
+    "meet": [
+     "Johnson & Johnson",
+     "Eli Lilly And Company"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} injectable biologics in {geo} needing autoinjector or pen device assembly",
+   "combination product programs requiring injection molding and device design transfer",
+   "{geo} specialty pharma seeking US medical device contract manufacturer",
+   "virtual biotechs with outsourced drug product needing a single-source device partner",
+   "wearable or electronic drug delivery projects in {geo} needing medical electronics assembly"
+  ]
+ },
+ "malta development labs": {
+  "day1": [
+   {
+    "id": "320130",
+    "reason": "Your team is sponsoring this roundtable on ADCs and high-potency manufacturing. Use the room to meet pharma and biotech outsourcers with potent injectables and ask who is short of aseptic fill capacity in the EU.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "Pfizer",
+     "Crescent Biopharma"
+    ]
+   },
+   {
+    "id": "320127",
+    "reason": "Sterile supply-network panel (AstraZeneca, Gates MRI): your highly potent aseptic fill capacity addresses the shortfalls described; approach panellists on EU back-up capacity.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Meitheal Pharmaceuticals"
+    ]
+   },
+   {
+    "id": "320126",
+    "reason": "BSP's lyophilization tech transfer: potent injectables are often lyophilized; learn sponsor pain points on sterile slots.",
+    "meet": [
+     "Amphastar Pharmaceuticals, Inc.",
+     "Puma Biotechnology"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320144",
+    "reason": "High-potency capacity expansion and legacy asset integration (title only): your own post-Mubadala Bio story; compare how peers present it.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "AstraZeneca"
+    ]
+   },
+   {
+    "id": "320137",
+    "reason": "Shock-proof supply (mAbxience, Vertex, Rx360): geopolitical and capacity shocks make an EU potent-injectables back-up attractive.",
+    "meet": [
+     "Vertex",
+     "Rx360"
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Strategic procurement (title only): a boutique CDMO wins on responsiveness, not price; hear which alliance criteria buyers use.",
+    "meet": [
+     "Pfizer",
+     "Eli Lilly And Company"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} oncology injectables in {geo} needing highly potent aseptic fill-finish",
+   "ADC or cytotoxic programs needing potent sterile drug product capacity in Europe",
+   "{geo} pharma seeking EU back-up site for potent sterile injectables",
+   "virtual biotechs with outsourced potent drug product network and small batch needs",
+   "lyophilized or liquid potent injectables for {stage} programs in {geo}"
+  ]
+ },
+ "nextpharma": {
+  "day1": [
+   {
+    "id": "320122",
+    "reason": "Network optimization with Astellas, Biogen and Pfizer: for oral solids, softgels and ophthalmics the question is regionalizing; find who is moving European volumes.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   },
+   {
+    "id": "320133",
+    "reason": "Capacity planning for launch (BE BIOSOL sponsors): sponsors reserving tablet and packaging capacity for approvals are your near-term leads.",
+    "meet": [
+     "Amylyx Pharmaceuticals",
+     "Stoke Therapeutics",
+     "Mission Pharmacal Company"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America manufacturing outlook (Takeda, Oliyai Consulting): how tariffs affect where oral solids get made for US launches.",
+    "meet": [
+     "Takeda",
+     "Bimeda"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320146",
+    "reason": "RFx roundtable (title only): oral solids RFPs are price-comparable, so see how buyers write requirements and what separates shortlisted CDMOs.",
+    "meet": [
+     "Acella Pharmaceuticals",
+     "Mission Pharmacal Company"
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Strategic procurement beyond price (title only): your softgel, ophthalmic and BFS packaging breadth is the non-price argument.",
+    "meet": [
+     "Noven Pharmaceuticals",
+     "Bimeda"
+    ]
+   },
+   {
+    "id": "320136",
+    "reason": "Almac on particle size from DS to DP: for oral solids, particle attributes drive blend and dissolution; useful for formulation conversations.",
+    "meet": [
+     "Alkermes",
+     "Orion Pharma"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule programs in {geo} needing oral solid dose or softgel manufacturing",
+   "commercial tablet and softgel products needing European CDMO with packaging",
+   "{geo} specialty pharma seeking ophthalmic or BFS unit-dose contract manufacturing",
+   "mid-pharma with outsourced oral solid network adding a European site",
+   "chewable or multi-format OTC-to-Rx programs in {geo} needing contract packaging"
+  ]
+ },
+ "pi health sciences": {
+  "day1": [
+   {
+    "id": "320130",
+    "reason": "High-potency roundtable (ADCs, HPAPIs): PI makes HPAPIs in India and Italy; meet pharma teams comparing potent API capacity.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "Pfizer",
+     "Astellas Pharma"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America contract manufacturing outlook (Takeda, Oliyai Consulting): tariffs and reshoring reshape China-plus-one API sourcing, which is your India/Italy pitch.",
+    "meet": [
+     "Takeda",
+     "Merck"
+    ]
+   },
+   {
+    "id": "320122",
+    "reason": "Consolidation versus dual-sourcing (Astellas, Biogen, Pfizer): PI's India-plus-Italy footprint is a dual-source answer; ask which APIs they split.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320144",
+    "reason": "High-potency manufacturing and capacity expansion (title only): HPAPI is your core; hear how peers frame platform builds.",
+    "meet": [
+     "Bristol Myers Squibb",
+     "AstraZeneca"
+    ]
+   },
+   {
+    "id": "320138",
+    "reason": "Small-molecule CMC (Vertex, QurAlis, Portfolio CMC Advisors): PI covers discovery through API, so this is the audience for an integrated CRDMO offer.",
+    "meet": [
+     "Vertex",
+     "QurAlis",
+     "Kymera Therapeutics"
+    ]
+   },
+   {
+    "id": "320141",
+    "reason": "APIIC and API reshoring (title only): learn how US buyers evaluate Indian/Italian API partners against US-based networks.",
+    "meet": [
+     "Midas Pharmaceuticals, Inc.",
+     "Eli Lilly And Company"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule biotechs in {geo} needing integrated discovery-to-API CRDMO",
+   "HPAPI and potent API programs needing process development and GMP supply",
+   "{geo} pharma seeking India-Italy dual-site API manufacturing",
+   "virtual biotechs with outsourced discovery chemistry, DMPK and API network",
+   "flow chemistry or biocatalysis API route redesigns for {stage} programs in {geo}"
+  ]
+ },
+ "recipharm": {
+  "day1": [
+   {
+    "id": "320127",
+    "reason": "Sterile supply networks panel (AstraZeneca, Gates MRI): Recipharm's sterile fill-finish and PFS capacity; ask panellists about capacity gaps.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Amgen"
+    ]
+   },
+   {
+    "id": "320122",
+    "reason": "Consolidation versus dual-sourcing (Astellas, Biogen, Pfizer): Recipharm spans OSD, sterile and advanced bio, a case for consolidation.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   },
+   {
+    "id": "320134",
+    "reason": "Contract-model roundtable with Fresenius Kabi: for an Americas BD team, see which risk-sharing structures sponsors accept.",
+    "meet": [
+     "Fresenius Kabi",
+     "Sanofi",
+     "Amgen"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320140",
+    "reason": "Cell and gene panel (BlueRock, Genetix, TORQUE BIO, Halozyme): Recipharm's viral vector, mRNA and pDNA services; approach Genetix and TORQUE BIO.",
+    "meet": [
+     "Genetix Biotherapeutics",
+     "TORQUE BIO",
+     "BlueRock Therapeutics"
+    ]
+   },
+   {
+    "id": "320149",
+    "reason": "Biotech partnering fundamentals (title only): CDMO selection and scaling from Phase I; find biotechs outgrowing a single-modality CDMO.",
+    "meet": [
+     "Centivax",
+     "Iavi",
+     "Metaphore Biotechnologies"
+    ]
+   },
+   {
+    "id": "320137",
+    "reason": "Shock-proof supply (mAbxience, Vertex, Rx360): European plus US sites provide capacity-shock resilience; approach Vertex.",
+    "meet": [
+     "Vertex",
+     "Rx360"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} antibody and recombinant protein biotechs in {geo} needing drug substance and fill-finish",
+   "prefilled syringe or autoinjector fill-finish for biologics needing sterile capacity",
+   "{geo} pharma seeking transatlantic CDMO for OSD, sterile and biologics",
+   "mid-pharma with outsourced network consolidating small-molecule and biologics vendors",
+   "viral vector, mRNA or plasmid programs in {geo} needing GMP manufacturing"
+  ]
+ },
+ "ritedose": {
+  "day1": [
+   {
+    "id": "320127",
+    "reason": "Sterile supply networks (AstraZeneca, Gates MRI): Ritedose's blow-fill-seal unit-dose and prefilled syringes are a capacity alternative to vial lines.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320133",
+    "reason": "Capacity planning for launch (BE BIOSOL sponsors): inhalation and ophthalmic unit-dose launches need reserved BFS slots; find the launch teams.",
+    "meet": [
+     "Insmed",
+     "Pulmovant",
+     "Alkermes"
+    ]
+   },
+   {
+    "id": "320123",
+    "reason": "Trend Briefings: analysts' view on outsourcing trends to position BFS and inhalation against conventional vial CDMOs.",
+    "meet": [
+     "Meitheal Pharmaceuticals",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320137",
+    "reason": "Shock-proof supply (mAbxience, Vertex, Rx360): second-source BFS capacity for sterile respiratory products is a resilience pitch.",
+    "meet": [
+     "Vertex",
+     "Rx360"
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Strategic procurement (title only): a portfolio strategy director can use this to learn how buyers weigh BFS capability against price.",
+    "meet": [
+     "Insmed",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320146",
+    "reason": "RFx roundtable (title only): see how sponsors write requirements for unit-dose inhalation and ophthalmic sterile products.",
+    "meet": [
+     "Pulmovant",
+     "Alkermes"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} inhalation or nebulized products in {geo} needing blow-fill-seal unit-dose manufacturing",
+   "ophthalmic unit-dose products needing sterile BFS CDMO capacity",
+   "{geo} specialty pharma seeking prefilled syringe contract manufacturing",
+   "mid-pharma with outsourced respiratory portfolio needing second BFS source",
+   "small-molecule inhaled therapies in {geo} at Phase 3 needing commercial-scale sterile supply"
+  ]
+ },
+ "sentiss pharmaceuticals": {
+  "day1": [
+   {
+    "id": "320127",
+    "reason": "Sterile supply networks (AstraZeneca, Gates MRI): ophthalmic, otic and inhalation products are sterile, so hear where capacity is short.",
+    "meet": [
+     "AstraZeneca",
+     "Bill & Melinda Gates Medical Research Institute",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320134",
+    "reason": "Contract-model roundtable with Fresenius Kabi: as president, see which deal structures sponsors prefer for specialty sterile products.",
+    "meet": [
+     "Fresenius Kabi",
+     "Meitheal Pharmaceuticals"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America outlook (Takeda, Oliyai Consulting): tariffs and capacity shifts affect where ophthalmic products are made for the US.",
+    "meet": [
+     "Takeda",
+     "Bimeda"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320139",
+    "reason": "Strategic procurement (title only): the pitch for a niche ophthalmic CDMO is reliability beyond price; hear buyers' criteria.",
+    "meet": [
+     "Amphastar Pharmaceuticals, Inc.",
+     "Mission Pharmacal Company"
+    ]
+   },
+   {
+    "id": "320146",
+    "reason": "RFx roundtable (title only): see how sponsors specify ophthalmic and inhalation requirements to tune responses.",
+    "meet": [
+     "Acadia Pharmaceuticals",
+     "Puma Biotechnology"
+    ]
+   },
+   {
+    "id": "320137",
+    "reason": "Shock-proof supply (mAbxience, Vertex, Rx360): capacity-shock planning drives interest in second sources for ophthalmic and nasal products.",
+    "meet": [
+     "Vertex",
+     "Rx360"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} ophthalmic small-molecule programs in {geo} needing sterile drop manufacturing",
+   "inhalation or nebulization solution products needing contract manufacture",
+   "{geo} specialty pharma seeking otic or nasal sterile CDMO partner",
+   "mid-pharma with outsourced sterile liquids portfolio seeking niche second source",
+   "505(b)(2) ophthalmic reformulations in {geo} needing development through commercial supply"
+  ]
+ },
+ "skyepharma": {
+  "day1": [
+   {
+    "id": "320122",
+    "reason": "Network optimization (Astellas, Biogen, Pfizer): oral-solid sponsors are regionalizing European volumes; ask who needs a French site.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America outlook (Takeda, Oliyai Consulting): tariffs change where tablets are made for US launches; calibrate your approach.",
+    "meet": [
+     "Takeda",
+     "Bimeda"
+    ]
+   },
+   {
+    "id": "320133",
+    "reason": "Capacity planning for launch (BE BIOSOL sponsors): reserving multilayer tablet and capsule capacity for approvals is a lead source.",
+    "meet": [
+     "Amylyx Pharmaceuticals",
+     "Stoke Therapeutics",
+     "Acella Pharmaceuticals"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320148",
+    "reason": "Tech transfer playbook (title only): moving tablets, multilayer products and chewing gum into your site is the core buyer decision.",
+    "meet": [
+     "Acella Pharmaceuticals",
+     "Mission Pharmacal Company",
+     "Orion Pharma"
+    ]
+   },
+   {
+    "id": "320136",
+    "reason": "Almac on particle size from DS to DP: oral solid formulation depends on particle attributes; useful in formulation discussions.",
+    "meet": [
+     "Alkermes",
+     "Orion Pharma"
+    ]
+   },
+   {
+    "id": "320139",
+    "reason": "Strategic procurement (title only): see what non-price factors push buyers to a small European oral-solids CDMO.",
+    "meet": [
+     "Bimeda",
+     "Noven Pharmaceuticals"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule programs in {geo} needing multilayer tablet or capsule manufacture",
+   "chewing gum or specialty oral dose products needing European CDMO",
+   "{geo} specialty pharma seeking French oral solid dose site with packaging",
+   "mid-pharma with outsourced OSD network adding a boutique European partner",
+   "commercial oral products in {geo} needing tech transfer into EU-GMP site"
+  ]
+ },
+ "suanfarma cdmo": {
+  "day1": [
+   {
+    "id": "320120",
+    "reason": "Raw-material strategy and supplier/CDMO partnerships (Haizhou Pharma): fermentation and chemical synthesis make you sensitive to input shortages; meet sourcing teams.",
+    "meet": [
+     "Haizhou Pharma",
+     "Pfizer",
+     "Bimeda"
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America outlook (Takeda, Oliyai Consulting): tariffs and reshoring shape appetite for Portuguese and Italian API supply.",
+    "meet": [
+     "Takeda",
+     "Merck"
+    ]
+   },
+   {
+    "id": "320122",
+    "reason": "Consolidation versus dual-sourcing (Astellas, Biogen, Pfizer): your pitch is a European API second source; ask which APIs are dual-sourced.",
+    "meet": [
+     "Astellas",
+     "Biogen",
+     "Pfizer"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320141",
+    "reason": "APIIC and API reshoring (title only): learn how US buyers evaluate foreign API partners and how to be a complement.",
+    "meet": [
+     "Midas Pharmaceuticals, Inc.",
+     "Eli Lilly And Company"
+    ]
+   },
+   {
+    "id": "320138",
+    "reason": "Small-molecule CMC (Vertex, QurAlis, Portfolio CMC Advisors): the audience for synthesis, bioconversion and flow chemistry route work.",
+    "meet": [
+     "Vertex",
+     "QurAlis",
+     "Kymera Therapeutics"
+    ]
+   },
+   {
+    "id": "320143",
+    "reason": "Decarbonization with PSCI (title only): fermentation and flow chemistry are greener than batch; pharma sustainability teams ask CDMOs for it.",
+    "meet": [
+     "Pfizer",
+     "Astellas"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule programs in {geo} needing API and advanced intermediates",
+   "fermentation-derived or bioconversion API for commercial pharma supply",
+   "{geo} pharma seeking Portuguese or Italian GMP API second source",
+   "mid-pharma with outsourced API network seeking flow chemistry partner",
+   "route redesign for greener API manufacturing in {geo}"
+  ]
+ },
+ "upperton pharma solutions": {
+  "day1": [
+   {
+    "id": "320128",
+    "reason": "Your team is sponsoring and speaking at this partnership roundtable. Use it to show how Upperton aligns incentives, then approach sponsors afterwards with formulation or clinical manufacturing needs.",
+    "meet": [
+     "Alkermes",
+     "Halozyme, Inc.",
+     "Pulmovant"
+    ]
+   },
+   {
+    "id": "320126",
+    "reason": "BSP on lyophilization tech transfer; Upperton does spray-dried biologics and parenteral forms, so it is a sterile comparison point.",
+    "meet": [
+     "Halozyme, Inc.",
+     "Amphastar Pharmaceuticals, Inc."
+    ]
+   },
+   {
+    "id": "320116",
+    "reason": "North America outlook (Takeda, Oliyai Consulting): tariffs and capacity affect appetite for a UK formulation partner; your NA exec should listen.",
+    "meet": [
+     "Takeda",
+     "Vertex"
+    ]
+   }
+  ],
+  "day2": [
+   {
+    "id": "320147",
+    "reason": "AI in formulation and CMC (title only): formulation science is Upperton's core; expect AI vendors and sponsors to debate; prepare your answer.",
+    "meet": [
+     "Alkermes",
+     "Halozyme, Inc."
+    ]
+   },
+   {
+    "id": "320136",
+    "reason": "Almac on particle size from DS to DP: for inhalation and spray-dried products, particle attributes are the product; compare positioning.",
+    "meet": [
+     "Insmed",
+     "Alkermes",
+     "Pulmovant"
+    ]
+   },
+   {
+    "id": "320125",
+    "reason": "Startup-CDMO partnering for early CMC (title only): Upperton's formulation and clinical manufacturing suits startups; find those needing first-in-human.",
+    "meet": [
+     "Lysoway Therapeutics, Inc.",
+     "Newleos",
+     "Terrestrial Bio"
+    ]
+   }
+  ],
+  "search_terms": [
+   "{stage} small-molecule and biologic programs in {geo} needing formulation development to clinical supply",
+   "spray-dried biologic formulation for inhaled or nasal delivery programs",
+   "{geo} biotechs needing UK-based clinical trial manufacturing of oral, nasal or pulmonary products",
+   "virtual biotechs with outsourced formulation and early-phase manufacturing needs",
+   "protein or peptide parenteral formulation projects in {geo} needing development partner"
+  ]
+ }
+}

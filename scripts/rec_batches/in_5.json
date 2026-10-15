@@ -1,0 +1,306 @@
+[
+ {
+  "key": "alfasigma",
+  "name": "Alfasigma",
+  "segment": "CDMO",
+  "domain": "alfasigma.com",
+  "modalities": [
+   "api",
+   "small",
+   "device"
+  ],
+  "evidence": "Morpho CDMO: Biosint fine chemicals/APIs; sterile injectables in vials, prefilled syringes, cartridges, lyophilized; complex dosage forms",
+  "event_blurb": "Morpho is the CDMO division of the Alfasigma Group, focused on providing integrated pharmaceutical development and manufacturing solutions. As a tech-driven specialty CDMO, Morpho combines advanced formulation expertise, innovative manufacturing technologies, and regulatory excellence to support partners from early development through commercial production.\nMorpho operates through three complementary business units:\nPharma Tech: pharmaceutical development and manufacturing services, with expertise in complex dosage forms and advanced drug delivery technologies.\nFine Chemicals (Biosint): develo",
+  "attendee_titles": [
+   "Head of BD"
+  ]
+ },
+ {
+  "key": "austinpx",
+  "name": "AustinPx",
+  "segment": "CDMO",
+  "domain": "austinpx.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Novel oral solid dose development, KinetiSol amorphous solid dispersions; no biologics mentioned",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business Development"
+  ]
+ },
+ {
+  "key": "bora pharmaceuticals and bora biologics",
+  "name": "Bora Pharmaceuticals and Bora Biologics",
+  "segment": "CDMO",
+  "domain": "boracdmo.com",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "evidence": "Pharma: OSD, sterile fill-finish, semi-solids; Biologics: mammalian/microbial, refold, pegylation conjugation; mAbs not named",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Senior Director Business Development"
+  ]
+ },
+ {
+  "key": "catalent",
+  "name": "Catalent",
+  "segment": "CDMO",
+  "domain": "catalent.com",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "protein",
+   "gene"
+  ],
+  "evidence": "Biologics incl. multispecific antibody expression; small molecule CDMO; AAV gene therapy scale-up",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Account Executive",
+   "Business Development Director"
+  ]
+ },
+ {
+  "key": "cramsn research park at cramsn research park",
+  "name": "CRAMSN Research Park at CRAMSN Research Park Private Limited",
+  "segment": "CDMO",
+  "domain": "cramsn.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Drug substance (APIs) and drug product formulation, CRO/CDMO/CMO; no peptides or biologics stated",
+  "event_blurb": "CRAMSN is a leading Contract Research, Development, and Manufacturing Organization (CRO, CDMO, CMO) that offers end-to-end solutions and supports standalone programs with efficiency, quality, and consistency enabling faster go-to-market strategies. As a catalyst for change, we are committed to reducing our carbon footprint through sustainable practices. Our objectives include utilizing green chemistry across our services to minimize our carbon footprint. Solar-powered facilities and maintaining 50% green cover help us move closer to achieving net-zero waste.",
+  "attendee_titles": [
+   "Chief Operating Officer"
+  ]
+ },
+ {
+  "key": "esteve cdmo",
+  "name": "ESTEVE CDMO",
+  "segment": "CDMO",
+  "domain": "esteve.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "Small-molecule APIs, HPAPI, advanced intermediates, spray drying; six cGMP sites",
+  "event_blurb": "Esteve CDMO is a specialized partner for small molecule new chemical entity (NCE) innovators, supporting programs from early clinical development through to full commercial manufacturing. Focused on Phase I through commercialization, Esteve CDMO provides an integrated and scalable framework designed for emerging, mid-sized, and large pharmaceutical companies. With a worldwide network that includes six cGMP manufacturing sites across the US, China, Mexico, and Spain, and key technologies such as HPAPI OEB5 containment and spray drying, Esteve CDMO combines global reach, regulatory alignment, an",
+  "attendee_titles": [
+   "Business Development Lead",
+   "Business Development Analyst"
+  ]
+ },
+ {
+  "key": "fis",
+  "name": "FIS",
+  "segment": "CDMO",
+  "domain": "fisvi.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Small molecule APIs & intermediates CDMO; event text cites liquid phase peptide synthesis (not on homepage)",
+  "event_blurb": "FIS is a top 5 global CDMO for small molecule Drug Substance, with over 70 years of experience in tech transfer, process optimization, scale up, and validation. Our 25+ scientist industrialization team is backed by three closely-clustered Italian sites and dedicated early- and late-phase R&D, with a high ratio of analysts to chemists and 99% of testing conducted in-house. We bring deep expertise in spray drying, flow chemistry, and liquid phase peptide synthesis. Backed by Bain Capital, FIS continues to invest in capacity and technology to support partners from development through commercial s",
+  "attendee_titles": [
+   "Business Development, API Custom Synthesis"
+  ]
+ },
+ {
+  "key": "grand river aseptic manufacturing",
+  "name": "Grand River Aseptic Manufacturing",
+  "segment": "CDMO",
+  "domain": "grandriverasepticmfg.com",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "device"
+  ],
+  "evidence": "Aseptic fill-finish for biologics, small molecules, vaccines; syringes, cartridges, autoinjector/on-body solutions",
+  "event_blurb": "Grand River Aseptic Manufacturing (GRAM) is a leading contract development and manufacturing organization (CDMO) specializing in sterile injectable fill-and-finish services for liquid and lyophilized vials, syringes, and cartridges. We are committed to advancing patient care by providing our clients with the experience, technology, and quality record necessary for effective clinical trials and successful commercialization.\nGRAM adds value for our clients through strategic partnerships with innovators in drug delivery devices, offering tailored solutions designed for autoinjectors and on-body d",
+  "attendee_titles": [
+   "Vice President of Business Development",
+   "Business Development Executive"
+  ]
+ },
+ {
+  "key": "incog biopharma services",
+  "name": "INCOG BioPharma Services",
+  "segment": "CDMO",
+  "domain": "incogbiopharma.com",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "evidence": "Sterile injectable fill/finish; device assembly for combination products; biologics only per third-party reports",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Director of Business Developement"
+  ]
+ },
+ {
+  "key": "kemwell biopharma",
+  "name": "Kemwell Biopharma Pvt. Ltd.",
+  "segment": "CDMO",
+  "domain": "kemwellbiopharma.com",
+  "modalities": [
+   "mab",
+   "bispecific",
+   "protein"
+  ],
+  "evidence": "Mammalian cell-culture protein therapeutics: mAbs, bispecific/multispecific antibodies, fusion proteins, recombinant proteins",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Vice President, Global Business Development"
+  ]
+ },
+ {
+  "key": "mabxcience",
+  "name": "mAbxcience",
+  "segment": "CDMO",
+  "domain": "mabxience.com",
+  "modalities": [
+   "biosimilar",
+   "protein"
+  ],
+  "evidence": "Biosimilars and innovator biologics R&D and CDMO; mAbs not explicitly named on homepage",
+  "event_blurb": "",
+  "attendee_titles": [
+   "CDMO Associate Director",
+   "Bioquimico",
+   "Business Development Manager CDMO"
+  ]
+ },
+ {
+  "key": "neuland labs",
+  "name": "Neuland Labs",
+  "segment": "CDMO",
+  "domain": "neulandlabs.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "CDMO for small molecule APIs & peptides (SPPS, LPPS); high potency APIs",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Director-Business Development"
+  ]
+ },
+ {
+  "key": "pharmaron",
+  "name": "Pharmaron",
+  "segment": "CDMO",
+  "domain": "pharmaron.com",
+  "modalities": [
+   "api",
+   "small",
+   "protein",
+   "adc",
+   "cell",
+   "gene"
+  ],
+  "evidence": "Small molecule, peptides, biologics CDMO, ADC/bioconjugates, cell and gene therapy CDMO; radiolabelling only for tracers",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business Development"
+  ]
+ },
+ {
+  "key": "quotient sciences",
+  "name": "Quotient Sciences",
+  "segment": "CDMO",
+  "domain": "quotientsciences.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Small molecule drug development; oral, inhaled, parenteral, topical drug product; oral peptides, HPAPI",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Senior Director Drug Development",
+   "Senior Director, Business Development"
+  ]
+ },
+ {
+  "key": "richman chemical at richman chemical",
+  "name": "Richman Chemical Inc. at Richman Chemical Inc.",
+  "segment": "Supplier",
+  "domain": "richmanchemical.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Pharma raw materials & intermediates, custom mfg, HPAPI/API white papers; drug product formulation, compounding, packaging",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Chief Operating Officer"
+  ]
+ },
+ {
+  "key": "sai life sciences",
+  "name": "Sai Life Sciences",
+  "segment": "CDMO",
+  "domain": "sailife.com",
+  "modalities": [
+   "api",
+   "small",
+   "adc"
+  ],
+  "evidence": "Small molecules and new modalities: peptides, oligos, ADCs; oral, parenteral formulations",
+  "event_blurb": "Sai Life Sciences is built on the bedrock of partnership. We work with innovator pharma and biotech companies to accelerate the discovery, development and manufacture of complex small molecules for a healthier tomorrow. Our Vision is to support our global innovator partners bring 25 new medicines to life by 2025. And we are well on that journey.",
+  "attendee_titles": [
+   "Vice President & Head of CMC Business Development,North America",
+   "Director, CMC Business Development"
+  ]
+ },
+ {
+  "key": "sk pharmteco",
+  "name": "SK Pharmteco",
+  "segment": "CDMO",
+  "domain": "skpharmteco.com",
+  "modalities": [
+   "api",
+   "small",
+   "adc",
+   "cell",
+   "gene"
+  ],
+  "evidence": "Small molecule API/HPAPI, ADC payloads, peptides; cell therapy; AAV/lentivirus vectors and plasmid DNA (skpt.com not reachable)",
+  "event_blurb": "SK pharmteco is a leading global contract development and manufacturing organization (CDMO) with a network of CGMP facilities in key markets. Our experts and services empower our clients across the world, helping to bring innovative therapies to patients at any scale.",
+  "attendee_titles": [
+   "Sr Director, Business Development",
+   "Executive Director, Business Development"
+  ]
+ },
+ {
+  "key": "suanfarma",
+  "name": "SUANFARMA",
+  "segment": "CDMO",
+  "domain": "suanfarma.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "CDMO: chemical synthesis, fermentation, flow chemistry for small molecule APIs and intermediates; GMP APIs",
+  "event_blurb": "Suanfarma CDMO - Your European Partner for Small Molecule Innovation\nSuanfarma CDMO is a European Contract Development & Manufacturing Organization specializing in the development, scale-up and commercial manufacturing of small molecule APIs and advanced intermediates. We provide integrated solutions from early development through GMP manufacturing and commercial supply, supporting pharmaceutical and biotechnology companies with customized, science-driven partnerships.\nOur unique strength lies in combining advanced chemical synthesis, industrial bioconversion (fermentation), and flow chemistry",
+  "attendee_titles": [
+   "Chief Marketing Officer"
+  ]
+ },
+ {
+  "key": "tianyu pharmaq",
+  "name": "Tianyu Pharmaq",
+  "segment": "Supplier",
+  "domain": "tianyupharm.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "APIs (sartans), intermediates, CDMO and finished formulations; Zhejiang Tianyu Pharmaceutical",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Sr. Director of BD"
+  ]
+ }
+]

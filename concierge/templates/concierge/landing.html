@@ -384,6 +384,107 @@
     .conference-strip{display:inline-flex;}
   }
 
+
+  /* ---------- Tab navigation ---------- */
+  .tabbar{
+    position:fixed;z-index:20;
+    left:0;right:0;bottom:0;
+    display:flex;justify-content:space-around;align-items:stretch;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+    border-top:1px solid var(--line);
+  }
+  .tab{
+    appearance:none;border:0;background:transparent;cursor:pointer;
+    flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+    padding:6px 4px;border-radius:14px;
+    color:var(--ink-faint);font-family:inherit;font-size:10.5px;font-weight:600;letter-spacing:.01em;
+    transition:color .15s, background .15s;
+  }
+  .tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .tab.active{color:var(--ink);}
+  .tab.active svg{stroke:var(--accent);}
+  .tab:active{background:var(--accent-soft);}
+  .app{padding-bottom:110px;}
+  @media(min-width:900px){
+    .tabbar{
+      top:0;right:auto;bottom:0;width:92px;
+      flex-direction:column;justify-content:flex-start;align-items:stretch;gap:6px;
+      padding:104px 10px 20px;
+      border-top:0;border-right:1px solid var(--line);
+    }
+    .tab{flex:0 0 auto;padding:12px 4px;font-size:11px;}
+    .app{margin-left:92px;max-width:none;padding-left:48px;padding-right:48px;padding-bottom:80px;}
+    .app > *{max-width:1120px;margin-left:auto;margin-right:auto;width:100%;}
+    .app > .screen{max-width:1120px;}
+  }
+
+  /* ---------- Sessions / Search / Experience ---------- */
+  .tab-head{margin-bottom:22px;}
+  .tab-head .title{font-size:clamp(30px,5vw,44px);margin-bottom:8px;}
+  .tab-head .lede{margin-bottom:0;}
+  .day-toggle{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+  .day-pill{
+    appearance:none;cursor:pointer;font:inherit;font-size:14px;font-weight:700;
+    padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);
+    box-shadow:var(--shadow-card);transition:background .15s,color .15s;
+  }
+  .day-pill small{font-weight:500;color:var(--ink-faint);margin-left:6px;}
+  .day-pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .day-pill.on small{color:rgba(255,255,255,.65);}
+  .sess-list{display:grid;gap:14px;grid-template-columns:1fr;}
+  @media(min-width:900px){.sess-list{grid-template-columns:repeat(2,1fr);}}
+  .sess{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 18px 16px;box-shadow:var(--shadow-card);
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .sess-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--ink-faint);font-weight:600;}
+  .sess-time{color:var(--ink);background:var(--accent-soft);border-radius:999px;padding:4px 10px;}
+  .sess h3{margin:0;font-size:18px;line-height:1.25;letter-spacing:-0.02em;font-weight:700;}
+  .sess .why{margin:0;font-size:14px;color:var(--ink-dim);line-height:1.5;}
+  .sess .why b{color:var(--accent-bright);font-weight:700;}
+  .sess .meet{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--ink-faint);font-weight:600;}
+  .sess .meet span.o{color:var(--ink);background:#f1f5f9;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:600;}
+  .sess a.open{
+    align-self:flex-start;margin-top:2px;text-decoration:none;
+    font-size:13px;font-weight:700;color:#fff;background:var(--ink);
+    padding:10px 16px;border-radius:12px;
+  }
+  .empty-note{font-size:14px;color:var(--ink-dim);background:#fff;border:1px dashed var(--line-strong);border-radius:var(--radius);padding:18px;}
+  .cta-link{display:inline-block;margin-top:12px;font-weight:700;color:#fff;background:var(--ink);padding:11px 18px;border-radius:12px;text-decoration:none;font-size:14px;}
+
+  .term-list{display:grid;gap:12px;grid-template-columns:1fr;max-width:720px;}
+  .term{
+    appearance:none;text-align:left;cursor:pointer;font:inherit;
+    display:flex;align-items:center;gap:12px;
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px;box-shadow:var(--shadow-card);color:var(--ink);
+    transition:transform .12s,border-color .15s;
+  }
+  .term:active{transform:scale(.99);}
+  .term .t-ico{flex:none;width:38px;height:38px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;font-size:18px;}
+  .term .t-txt{flex:1;font-size:15px;font-weight:600;line-height:1.35;letter-spacing:-0.01em;}
+  .term .t-state{flex:none;font-size:12px;font-weight:700;color:var(--ink-faint);}
+  .term.sent{border-color:var(--accent);}
+  .term.sent .t-state{color:var(--accent-bright);}
+  .term[disabled]{cursor:default;}
+  .other-box{
+    display:flex;gap:8px;max-width:720px;margin-top:2px;
+    background:#fff;border:1px dashed var(--line-strong);border-radius:var(--radius);padding:10px 10px 10px 14px;align-items:center;
+  }
+  .other-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:8px 0;}
+  .other-box button{appearance:none;border:0;background:var(--ink);color:#fff;font:inherit;font-size:14px;font-weight:700;padding:11px 16px;border-radius:12px;cursor:pointer;}
+  .other-box button[disabled]{opacity:.4;cursor:default;}
+  .search-note{font-size:13px;color:var(--ink-faint);margin:12px 2px 0;min-height:20px;}
+  .search-note.err{color:var(--error);}
+  #screen-experience .frame-wrap{
+    flex:1;min-height:calc(100dvh - 230px);
+    border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-card);
+  }
+  #screen-experience iframe{display:block;width:100%;height:calc(100dvh - 230px);min-height:520px;border:0;}
+
   /* ---------- Dining list ---------- */
   .dining-list{
     display:flex;
@@ -715,12 +816,12 @@
         <div class="label">View BioLens</div>
         <div class="sub">An overview of the platform</div>
       </a>
-      <a class="menu-card" href="{% url 'concierge:experience_biolens' %}" target="_blank" rel="noopener">
+      <a class="menu-card hidden-card" href="{% url 'concierge:experience_biolens' %}" target="_blank" rel="noopener">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Desktop%20computer/3D/desktop_computer_3d.png" alt=""></div>
         <div class="label">Experience BioLens</div>
         <div class="sub">See it running, live</div>
       </a>
-      <div class="menu-card" onclick="openWorkspaceModal()">
+      <div class="menu-card hidden-card" onclick="openWorkspaceModal()">
         <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Briefcase/3D/briefcase_3d.png" alt=""></div>
         <div class="label">Request your workspace</div>
         <div class="sub">A desk, set up before you arrive</div>
@@ -807,6 +908,43 @@
     </div>
   </section>
 
+
+  <!-- SESSIONS -->
+  <section id="screen-sessions" class="screen">
+    <div class="tab-head">
+      <p class="eyebrow">CDMO Live · 20–21 Oct</p>
+      <h1 class="title">Your sessions</h1>
+      {% if recs %}<p class="lede" id="sessions-lede"></p>{% else %}<p class="lede">Tell us what you do and we'll pick the sessions and people worth your time.</p>{% endif %}
+    </div>
+    {% if recs %}
+    <div class="day-toggle" id="day-toggle"></div>
+    <div class="sess-list" id="sess-list"></div>
+    {% else %}
+    <div class="empty-note">We haven't met yet. <br><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer 6 quick questions</a></div>
+    {% endif %}
+  </section>
+
+  <!-- SEARCH -->
+  <section id="screen-search" class="screen">
+    <div class="tab-head">
+      <p class="eyebrow">Programs &amp; partners</p>
+      <h1 class="title">Who should you meet?</h1>
+      {% if recs %}<p class="lede">Searches built around what you do. Tap one and we'll run it for you.</p>{% else %}<p class="lede">Answer a few questions and we'll suggest searches built around what you do.</p>{% endif %}
+    </div>
+    {% if recs %}
+    <div class="term-list" id="term-list"></div>
+    <div class="other-box"><input id="other-term" type="text" maxlength="280" placeholder="Other — describe who you want to find" autocomplete="off"><button id="other-send" disabled>Send</button></div>
+    <p class="search-note" id="search-note"></p>
+    {% else %}
+    <div class="empty-note"><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer 6 quick questions</a></div>
+    {% endif %}
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="screen-experience" class="screen">
+    <div class="frame-wrap"><iframe id="exp-frame" title="Experience BioLens" data-src="{% url 'concierge:experience_biolens' %}?embed=1"></iframe></div>
+  </section>
+
   <!-- CONFIRMATION -->
   <section id="screen-confirm" class="screen">
     <div class="check">
@@ -820,6 +958,13 @@
   </section>
 
 </div>
+
+<nav class="tabbar" id="tabbar" aria-label="Sections">
+  <button class="tab active" data-tab="home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg><span>Home</span></button>
+  <button class="tab" data-tab="sessions" aria-label="Sessions"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="M8 14h3M13 14h3M8 17h3"/></svg><span>Sessions</span></button>
+  <button class="tab" data-tab="search" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/><path d="M11 8.2v5.6M8.2 11h5.6"/></svg><span>Search</span></button>
+  <button class="tab" data-tab="experience" aria-label="Experience"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2.5"/><path d="M8.5 20.5h7M12 17v3.5"/><path d="m10.2 8.6 4 2.15-4 2.15z"/></svg><span>Experience</span></button>
+</nav>
 
 <!-- WORKSPACE REQUEST MODAL -->
 <div class="modal-overlay" id="workspace-overlay">
@@ -909,6 +1054,7 @@
   </div>
 </div>
 
+{% if recs %}{{ recs|json_script:"recs-data" }}{% endif %}
 <script>
   const API_ENDPOINT = '{% url "concierge:submit_request" %}';
   const EMAILJS_PUBLIC_KEY = '0ocTm7GezyqScofEq';
@@ -933,11 +1079,33 @@
     }
   }
 
+  const TAB_OF = {'screen-menu':'home','screen-dining':'home','screen-confirm':'home',
+                  'screen-sessions':'sessions','screen-search':'search','screen-experience':'experience'};
+  const SCREEN_OF = {home:'screen-menu', sessions:'screen-sessions', search:'screen-search', experience:'screen-experience'};
+
   function goTo(id){
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    const tab = TAB_OF[id];
+    if(tab){
+      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    }
+    if(id === 'screen-experience'){
+      const f = document.getElementById('exp-frame');
+      if(!f.src) f.src = f.dataset.src;
+    }
     window.scrollTo({top:0, behavior:'smooth'});
   }
+
+  function showTab(tab){
+    goTo(SCREEN_OF[tab]);
+    try{ history.replaceState(null, '', tab === 'home' ? location.pathname : '#' + tab); }catch(e){}
+    if(typeof posthog !== 'undefined') posthog.capture('tab_open', {tab: tab});
+  }
+  document.getElementById('tabbar').addEventListener('click', e => {
+    const t = e.target.closest('.tab');
+    if(t) showTab(t.dataset.tab);
+  });
 
   // PostHog: track which concierge option people pick
   document.querySelectorAll('.menu-grid .menu-card').forEach(card => {
@@ -1004,10 +1172,134 @@
     goTo('screen-confirm');
   }
 
-  // splash -> menu, no gating questions
+  // splash -> home (or the tab named in the URL hash)
   window.addEventListener('load', () => {
-    setTimeout(() => goTo('screen-menu'), 900);
+    setTimeout(() => {
+      const tab = location.hash.slice(1);
+      showTab(SCREEN_OF[tab] ? tab : 'home');
+    }, 900);
   });
+
+  // ---------- Sessions tab ----------
+  const recsEl = document.getElementById('recs-data');
+  const RECS = recsEl ? JSON.parse(recsEl.textContent) : null;
+
+  function mk(tag, cls, text){
+    const n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(text != null) n.textContent = text;
+    return n;
+  }
+
+  function renderSessions(day){
+    const list = document.getElementById('sess-list');
+    list.replaceChildren();
+    document.querySelectorAll('.day-pill').forEach(p => p.classList.toggle('on', p.dataset.day === day));
+    const items = RECS.sessions[day] || [];
+    if(!items.length){
+      list.append(mk('div', 'empty-note', 'No standout sessions for you on this day — use the networking hours on the showfloor.'));
+      return;
+    }
+    items.forEach(s => {
+      const card = mk('article', 'sess');
+      const meta = mk('div', 'sess-meta');
+      meta.append(mk('span', 'sess-time', s.start + '–' + s.end), mk('span', '', s.track));
+      const why = mk('p', 'why');
+      why.append(mk('b', '', 'Why it fits: '), document.createTextNode(s.reason));
+      card.append(meta, mk('h3', '', s.title), why);
+      if(s.sponsor){
+        const sp = mk('div', 'meet', 'Sponsored by');
+        sp.append(mk('span', 'o', s.sponsor));
+        card.append(sp);
+      }
+      if(s.speakers && s.speakers.length){
+        const spk = mk('div', 'meet', 'Speaking:');
+        s.speakers.slice(0, 4).forEach(p => spk.append(mk('span', 'o', p.org ? p.name + ' · ' + p.org : p.name)));
+        card.append(spk);
+      }
+      if(s.meet && s.meet.length){
+        const meet = mk('div', 'meet', 'Find:');
+        s.meet.forEach(o => meet.append(mk('span', 'o', o)));
+        card.append(meet);
+      }
+      const a = mk('a', 'open', 'Open session ↗');
+      a.href = s.link; a.target = '_blank'; a.rel = 'noopener';
+      a.addEventListener('click', () => { if(typeof posthog !== 'undefined') posthog.capture('session_open', {id: s.id, title: s.title}); });
+      card.append(a);
+      list.append(card);
+    });
+  }
+
+  if(RECS){
+    document.getElementById('sessions-lede').textContent =
+      RECS.personalised ? 'Picked for {{ visitor.company|escapejs }} — each one comes with the reason it fits.' : 'Picked from the focus you told us about.';
+    const toggle = document.getElementById('day-toggle');
+    ['1','2'].forEach(d => {
+      const b = mk('button', 'day-pill', 'Day ' + d);
+      b.append(mk('small', '', RECS.dates[d]));
+      b.dataset.day = d;
+      b.addEventListener('click', () => renderSessions(d));
+      toggle.append(b);
+    });
+    const today = new Date().toISOString().slice(0, 10);
+    renderSessions(today === '2026-10-21' ? '2' : '1');
+
+    // ---------- Search tab ----------
+    const termList = document.getElementById('term-list');
+    const note = document.getElementById('search-note');
+    const ICONS = ['🎯', '🧬', '🌎', '🏭', '🤝'];
+
+    async function sendInterest(term, other, btn, stateEl){
+      note.className = 'search-note'; note.textContent = '';
+      btn.disabled = true;
+      try{
+        const csrf = document.querySelector('meta[name="csrf-token"]').content;
+        const res = await fetch('{% url "concierge:search_interest" %}', {
+          method:'POST', headers:{'Content-Type':'application/json','X-CSRFToken':csrf},
+          body: JSON.stringify({term: term, other: !!other})
+        });
+        const data = await res.json();
+        if(!data.ok) throw new Error('rejected');
+        if(typeof posthog !== 'undefined') posthog.capture('search_interest', {term: term, other: !!other});
+        // Same EmailJS path the workspace request uses, so the notification arrives without server SMTP.
+        sendEmailNotification('BioLens Concierge — Search interest', {
+          guest_name: '{{ visitor.name|escapejs }}',
+          email: '{{ visitor.email|escapejs }}',
+          organization: '{{ visitor.company|escapejs }}',
+          details: {search: term, source: other ? 'typed' : 'suggested', title: '{{ visitor.title|escapejs }}'}
+        });
+        note.textContent = 'Requested — the Lunartree team will follow up with matches.';
+        return true;
+      }catch(err){
+        btn.disabled = false;
+        note.className = 'search-note err';
+        note.textContent = 'Couldn\u2019t send that — please try again.';
+        return false;
+      }
+    }
+
+    RECS.search_terms.forEach((term, i) => {
+      const b = mk('button', 'term');
+      b.append(mk('span', 't-ico', ICONS[i % ICONS.length]), mk('span', 't-txt', term));
+      const state = mk('span', 't-state', 'Run it');
+      b.append(state);
+      b.addEventListener('click', async () => {
+        if(await sendInterest(term, false, b)){ b.classList.add('sent'); state.textContent = 'Requested ✓'; }
+      });
+      termList.append(b);
+    });
+
+    const otherInput = document.getElementById('other-term');
+    const otherSend = document.getElementById('other-send');
+    otherInput.addEventListener('input', () => { otherSend.disabled = !otherInput.value.trim(); });
+    const submitOther = async () => {
+      const v = otherInput.value.trim();
+      if(!v) return;
+      if(await sendInterest(v, true, otherSend)){ otherInput.value = ''; otherSend.disabled = true; }
+    };
+    otherSend.addEventListener('click', submitOther);
+    otherInput.addEventListener('keydown', e => { if(e.key === 'Enter') submitOther(); });
+  }
 
   /* ---------- Video ---------- */
   const biolensVideo = document.getElementById('biolens-video');

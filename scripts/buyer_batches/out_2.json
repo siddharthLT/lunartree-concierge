@@ -1,0 +1,456 @@
+{
+ "astrazeneca": {
+  "domain": "astrazeneca.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "adc",
+   "protein",
+   "cell",
+   "gene",
+   "radio",
+   "editing"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global big pharma: oncology, CVRM, respiratory, rare disease, vaccines; broad modalities",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.astrazeneca.com/our-therapy-areas/pipeline.html"
+ },
+ "sonoma biotherapeutics": {
+  "domain": "sonomabio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "cell"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Treg cell therapy biotech for autoimmune disease (RA, IBD); Regeneron collab",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.biospace.com/sonoma-biotherapeutics-raises-265-million-in-an-oversubscribed-series-b-financing-to-translate-the-promise-of-cell-therapy-into-curative-medicines-for-autoimmune-and-other-inflammatory-diseases"
+ },
+ "prime medicine": {
+  "domain": "primemedicine.com",
+  "hq_region": "nam",
+  "modalities": [
+   "editing",
+   "gene",
+   "cell"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2"
+  ],
+  "summary": "Prime editing biotech: liver (Wilson, AATD), CF, ex vivo CGD; Nasdaq PRME",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://investors.primemedicine.com/news-releases/news-release-details/prime-medicine-reports-first-quarter-2026-financial-results-and"
+ },
+ "centivax": {
+  "domain": "centivax.com",
+  "hq_region": "nam",
+  "modalities": [
+   "protein",
+   "mab"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Universal flu vaccine (Ph1) and broadly neutralizing antibodies; early-stage biotech",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.biospectrumasia.com/news/41/27427/japans-meiji-seika-pharma-invests-in-centivax-to-develop-next-gen-universal-vaccine-platform.html"
+ },
+ "tonix pharmaceuticals": {
+  "domain": "tonixpharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "preclinical",
+   "phase2",
+   "commercial"
+  ],
+  "summary": "Commercial fibromyalgia drug Tonmya, migraine nasal products; TNX-801 pox vaccine, own GMP site",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://ir.tonixpharma.com/news-events/press-releases/detail/1640/tonix-pharmaceuticals-reports-second-quarter-2026-financial"
+ },
+ "ucb": {
+  "domain": "ucb.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "protein",
+   "gene"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Belgian biopharma: immunology and neurology, biologics and small molecules",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.ucb.com"
+ },
+ "sarepta therapeutics": {
+  "domain": "sarepta.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene",
+   "small",
+   "editing"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial gene therapy and RNA/oligo (PMO, siRNA) company for DMD and LGMD",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.sarepta.com"
+ },
+ "nuanced bio": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Unidentified; possibly Nuanced Health (mouse microbiome preclinical models); not confirmed as drug developer",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://www.cbinsights.com/company/nuanced-health"
+ },
+ "pioneering medicines": {
+  "domain": "flagshippioneering.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "protein",
+   "cell",
+   "gene",
+   "mab"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Flagship Pioneering's drug dev unit; partners Pfizer, Novo, CF Foundation; platform-derived medicines",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.flagshippioneering.com/pioneering-medicines"
+ },
+ "gsk": {
+  "domain": "gsk.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "adc",
+   "protein",
+   "gene"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global big pharma: vaccines, specialty, infectious disease, oncology, respiratory",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.gsk.com"
+ },
+ "iavi": {
+  "domain": "iavi.org",
+  "hq_region": "nam",
+  "modalities": [
+   "protein",
+   "mab"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2"
+  ],
+  "summary": "Non-profit product development partnership: HIV, TB, emerging-virus vaccines and antibodies",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.iavi.org"
+ },
+ "gates mri": {
+  "domain": "gatesmri.org",
+  "hq_region": "nam",
+  "modalities": [
+   "protein",
+   "mab",
+   "small"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3"
+  ],
+  "summary": "Gates non-profit biotech: TB vaccines/drugs, malaria antibodies, global health",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.gatesmri.org/research-priorities/"
+ },
+ "newleos": {
+  "domain": "newleos.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase1",
+   "phase2"
+  ],
+  "summary": "Neuropsychiatry biotech, Roche-licensed GABA-A modulators for anxiety; Series A $93.5M",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.businesswire.com/news/home/20250213253174/en/Newleos-Therapeutics-Debuts-with-93.5-Million-Oversubscribed-Series-A-Financing-to-Transform-the-Treatment-of-Neuropsychiatric-Disorders-through-the-Advancement-of-Novel-Medicines"
+ },
+ "bluerock therapeutics": {
+  "domain": "bluerocktx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "cell"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase3"
+  ],
+  "summary": "Bayer-owned PSC-derived cell therapy; Parkinson's bemdaneprocel in Phase 3",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.bayer.com/media/en-us/bluerock-therapeutics-advances-investigational-cell-therapy-bemdaneprocel-for-treating-parkinsons-disease-to-registrational-phase-iii-clinical-trial/"
+ },
+ "incyte": {
+  "domain": "incyte.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "protein"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial oncology/inflammation pharma: Jakafi, Opzelura; small molecules and antibodies",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.incyte.com"
+ },
+ "aluco biosciences": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Could not identify company; possibly drug developer with drug substance CMC role, unverified",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "none found"
+ },
+ "puma biotechnology": {
+  "domain": "pumabiotechnology.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2",
+   "commercial"
+  ],
+  "summary": "Commercial oncology: Nerlynx (breast cancer); alisertib in Phase 2 SCLC and breast",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.sec.gov/Archives/edgar/data/0001401667/000143774926013673/pbyi20260428_ars.pdf"
+ },
+ "prolynx": {
+  "domain": "prolynxllc.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2"
+  ],
+  "summary": "Clinical-stage oncology: long-acting PEG-SN-38 prodrug PLX038 in Phase 2 solid tumors",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://www.biospace.com/prolynx-announces-initiation-of-phase-ii-clinical-trial-of-its-dna-damaging-agent-plx038-in-patients-with-platinum-resistant-ovarian-cancer-at-the-mayo-clinic"
+ },
+ "torque bio": {
+  "domain": "torquebio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Durham NC private gene therapy startup (AAV, circRNA) for kidney disease; thin public info",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://directory.ncbiotech.org/company/torque-bio-inc"
+ },
+ "repertoire immune medicines": {
+  "domain": "repertoire.com",
+  "hq_region": "nam",
+  "modalities": [
+   "bispecific",
+   "protein"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Flagship TCR-bispecific/T-cell immune medicines for cancer and autoimmunity; Genentech, Lilly deals",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.biospace.com/press-releases/repertoire-immune-medicines-announces-first-participant-dosed-in-phase-1-2-trial-of-rptr-1-201-a-t-cell-targeted-immune-medicine-for-advanced-solid-tumors"
+ },
+ "meitheal pharmaceuticals": {
+  "domain": "meithealpharma.com",
+  "hq_region": "nam",
+  "modalities": [
+   "biosimilar",
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "phase1",
+   "commercial"
+  ],
+  "summary": "US generics, injectables and biosimilars (insulins, pegfilgrastim); parent Nanjing King-Friend",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.meithealpharma.com/news/90"
+ },
+ "precigen": {
+  "domain": "precigen.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene",
+   "cell"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "commercial"
+  ],
+  "summary": "Gene/immunotherapy biotech; Papzimeos approved for RRP, AdenoVerse PRGN-2009",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.sec.gov/Archives/edgar/data/0001356090/000135609026000030/pgen-20260630.htm"
+ },
+ "kailera therapeutics": {
+  "domain": "kailera.com",
+  "hq_region": "nam",
+  "modalities": [
+   "protein",
+   "small"
+  ],
+  "stages": [
+   "preclinical",
+   "phase2",
+   "phase3"
+  ],
+  "summary": "Obesity biotech: GLP-1/GIP KAI-9531 in Phase 3, oral GLP-1 small molecule; $600M Series B",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.biospace.com/business/kailera-banks-massive-600m-raise-for-phase-iii-obesity-study"
+ },
+ "stylus medicine": {
+  "domain": "stylusmedicine.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene",
+   "editing"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Preclinical in vivo CAR-T via recombinase gene insertion and LNP delivery",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.biospace.com/press-releases/stylus-medicine-launches-to-develop-precision-in-vivo-genetic-medicines-and-unlock-the-full-potential-of-car-t-therapy"
+ },
+ "pulmovant": {
+  "domain": "pulmovant.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2"
+  ],
+  "summary": "Roivant subsidiary: inhaled sGC activator mosliciguat for PH-ILD, Phase 2",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://medcitynews.com/2024/09/roivant-sciences-pulmonary-hypertension-pulmovant-ph-ild-mosliciguat-roiv/"
+ },
+ "lunartree": {
+  "domain": "lunartree.bio",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Lunartree Inc: user's own company (founder attendee); not a drug developer buyer to profile",
+  "outsources": "heavy",
+  "confidence": "low",
+  "source": "https://lunartree.bio"
+ },
+ "kymera therapeutics": {
+  "domain": "kymeratx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1",
+   "phase2"
+  ],
+  "summary": "Oral protein degraders for immunology; STAT6 degrader KT-621 in Phase 2b AD and asthma",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://investors.kymeratx.com/node/12106/pdf"
+ }
+}

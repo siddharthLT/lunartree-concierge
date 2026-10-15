@@ -1,0 +1,245 @@
+[
+ {
+  "key": "eli lilly and",
+  "name": "Eli Lilly And Company",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, CMC Project Management",
+   "Executive Director, Parenteral DP Process Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "quralis",
+  "name": "QurAlis",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Senior Director Drug Product Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sanofi",
+  "name": "Sanofi",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Senior Scientist (RnD: mRNA Therapeutics Center of Excellence)",
+   "Executive Director, External Manufacturing, Cell & Gene Therapy",
+   "Director, LNP Drug Product Platform and Early Clinical Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "pfizer",
+  "name": "Pfizer",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, External Supply, Network Sourcing",
+   "Senior Director, Digital Manufacturing",
+   "Sr. Director, Strategy & Program Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "rondaxe pharma",
+  "name": "Rondaxe Pharma",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Chief Operating Officer",
+   "Executive Vice President Business Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "acadia pharmaceuticals",
+  "name": "Acadia Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Associate Director Sourcing & Procurement (Finance)"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "",
+  "name": null,
+  "sheet_notes": "Specialty pharma (Fennec)",
+  "titles": [
+   "Vice President, Technical Operations @ Fennec Pharmaceuticals",
+   "Strategic Sourcing & External Manufacturing Executive",
+   "at Tonix Pharmaceuticals"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "dorinano",
+  "name": "DoriNano, Inc.",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Cofounder, CEO/CTO"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "olix",
+  "name": "OliX US",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "SVP, CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "alkermes",
+  "name": "Alkermes",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, Drug Product CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "fresenius medical care north america",
+  "name": "Fresenius Medical Care North America",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Sr. Manager Supplier Quality"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "vanqua bio",
+  "name": "Vanqua Bio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Director, Program and Project Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "kiniksa pharmaceuticals",
+  "name": "Kiniksa Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Head of Strategic Sourcing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "amphastar pharmaceuticals",
+  "name": "Amphastar Pharmaceuticals, Inc.",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Associate Director, Pipeline Project Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "halozyme",
+  "name": "Halozyme, Inc.",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Chief Operating Officer"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "xeris pharmaceuticals",
+  "name": "Xeris Pharmaceuticals Inc.",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Engineer II, Manufacturing Science & Technology"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sarepta",
+  "name": "Sarepta",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, CMC Procurement"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "takeda pharmcaeuticals",
+  "name": "Takeda Pharmcaeuticals",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, External Manufacturing and Testing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "altimmune",
+  "name": "Altimmune",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "VP, CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bpgbio",
+  "name": "BPGbio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Vice President Program Management & Chief of Staff",
+   "Chief Operating Officer and Chief AI Officer"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "terrestrial bio",
+  "name": "Terrestrial Bio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "VP Mfg"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "gv20",
+  "name": "GV20",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "VP of CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "healis therapeutics",
+  "name": "Healis Therapeutics, Inc",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Chief Business Officer"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "stoke therapeutics",
+  "name": "Stoke Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Senior Pripal Scientist CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "vertex pharmaceuticals",
+  "name": "Vertex Pharmaceuticals",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Sr. Director External Manufacturing - Small Molecule Drug Product"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "lysoway therapeutics",
+  "name": "Lysoway Therapeutics, Inc.",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "SVP, Drug Development"
+  ],
+  "domain_hint": ""
+ }
+]

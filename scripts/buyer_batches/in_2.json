@@ -1,0 +1,256 @@
+[
+ {
+  "key": "astrazeneca",
+  "name": "AstraZeneca",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Head, CMC Project Leadership and Vaccine Strategy, V&I, BioPharmaceutical Development",
+   "Associate Director, Cell and Gene Therapy",
+   "Senior Director, Injectable Drug Product Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sonoma biotherapeutics",
+  "name": "Sonoma Biotherapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "VP, Process and Analytical Development and MSAT"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "prime medicine",
+  "name": "Prime Medicine Inc.",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Associate Director, External Manufacturing & Supply Chain",
+   "Senior Engineer II"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "centivax",
+  "name": "Centivax",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Director of CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "tonix pharmaceuticals",
+  "name": "Tonix Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Process Engineer, CQV Lead",
+   "Senior Manager of Engineering",
+   "Senior Scientist - Process Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "ucb",
+  "name": "UCB",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "EMO Lead"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sarepta therapeutics",
+  "name": "Sarepta Therapeutics",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Executive Director, Global Procurement & Strategic Sourcing",
+   "Executive Director, Head of Technical Operations Strategy and Business Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "nuanced bio",
+  "name": "Nuanced Bio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Strategic Partnerships Lead"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "pioneering medicines",
+  "name": "Pioneering Medicines",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Vice President, CMC Operations",
+   "Director, CMC Team Lead",
+   "CMC-Drug Substance"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "gsk",
+  "name": "Gsk",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Senior Principal Scientist-Late stage Biolgics Product Development",
+   "Associate Director | Translational Medicine & Clinical Biomarker Strategy |"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "iavi",
+  "name": "Iavi",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Executive Director Process Development & Manufacturing / Vaccine Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "gates mri",
+  "name": "Gates MRI",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Senior Director/Program Officer",
+   "Sourcing Lead"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "newleos",
+  "name": "Newleos",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Vice President",
+   "Director, CMC & Technical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bluerock therapeutics",
+  "name": "BlueRock Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Head of Quality Compliance"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "incyte",
+  "name": "Incyte",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Division Vice President"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "aluco biosciences",
+  "name": "Aluco Biosciences",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Sr. Director, Drug Substance CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "puma biotechnology",
+  "name": "Puma Biotechnology",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "SVP, Supply Chain & Manufacturing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "prolynx",
+  "name": "Prolynx",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Head of CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "torque bio",
+  "name": "TORQUE BIO",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Senior Vice President, Strategic and Technical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "repertoire immune medicines",
+  "name": "Repertoire Immune Medicines",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Associate Director, Program Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "meitheal pharmaceuticals",
+  "name": "Meitheal Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Manager, Alliance Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "precigen",
+  "name": "Precigen",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Process Engineer"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "kailera therapeutics",
+  "name": "Kailera Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Drug Product Dev and Manufacturing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "stylus medicine",
+  "name": "Stylus Medicine",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Executive Director, CMC Tech Ops"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "pulmovant",
+  "name": "Pulmovant",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Sr Director Drug Substance Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "lunartree",
+  "name": "Lunartree Inc",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Founder"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "kymera therapeutics",
+  "name": "Kymera Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Associate Director"
+  ],
+  "domain_hint": ""
+ }
+]

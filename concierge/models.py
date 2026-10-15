@@ -4,10 +4,12 @@ from django.db import models
 class ConciergeRequest(models.Model):
     EXPERIENCE_BIOLENS = 'experience_biolens'
     WORKSPACE = 'workspace_request'
+    SEARCH_INTEREST = 'search_interest'
 
     TYPE_CHOICES = [
         (EXPERIENCE_BIOLENS, 'Experience BioLens'),
         (WORKSPACE, 'Workspace request'),
+        (SEARCH_INTEREST, 'Search interest'),
     ]
 
     PENDING = 'pending'

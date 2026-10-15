@@ -1,0 +1,254 @@
+[
+ {
+  "key": "insmed",
+  "name": "Insmed",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Associate Director, Supplier Relationship Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "astellas",
+  "name": "Astellas",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Corporate Strategy",
+   "Head of Supply Chain & Materials Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bms",
+  "name": "BMS",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director of Mfg and Supply Chain"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "acella pharmaceuticals",
+  "name": "Acella Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "SVP Operations & Business Development",
+   "Director, Business Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sinopharm",
+  "name": "Sinopharm",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, Sales and Marketing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "amgen",
+  "name": "Amgen",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Principal Engineer",
+   "External Process Engineer",
+   "Associate Director"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "novo nordisk",
+  "name": "Novo Nordisk",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Associate Sourcing Director",
+   "Consultant"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "kifa therapeutics",
+  "name": "Kifa Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Founder & CEO"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "aurora therapeutics",
+  "name": "Aurora Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "VP, Head of CMC & Technical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bayer",
+  "name": "Bayer",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Procurement Manager NA",
+   "Head of Procurement NA",
+   "Global Head of Customer Supply Chain & Product Supply NA"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "anivive lifesciences",
+  "name": "Anivive Lifesciences Inc.",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "CSO"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "neurotrauma sciences",
+  "name": "Neurotrauma Sciences, Llc",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "SVP, Technical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "f2 bio",
+  "name": "F2 Bio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Head of CMC Technical Operations & Regulatory Affairs"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "emergent biosolutions",
+  "name": "Emergent BioSolutions",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "VP, Quality Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "hillstar bio",
+  "name": "Hillstar Bio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Head of Antibody Research and CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "noven pharmaceuticals",
+  "name": "Noven Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Associate Director, Formulation Development",
+   "Product Development Project Manager"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "aviceda therapeutics",
+  "name": "Aviceda Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Associate Director, Drug Product Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "moderna",
+  "name": "Moderna",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Senior Scientist, Team Lead"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "therabiome",
+  "name": "TheraBiome",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Co-Founder, Managing Partner"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bill melinda gates medical research institute",
+  "name": "Bill & Melinda Gates Medical Research Institute",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Head of CMC"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "ptc therapeutics",
+  "name": "PTC Therapeutics",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Associate director"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "johnson johnson",
+  "name": "Johnson & Johnson",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Vice President, Global External Manufacturing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "crescent biopharma",
+  "name": "Crescent Biopharma",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Vice President, ADC CMC",
+   "Senior Vice President, Technical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "let s combinate bioworks",
+  "name": "Let's Combinate BioWorks",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Founder & Principal"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "midas pharmaceuticals",
+  "name": "Midas Pharmaceuticals, Inc.",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "President"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "orion pharma",
+  "name": "Orion Pharma",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "External Supply Manager"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "abimmune",
+  "name": "Abimmune",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "CSO"
+  ],
+  "domain_hint": ""
+ }
+]

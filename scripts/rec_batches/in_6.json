@@ -1,0 +1,299 @@
+[
+ {
+  "key": "allos",
+  "name": "Allos",
+  "segment": "CDMO",
+  "domain": "allos.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Site case studies: oral liquid, pellets, DPI, long-acting injectable; 505(b)(2)/NCE FDF; no biologics",
+  "event_blurb": "Allos is an AI-native specialty CDMO that builds differentiated 505(b)(2) products and NCE FDFs, using a causal-AI engine to originate, kill, and de-risk candidates at a fraction of the usual cost and time. The team pairs Oxford, CERN, and Utrecht physicists in causal inference with 40-plus years of formulation, CDMO, and vaccine-manufacturing leadership to take formulations including DPIs, nasal sprays, oral liquids, long-acting depots and first-to-US sterile products from idea to filing.",
+  "attendee_titles": [
+   "Chief Executive Officer",
+   "Chief Commercial Officer"
+  ]
+ },
+ {
+  "key": "axplora",
+  "name": "Axplora",
+  "segment": "CDMO",
+  "domain": "axplora.com",
+  "modalities": [
+   "api",
+   "adc"
+  ],
+  "evidence": "APIs, HPAPIs, steroidal APIs and ADC listed as specialties; CDMO",
+  "event_blurb": "Axplora is a leading European CDMO, with five industrial sites dedicated to the development and manufacturing of APIs and ADCs, from early process development to commercial scale.\nWith 30+ years of expertise in advanced technologies such as chromatography, energetic chemistry and electrochemistry, Axplora tackles the most demanding challenges and helps you navigate the complexities of API and ADC development.\nAxplora invested >100M\u20ac across its sites in 2025 to strengthen its capabilities & reinforce its position at the forefront of pharmaceutical manufacturing worldwide.\nWhen science dares to ",
+  "attendee_titles": [
+   "New Business Development Manager",
+   "Head of North America"
+  ]
+ },
+ {
+  "key": "boryung",
+  "name": "Boryung",
+  "segment": "CDMO",
+  "domain": "boryung.co.kr",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "CMO page: Yesan EU-GMP cytotoxic oncology vial injectables (solution, lyophilized); oral CDMO deal",
+  "event_blurb": "Boryung: A Trusted Partner for Specialized Drug Product Manufacturing\nBoryung is a pharmaceutical company with a longstanding commitment to delivering essential medicines and ensuring reliable access to critical therapies. Built on decades of manufacturing experience and a strong quality culture, Boryung is expanding its Contract Development and Manufacturing Organization (CDMO) services to support global pharmaceutical and biotechnology partners.\nOur expertise spans the development and manufacturing of specialized drug products, including cytotoxic formulations that require rigorous containme",
+  "attendee_titles": [
+   "Global Strategic Team Lead",
+   "Team Lead",
+   "Executive Director, Head of Global Business"
+  ]
+ },
+ {
+  "key": "catsci",
+  "name": "CatSci",
+  "segment": "CDMO",
+  "domain": "catsci.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Small molecules, peptides, oligonucleotides, GMP drug substance, complex synthetic modalities",
+  "event_blurb": "CatSci is an integrated CMC development partner for complex small molecules and synthetic modalities, combining deep scientific expertise with small-scale GMP manufacturing to deliver robust processes that enable confident scale-up, tech transfer and faster clinical progress",
+  "attendee_titles": [
+   "BD",
+   "CCO"
+  ]
+ },
+ {
+  "key": "curia global",
+  "name": "Curia Global",
+  "segment": "CDMO",
+  "domain": "curiaglobal.com",
+  "modalities": [
+   "api",
+   "small",
+   "mab",
+   "protein",
+   "gene"
+  ],
+  "evidence": "Small molecule/generic APIs, sterile DP, antibody/recombinant protein, mammalian DS mfg, mRNA/DNA/LNP services",
+  "event_blurb": "Curia (fka AMRI) is a global CDMO with over 30 years of experience successfully guiding clients through the complexities of drug discovery, development, and manufacturing. We offer services across Small Molecule, Generic APIs, Sterile Drug Product and Biologics backed by deep scientific expertise and a robust global network of resources and capabilities. Our dedicated teams enable us to be both flexible and scalable, accelerating the delivery of your product to patients.",
+  "attendee_titles": [
+   "Director",
+   "Director of Sales",
+   "Sr. Director CMO Sales",
+   "Director of Business Development",
+   "Director of Business Development, Drug Product"
+  ]
+ },
+ {
+  "key": "eurofins cdmo alphora",
+  "name": "Eurofins CDMO Alphora",
+  "segment": "CDMO",
+  "domain": "eurofins.com",
+  "modalities": [
+   "api",
+   "small",
+   "mab",
+   "adc",
+   "protein",
+   "microbiome",
+   "gene"
+  ],
+  "evidence": "Eurofins CDMO page: API/HPAPI, drug product, biologics incl. antibodies, ADCs, LBPs, plasmid DNA, proteins; Alphora-specific unclear",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Senior BD"
+  ]
+ },
+ {
+  "key": "fisiopharma s r l",
+  "name": "Fisiopharma S.r.l.",
+  "segment": "CDMO",
+  "domain": "fisvi.com",
+  "modalities": [],
+  "evidence": "Event blurb is FIS (Fabbrica Italiana Sintetici): small-molecule APIs, LPPS peptides; fisiopharma.com is a separate injectables maker",
+  "event_blurb": "FIS is a top 5 global CDMO for small molecule Drug Substance, with over 70 years of experience in tech transfer, process optimization, scale up, and validation. Our 25+ scientist industrialization team is backed by three closely-clustered Italian sites and dedicated early- and late-phase R&D, with a high ratio of analysts to chemists and 99% of testing conducted in-house. We bring deep expertise in spray drying, flow chemistry, and liquid phase peptide synthesis. Backed by Bain Capital, FIS continues to invest in capacity and technology to support partners from development through commercial s",
+  "attendee_titles": [
+   "Chief Commercial Officer",
+   "Business development project manager"
+  ]
+ },
+ {
+  "key": "grifols",
+  "name": "Grifols",
+  "segment": "CDMO",
+  "domain": "grifols.com",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "evidence": "Grifols Partnership CDMO: sterile injectables (small molecules) in flexible bags and vials; empty bags/plastics",
+  "event_blurb": "We are a contract development and manufacturing organization (CDMO) specialized in added value injectable products (small molecules). With extensive global experience, we develop and manufacture various sterile drug products, primarily in flexible bags and vials. Our strength lies in delivering substantial value to our partners.",
+  "attendee_titles": [
+   "Senior Sales and Business Development Manager",
+   "Director Contract manufacturing & IV Solutions"
+  ]
+ },
+ {
+  "key": "indenausa com",
+  "name": "indenausa.com",
+  "segment": "Supplier",
+  "domain": "indena.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "Botanical extracts/derivatives; CDMO service for complex APIs; Phytosome delivery tech",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Director CDMO Business Development"
+  ]
+ },
+ {
+  "key": "kimball solutions",
+  "name": "Kimball Solutions",
+  "segment": "CDMO",
+  "domain": "kimballelectronics.com",
+  "modalities": [
+   "device"
+  ],
+  "evidence": "Medical CDMO: drug delivery devices, combination products, injection molding, device assembly",
+  "event_blurb": "Kimball Medical Solutions is a single-source partner for medical contract manufacturing.\nOur approach to innovation is collaborative and multifaceted enabling speed to market through the complete lifecycle utilizing our expertise in medical electronics, scientific injection molded plastics, and complete medical system assembly.",
+  "attendee_titles": [
+   "Business Development Manager"
+  ]
+ },
+ {
+  "key": "malta development labs",
+  "name": "Malta Development Labs",
+  "segment": "CDMO",
+  "domain": "famar-group.com",
+  "modalities": [],
+  "evidence": "Blurb: highly potent aseptic sterile injectables; Famar site generic; no own Malta Dev Labs site found",
+  "event_blurb": "Malta Development Labs is a boutique CDMO specialized in the Development of Highly Potent aseptic filled sterile products. Our team can service all the needs of the Client in order to see their Projects becoming a success. We pay attention to the Client, Listen to their needs and go beyond their expectations. Recently aquired by Mubadala Bio, soon to change the name to MDL - Malta Development Labs, the purpose of the Company is to become one of the core centers of excellence in the EU for Highly Potent injectable medicines.",
+  "attendee_titles": [
+   "General Manager",
+   "Head of Business Development"
+  ]
+ },
+ {
+  "key": "nextpharma",
+  "name": "NextPharma",
+  "segment": "CDMO",
+  "domain": "nextpharma.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Oral solids, softgels, chewables, ophthalmics, packaging (BFS, blisters); no biologics",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business Development Manager"
+  ]
+ },
+ {
+  "key": "pi health sciences",
+  "name": "PI Health Sciences Ltd.",
+  "segment": "CDMO",
+  "domain": "pihealthsciences.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "APIs and HPAPIs manufacturing India/Italy; discovery covers small molecules and biologics but no biologics mfg",
+  "event_blurb": "PI Health Sciences is a global pharmaceutical CRDMO providing integrated drug discovery, development, analytical, process R&D, clinical supply, and commercial manufacturing services to pharmaceutical and biotechnology companies. Its capabilities span discovery chemistry and biology, DMPK, preclinical services, process development, analytical development, flow chemistry, biocatalysis, and API/HPAPI manufacturing. The company operates across India and Italy, supporting clients from early-stage research through clinical and commercial supply",
+  "attendee_titles": [
+   "Chief Development Officer",
+   "Vice President of Business Development"
+  ]
+ },
+ {
+  "key": "recipharm",
+  "name": "Recipharm",
+  "segment": "CDMO",
+  "domain": "recipharm.com",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "gene",
+   "microbiome",
+   "device"
+  ],
+  "evidence": "OSD, sterile fill-finish/PFS; Advanced Bio: mAbs, recombinant proteins, viral vectors, mRNA/pDNA, live microbial",
+  "event_blurb": "Recipharm is a leading contract development and manufacturing organisation (CDMO) headquartered in Stockholm, Sweden. We operate development and manufacturing facilities in France, Germany, India, Italy, Portugal, Spain, Sweden and the US and are continuing to grow and expand our offering for our customers. We are supporting pharmaceutical companies with our full service offering, taking products from early development through to commercial production. For over 30 years, we have partnered with our clients throughout the entire product lifecycle, providing pharmaceutical expertise and managing ",
+  "attendee_titles": [
+   "BD Head",
+   "Business Development Director Americas"
+  ]
+ },
+ {
+  "key": "ritedose",
+  "name": "Ritedose",
+  "segment": "CDMO",
+  "domain": "ritedose.com",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "evidence": "Sterile blow-fill-seal unit dose, inhalation, ophthalmic, prefilled syringes; no biologics",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Director Portfolio Strategy"
+  ]
+ },
+ {
+  "key": "sentiss pharmaceuticals",
+  "name": "Sentiss Pharmaceuticals, LLC",
+  "segment": "CDMO",
+  "domain": "sentisspharma.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Ophthalmic, inhalation (nebulization), otic, nasal drops; no biologics",
+  "event_blurb": "",
+  "attendee_titles": [
+   "President"
+  ]
+ },
+ {
+  "key": "skyepharma",
+  "name": "Skyepharma",
+  "segment": "CDMO",
+  "domain": "skyepharma.fr",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Oral solids: tablets, multilayer, capsules, chewing gum; packaging; bioproduction unit unspecified",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business developer"
+  ]
+ },
+ {
+  "key": "suanfarma cdmo",
+  "name": "Suanfarma CDMO",
+  "segment": "CDMO",
+  "domain": "suanfarma.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "GMP APIs, chemical synthesis and fermentation, flow chemistry; Portugal/Italy sites",
+  "event_blurb": "Suanfarma CDMO - Your European Partner for Small Molecule Innovation\nSuanfarma CDMO is a European Contract Development & Manufacturing Organization specializing in the development, scale-up and commercial manufacturing of small molecule APIs and advanced intermediates. We provide integrated solutions from early development through GMP manufacturing and commercial supply, supporting pharmaceutical and biotechnology companies with customized, science-driven partnerships.\nOur unique strength lies in combining advanced chemical synthesis, industrial bioconversion (fermentation), and flow chemistry",
+  "attendee_titles": [
+   "Head, Site"
+  ]
+ },
+ {
+  "key": "upperton pharma solutions",
+  "name": "Upperton Pharma Solutions",
+  "segment": "CDMO",
+  "domain": "upperton.com",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "evidence": "Oral, nasal, pulmonary, parenteral dosage forms; spray-dried biologics and small molecules and biologics formulation",
+  "event_blurb": "Upperton Pharma Solutions is a UK-based leading contract development and manufacturing organisation (CDMO) specialising in formulation development, clinical trial manufacturing and manufacturing services for a wide range of dosage forms, including oral solids, liquids, semi-solids, and inhalation products. With state-of-the-art facilities and a team of experienced scientists, Upperton offers tailored solutions to accelerate drug development from concept to commercialisation. A King\u2019s Award For Enterprise winner, Upperton is committed to innovation, and quality, and share in our customers\u2019 dedi",
+  "attendee_titles": [
+   "CTO",
+   "North American Executive Director"
+  ]
+ }
+]

@@ -1,0 +1,457 @@
+{
+ "vertex": {
+  "domain": "vrtx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "cell",
+   "gene",
+   "editing"
+  ],
+  "stages": [
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Large biotech: CF, pain (suzetrigine), kidney, Casgevy gene editing, T1D cell therapy",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.vrtx.com/our-science/pipeline/"
+ },
+ "bristol myers squibb": {
+  "domain": "bms.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "bispecific",
+   "adc",
+   "cell",
+   "protein",
+   "radio"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Global pharma: oncology, hematology, immunology, cardiovascular, neuroscience; cell therapy, radiopharma",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.bms.com/researchers-and-partners/in-the-pipeline.html"
+ },
+ "global biovax": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Unidentified; no company found under this name (possible consultancy or vaccine firm)",
+  "outsources": "mixed",
+  "confidence": "low",
+  "source": "https://www.google.com/search?q=Global+Biovax"
+ },
+ "sail biomedicines": {
+  "domain": "sailbiomedicines.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene",
+   "cell"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical"
+  ],
+  "summary": "Flagship-backed eRNA/circular RNA in vivo CAR-T for autoimmunity; preclinical, J&J option",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.thepharmaletter.com/ones-to-watch/sail-biomedicines"
+ },
+ "biogen": {
+  "domain": "biogen.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "gene"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Large biotech: neurology (MS, Alzheimer's, SMA), rare disease, immunology; antisense and biologics",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.biogen.com/science-and-innovation/pipeline.html"
+ },
+ "takeda": {
+  "domain": "takeda.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "cell",
+   "gene",
+   "biosimilar"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Japanese global pharma: GI, rare disease, plasma-derived therapies, oncology, neuroscience, vaccines",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.takeda.com/science/pipeline/"
+ },
+ "lifearc technologies": {
+  "domain": "lifearc.org",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "mab"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Ambiguous: likely LifeArc, UK medical research charity (drug discovery, antibody humanisation); not a classic biotech",
+  "outsources": "mixed",
+  "confidence": "low",
+  "source": "https://www.lifearc.org/"
+ },
+ "takeda at takeda": {
+  "domain": "takeda.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "cell",
+   "gene",
+   "biosimilar"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Duplicate entry of Takeda (US biologics process development); global pharma",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.takeda.com/science/pipeline/"
+ },
+ "bimeda": {
+  "domain": "bimeda.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "Animal health company: generic/specialty veterinary pharmaceuticals and biologics, global manufacturing",
+  "outsources": "mixed",
+  "confidence": "medium",
+  "source": "https://www.bimeda.com/"
+ },
+ "lilly": {
+  "domain": "lilly.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "protein",
+   "gene",
+   "radio",
+   "editing"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Large pharma: diabetes/obesity (incretins), oncology, neuroscience, immunology; radioligand, genetic medicines",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.lilly.com/science/research-development/pipeline"
+ },
+ "altrixbio": {
+  "domain": "altrixbio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "preclinical"
+  ],
+  "summary": "Cambridge MA biotech: oral sucralfate-based AJN 003 for type 2 diabetes, pre-IND/Phase 1 entry, Series A",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.altrixbio.com/"
+ },
+ "wave life sciences": {
+  "domain": "wavelifesciences.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase1",
+   "phase2"
+  ],
+  "summary": "Clinical-stage RNA medicines (siRNA, RNA editing, antisense): obesity, AATD, Huntington's, DMD",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://wavelifesciences.com/pipeline/"
+ },
+ "acadia": {
+  "domain": "acadia.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial neuropsychiatry/rare disease biopharma: Nuplazid, Daybue; small molecules",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.acadia.com/"
+ },
+ "basilea pharmaceutica international allschwil": {
+  "domain": "basilea.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Swiss anti-infective/antifungal biopharma: Cresemba, Zevtera, fosmanogepix; small molecules",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.basilea.com/"
+ },
+ "ceva animal health": {
+  "domain": "ceva.com",
+  "hq_region": "eu",
+  "modalities": [
+   "small",
+   "protein"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "French global animal health company: pharmaceuticals, vaccines, biologics, in-house plants plus external manufacturing",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.ceva.com/"
+ },
+ "mission pharmacal": {
+  "domain": "missionpharmacal.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "San Antonio specialty pharma (urology, women's health, derm) with Boerne TX CDMO for oral liquids, semi-solids, tablets",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://missionpharmacal.com/our-company/"
+ },
+ "amylyx pharmaceuticals": {
+  "domain": "amylyx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase3"
+  ],
+  "summary": "Clinical-stage biotech: avexitide (GLP-1 antagonist peptide) for post-bariatric hypoglycemia, Phase 3",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.amylyx.com/"
+ },
+ "sunvax mrna therapeutics": {
+  "domain": "sunvaxmrna.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical"
+  ],
+  "summary": "Massachusetts mRNA/self-amplifying RNA and LNP delivery biotech; oncology, infectious, rare disease",
+  "outsources": "heavy",
+  "confidence": "medium",
+  "source": "https://sunvaxmrna.com/"
+ },
+ "alnylam pharmaceuticals": {
+  "domain": "alnylam.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial RNAi therapeutics leader (Onpattro, Amvuttra, Givlaari); siRNA for rare, cardiometabolic, CNS",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.alnylam.com/alnylam-pipeline"
+ },
+ "astellas pharma": {
+  "domain": "astellas.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "mab",
+   "adc",
+   "gene",
+   "cell",
+   "protein"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Japanese pharma: oncology (Padcev, Xtandi), ophthalmology, immunology; cell and gene therapy",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.astellas.com/en/rd/pipeline"
+ },
+ "iovance biotherapeutics": {
+  "domain": "iovance.com",
+  "hq_region": "nam",
+  "modalities": [
+   "cell"
+  ],
+  "stages": [
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Commercial-stage TIL cell therapy (Amtagvi) for solid tumors, melanoma, NSCLC",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.iovance.com/"
+ },
+ "sumitomo pharma": {
+  "domain": "sumitomo-pharma.com",
+  "hq_region": "apac",
+  "modalities": [
+   "small",
+   "cell"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Japanese pharma: psychiatry/neurology, oncology, regenerative/cell therapy (iPS), urology",
+  "outsources": "network",
+  "confidence": "high",
+  "source": "https://www.sumitomo-pharma.com/"
+ },
+ "novo biosolutions": {
+  "domain": "",
+  "hq_region": "nam",
+  "modalities": [],
+  "stages": [],
+  "summary": "Unidentified; no company found under this name (not Novo Nordisk/Novonesis); possibly small biotech/consultancy",
+  "outsources": "mixed",
+  "confidence": "low",
+  "source": "https://www.google.com/search?q=Novo+Biosolutions+Inc"
+ },
+ "metaphore biotechnologies": {
+  "domain": "metaphore.bio",
+  "hq_region": "nam",
+  "modalities": [
+   "mab",
+   "protein"
+  ],
+  "stages": [
+   "discovery",
+   "preclinical"
+  ],
+  "summary": "Flagship preclinical AI-designed functional antibodies for metabolic and immune diseases",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.flagshippioneering.com/companies/metaphore"
+ },
+ "oblenio bio": {
+  "domain": "obleniobio.com",
+  "hq_region": "nam",
+  "modalities": [
+   "bispecific",
+   "mab"
+  ],
+  "stages": [
+   "preclinical",
+   "phase1"
+  ],
+  "summary": "Series B biotech: LBL-051 BCMA/CD19/CD3 tri-specific T-cell engager for autoimmune disease, entering FIH",
+  "outsources": "heavy",
+  "confidence": "high",
+  "source": "https://www.obleniobio.com/"
+ },
+ "genetix biotherapeutics": {
+  "domain": "genetixbiotx.com",
+  "hq_region": "nam",
+  "modalities": [
+   "gene",
+   "cell"
+  ],
+  "stages": [
+   "commercial"
+  ],
+  "summary": "Ex-bluebird bio, PE-owned: commercial lentiviral gene therapies for sickle cell, beta-thalassemia, CALD",
+  "outsources": "mixed",
+  "confidence": "high",
+  "source": "https://www.genetixbiotx.com/press-release-2025-09-18"
+ },
+ "merck": {
+  "domain": "merck.com",
+  "hq_region": "nam",
+  "modalities": [
+   "small",
+   "mab",
+   "adc",
+   "protein",
+   "biosimilar",
+   "device"
+  ],
+  "stages": [
+   "phase1",
+   "phase2",
+   "phase3",
+   "commercial"
+  ],
+  "summary": "Large pharma (MSD): oncology (Keytruda), vaccines, cardiometabolic, infectious disease, animal health",
+  "outsources": "network",
+  "confidence": "medium",
+  "source": "https://www.merck.com/research/product-pipeline/"
+ }
+}

@@ -1,0 +1,1300 @@
+[
+ {
+  "id": "320112",
+  "title": "Welcome Reception",
+  "day": 0,
+  "date": "Mon 19 Oct",
+  "day_label": "Day Zero",
+  "start": "19:30",
+  "end": "21:30",
+  "track": "Experiences",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320112",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "333192",
+  "title": "Registration and Breakfast",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "08:00",
+  "end": "08:55",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333192",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320115",
+  "title": "New Research: External Manufacturing Index + CDMO Growth Report",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "08:55",
+  "end": "09:20",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320115",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "Simon Kucher",
+  "description": "Too often sponsor-CDMO relationships underperform because both sides operate with fundamentally different expectations. Simon Kucher and PharmaSource present first-of-its-kind research measuring alignment across the seven areas where partnerships succeed or fail: performance management, contract structure, capacity planning, communication protocols, risk management, digital integration, and ESG initiatives.",
+  "speakers": [
+   {
+    "name": "Kaan-Fabian Kekec",
+    "role": "Partner",
+    "org": "Simon-Kucher"
+   },
+   {
+    "name": "Clarita Simon",
+    "role": "Director",
+    "org": "Simon Kucher"
+   },
+   {
+    "name": "Patrick Anderson",
+    "role": "Consultant",
+    "org": "Simon-Kucher & Partners"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320116",
+  "title": "The State of Contract Manufacturing in North America 2026 Tariffs, Capacity Crunch, Talent Wars, and Regulatory Upheaval: What It Means for Your Outsourcing Strategy",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "09:20",
+  "end": "10:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320116",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "Flamma",
+  "description": "North American contract manufacturing is experiencing its most dramatic transformation in decades. Billions in reshoring investments are flooding into US facilities as tariff policies and supply chain security mandates force rapid geographic reallocation. Yet this capacity expansion paradox is creating unprecedented challenges: premium slots remain scarce despite new construction",
+  "speakers": [
+   {
+    "name": "Marta Wosinska",
+    "role": "Senior Fellow",
+    "org": "The Brookings Institution"
+   },
+   {
+    "name": "Reza Oliyai",
+    "role": "President and CEO",
+    "org": "Oliyai Consulting"
+   },
+   {
+    "name": "Omar Kassim",
+    "role": "Head \u2013 Pharmaceutical Sciences External Partnership Management",
+    "org": "Takeda"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "333193",
+  "title": "Networking Hour",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "10:00",
+  "end": "11:00",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333193",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320117",
+  "title": "How US Policy Turbulence is Reshaping the 2026 Contract Manufacturing Landscape",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "11:00",
+  "end": "11:40",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320117",
+  "known_orgs": [
+   "The Brookings Institution",
+   "PBOA"
+  ],
+  "mods": [],
+  "sponsor": "",
+  "description": "The Trump administration has unleashed a wave of policy changes affecting pharmaceutical manufacturing\u2014but which ones actually impact your CDMO operations? Join Gil Roth, President of the Pharma & Biopharma Outsourcing Association (PBOA), for an essential analysis that cuts through the political noise to reveal what truly matters for contract manufacturers.",
+  "speakers": [
+   {
+    "name": "Gil Roth",
+    "role": "President",
+    "org": "PBOA"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320118",
+  "title": "Scaling ADC Development Strategy: Solving Conjugation Chemistry and Analytical Complexity Early",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "11:00",
+  "end": "11:40",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320118",
+  "known_orgs": [
+   "Crescent Biopharma",
+   "Oliyai Consulting",
+   "Axplora"
+  ],
+  "mods": [
+   "adc"
+  ],
+  "sponsor": "Axplora",
+  "description": "Antibody-drug conjugates demand sophisticated development strategies to achieve stable DAR profiles and characterize complex heterogeneity. This panel addresses critical early-stage challenges: selecting optimal linker-payload combinations, developing robust conjugation processes, and establishing analytical methods that satisfy regulatory requirements.",
+  "speakers": [
+   {
+    "name": "Scott Hilderbrand",
+    "role": "Vice President, ADC CMC",
+    "org": "Crescent Biopharma"
+   },
+   {
+    "name": "Gerard Jensen",
+    "role": "Consultant",
+    "org": "Oliyai Consulting Corporation"
+   },
+   {
+    "name": "Destardi Moye-Sherman",
+    "role": "Founder & CEO",
+    "org": "Moye Consulting Group"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320119",
+  "title": "DC Decoded: An Insider's Guide to Pharmaceutical Supply Chain Policy",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "11:40",
+  "end": "12:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320119",
+  "known_orgs": [
+   "The Brookings Institution",
+   "PBOA"
+  ],
+  "mods": [],
+  "sponsor": "",
+  "description": "Washington's approach to pharmaceutical supply chains is shifting dramatically, but not in the ways most industry executives expect. From tariff announcements that have nothing to do with drug prices to proposed regulations requiring personal accountability for batch quality, the policy landscape is being reshaped by competing priorities around China dependence, domestic manufacturing",
+  "speakers": [
+   {
+    "name": "Marta Wosinska",
+    "role": "Senior Fellow",
+    "org": "The Brookings Institution"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320120",
+  "title": "The New Upstream: How Raw-Material Strategy Will Define the Future of Supplier / CDMO Partnerships",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "11:40",
+  "end": "12:00",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320120",
+  "known_orgs": [],
+  "mods": [
+   "api",
+   "small",
+   "protein",
+   "mab"
+  ],
+  "sponsor": "Zhejiang Haizhou Pharmaceutical",
+  "description": "Raw-material shortages don't hit CDMOs and pharma companies the same way. CDMOs feel it immediately with halted batches, SLA breaches, lost client trust, and margin collapse within weeks. Pharma absorbs it more slowly but far more expensively: regulatory scrutiny, market share loss, and revalidation cycles that run months to years. Both sides depend on the same fragile, often opaque, raw-material supply chains.",
+  "speakers": [
+   {
+    "name": "Nicholas Hathway",
+    "role": "European Business Development Manager",
+    "org": "Haizhou Pharma"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320122",
+  "title": "Manufacturing Network Optimization Strategies: Consolidation, Regionalization or Dual-Sourcing?",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "12:00",
+  "end": "12:40",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320122",
+  "known_orgs": [
+   "Biogen",
+   "Eli Lilly",
+   "Astellas",
+   "Pfizer",
+   "Vertex"
+  ],
+  "mods": [],
+  "sponsor": "ROIS",
+  "description": "Pharma faces competing pressures: consolidate CDMOs for efficiency and deeper partnerships, or regionalize and dual-source for supply resilience. Strategic consolidation promises cost savings and simplified governance, but geopolitical reality demands region-for-region manufacturing and backup capacity. Tech transfers are expensive and disruptive either way.",
+  "speakers": [
+   {
+    "name": "Amber Meriwether",
+    "role": "Corporate Strategy",
+    "org": "Astellas"
+   },
+   {
+    "name": "Joseph Graskemper",
+    "role": "General Manager & Senior Director, Early Phase CMC External Development & Manufacturing",
+    "org": "Biogen"
+   },
+   {
+    "name": "Gretchen Peck",
+    "role": "Sr. Director, Strategy & Program Management",
+    "org": "Pfizer"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320121",
+  "title": "Next-Generation Quality Management in The Age of AI",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "12:00",
+  "end": "12:40",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320121",
+  "known_orgs": [
+   "FDA",
+   "Eli Lilly",
+   "Bimeda"
+  ],
+  "mods": [],
+  "sponsor": "Forma",
+  "description": "Quality oversight across external manufacturing networks has become increasingly complex as pharma companies manage multiple CDMOs across different geographies and modalities. This session brings together quality leaders to discuss how to build robust oversight frameworks that balance compliance with operational efficiency.",
+  "speakers": [
+   {
+    "name": "Colin Baker",
+    "role": "SVP, Quality Assurance",
+    "org": "Bimeda"
+   },
+   {
+    "name": "Ruchit Trivedi",
+    "role": "EVP Operations",
+    "org": "Forma Life Sciences"
+   },
+   {
+    "name": "Denyse Baker",
+    "role": "AVP Global Quality External Engagement",
+    "org": "Eli Lilly & co."
+   },
+   {
+    "name": "Jeff Broadfoot",
+    "role": "VP, Quality Operations",
+    "org": "Emergent BioSolutions"
+   },
+   {
+    "name": "Eric Twum",
+    "role": "Regulatory Specialist",
+    "org": "FDA"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "333194",
+  "title": "Lunch + Networking",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "12:40",
+  "end": "13:40",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333194",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320130",
+  "title": "ADCs and High-Potency Manufacturing: Building Competitive Advantage",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320130",
+  "known_orgs": [],
+  "mods": [
+   "adc",
+   "api"
+  ],
+  "sponsor": "Malta Development Labs",
+  "description": "Highly potent compounds, from ADCs to HPAPIs and radiopharmaceuticals, demand manufacturing strategies where safety, quality, and speed must coexist. ADCs in particular bring together potent payloads, complex conjugation chemistry, and stringent containment requirements, making them a proving ground for how organizations turn handling constraints into a competitive edge.",
+  "speakers": [
+   {
+    "name": "Jose Ascensao",
+    "role": "General Manager",
+    "org": "MDL - Malta Development Labs"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320133",
+  "title": "Capacity Planning for Launch",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320133",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "BE BIOSOL",
+  "description": "Commercial launch failure due to manufacturing capacity constraints is a preventable tragedy. This session examines forward-planning strategies for securing CDMO capacity in high-demand therapeutic areas and manufacturing modalities where slots are increasingly scarce. Key topics include: Timing and structuring capacity commitments that balance risk and supply assurance.",
+  "speakers": [],
+  "detail": true
+ },
+ {
+  "id": "320134",
+  "title": "Innovative Contract Models: Aligning Incentives for Mutual Success",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320134",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "Fresenius Kabi",
+  "description": "Traditional fee-for-service contracts often misalign incentives between sponsors and CDMOs. This roundtable examines emerging contract structures, from risk-sharing to outcome-based pricing, that drive mutual success and operational excellence. Key topics include: Performance-based commercial terms that reward quality, speed, and innovation; Risk-sharing models for early-stage.",
+  "speakers": [
+   {
+    "name": "James Holloway",
+    "role": "Vice President CMO, Global Business Development",
+    "org": "Fresenius Kabi"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320129",
+  "title": "Managing Investigations & Deviations",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320129",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "Deviations are inevitable in external manufacturing. How quickly and thoroughly they're resolved is what separates strong CDMO partnerships from strained ones. When investigations stall, root cause is misidentified, or CAPAs don't stick, the result is delayed batches, regulatory exposure, and eroded trust. This roundtable brings together quality and manufacturing professionals.",
+  "speakers": [
+   {
+    "name": "Christian Phillips",
+    "role": "Vice President, Technical Operations",
+    "org": "Fennec Pharmaceuticals"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320132",
+  "title": "Managing Your Clinical Supply CDMO: Oversight, Flexibility, and Keeping Pace with Your Trial",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320132",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "Alcami",
+  "description": "Clinical supply rarely moves in a straight line; protocol amendments, enrollment swings, and shifting timelines all land on the CDMO managing your material. The challenge is maintaining enough oversight to protect quality and timelines without micromanaging a partner you need to stay nimble. This roundtable convenes sponsors and clinical supply leaders.",
+  "speakers": [],
+  "detail": true
+ },
+ {
+  "id": "320128",
+  "title": "Partnership Excellence: The Secrets to Better Collaboration",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320128",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "Upperton",
+  "description": "Great partnerships don't happen by accident. They're built on clear communication, aligned incentives, and mutual accountability. This roundtable brings together experienced practitioners to share what actually works when managing complex CDMO relationships beyond the contract.",
+  "speakers": [
+   {
+    "name": "Ian Lafferty",
+    "role": "CTO",
+    "org": "Upperton Pharma Solutions"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320131",
+  "title": "Patient Centricity: What It Actually Means, and How To Do It Properly",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320131",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "Piramal Pharma Solutions",
+  "description": "Most CDMOs talk about quality, timelines, and capacity. Very few build a formal, company-wide structure around the patient. This session explores what patient centricity actually means in practice, why it remains rare in outsourcing, and whether it's something sponsors value.",
+  "speakers": [
+   {
+    "name": "Stuart Needleman",
+    "role": "Chief Commercial Officer",
+    "org": "Piramal Pharma Solutions"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "333199",
+  "title": "Networking",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "15:00",
+  "end": "15:40",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333199",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320145",
+  "title": "Network planning in the age of AI: the billion-dollar blind spot in your manufacturing",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "15:40",
+  "end": "16:00",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320145",
+  "known_orgs": [
+   "Sanofi",
+   "Pfizer",
+   "Aizon",
+   "MasterControl"
+  ],
+  "mods": [],
+  "sponsor": "Tulana",
+  "description": "Capacity and network decisions in pharma are made years ahead of the market they serve. Demand is uncertain, approvals are binary, and investments are hard to reverse. AI tools are entering planning workflows with no mechanism to check whether their output respects real-world constraints. This session covers decision intelligence for manufacturing network planning.",
+  "speakers": [
+   {
+    "name": "Dr. Narendiran Sivanesan",
+    "role": "CEO and Co-Founder",
+    "org": "Tulana"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320123",
+  "title": "Trend Briefings: 3 Trends Shaping Biopharma Outsourcing",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "15:40",
+  "end": "16:20",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320123",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "Four analysts. Four trends. Eight minutes each. Leading analysts and management consultants each get eight minutes and four slides to make the case for one trend reshaping the biopharma outsourcing landscape.",
+  "speakers": [
+   {
+    "name": "Adam Siebert",
+    "role": "Managing Director",
+    "org": "L.E.K. Consulting"
+   },
+   {
+    "name": "Raman Sehgal",
+    "role": "Host",
+    "org": "Molecule to Market"
+   },
+   {
+    "name": "Samir Panjwani",
+    "role": "Creator",
+    "org": "CDMO Signal"
+   },
+   {
+    "name": "Molly McGaughan",
+    "role": "Co-Founder, Managing Director",
+    "org": "Firm Design LLC"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320126",
+  "title": "Fewer Batches, Faster Scale-Up: A Model-Driven Approach to Lyophilization Tech Transfer",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "16:00",
+  "end": "16:20",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320126",
+  "known_orgs": [],
+  "mods": [
+   "protein",
+   "mab"
+  ],
+  "sponsor": "BSP Pharmaceuticals",
+  "description": "Lyophilization scale-up remains one of the most common causes of tech transfer delays, and with sterile capacity booked out months ahead, a failed scale-up run can cost a launch window. This case study shows how an integrated development-to-GMP approach compressed that risk by characterizing lab and commercial freeze dryers upfront.",
+  "speakers": [
+   {
+    "name": "Irene Oddone",
+    "role": "Formulation, Process Development and Scale-up Manager",
+    "org": "BSP"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320124",
+  "title": "Digital Manufacturing and AI: Real-World Case Study Lightning Talks",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "16:20",
+  "end": "17:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320124",
+  "known_orgs": [
+   "Sanofi",
+   "Pfizer",
+   "Aizon",
+   "MasterControl"
+  ],
+  "mods": [],
+  "sponsor": "Aizon",
+  "description": "AI and digital tools promise to revolutionize outsourcing operations, but the contract manufacturing sector remains skeptical. Digital twins, predictive analytics, and automation platforms flood the market, yet most organizations struggle to identify which tools deliver measurable value. Real-world case study lightning talks.",
+  "speakers": [
+   {
+    "name": "Raman Sehgal",
+    "role": "Host",
+    "org": "Molecule to Market"
+   },
+   {
+    "name": "Mike Boyson",
+    "role": "Principal",
+    "org": "Azure Biopharma Consulting"
+   },
+   {
+    "name": "Kat Kozyrytska",
+    "role": "Technology Advisor and Portfolio Strategy Leader",
+    "org": ""
+   },
+   {
+    "name": "Jose Andino",
+    "role": "Tech Transfer Manager",
+    "org": "mAbxience"
+   },
+   {
+    "name": "Inna Ben-Anat",
+    "role": "AVP, Global Head Connected Smart Factories, Manufacturing & Supply",
+    "org": "Sanofi"
+   },
+   {
+    "name": "Bharath Sundararaman",
+    "role": "Senior Director, End-to-End Network Solutions",
+    "org": "Pfizer"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320127",
+  "title": "The Future of Sterile Manufacturing: Building Resilient Supply Networks in an Era of Change",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "16:20",
+  "end": "17:00",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320127",
+  "known_orgs": [
+   "AstraZeneca",
+   "Vertex",
+   "QurAlis"
+  ],
+  "mods": [
+   "mab",
+   "protein",
+   "small",
+   "device"
+  ],
+  "sponsor": "Grand River Aseptic Manufacturing",
+  "description": "The sterile injectable supply chain is under pressure from multiple directions, with capacity shortfalls that predate the current policy environment, vaccine programs destabilized by funding shifts, and global health manufacturers navigating commercial CDMOs never designed with their economics in mind.",
+  "speakers": [
+   {
+    "name": "Sami Hawwa",
+    "role": "Managing Director",
+    "org": "NewVale Capital"
+   },
+   {
+    "name": "Piper Trelstad",
+    "role": "Head of CMC",
+    "org": "Bill & Melinda Gates Medical Research Institute"
+   },
+   {
+    "name": "Adora Padilla",
+    "role": "Head, CMC Project Leadership and Vaccine Strategy",
+    "org": "AstraZeneca"
+   },
+   {
+    "name": "Anand Ekambaram",
+    "role": "Principal Consultant",
+    "org": "Global Biovax"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320111",
+  "title": "Happy Hour",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "17:00",
+  "end": "18:00",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320111",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320113",
+  "title": "CDMO Live After Dark - Official Party",
+  "day": 1,
+  "date": "Tue 20 Oct",
+  "day_label": "Day 1",
+  "start": "19:00",
+  "end": "23:00",
+  "track": "Experiences",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320113",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320114",
+  "title": "Running Club Boston",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "06:15",
+  "end": "07:30",
+  "track": "Experiences",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320114",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "333200",
+  "title": "Morning Meetings + Coffee",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "08:00",
+  "end": "09:00",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333200",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320136",
+  "title": "Integrated Drug Substance to Drug Product Manufacture: An Almac Case Study in Getting Particle Size Right",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "09:00",
+  "end": "09:20",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320136",
+  "known_orgs": [
+   "Almac"
+  ],
+  "mods": [
+   "small",
+   "api"
+  ],
+  "sponsor": "Almac Group",
+  "description": "Particle isolation is often treated as the final step of drug substance manufacture, but the particle attributes fixed at this stage (size distribution, morphology, surface energy, polymorphic form, bulk density) propagate directly into downstream processability, content uniformity, dissolution, and bioavailability. An Almac case study on getting particle size right in integrated drug substance to drug product manufacture.",
+  "speakers": [],
+  "detail": true
+ },
+ {
+  "id": "320135",
+  "title": "Resilience by Design: How Vertex Are Embedding Risk Management into Manufacturing Network Strategy",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "09:00",
+  "end": "09:20",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320135",
+  "known_orgs": [
+   "Vertex"
+  ],
+  "mods": [],
+  "sponsor": "",
+  "description": "Managing CDMO relationships across multiple modalities requires more than business continuity plans. It demands resilience embedded in every network decision. Vertex Pharmaceuticals has developed a comprehensive enterprise framework that adapts to the distinct challenges of small molecule, biologics, and cell and gene therapy manufacturing.",
+  "speakers": [
+   {
+    "name": "Alfredo Vidal",
+    "role": "Director Risk Management - Commercial Supply Chain",
+    "org": "Vertex"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320138",
+  "title": "De-Risking Small Molecule CMC: Decision Gates, Global Capacity and Supply Chain Strategy",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "09:20",
+  "end": "10:00",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320138",
+  "known_orgs": [
+   "AstraZeneca",
+   "Vertex"
+  ],
+  "mods": [
+   "small",
+   "api"
+  ],
+  "sponsor": "HONOUR",
+  "description": "Most small molecule programs don't fail because of potency; they collapse from predictable ADME failures, unworkable synthetic routes, and unrealistic dose projections. At the same time, years of US underinvestment in small molecule facilities, reshoring pressures, and a shifting global capacity landscape are forcing earlier and harder strategic calls across both drug substance and drug product.",
+  "speakers": [
+   {
+    "name": "Ben Locwin",
+    "role": "Vice President",
+    "org": "Reliant Life Sciences"
+   },
+   {
+    "name": "Amit Jain",
+    "role": "Senior Director Drug Product Development",
+    "org": "QurAlis"
+   },
+   {
+    "name": "Rahela Gasparac-Knezic",
+    "role": "President & Principal Consultant",
+    "org": "HeliPharm Consulting LLC"
+   },
+   {
+    "name": "Lonnie Robarge",
+    "role": "CMC Strategy Advisor",
+    "org": "Portfolio CMC Advisors"
+   },
+   {
+    "name": "Stefanie Roeper",
+    "role": "Senior Director",
+    "org": "Vertex"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320137",
+  "title": "Shock-Proof Supply: Crisis Response Strategies for External Manufacturing",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "09:20",
+  "end": "10:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320137",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "mAbxience",
+  "description": "Designing CDMO Partnerships That Adapt to Capacity Shocks, Geopolitical Shifts, and Portfolio Volatility. Geopolitical shocks, capacity bottlenecks, and tariff changes now strike with little warning, yet most CDMO networks remain rigid, with multi-year tech transfer timelines that prevent rapid response.",
+  "speakers": [
+   {
+    "name": "Alfredo Vidal",
+    "role": "Director Risk Management - Commercial Supply Chain",
+    "org": "Vertex"
+   },
+   {
+    "name": "Nicole Falk",
+    "role": "Sr Director Joint Audit & Quality Operations",
+    "org": "Rx360"
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "333201",
+  "title": "Networking",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "10:00",
+  "end": "11:00",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333201",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320140",
+  "title": "Solving Cell and Gene Manufacturing at Scale [Expert Panel]",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "11:00",
+  "end": "11:40",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320140",
+  "known_orgs": [
+   "AstraZeneca",
+   "Vertex",
+   "Gates MRI",
+   "QurAlis",
+   "Genetix Biotherapeutics"
+  ],
+  "mods": [
+   "cell",
+   "gene"
+  ],
+  "sponsor": "",
+  "description": "Cell and gene therapies have promising science, but producing them at scale has thus far been the bottleneck to reaching the patients who need them. Manufacturing falls into two categories: autologous therapies that require a fresh batch for every patient, and allogeneic, off-the-shelf approaches that promise industrial scale but haven't yet cleared the scientific hurdles.",
+  "speakers": [
+   {
+    "name": "Jan Botthof",
+    "role": "Head of Quality Compliance",
+    "org": "BlueRock Therapeutics"
+   },
+   {
+    "name": "Tyson Fetzer",
+    "role": "Vice President, Manufacturing and Supply Chain Operations",
+    "org": "Genetix Biotherapeutics"
+   },
+   {
+    "name": "Michael Mercaldi",
+    "role": "Senior Vice President, Strategic and Technical Operations",
+    "org": "TORQUE BIO"
+   },
+   {
+    "name": "Joanne Beck",
+    "role": "Chief Operating Officer",
+    "org": "Halozyme, Inc."
+   }
+  ],
+  "detail": true
+ },
+ {
+  "id": "320139",
+  "title": "Strategic Procurement: Building Win-Win CDMO Alliances Beyond Price",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "11:00",
+  "end": "11:40",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320139",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320141",
+  "title": "Building America's API Manufacturing Network: How APIIC is Reshoring Critical Medicines Through Strategic Partnerships",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "11:40",
+  "end": "12:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320141",
+  "known_orgs": [
+   "APIIC"
+  ],
+  "mods": [
+   "api"
+  ],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320142",
+  "title": "CMC Strategy for Funding Success: What Investors Evaluate at Each Stage and How to Demonstrate Readiness",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "11:40",
+  "end": "12:00",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320142",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320144",
+  "title": "De-Risking High-Potency Manufacturing & Capacity Expansion: A Strategic Playbook from Legacy Asset Integration to CDMO Platform",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "12:00",
+  "end": "12:20",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320144",
+  "known_orgs": [],
+  "mods": [
+   "api",
+   "adc",
+   "small"
+  ],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320143",
+  "title": "Operationalizing Decarbonization: How to Close the Pharma-CDMO Gap (in association with PSCI)",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "12:00",
+  "end": "12:40",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320143",
+  "known_orgs": [
+   "PSCI"
+  ],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320125",
+  "title": "From Idea to IND: Keys to Navigating Startup-CDMO Partnerships for Early CMC Development",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "12:20",
+  "end": "12:40",
+  "track": "Track 2 \u00b7 Technical Operations + CMC",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320125",
+  "known_orgs": [],
+  "mods": [
+   "small",
+   "mab",
+   "protein",
+   "cell",
+   "gene"
+  ],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "333225",
+  "title": "Lunch + Networking",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "12:40",
+  "end": "13:40",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333225",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320147",
+  "title": "AI in Formulation and CMC: Separating Real Value from Hype",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320147",
+  "known_orgs": [],
+  "mods": [
+   "small",
+   "protein"
+  ],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320149",
+  "title": "Biotech Partnering Fundamentals: CDMO Selection, Capacity Protection, and Scaling from Phase I",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320149",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320151",
+  "title": "Quality Oversight Across Your CDMO Network",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320151",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320152",
+  "title": "Regulatory Readiness: CMC Packages That Pass First Time",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320152",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320150",
+  "title": "The Outsourced Manufacturing Organization: Structure, Skills, and Success",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320150",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320146",
+  "title": "The Perfect RFx Process: Writing Requirements That Deliver the Right Partners",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320146",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320148",
+  "title": "The Tech Transfer Playbook: Right First Time Strategies",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "13:40",
+  "end": "15:00",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "roundtable",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320148",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "333265",
+  "title": "Networking",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "15:00",
+  "end": "16:00",
+  "track": "Showfloor",
+  "kind": "social",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/333265",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ },
+ {
+  "id": "320153",
+  "title": "Takeaways from CDMO Live Americas 2026",
+  "day": 2,
+  "date": "Wed 21 Oct",
+  "day_label": "Day 2",
+  "start": "16:00",
+  "end": "16:40",
+  "track": "Track 1 \u00b7 External Manufacturing Strategy",
+  "kind": "talk",
+  "link": "https://matchmaking.grip.events/cdmoliveamericas2026/app/session/320153",
+  "known_orgs": [],
+  "mods": [],
+  "sponsor": "",
+  "description": "",
+  "speakers": [],
+  "detail": false
+ }
+]

@@ -1,0 +1,257 @@
+[
+ {
+  "key": "vertex",
+  "name": "Vertex",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Sr. Director, Global Manufacturing Network",
+   "Director Risk Management - Commercial Supply Chain",
+   "Senior Director"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bristol myers squibb",
+  "name": "Bristol Myers Squibb",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, Cell Therapy Strategy & Operations",
+   "Pharmaceutical Development- Analytical research- Clinical Supply Operations , Oral Solid Dose",
+   "Senior Quality Engineer"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "global biovax",
+  "name": "Global Biovax",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Principal Consultant"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sail biomedicines",
+  "name": "Sail Biomedicines",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Director, CMC Operations",
+   "Director Pre-Clinical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "biogen",
+  "name": "Biogen",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Sr Engineering III",
+   "Associate Director, Field Medical Systems Lead \u2013 Operations, Analytics, and Innovation",
+   "Head of API Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "takeda",
+  "name": "Takeda",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, Supplier Sustainability",
+   "Pharmaceutical Science Quality Lead",
+   "Head \u2013 Pharmaceutical Sciences External Partnership Management"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "lifearc technologies",
+  "name": "Lifearc Technologies",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "CEO"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "takeda at takeda",
+  "name": "Takeda at Takeda",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Head of US Biologics Process Development"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "bimeda",
+  "name": "Bimeda",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "SVP, Quality Assurance"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "lilly",
+  "name": "Lilly",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "AVP Global Quality External Engagement"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "altrixbio",
+  "name": "Altrixbio Inc",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Senior Director of CMC and R&D"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "wave life sciences",
+  "name": "Wave Life Sciences",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Associate Director, Program Management, CMC",
+   "Senior Director Supply Chain Planning",
+   "Senior Manufacturing Manager"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "acadia",
+  "name": "Acadia",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Senior Director"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "basilea pharmaceutica international allschwil",
+  "name": "Basilea Pharmaceutica International Ltd, Allschwil",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Procurement Associate"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "ceva animal health",
+  "name": "Ceva Animal Health",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Director, External Manufacturing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "mission pharmacal",
+  "name": "Mission Pharmacal Company",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "VP, CDMO and Site General Manager"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "amylyx pharmaceuticals",
+  "name": "Amylyx Pharmaceuticals",
+  "sheet_notes": "Specialty / generic / animal health pharma",
+  "titles": [
+   "Associate Director, Procurement & Strategic Sourcing",
+   "Senior Director, Head of Procurement & Strategic Sourcing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sunvax mrna therapeutics",
+  "name": "Sunvax Mrna Therapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Director"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "alnylam pharmaceuticals",
+  "name": "Alnylam Pharmaceuticals",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Associate Director, Commercial Finished Goods External Manufacturing"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "astellas pharma",
+  "name": "Astellas Pharma",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Associate Director of QC Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "iovance biotherapeutics",
+  "name": "Iovance Biotherapeutics Inc.",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Global Product Quality and Stability Operations , and Volunteer Clinical Scientist"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "sumitomo pharma",
+  "name": "Sumitomo Pharma",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Director, Strategic Sourcing \u2013 Supply Chain/TOQ and Contracts Ops"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "novo biosolutions",
+  "name": "Novo Biosolutions Inc.",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "President"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "metaphore biotechnologies",
+  "name": "Metaphore Biotechnologies",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Associate Director"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "oblenio bio",
+  "name": "Oblenio Bio",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Vice President Technical Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "genetix biotherapeutics",
+  "name": "Genetix Biotherapeutics",
+  "sheet_notes": "Biotech",
+  "titles": [
+   "Vice President, Manufacturing and Supply Chain Operations"
+  ],
+  "domain_hint": ""
+ },
+ {
+  "key": "merck",
+  "name": "Merck",
+  "sheet_notes": "Large / mid pharma",
+  "titles": [
+   "Assoc. Principal Scientist"
+  ],
+  "domain_hint": ""
+ }
+]

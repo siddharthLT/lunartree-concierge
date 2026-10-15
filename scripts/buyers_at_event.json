@@ -1,0 +1,2032 @@
+[
+{
+"org": "Vertex",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"cell",
+"gene",
+"editing"
+],
+"stages": [
+"phase3",
+"commercial"
+],
+"does": "Large biotech: CF, pain (suzetrigine), kidney, Casgevy gene editing, T1D cell therapy",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Sr. Director, Global Manufacturing Network",
+"Director Risk Management - Commercial Supply Chain",
+"Senior Director"
+]
+},
+{
+"org": "Bristol Myers Squibb",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"adc",
+"cell",
+"protein",
+"radio"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global pharma: oncology, hematology, immunology, cardiovascular, neuroscience; cell therapy, radiopharma",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director, Cell Therapy Strategy & Operations",
+"Pharmaceutical Development- Analytical research- Clinical Supply Operations , Oral Solid Dose",
+"Senior Quality Engineer"
+]
+},
+{
+"org": "Sail Biomedicines",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"gene",
+"cell"
+],
+"stages": [
+"discovery",
+"preclinical"
+],
+"does": "Flagship-backed eRNA/circular RNA in vivo CAR-T for autoimmunity; preclinical, J&J option",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Director, CMC Operations",
+"Director Pre-Clinical Operations"
+]
+},
+{
+"org": "Biogen",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"protein",
+"gene"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Large biotech: neurology (MS, Alzheimer's, SMA), rare disease, immunology; antisense and biologics",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Sr Engineering III",
+"Associate Director, Field Medical Systems Lead \u2013 Operations, Analytics, and Innovation",
+"Head of API Development"
+]
+},
+{
+"org": "Takeda",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"mab",
+"protein",
+"cell",
+"gene",
+"biosimilar"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Japanese global pharma: GI, rare disease, plasma-derived therapies, oncology, neuroscience, vaccines",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director, Supplier Sustainability",
+"Pharmaceutical Science Quality Lead",
+"Head \u2013 Pharmaceutical Sciences External Partnership Management"
+]
+},
+{
+"org": "Lifearc Technologies",
+"type": "Biotech",
+"hq": "eu",
+"mods": [
+"small",
+"mab"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1"
+],
+"does": "Ambiguous: likely LifeArc, UK medical research charity (drug discovery, antibody humanisation); not a classic biotech",
+"outsources": "mixed",
+"conf": "low",
+"attendee_titles": [
+"CEO"
+]
+},
+{
+"org": "Takeda at Takeda",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"mab",
+"protein",
+"cell",
+"gene",
+"biosimilar"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Duplicate entry of Takeda (US biologics process development); global pharma",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"Head of US Biologics Process Development"
+]
+},
+{
+"org": "Bimeda",
+"type": "Specialty / generic / animal health pharma",
+"hq": "eu",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"commercial"
+],
+"does": "Animal health company: generic/specialty veterinary pharmaceuticals and biologics, global manufacturing",
+"outsources": "mixed",
+"conf": "medium",
+"attendee_titles": [
+"SVP, Quality Assurance"
+]
+},
+{
+"org": "Lilly",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"protein",
+"gene",
+"radio",
+"editing"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Large pharma: diabetes/obesity (incretins), oncology, neuroscience, immunology; radioligand, genetic medicines",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"AVP Global Quality External Engagement"
+]
+},
+{
+"org": "Altrixbio Inc",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"preclinical"
+],
+"does": "Cambridge MA biotech: oral sucralfate-based AJN 003 for type 2 diabetes, pre-IND/Phase 1 entry, Series A",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Senior Director of CMC and R&D"
+]
+},
+{
+"org": "Wave Life Sciences",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase1",
+"phase2"
+],
+"does": "Clinical-stage RNA medicines (siRNA, RNA editing, antisense): obesity, AATD, Huntington's, DMD",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Associate Director, Program Management, CMC",
+"Senior Director Supply Chain Planning",
+"Senior Manufacturing Manager"
+]
+},
+{
+"org": "Acadia",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial neuropsychiatry/rare disease biopharma: Nuplazid, Daybue; small molecules",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Senior Director"
+]
+},
+{
+"org": "Basilea Pharmaceutica International Ltd, Allschwil",
+"type": "Specialty / generic / animal health pharma",
+"hq": "eu",
+"mods": [
+"small"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Swiss anti-infective/antifungal biopharma: Cresemba, Zevtera, fosmanogepix; small molecules",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Procurement Associate"
+]
+},
+{
+"org": "Ceva Animal Health",
+"type": "Specialty / generic / animal health pharma",
+"hq": "eu",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"commercial"
+],
+"does": "French global animal health company: pharmaceuticals, vaccines, biologics, in-house plants plus external manufacturing",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Director, External Manufacturing"
+]
+},
+{
+"org": "Mission Pharmacal Company",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"commercial"
+],
+"does": "San Antonio specialty pharma (urology, women's health, derm) with Boerne TX CDMO for oral liquids, semi-solids, tablets",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"VP, CDMO and Site General Manager"
+]
+},
+{
+"org": "Amylyx Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase3"
+],
+"does": "Clinical-stage biotech: avexitide (GLP-1 antagonist peptide) for post-bariatric hypoglycemia, Phase 3",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Associate Director, Procurement & Strategic Sourcing",
+"Senior Director, Head of Procurement & Strategic Sourcing"
+]
+},
+{
+"org": "Sunvax Mrna Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"gene"
+],
+"stages": [
+"discovery",
+"preclinical"
+],
+"does": "Massachusetts mRNA/self-amplifying RNA and LNP delivery biotech; oncology, infectious, rare disease",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Director"
+]
+},
+{
+"org": "Alnylam Pharmaceuticals",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial RNAi therapeutics leader (Onpattro, Amvuttra, Givlaari); siRNA for rare, cardiometabolic, CNS",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Associate Director, Commercial Finished Goods External Manufacturing"
+]
+},
+{
+"org": "Astellas Pharma",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"mab",
+"adc",
+"gene",
+"cell",
+"protein"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Japanese pharma: oncology (Padcev, Xtandi), ophthalmology, immunology; cell and gene therapy",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Associate Director of QC Operations"
+]
+},
+{
+"org": "Iovance Biotherapeutics Inc.",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"cell"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial-stage TIL cell therapy (Amtagvi) for solid tumors, melanoma, NSCLC",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Global Product Quality and Stability Operations , and Volunteer Clinical Scientist"
+]
+},
+{
+"org": "Sumitomo Pharma",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"cell"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Japanese pharma: psychiatry/neurology, oncology, regenerative/cell therapy (iPS), urology",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director, Strategic Sourcing \u2013 Supply Chain/TOQ and Contracts Ops"
+]
+},
+{
+"org": "Metaphore Biotechnologies",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"mab",
+"protein"
+],
+"stages": [
+"discovery",
+"preclinical"
+],
+"does": "Flagship preclinical AI-designed functional antibodies for metabolic and immune diseases",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Associate Director"
+]
+},
+{
+"org": "Oblenio Bio",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"bispecific",
+"mab"
+],
+"stages": [
+"preclinical",
+"phase1"
+],
+"does": "Series B biotech: LBL-051 BCMA/CD19/CD3 tri-specific T-cell engager for autoimmune disease, entering FIH",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Vice President Technical Operations"
+]
+},
+{
+"org": "Genetix Biotherapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"gene",
+"cell"
+],
+"stages": [
+"commercial"
+],
+"does": "Ex-bluebird bio, PE-owned: commercial lentiviral gene therapies for sickle cell, beta-thalassemia, CALD",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Vice President, Manufacturing and Supply Chain Operations"
+]
+},
+{
+"org": "Merck",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"adc",
+"protein",
+"biosimilar",
+"device"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Large pharma (MSD): oncology (Keytruda), vaccines, cardiometabolic, infectious disease, animal health",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"Assoc. Principal Scientist"
+]
+},
+{
+"org": "AstraZeneca",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"adc",
+"protein",
+"cell",
+"gene",
+"radio",
+"editing"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global big pharma: oncology, CVRM, respiratory, rare disease, vaccines; broad modalities",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Head, CMC Project Leadership and Vaccine Strategy, V&I, BioPharmaceutical Development",
+"Associate Director, Cell and Gene Therapy",
+"Senior Director, Injectable Drug Product Development"
+]
+},
+{
+"org": "Sonoma Biotherapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"cell"
+],
+"stages": [
+"preclinical",
+"phase1"
+],
+"does": "Treg cell therapy biotech for autoimmune disease (RA, IBD); Regeneron collab",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"VP, Process and Analytical Development and MSAT"
+]
+},
+{
+"org": "Prime Medicine Inc.",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"editing",
+"gene",
+"cell"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2"
+],
+"does": "Prime editing biotech: liver (Wilson, AATD), CF, ex vivo CGD; Nasdaq PRME",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Associate Director, External Manufacturing & Supply Chain",
+"Senior Engineer II"
+]
+},
+{
+"org": "Centivax",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"protein",
+"mab"
+],
+"stages": [
+"preclinical",
+"phase1"
+],
+"does": "Universal flu vaccine (Ph1) and broadly neutralizing antibodies; early-stage biotech",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Director of CMC"
+]
+},
+{
+"org": "Tonix Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"preclinical",
+"phase2",
+"commercial"
+],
+"does": "Commercial fibromyalgia drug Tonmya, migraine nasal products; TNX-801 pox vaccine, own GMP site",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Process Engineer, CQV Lead",
+"Senior Manager of Engineering",
+"Senior Scientist - Process Development"
+]
+},
+{
+"org": "UCB",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"protein",
+"gene"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Belgian biopharma: immunology and neurology, biologics and small molecules",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"EMO Lead"
+]
+},
+{
+"org": "Sarepta Therapeutics",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"gene",
+"small",
+"editing"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial gene therapy and RNA/oligo (PMO, siRNA) company for DMD and LGMD",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Executive Director, Global Procurement & Strategic Sourcing",
+"Executive Director, Head of Technical Operations Strategy and Business Operations"
+]
+},
+{
+"org": "Pioneering Medicines",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small",
+"protein",
+"cell",
+"gene",
+"mab"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1"
+],
+"does": "Flagship Pioneering's drug dev unit; partners Pfizer, Novo, CF Foundation; platform-derived medicines",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Vice President, CMC Operations",
+"Director, CMC Team Lead",
+"CMC-Drug Substance"
+]
+},
+{
+"org": "Gsk",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"adc",
+"protein",
+"gene"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global big pharma: vaccines, specialty, infectious disease, oncology, respiratory",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Senior Principal Scientist-Late stage Biolgics Product Development",
+"Associate Director | Translational Medicine & Clinical Biomarker Strategy |"
+]
+},
+{
+"org": "Iavi",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"protein",
+"mab"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2"
+],
+"does": "Non-profit product development partnership: HIV, TB, emerging-virus vaccines and antibodies",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Executive Director Process Development & Manufacturing / Vaccine Development"
+]
+},
+{
+"org": "Gates MRI",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"protein",
+"mab",
+"small"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3"
+],
+"does": "Gates non-profit biotech: TB vaccines/drugs, malaria antibodies, global health",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Senior Director/Program Officer",
+"Sourcing Lead"
+]
+},
+{
+"org": "Newleos",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase1",
+"phase2"
+],
+"does": "Neuropsychiatry biotech, Roche-licensed GABA-A modulators for anxiety; Series A $93.5M",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Vice President",
+"Director, CMC & Technical Operations"
+]
+},
+{
+"org": "BlueRock Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"cell"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase3"
+],
+"does": "Bayer-owned PSC-derived cell therapy; Parkinson's bemdaneprocel in Phase 3",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Head of Quality Compliance"
+]
+},
+{
+"org": "Incyte",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"protein"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial oncology/inflammation pharma: Jakafi, Opzelura; small molecules and antibodies",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Division Vice President"
+]
+},
+{
+"org": "Puma Biotechnology",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2",
+"commercial"
+],
+"does": "Commercial oncology: Nerlynx (breast cancer); alisertib in Phase 2 SCLC and breast",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"SVP, Supply Chain & Manufacturing"
+]
+},
+{
+"org": "Prolynx",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2"
+],
+"does": "Clinical-stage oncology: long-acting PEG-SN-38 prodrug PLX038 in Phase 2 solid tumors",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Head of CMC"
+]
+},
+{
+"org": "TORQUE BIO",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"gene"
+],
+"stages": [
+"preclinical"
+],
+"does": "Durham NC private gene therapy startup (AAV, circRNA) for kidney disease; thin public info",
+"outsources": "heavy",
+"conf": "low",
+"attendee_titles": [
+"Senior Vice President, Strategic and Technical Operations"
+]
+},
+{
+"org": "Repertoire Immune Medicines",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"bispecific",
+"protein"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1"
+],
+"does": "Flagship TCR-bispecific/T-cell immune medicines for cancer and autoimmunity; Genentech, Lilly deals",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Associate Director, Program Management"
+]
+},
+{
+"org": "Meitheal Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"biosimilar",
+"small",
+"protein"
+],
+"stages": [
+"phase1",
+"commercial"
+],
+"does": "US generics, injectables and biosimilars (insulins, pegfilgrastim); parent Nanjing King-Friend",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Manager, Alliance Management"
+]
+},
+{
+"org": "Precigen",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"gene",
+"cell"
+],
+"stages": [
+"phase1",
+"phase2",
+"commercial"
+],
+"does": "Gene/immunotherapy biotech; Papzimeos approved for RRP, AdenoVerse PRGN-2009",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Process Engineer"
+]
+},
+{
+"org": "Kailera Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"protein",
+"small"
+],
+"stages": [
+"preclinical",
+"phase2",
+"phase3"
+],
+"does": "Obesity biotech: GLP-1/GIP KAI-9531 in Phase 3, oral GLP-1 small molecule; $600M Series B",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Drug Product Dev and Manufacturing"
+]
+},
+{
+"org": "Stylus Medicine",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"gene",
+"editing"
+],
+"stages": [
+"preclinical"
+],
+"does": "Preclinical in vivo CAR-T via recombinase gene insertion and LNP delivery",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Executive Director, CMC Tech Ops"
+]
+},
+{
+"org": "Pulmovant",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2"
+],
+"does": "Roivant subsidiary: inhaled sGC activator mosliciguat for PH-ILD, Phase 2",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Sr Director Drug Substance Development"
+]
+},
+{
+"org": "Kymera Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2"
+],
+"does": "Oral protein degraders for immunology; STAT6 degrader KT-621 in Phase 2b AD and asthma",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Associate Director"
+]
+},
+{
+"org": "Insmed",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"gene"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial-stage rare/pulmonary pharma (Brinsupri/brensocatib, Arikayce); TPIP, gene therapy",
+"outsources": "mixed",
+"conf": "medium",
+"attendee_titles": [
+"Associate Director, Supplier Relationship Management"
+]
+},
+{
+"org": "Astellas",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"mab",
+"adc",
+"gene",
+"cell"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Japanese global pharma: oncology, urology, ophthalmology; broad modality pipeline",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"Corporate Strategy",
+"Head of Supply Chain & Materials Management"
+]
+},
+{
+"org": "BMS",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"adc",
+"cell",
+"radio"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global biopharma: oncology, hematology, immunology, cardiovascular, neuroscience",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director of Mfg and Supply Chain"
+]
+},
+{
+"org": "Acella Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"commercial"
+],
+"does": "US specialty/generic pharma, branded and generic oral products",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"SVP Operations & Business Development",
+"Director, Business Development"
+]
+},
+{
+"org": "Sinopharm",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"protein",
+"mab"
+],
+"stages": [
+"phase3",
+"commercial"
+],
+"does": "China state pharma group: vaccines, biologics, plasma products, distribution",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"Director, Sales and Marketing"
+]
+},
+{
+"org": "Amgen",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"biosimilar",
+"protein"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global biotech: oncology, inflammation, cardiometabolic, biosimilars; large in-house biologics mfg",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Principal Engineer",
+"External Process Engineer",
+"Associate Director"
+]
+},
+{
+"org": "Novo Nordisk",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small",
+"protein",
+"cell",
+"gene"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Danish pharma: GLP-1/diabetes/obesity peptides, rare disease, cell and gene therapy",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Associate Sourcing Director",
+"Consultant"
+]
+},
+{
+"org": "Kifa Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"discovery",
+"preclinical"
+],
+"does": "Tiny private biotech developing brain-penetrant LRRK2 kinase inhibitors for Parkinson's (Vanderbilt-licensed)",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Founder & CEO"
+]
+},
+{
+"org": "Aurora Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"editing"
+],
+"stages": [
+"preclinical"
+],
+"does": "Seed-stage personalized CRISPR gene editing for PKU (Doudna/Urnov co-founded, 2026)",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"VP, Head of CMC & Technical Operations"
+]
+},
+{
+"org": "Bayer",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small",
+"mab",
+"cell",
+"gene",
+"radio"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global life-science group: pharma (oncology, cardiology, women's health) plus consumer health, crop science",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Procurement Manager NA",
+"Head of Procurement NA",
+"Global Head of Customer Supply Chain & Product Supply NA"
+]
+},
+{
+"org": "Anivive Lifesciences Inc.",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"phase3",
+"commercial"
+],
+"does": "Veterinary biotech (Long Beach): Valley fever vaccine, feline FIP, pet oncology/antivirals",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"CSO"
+]
+},
+{
+"org": "Neurotrauma Sciences, Llc",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2"
+],
+"does": "Private clinical-stage neuroprotectives (neurosteroid prodrugs NTS-104/105) for stroke and TBI",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"SVP, Technical Operations"
+]
+},
+{
+"org": "Emergent BioSolutions",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"protein",
+"small",
+"device"
+],
+"stages": [
+"commercial"
+],
+"does": "Public health biodefense: anthrax/smallpox vaccines, Narcan; in-house CDMO",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"VP, Quality Operations"
+]
+},
+{
+"org": "Hillstar Bio",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"mab"
+],
+"stages": [
+"preclinical"
+],
+"does": "Boston autoimmune biotech, HSB-101 targeting TRBV9+ T cells (antibody-based), $67M Series A",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Head of Antibody Research and CMC"
+]
+},
+{
+"org": "Noven Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small",
+"device"
+],
+"stages": [
+"commercial"
+],
+"does": "Hisamitsu subsidiary: transdermal patch and specialty products (women's health, CNS)",
+"outsources": "mixed",
+"conf": "medium",
+"attendee_titles": [
+"Associate Director, Formulation Development",
+"Product Development Project Manager"
+]
+},
+{
+"org": "Aviceda Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [],
+"stages": [
+"phase2",
+"phase3"
+],
+"does": "Clinical-stage glyco-immune nanoparticle AVD-104 for geographic atrophy; $207M Series C",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Associate Director, Drug Product Development"
+]
+},
+{
+"org": "Moderna",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"gene"
+],
+"stages": [
+"phase3",
+"commercial"
+],
+"does": "mRNA medicines and vaccines (respiratory, oncology, rare disease); in-house mfg",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Senior Scientist, Team Lead"
+]
+},
+{
+"org": "TheraBiome",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"microbiome"
+],
+"stages": [],
+"does": "Unverified; no web evidence found, name suggests microbiome therapeutics",
+"outsources": "heavy",
+"conf": "low",
+"attendee_titles": [
+"Co-Founder, Managing Partner"
+]
+},
+{
+"org": "Bill & Melinda Gates Medical Research Institute",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"mab",
+"protein",
+"small"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3"
+],
+"does": "Non-profit clinical-stage biotech: TB, malaria, enteric disease vaccines and mAbs for global health",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Head of CMC"
+]
+},
+{
+"org": "PTC Therapeutics",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small",
+"gene"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Rare disease pharma (Translarna, Evrysdi royalty, Sephience, Kebilidi gene therapy)",
+"outsources": "mixed",
+"conf": "medium",
+"attendee_titles": [
+"Associate director"
+]
+},
+{
+"org": "Johnson & Johnson",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"adc",
+"cell",
+"gene",
+"device"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global healthcare: Innovative Medicine (oncology, immunology, neuroscience) and MedTech",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Vice President, Global External Manufacturing"
+]
+},
+{
+"org": "Crescent Biopharma",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"bispecific",
+"adc"
+],
+"stages": [
+"phase1"
+],
+"does": "Clinical-stage oncology: PD-1xVEGF bispecific CR-001 and ADCs CR-002/003",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Vice President, ADC CMC",
+"Senior Vice President, Technical Operations"
+]
+},
+{
+"org": "Midas Pharmaceuticals, Inc.",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"api"
+],
+"stages": [
+"commercial"
+],
+"does": "US arm of German Midas Pharma: generic APIs, finished dose, supply and sourcing; not a pure developer",
+"outsources": "mixed",
+"conf": "low",
+"attendee_titles": [
+"President"
+]
+},
+{
+"org": "Orion Pharma",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small"
+],
+"stages": [
+"phase3",
+"commercial"
+],
+"does": "Finnish pharma: Nubeqa (darolutamide), Parkinson's, generics; in-house manufacturing",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"External Supply Manager"
+]
+},
+{
+"org": "Abimmune",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"mab"
+],
+"stages": [
+"preclinical"
+],
+"does": "Early startup (Abimmune Biopharma) developing nanobody-based candidates for immuno-oncology; thin evidence",
+"outsources": "heavy",
+"conf": "low",
+"attendee_titles": [
+"CSO"
+]
+},
+{
+"org": "Eli Lilly And Company",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"protein",
+"gene",
+"editing",
+"radio",
+"device"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global pharma: diabetes/obesity, oncology, neuro, immunology; large in-house + external network",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director, CMC Project Management",
+"Executive Director, Parenteral DP Process Development"
+]
+},
+{
+"org": "QurAlis",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small",
+"mab"
+],
+"stages": [
+"preclinical",
+"phase1"
+],
+"does": "Neurodegeneration biotech (ALS, FTD); small molecules and antibodies, Phase 1 lead",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Senior Director Drug Product Development"
+]
+},
+{
+"org": "Sanofi",
+"type": "Large / mid pharma",
+"hq": "eu",
+"mods": [
+"small",
+"mab",
+"bispecific",
+"protein",
+"cell",
+"gene",
+"device"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global pharma: immunology, vaccines, rare disease, mRNA/LNP, cell and gene therapy",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Senior Scientist (RnD: mRNA Therapeutics Center of Excellence)",
+"Executive Director, External Manufacturing, Cell & Gene Therapy",
+"Director, LNP Drug Product Platform and Early Clinical Development"
+]
+},
+{
+"org": "Pfizer",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"mab",
+"adc",
+"bispecific",
+"protein",
+"gene",
+"device"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global pharma: oncology (ADCs), vaccines, inflammation, rare disease",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director, External Supply, Network Sourcing",
+"Senior Director, Digital Manufacturing",
+"Sr. Director, Strategy & Program Management"
+]
+},
+{
+"org": "Acadia Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial neuro company (Nuplazid, Daybue); small molecules for CNS and rare disease",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Associate Director Sourcing & Procurement (Finance)"
+]
+},
+{
+"org": "DoriNano, Inc.",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"preclinical"
+],
+"does": "DNA-origami nanoparticle delivery platform; lead DoriVac cancer vaccine, pre-seed/seed",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Cofounder, CEO/CTO"
+]
+},
+{
+"org": "OliX US",
+"type": "Biotech",
+"hq": "apac",
+"mods": [
+"small"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase2"
+],
+"does": "Korean RNAi/siRNA oligo developer (MASH deal with Lilly, scars, alopecia); US arm",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"SVP, CMC"
+]
+},
+{
+"org": "Alkermes",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Commercial neuroscience pharma (Vivitrol, Lybalvi, orexin agonist) with long-acting injectables",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Director, Drug Product CMC"
+]
+},
+{
+"org": "Fresenius Medical Care North America",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"device",
+"small"
+],
+"stages": [
+"commercial"
+],
+"does": "Dialysis services/products arm of Fresenius Medical Care; renal devices and drugs, not a classic drug developer",
+"outsources": "network",
+"conf": "medium",
+"attendee_titles": [
+"Sr. Manager Supplier Quality"
+]
+},
+{
+"org": "Vanqua Bio",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"preclinical"
+],
+"does": "Chicago CNS/neuroinflammation small-molecule biotech; C5aR1 program licensed to Biogen",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Director, Program and Project Management"
+]
+},
+{
+"org": "Kiniksa Pharmaceuticals",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"mab",
+"protein"
+],
+"stages": [
+"phase2",
+"commercial"
+],
+"does": "Commercial biologics (Arcalyst) plus KPL-387 for recurrent pericarditis",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Head of Strategic Sourcing"
+]
+},
+{
+"org": "Amphastar Pharmaceuticals, Inc.",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small",
+"device",
+"biosimilar"
+],
+"stages": [
+"phase3",
+"commercial"
+],
+"does": "Specialty/generic injectables, inhalation, insulin/biosimilar pipeline; in-house manufacturing",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Associate Director, Pipeline Project Management"
+]
+},
+{
+"org": "Halozyme, Inc.",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"protein",
+"device"
+],
+"stages": [
+"commercial"
+],
+"does": "ENHANZE drug-delivery tech (hyaluronidase) and auto-injectors; royalty-driven",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Chief Operating Officer"
+]
+},
+{
+"org": "Xeris Pharmaceuticals Inc.",
+"type": "Specialty / generic / animal health pharma",
+"hq": "nam",
+"mods": [
+"small",
+"protein",
+"device"
+],
+"stages": [
+"phase2",
+"commercial"
+],
+"does": "Commercial specialty pharma (Gvoke, Recorlev, Keveyis); XP-8121 in development",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Engineer II, Manufacturing Science & Technology"
+]
+},
+{
+"org": "Sarepta",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"gene",
+"small",
+"editing"
+],
+"stages": [
+"preclinical",
+"phase1",
+"phase3",
+"commercial"
+],
+"does": "Rare neuromuscular: Elevidys gene therapy and PMO/siRNA oligos",
+"outsources": "mixed",
+"conf": "high",
+"attendee_titles": [
+"Director, CMC Procurement"
+]
+},
+{
+"org": "Takeda Pharmcaeuticals",
+"type": "Large / mid pharma",
+"hq": "apac",
+"mods": [
+"small",
+"mab",
+"protein",
+"cell",
+"gene"
+],
+"stages": [
+"discovery",
+"preclinical",
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "Global pharma: GI, rare disease, plasma-derived, oncology, neuroscience",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Director, External Manufacturing and Testing"
+]
+},
+{
+"org": "Altimmune",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase2",
+"phase3"
+],
+"does": "Clinical-stage peptide biotech; pemvidutide for MASH and obesity/AUD",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"VP, CMC"
+]
+},
+{
+"org": "BPGbio",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small",
+"protein"
+],
+"stages": [
+"phase2",
+"phase3"
+],
+"does": "AI-driven clinical-stage biotech; BPM31510 oncology/rare disease, biologics",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Vice President Program Management & Chief of Staff",
+"Chief Operating Officer and Chief AI Officer"
+]
+},
+{
+"org": "Terrestrial Bio",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"device",
+"small",
+"protein"
+],
+"stages": [
+"preclinical",
+"phase1"
+],
+"does": "Microarray-patch delivery platform (ex-Vaxess); lead GLP-1 patch, Series C",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"VP Mfg"
+]
+},
+{
+"org": "GV20",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"mab",
+"bispecific",
+"adc"
+],
+"stages": [
+"phase1",
+"phase2"
+],
+"does": "AI-designed IO antibodies; lead GV20-0251 (IGSF8) Ph1/2, bispecifics and ADCs",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"VP of CMC"
+]
+},
+{
+"org": "Healis Therapeutics, Inc",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"protein"
+],
+"stages": [
+"phase2"
+],
+"does": "Botulinum-toxin neuromodulators for depression/PTSD; CKDB-501 licensed from CKD Bio",
+"outsources": "heavy",
+"conf": "medium",
+"attendee_titles": [
+"Chief Business Officer"
+]
+},
+{
+"org": "Stoke Therapeutics",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"phase3"
+],
+"does": "Antisense oligo (TANGO) developer; zorevunersen for Dravet syndrome in Phase 3",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"Senior Pripal Scientist CMC"
+]
+},
+{
+"org": "Vertex Pharmaceuticals",
+"type": "Large / mid pharma",
+"hq": "nam",
+"mods": [
+"small",
+"cell",
+"gene",
+"editing",
+"protein"
+],
+"stages": [
+"phase1",
+"phase2",
+"phase3",
+"commercial"
+],
+"does": "CF, pain (suzetrigine), sickle cell (Casgevy), kidney; small-molecule focus plus cell/gene",
+"outsources": "network",
+"conf": "high",
+"attendee_titles": [
+"Sr. Director External Manufacturing - Small Molecule Drug Product"
+]
+},
+{
+"org": "Lysoway Therapeutics, Inc.",
+"type": "Biotech",
+"hq": "nam",
+"mods": [
+"small"
+],
+"stages": [
+"preclinical",
+"phase1"
+],
+"does": "Small-molecule lysosomal ion channel modulators (TRPML1, TMEM175) for neurodegeneration",
+"outsources": "heavy",
+"conf": "high",
+"attendee_titles": [
+"SVP, Drug Development"
+]
+}
+]

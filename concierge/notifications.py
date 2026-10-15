@@ -3,8 +3,32 @@ import logging
 import urllib.request
 
 from django.conf import settings
+from django.core.mail import send_mail
 
 logger = logging.getLogger(__name__)
+
+
+def email_new_request(request_obj):
+    """Best-effort email to settings.NOTIFY_EMAIL. Never raises."""
+    to = getattr(settings, 'NOTIFY_EMAIL', '')
+    if not to:
+        return
+    details = request_obj.details or {}
+    lines = [
+        f"Type: {request_obj.get_request_type_display()}",
+        f"Name: {request_obj.guest_name or '—'}",
+        f"Role: {request_obj.role or '—'}",
+        f"Company: {request_obj.organization or '—'}",
+        f"Email: {request_obj.email or '—'}",
+        "",
+    ] + [f"{k.replace('_', ' ').title()}: {v}" for k, v in details.items()]
+    subject = f"[Concierge] {request_obj.get_request_type_display()}"
+    if details.get('search'):
+        subject += f": {str(details['search'])[:80]}"
+    try:
+        send_mail(subject, "\n".join(lines), settings.DEFAULT_FROM_EMAIL, [to], fail_silently=False)
+    except Exception:
+        logger.exception("Failed to email notification for request %s", request_obj.id)
 
 
 def notify_new_request(request_obj):

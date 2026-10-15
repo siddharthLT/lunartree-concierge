@@ -1,0 +1,246 @@
+[
+ {
+  "key": "adare pharma solutions",
+  "name": "Adare Pharma Solutions",
+  "segment": "CDMO",
+  "current_domain": "adareps.com",
+  "current_modalities": [
+   "small",
+   "device"
+  ],
+  "event_blurb": "Adare Pharma Solutions is a global technology driven CDMO providing product development through commercial manufacturing expertise focused on oral dosage forms for the Pharmaceutical industry. Adare\u2019s specialized technology platforms provide taste mask... Adare Pharma Solutions is a global technology-driven CDMO providing end-to-end integrated services, from product development through commercial manufacturing and packaging, with expertise focusing on oral dosage forms. Adare\u2019s specialized technology platforms provide taste masking, customized release, solubility enhancement, and patient-centric dosing solutions. With a proven history in drug delivery, Adare has developed and manufactured more than 65 products sold by customers worldwide.\nAdare Pharma Solutions operates seven facilities in the US and Europe, with nearly 800 global employees. We have the expertise and proven track record ",
+  "sheet_notes": "Oral dosage / drug delivery"
+ },
+ {
+  "key": "api innovation center",
+  "name": "API Innovation Center",
+  "segment": "CDMO",
+  "current_domain": "apicenter.org",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "bioduro",
+  "name": "BioDuro",
+  "segment": "CDMO",
+  "current_domain": "bioduro.com",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "cambrex",
+  "name": "Cambrex",
+  "segment": "CDMO",
+  "current_domain": "cambrex.com",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "charles river",
+  "name": "Charles River",
+  "segment": "CRO",
+  "current_domain": "criver.com",
+  "current_modalities": [
+   "cell",
+   "gene",
+   "mab",
+   "protein"
+  ],
+  "event_blurb": "PathoQuest is a global CRO that specializes in biopharma Quality Control (QC) based on Next-Generation Sequencing (NGS) for viral safety and genetic characterization. The company\u2019s proprietary NGS-based testing approach delivers actionable QC reports to the industry for cell & gene therapy, vaccines and biologics. \nWith a proven track record, our expert team can support fast and robust QC testing at a GMP grade over two facilities in Europe (Paris, FR) and in the U.S. (Wayne, PA). \nPathoQuest is at the forefront of NGS-based testing solutions that accelerate the commercial availability of biopharmaceuticals and can replace current standardized in vivo and in vitro testing options. \nBiopharma Quality Control\u202f \nFaster, Safer, Animal-Free.",
+  "sheet_notes": "NGS-based QC / viral safety testing"
+ },
+ {
+  "key": "delpharm",
+  "name": "DELPHARM",
+  "segment": "CDMO",
+  "current_domain": "delpharm.com",
+  "current_modalities": [
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "fareva",
+  "name": "Fareva",
+  "segment": "CDMO",
+  "current_domain": "fareva.com",
+  "current_modalities": [
+   "small",
+   "device"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "forma life sciences",
+  "name": "Forma Life Sciences",
+  "segment": "CDMO",
+  "current_domain": "formalifesciences.com",
+  "current_modalities": [
+   "small"
+  ],
+  "event_blurb": "Forma Life Sciences is a U.S.-based CDMO delivering oral solid dosage development and manufacturing from clinical through commercial scale. With two cGMP facilities in Irvine, California, Forma combines advanced formulation technologies with scalable manufacturing expertise to help pharmaceutical and biotech companies bring therapies to market.",
+  "sheet_notes": "Oral solid dose"
+ },
+ {
+  "key": "halden pharma",
+  "name": "Halden Pharma",
+  "segment": "CDMO",
+  "current_domain": "halden-pharma.com",
+  "current_modalities": [
+   "small"
+  ],
+  "event_blurb": "Your Global CDMO for Sterile Liquids.\nHalden Pharma delivers high-quality contract manufacturing services for sterile and non-sterile pharmaceuticals, specializing in IV bags and BFS ampoules and vials for global pharmaceutical customers. We are a leading European site, based in Norway for sterile liquid pharmaceuticals, combining advanced technologies, strong quality standards and global certifications.",
+  "sheet_notes": "Sterile liquids (IV bags, BFS)"
+ },
+ {
+  "key": "just evotec biologics",
+  "name": "Just - Evotec Biologics",
+  "segment": "CDMO",
+  "current_domain": "evotec.com",
+  "current_modalities": [
+   "mab",
+   "bispecific",
+   "protein"
+  ],
+  "event_blurb": "Just \u2013 Evotec Biologics, a wholly owned subsidiary of Evotec SE, is an innovative and trusted US-based CDMO for complex biologics, incl. mAbs, bi/multispecifics, and biosimilars. We provide our partners with highly differentiated services for the development and manufacturing of biologics.\nOur world-leading AI-driven in silico molecular optimization and continuous bioprocessing platforms combined with our revolutionary J.POD\u00ae facilities, which represent a paradigm shift within the industry, are helping to reduce the cost of goods and expand global access to affordable, high-quality biotherapeutics in addition to providing a highly agile cGMP manufacturing strategy to support rapid ramp up and uncertain demand scenarios.",
+  "sheet_notes": "Biologics (mAbs, bispecifics)"
+ },
+ {
+  "key": "lgm pharma",
+  "name": "LGM Pharma",
+  "segment": "Supplier",
+  "current_domain": "lgmpharma.com",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "microsize micronization particle size engineering pharmaceutical development",
+  "name": "Microsize (Micronization, Particle Size Engineering, Pharmaceutical Development)",
+  "segment": "CDMO",
+  "current_domain": "microsize.com",
+  "current_modalities": [
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "onyx scientific",
+  "name": "Onyx Scientific",
+  "segment": "CDMO",
+  "current_domain": "onyxipca.com",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "Based in the UK, Onyx Scientific is a premier small molecule Contract Development and Manufacturing Organization (CDMO) dedicated to delivering chemistry-led solutions for the global pharmaceutical and biotech sectors. With over 26 years of experience, we specialize in integrated Chemistry, Manufacturing, and Controls (CMC) services, providing the scientific expertise necessary to advance your drug substance from early-phase development through to commercialization. For projects requiring scale-up beyond Phase II, we ensure continuity through seamless transitions within our global network, leveraging sister sites and expert teams in the USA and India to meet your long-term manufacturing needs.\nCore Capabilities:\nWe provide a flexible, integrated approach to CMC that mitigates risk and ensures high-quality API production for clinical trials and market supply. Our primary service pillars i",
+  "sheet_notes": "Small molecule"
+ },
+ {
+  "key": "porton pharma solutions",
+  "name": "Porton Pharma Solutions",
+  "segment": "CDMO",
+  "current_domain": "portonpharma.com",
+  "current_modalities": [
+   "api",
+   "small",
+   "adc",
+   "gene"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "resilience",
+  "name": "Resilience",
+  "segment": "CDMO",
+  "current_domain": "resilience.com",
+  "current_modalities": [
+   "mab",
+   "protein",
+   "gene",
+   "cell"
+  ],
+  "event_blurb": "Resilience is a biomanufacturing and technology company founded in 2020, dedicated to broadening access to complex medicines and protecting biopharmaceutical supply chains. They develop cyber security tools and high-tech manufacturing solutions for qui...",
+  "sheet_notes": "Biomanufacturing & technology"
+ },
+ {
+  "key": "rois",
+  "name": "ROIS",
+  "segment": "CDMO",
+  "current_domain": "roiscdmo.com",
+  "current_modalities": [
+   "adc",
+   "small",
+   "device"
+  ],
+  "event_blurb": "ROIS is a global leader in sterile fill-finish manufacturing operating across the United States and Europe supporting end-to-end, late-phase and commercial programs for complex injectable medicines.\nThe CDMO brings more than 50 years of experience in sterile filling of vials, syringes, and cartridges and has recently expanded to include cytotoxic vial filling and lyophilization, both capable of supporting ADCs. ROIS has also enhanced its end-to-end solutions through the addition of device assembly, complementing its existing labeling and packaging services to supply medicines to more than 75 markets worldwide.\nROIS was built over five decades as the CDMO division of Rovi, a family-led pharmaceutical company founded in 1946. That heritage shaped a culture of precision and long-term commitment, where partnerships are built to last. It is what makes ROIS a different kind of CDMO - a manufac",
+  "sheet_notes": "Sterile fill-finish"
+ },
+ {
+  "key": "ser n bioscience",
+  "name": "Ser\u00e1n BioScience",
+  "segment": "CDMO",
+  "current_domain": "seranbio.com",
+  "current_modalities": [
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "sterling pharma solutions",
+  "name": "Sterling Pharma Solutions",
+  "segment": "CDMO",
+  "current_domain": "sterlingpharmasolutions.com",
+  "current_modalities": [
+   "api",
+   "adc",
+   "small"
+  ],
+  "event_blurb": "Sterling Pharma Solutions is a global contract development and manufacturing organisation (CDMO) with 50+ years\u2019 experience in providing small molecule API development and manufacturing services to the pharmaceutical industry, specialising in handling challenging chemistries.\nSterling manages the most complex API and API intermediate challenges from proof-of-concept to commercial manufacture, as well as Antibody Drug Conjugate (ADC) development and manufacturing services.\nSterling believes that while science can be complex, partnerships should be simple. That\u2019s why they have redefined the CDMO experience, marked by transparency, collaboration and trust; a Partnership Development and Manufacturing Organisation (PDMO\u00ae).\nSterling has six facilities across the UK, USA and Europe, employing 1,350+ people, including in Cramlington and Newcastle, UK; Deeside, Wales; Cork, Ireland, as well as No",
+  "sheet_notes": "Small molecule API / ADC"
+ },
+ {
+  "key": "tcg green chem",
+  "name": "TCG Green Chem",
+  "segment": "CDMO",
+  "current_domain": "tcggreenchem.com",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ },
+ {
+  "key": "vivabiotech",
+  "name": "VivaBiotech",
+  "segment": "CDMO",
+  "current_domain": "vivabiotech.com",
+  "current_modalities": [
+   "api",
+   "small"
+  ],
+  "event_blurb": "",
+  "sheet_notes": ""
+ }
+]

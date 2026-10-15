@@ -3,143 +3,202 @@
   "domain": "aartipharmalabs.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "adc"
+  ],
+  "confidence": "medium",
+  "evidence": "Site: APIs, NCEs, intermediates, cytotoxic; event text adds peptides, oligos, payload-linker conjugates",
+  "source": "https://www.aartipharmalabs.com"
  },
  "adare pharma solutions": {
-  "domain": "adareps.com",
+  "domain": "adarepharmasolutions.com",
   "modalities": [
-   "small",
-   "device"
-  ]
+   "small"
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule expertise focusing on oral dosage forms; packaging/serialization; no devices or biologics services",
+  "source": "https://adarepharmasolutions.com/"
  },
  "afton scientific": {
   "domain": "aftonscientific.com",
   "modalities": [
-   "mab",
    "protein",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Aseptic manufacturing for biologics and small molecules; vials, syringes, cartridges. mAbs not named.",
+  "source": "https://www.aftonscientific.com"
  },
  "alcami": {
   "domain": "alcami.com",
   "modalities": [
-   "small",
-   "api"
-  ]
+   "small"
+  ],
+  "confidence": "medium",
+  "evidence": "Drug product mfg incl. oral solid dose and sterile fill-finish; biologics/CGT mentioned mainly as analytical lab services",
+  "source": "https://www.alcami.com"
  },
  "alfasigma": {
   "domain": "alfasigma.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Morpho CDMO: Biosint fine chemicals/APIs; sterile injectables in vials, prefilled syringes, cartridges, lyophilized; complex dosage forms",
+  "source": "https://www.alfasigma.com/science-innovation/morpho/"
  },
  "allos": {
-  "domain": "",
+  "domain": "allos.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Site case studies: oral liquid, pellets, DPI, long-acting injectable; 505(b)(2)/NCE FDF; no biologics",
+  "source": "https://www.allos.com/"
  },
  "almac": {
   "domain": "almacgroup.com",
   "modalities": [
    "api",
-   "small",
-   "protein"
-  ]
+   "small"
+  ],
+  "confidence": "medium",
+  "evidence": "API/intermediates, pharma development, oral dose; event text: small molecules, peptides",
+  "source": "https://www.almacgroup.com"
  },
  "api innovation center": {
   "domain": "apicenter.org",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Nonprofit for US supply of APIs, key starting materials and API and finished drug manufacturing",
+  "source": "https://www.apicenter.org"
  },
  "aspen api": {
   "domain": "aspenapi.com",
   "modalities": [
-   "api"
-  ]
+   "api",
+   "small"
+  ],
+  "confidence": "high",
+  "evidence": "High potency & oncology APIs, peptides, 60+ APIs portfolio",
+  "source": "https://www.aspenapi.com"
  },
  "august bioservices at august bio": {
   "domain": "augustbio.com",
   "modalities": [
-   "mab",
-   "protein",
-   "small"
-  ]
+   "small",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Sterile injectable fill-finish; vials, syringes, IV bags, drug-device combination products; no biologics stated",
+  "source": "https://www.augustbio.com"
  },
  "austinpx": {
   "domain": "austinpx.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Novel oral solid dose development, KinetiSol amorphous solid dispersions; no biologics mentioned",
+  "source": "https://www.austinpx.com"
  },
  "axplora": {
   "domain": "axplora.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "adc"
+  ],
+  "confidence": "high",
+  "evidence": "APIs, HPAPIs, steroidal APIs and ADC listed as specialties; CDMO",
+  "source": "https://www.axplora.com"
  },
  "be biosol be biosol": {
   "domain": "bebiosol.com",
   "modalities": [
    "mab",
    "protein",
-   "biosimilar"
-  ]
+   "biosimilar",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Biologics, biosimilars, vaccines DS; fill-finish of vials, PFS, cartridges for pens/autoinjectors",
+  "source": "https://www.cphi-online.com/product/clinical-and-commercial-sterile-manufacturing-2/"
  },
  "bioduro": {
   "domain": "bioduro.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "adc"
+  ],
+  "confidence": "medium",
+  "evidence": "Chemistry, peptide, oligonucleotide and ADC platforms; drug substance and drug product CMC; large-molecule bioanalysis only",
+  "source": "https://www.bioduro.com"
  },
  "boehringer ingelheim bioxcellence": {
   "domain": "boehringer-ingelheim.com",
   "modalities": [
    "mab",
-   "protein",
-   "gene"
-  ]
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Biologics CMO using microbial and mammalian cell culture, incl. aseptic filling (event blurb; BI site unfetchable)",
+  "source": "https://www.boehringer-ingelheim.com/partnering/bioxcellence"
  },
  "bora biologics": {
   "domain": "borabiologics.com",
   "modalities": [
    "mab",
    "protein"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Mammalian and microbial biologics CDMO; antibody-based products, approved biosimilar, proteins (RAPClot)",
+  "source": "https://www.borabiologics.com"
  },
  "bora pharmaceuticals and bora biologics": {
   "domain": "boracdmo.com",
   "modalities": [
    "small",
-   "mab",
    "protein"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Pharma: OSD, sterile fill-finish, semi-solids; Biologics: mammalian/microbial, refold, pegylation conjugation; mAbs not named",
+  "source": "https://www.borabiologics.com"
  },
  "boryung": {
   "domain": "boryung.co.kr",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "CMO page: Yesan EU-GMP cytotoxic oncology vial injectables (solution, lyophilized); oral CDMO deal",
+  "source": "https://pharm.boryung.co.kr/eng/rnd/cmo.do"
  },
  "bsp pharmaceuticals": {
   "domain": "bsppharmaceuticals.com",
   "modalities": [
    "small",
-   "adc"
-  ]
+   "adc",
+   "protein"
+  ],
+  "confidence": "high",
+  "evidence": "ADC conjugation+fill-finish; peptides, proteins, oligonucleotides; HPAPI cytotoxics",
+  "source": "https://www.bsppharmaceuticals.com"
  },
  "cambrex": {
   "domain": "cambrex.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Drug substance (biocatalysis, flow, HPAPI) and oral solid/semi-solid/liquid drug product (via search summary; site 403)",
+  "source": "https://www.chemeurope.com/en/companies/21912/cambrex-corporation.html"
  },
  "carbogen amcis": {
   "domain": "carbogen-amcis.com",
@@ -147,38 +206,53 @@
    "api",
    "adc",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "API/HiPo API development, ADC & Bioconjugation expertise, injectable drug product",
+  "source": "https://www.carbogen-amcis.com"
  },
  "catachem": {
-  "domain": "catacheminc.com",
-  "modalities": [
-   "protein"
-  ]
+  "domain": "catachem.com",
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Diagnostic reagents, calibrators; custom lyophilization incl. reagent and protein lyophilization; not a drug CDMO",
+  "source": "https://catachem.com/"
  },
  "catalent": {
   "domain": "catalent.com",
   "modalities": [
    "small",
    "mab",
+   "bispecific",
    "protein",
-   "gene",
-   "device"
-  ]
+   "gene"
+  ],
+  "confidence": "high",
+  "evidence": "Biologics incl. multispecific antibody expression; small molecule CDMO; AAV gene therapy scale-up",
+  "source": "https://www.catalent.com"
  },
  "catsci": {
   "domain": "catsci.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Small molecules, peptides, oligonucleotides, GMP drug substance, complex synthetic modalities",
+  "source": "https://www.catsci.com"
  },
  "cerbios pharma": {
-  "domain": "cerbios.ch",
+  "domain": "cerbios.swiss",
   "modalities": [
    "api",
    "adc",
+   "protein",
+   "mab",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "CDMO modalities: HPAPIs, ADCs, Proteins & Antibodies; Finished Dosage Forms",
+  "source": "http://cerbios.swiss/"
  },
  "charles river": {
   "domain": "criver.com",
@@ -187,28 +261,41 @@
    "gene",
    "mab",
    "protein"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "PathoQuest NGS QC for cell and gene therapy, viral vectors, mAbs, recombinant proteins, vaccines",
+  "source": "https://www.pathoquest.com"
  },
  "cohance lifesciences": {
   "domain": "cohance.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "adc"
+  ],
+  "confidence": "high",
+  "evidence": "Specialized in ADCs, nucleic acid chemistry (phosphoramidites) and small molecules; APIs",
+  "source": "https://www.cohance.com"
  },
  "cramsn research": {
   "domain": "cramsn.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "APIs plus formulation/manufacturing of finished pharmaceutical products",
+  "source": "https://www.cramsn.com"
  },
  "cramsn research park at cramsn research park": {
   "domain": "cramsn.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Drug substance (APIs) and drug product formulation, CRO/CDMO/CMO; no peptides or biologics stated",
+  "source": "https://www.cramsn.com"
  },
  "curia global": {
   "domain": "curiaglobal.com",
@@ -216,227 +303,335 @@
    "api",
    "small",
    "mab",
-   "protein"
-  ]
+   "protein",
+   "gene"
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule/generic APIs, sterile DP, antibody/recombinant protein, mammalian DS mfg, mRNA/DNA/LNP services",
+  "source": "https://curiaglobal.com"
  },
  "cytovance biologics": {
   "domain": "cytovance.com",
   "modalities": [
    "mab",
-   "protein"
-  ]
+   "bispecific",
+   "biosimilar",
+   "protein",
+   "small"
+  ],
+  "confidence": "medium",
+  "evidence": "Event text: biosimilars, bispecific/mAbs, recombinant proteins, peptides, enzymes; mammalian & microbial",
+  "source": "https://www.cytovance.com"
  },
  "delpharm": {
   "domain": "delpharm.com",
   "modalities": [
-   "small"
-  ]
+   "small",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Solid, sterile, semi-solid, liquid forms; prefilled syringes, nasal sprays; no biologics or API mentioned",
+  "source": "https://www.delpharm.com"
  },
  "dottikon exclusive synthesis": {
   "domain": "dottikon.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "Exclusive synthesis of intermediates, performance chemicals and APIs, multi-ton cGMP",
+  "source": "https://www.dottikon.com"
  },
  "dr hotha s life sciences": {
   "domain": "",
-  "modalities": []
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "No official website found; appears to be a consulting LLC led by Kishore Hotha, not a verifiable CDMO",
+  "source": "https://teknoscienze.com/?p=145600"
  },
  "esteve cdmo": {
   "domain": "esteve.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "Small-molecule APIs, HPAPI, advanced intermediates, spray drying; six cGMP sites",
+  "source": "https://www.esteve.com/global/pg_cmo_sobre_nosotros.jsp"
  },
  "eurofins cdmo alphora": {
   "domain": "eurofins.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "mab",
+   "adc",
+   "protein",
+   "microbiome",
+   "gene"
+  ],
+  "confidence": "medium",
+  "evidence": "Eurofins CDMO page: API/HPAPI, drug product, biologics incl. antibodies, ADCs, LBPs, plasmid DNA, proteins; Alphora-specific unclear",
+  "source": "https://www.eurofins.com/biopharma-services/cdmo/"
  },
  "f i s fabbrica italiana sintetici": {
   "domain": "fisvi.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "CDMO leader for small molecule APIs & intermediates; generic API portfolio",
+  "source": "https://www.fisvi.com"
  },
  "fareva": {
   "domain": "fareva.com",
-  "modalities": [
-   "small",
-   "device"
-  ]
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Pharmaceutics and Pharmaceutical Active Ingredients sectors; formulation, production, packaging; no dosage-form detail found",
+  "source": "https://www.fareva.com"
  },
  "fermion": {
   "domain": "fermion.fi",
   "modalities": [
-   "api"
-  ]
+   "api",
+   "small"
+  ],
+  "confidence": "high",
+  "evidence": "Develops/manufactures APIs; also contract finished dosage (semi-solid, liquid, oral solids)",
+  "source": "https://www.fermion.fi"
  },
  "ferndale labs cdmo": {
   "domain": "ferndalelabsmfg.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Turn-key CMC for semi-solid and liquid Rx/OTC drug products (Ferndale, MI); tube/bottle filling",
+  "source": "https://www.ferndalelabsmfg.com"
  },
  "fis": {
   "domain": "fisvi.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Small molecule APIs & intermediates CDMO; event text cites liquid phase peptide synthesis (not on homepage)",
+  "source": "https://www.fisvi.com"
  },
  "fisiopharma s r l": {
-  "domain": "fisiopharma.com",
-  "modalities": [
-   "small",
-   "api"
-  ]
+  "domain": "fisvi.com",
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Event blurb is FIS (Fabbrica Italiana Sintetici): small-molecule APIs, LPPS peptides; fisiopharma.com is a separate injectables maker",
+  "source": "https://www.fisvi.com"
  },
  "flamma": {
   "domain": "flammagroup.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule APIs, NCEs, intermediates, HPAPI; amino acid derivatives for peptides",
+  "source": "https://www.flammagroup.com"
  },
  "forma life sciences": {
   "domain": "formalifesciences.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Oral solid dosage: tablets, capsules, modified release; HPAPI containment to OHC 3",
+  "source": "http://formalifesciences.com/"
  },
  "formulated solutions": {
   "domain": "formulatedsolutions.com",
   "modalities": [
    "small",
    "device"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Non-sterile Rx/OTC, Class I/II medical devices; nasal sprays, aerosols, airless containers",
+  "source": "https://www.formulatedsolutions.com"
  },
  "fresenius kabi": {
   "domain": "fresenius-kabi.com",
   "modalities": [
    "small",
+   "mab",
+   "adc",
    "protein",
-   "biosimilar"
-  ]
+   "device"
+  ],
+  "confidence": "high",
+  "evidence": "CMO site: product types Biologics (mAbs, ADCs, GLPs), small molecules; sterile fill-finish incl. prefilled syringes",
+  "source": "https://cmo.fresenius-kabi.com"
  },
  "grand river aseptic manufacturing": {
   "domain": "grandriverasepticmfg.com",
   "modalities": [
    "small",
    "mab",
-   "protein"
-  ]
+   "protein",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Aseptic fill-finish for biologics, small molecules, vaccines; syringes, cartridges, autoinjector/on-body solutions",
+  "source": "https://www.grandriverasepticmfg.com"
  },
  "grifols": {
   "domain": "grifols.com",
   "modalities": [
-   "protein"
-  ]
+   "small",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Grifols Partnership CDMO: sterile injectables (small molecules) in flexible bags and vials; empty bags/plastics",
+  "source": "https://pharmasource.global/content/cdmo-live-spotlight/grifols-partnership-cdmo-explained/"
  },
  "haizhou pharma": {
-  "domain": "",
+  "domain": "haizhoupharm.com",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Event text: API and high-purity intermediates manufacturer (site cert expired, not fetched)",
+  "source": "https://www.haizhoupharm.com"
  },
  "halden pharma": {
   "domain": "halden-pharma.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Sterile liquids: IV bags, BFS ampoules and vials, non-sterile liquids; no biologics mentioned",
+  "source": "https://www.halden-pharma.com"
  },
  "honour lab": {
   "domain": "honourlab.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "NCE/generic API; blurb: small molecule APIs, peptides, oligonucleotides, amidites",
+  "source": "https://www.honourlab.com"
  },
  "idt biologika": {
   "domain": "idt-biologika.de",
   "modalities": [
-   "gene",
    "mab",
-   "protein"
-  ]
+   "protein",
+   "gene",
+   "biosimilar",
+   "cell"
+  ],
+  "confidence": "high",
+  "evidence": "Proteins, mAbs, vaccines, gene and immune therapeutics, biosimilars, viral vectors for cell and gene therapy, fill-finish",
+  "source": "https://www.idt-biologika.de"
  },
  "incog biopharma services": {
   "domain": "incogbiopharma.com",
   "modalities": [
-   "mab",
-   "protein",
-   "small"
-  ]
+   "small",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Sterile injectable fill/finish; device assembly for combination products; biologics only per third-party reports",
+  "source": "https://www.incogbiopharma.com"
  },
  "indenausa com": {
   "domain": "indena.com",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Botanical extracts/derivatives; CDMO service for complex APIs; Phytosome delivery tech",
+  "source": "https://www.indena.com"
  },
  "jubilant ingrevia": {
   "domain": "jubilantingrevia.com",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Specialty chemicals and CDMO; intermediates for 280+ APIs",
+  "source": "https://www.jubilantingrevia.com"
  },
  "just evotec biologics": {
   "domain": "evotec.com",
   "modalities": [
    "mab",
    "bispecific",
+   "biosimilar",
    "protein"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "CDMO for complex biologics incl. mAbs, bi/multispecifics, biosimilars, protein therapeutics",
+  "source": "https://www.evotec.com/en/just-evotec-biologics"
  },
  "kaneka americas holding": {
   "domain": "kaneka.com",
   "modalities": [
    "api",
-   "gene"
-  ]
+   "small",
+   "gene",
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Small molecule APIs/intermediates; biologics: plasmid DNA, mRNA, recombinant proteins, peptides, oligos (event blurb, Kaneka Eurogentec)",
+  "source": "https://kaneka.co.jp/en/topics/news/2023/ennr230119.html"
  },
  "kaneka eurogentec": {
   "domain": "eurogentec.com",
   "modalities": [
-   "gene",
-   "mab",
+   "api",
+   "small",
    "protein",
-   "small"
-  ]
+   "gene"
+  ],
+  "confidence": "high",
+  "evidence": "GMP mRNA, plasmid DNA, oligonucleotides, peptides, recombinant proteins; APIs/starting materials; mAb dev only (no GMP mAb)",
+  "source": "https://www.eurogentec.com"
  },
  "kemwell biopharma": {
   "domain": "kemwellbiopharma.com",
   "modalities": [
    "mab",
-   "protein",
-   "small"
-  ]
+   "bispecific",
+   "protein"
+  ],
+  "confidence": "high",
+  "evidence": "Mammalian cell-culture protein therapeutics: mAbs, bispecific/multispecific antibodies, fusion proteins, recombinant proteins",
+  "source": "https://www.kemwellbiopharma.com"
  },
  "kimball solutions": {
   "domain": "kimballelectronics.com",
   "modalities": [
    "device"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Medical CDMO: drug delivery devices, combination products, injection molding, device assembly",
+  "source": "https://www.kimballelectronics.com/market-verticals/medical"
  },
  "kindeva drug delivery": {
   "domain": "kindevadd.com",
   "modalities": [
    "device",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Injectable fill finish (vials, PFS, cartridges), autoinjectors, inhalation, dermal patches; biologics not stated",
+  "source": "https://www.kindevadd.com"
  },
  "lgm pharma": {
   "domain": "lgmpharma.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "API sourcing/import plus CDMO drug product: solid dose, liquids, semi-solids, suppositories",
+  "source": "https://www.lgmpharma.com"
  },
  "lifecore biomedical": {
   "domain": "lifecore.com",
@@ -444,127 +639,172 @@
    "small",
    "protein",
    "device"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Aseptic fill-finish for drugs, biologics, devices, combination products; hyaluronate",
+  "source": "https://www.lifecore.com"
  },
  "lonza": {
   "domain": "lonza.com",
   "modalities": [
+   "api",
+   "small",
    "mab",
+   "bispecific",
+   "adc",
    "protein",
    "cell",
-   "gene",
-   "adc"
-  ]
+   "gene"
+  ],
+  "confidence": "high",
+  "evidence": "Mammalian/microbial biologics, bioconjugates/ADCs incl. bispecific ADCs, mRNA, CGT, small molecules and HPAPIs",
+  "source": "https://www.lonza.com/"
  },
  "mabxcience": {
   "domain": "mabxience.com",
   "modalities": [
-   "mab",
-   "protein",
-   "biosimilar"
-  ]
+   "biosimilar",
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Biosimilars and innovator biologics R&D and CDMO; mAbs not explicitly named on homepage",
+  "source": "https://www.mabxience.com"
  },
  "malta development labs": {
-  "domain": "",
-  "modalities": [
-   "small"
-  ]
+  "domain": "famar-group.com",
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Blurb: highly potent aseptic sterile injectables; Famar site generic; no own Malta Dev Labs site found",
+  "source": "https://www.famar-group.com"
  },
  "medichemusa com": {
   "domain": "medichem.com",
-  "modalities": [
-   "api"
-  ]
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Site unreachable; search: APIs, FDFs, CDMO for API, oral solids, injectables; domain unverified",
+  "source": "https://www.cphi-online.com/product/medichem-s-cdmo-solutions/"
  },
  "microsize micronization particle size engineering pharmaceutical development": {
   "domain": "microsize.com",
   "modalities": [
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "medium",
+  "evidence": "Micronization/milling of small-molecule APIs and excipients incl. poorly soluble and highly potent APIs",
+  "source": "https://www.microsize.com"
  },
  "mikart": {
   "domain": "mikart.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Oral solid and nonsterile oral liquid dosage forms, controlled substances",
+  "source": "https://www.mikart.com"
  },
  "milliporesigma": {
   "domain": "sigmaaldrich.com",
   "modalities": [
    "api",
    "adc",
-   "mab",
-   "gene",
-   "protein"
-  ]
+   "gene"
+  ],
+  "confidence": "medium",
+  "evidence": "CDMO: HPAPI and ADC conjugation, small molecule APIs, viral vectors, mRNA, lipids/LNP; mammalian biologics testing only",
+  "source": "https://www.sigmaaldrich.com/US/en/services/contract-manufacturing"
  },
  "neuland labs": {
   "domain": "neulandlabs.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "CDMO for small molecule APIs & peptides (SPPS, LPPS); high potency APIs",
+  "source": "https://www.neulandlabs.com"
  },
  "nextpharma": {
   "domain": "nextpharma.com",
   "modalities": [
-   "small",
-   "device"
-  ]
+   "small"
+  ],
+  "confidence": "medium",
+  "evidence": "Oral solids, softgels, chewables, ophthalmics, packaging (BFS, blisters); no biologics",
+  "source": "https://www.nextpharma.com"
  },
  "olon s p a": {
-  "domain": "olonspa.it",
+  "domain": "olonspa.com",
   "modalities": [
    "api",
-   "adc",
-   "small"
-  ]
+   "adc"
+  ],
+  "confidence": "high",
+  "evidence": "Generic APIs, CDMO chemical synthesis; HPAPI/payload and bioconjugation ADC platform",
+  "source": "https://olonspa.com/"
  },
  "onyx scientific": {
   "domain": "onyxipca.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule API development and Phase I-III/commercial GMP manufacturing; drug product not mentioned",
+  "source": "https://www.onyxipca.com"
  },
  "ophtapharm": {
   "domain": "ophtapharm.ch",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Sterile ophthalmic, otic and topical products; no biologics/devices mentioned",
+  "source": "https://www.ophtapharm.ch"
  },
  "pathoquest": {
   "domain": "pathoquest.com",
   "modalities": [
    "cell",
    "gene",
-   "mab",
    "protein"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "NGS viral safety QC for cell and gene therapies, vaccines, RNA, mammalian/bacterial-produced proteins",
+  "source": "https://www.pathoquest.com"
  },
  "pharmaron": {
   "domain": "pharmaron.com",
   "modalities": [
    "api",
    "small",
+   "protein",
+   "adc",
    "cell",
    "gene"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule, peptides, biologics CDMO, ADC/bioconjugates, cell and gene therapy CDMO; radiolabelling only for tracers",
+  "source": "https://www.pharmaron.com"
  },
  "pi health sciences": {
   "domain": "pihealthsciences.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "APIs and HPAPIs manufacturing India/Italy; discovery covers small molecules and biologics but no biologics mfg",
+  "source": "https://www.pihealthsciences.com"
  },
  "piramal pharma solutions": {
   "domain": "piramalpharmasolutions.com",
   "modalities": [
-   "adc",
    "api",
-   "small"
-  ]
+   "small",
+   "adc",
+   "protein"
+  ],
+  "confidence": "high",
+  "evidence": "API, HPAPI, peptide APIs, oral solids, sterile injectables, ADCs, biologics/vaccines",
+  "source": "https://www.piramalpharmasolutions.com"
  },
  "porton pharma solutions": {
   "domain": "portonpharma.com",
@@ -572,8 +812,12 @@
    "api",
    "small",
    "adc",
+   "cell",
    "gene"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule DS/DP, TIDES peptides/oligos, ADC payload-linker conjugates, ATMP CRO/CDMO",
+  "source": "https://www.portonpharma.com"
  },
  "probio": {
   "domain": "probiocdmo.com",
@@ -581,196 +825,280 @@
    "gene",
    "cell",
    "mab",
-   "protein"
-  ]
+   "bispecific",
+   "adc"
+  ],
+  "confidence": "high",
+  "evidence": "Cell/gene therapy, lentiviral, plasmid, mRNA-LNP, mAb & bispecific, ADC solutions",
+  "source": "https://www.probiocdmo.com"
  },
  "procos": {
   "domain": "procos.it",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "APIs, advanced intermediates, custom synthesis and generic APIs; HPAPI listed as a service",
+  "source": "https://www.procos.it"
  },
  "quotient sciences": {
   "domain": "quotientsciences.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Small molecule drug development; oral, inhaled, parenteral, topical drug product; oral peptides, HPAPI",
+  "source": "https://www.quotientsciences.com"
  },
  "recipharm": {
   "domain": "recipharm.com",
   "modalities": [
    "small",
+   "mab",
+   "protein",
+   "gene",
+   "microbiome",
    "device"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "OSD, sterile fill-finish/PFS; Advanced Bio: mAbs, recombinant proteins, viral vectors, mRNA/pDNA, live microbial",
+  "source": "https://www.recipharm.com/press-releases/recipharm-reports-record-2024-revenue-and-strategic-milestones"
  },
  "rentschler biopharma se": {
   "domain": "rentschler-biopharma.com",
   "modalities": [
-   "mab",
    "protein"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Dedicated biologics CDMO, large molecules, biotherapeutics; mAbs not named explicitly",
+  "source": "https://www.rentschler-biopharma.com/en/"
  },
  "resilience": {
   "domain": "resilience.com",
   "modalities": [
    "mab",
-   "protein",
-   "gene",
-   "cell"
-  ]
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Biologics DS: mAbs, recombinant proteins in single-use bioreactors to 2,000L; aseptic fill of vials, PFS, cartridges",
+  "source": "https://www.resilience.com"
  },
  "resilience biotechnologies": {
   "domain": "resilience.com",
   "modalities": [
    "mab",
-   "protein",
-   "gene",
-   "cell"
-  ]
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Production of mAbs, recombinant proteins in single-use bioreactors; fill-finish; no viral/cell listed",
+  "source": "https://www.resilience.com"
  },
  "richman chemical": {
   "domain": "richmanchemical.com",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Custom multi-step organic synthesis, toll manufacturing, pharma raw materials and intermediates sourcing",
+  "source": "https://www.richmanchemical.com"
  },
  "richman chemical at richman chemical": {
   "domain": "richmanchemical.com",
   "modalities": [
-   "api"
-  ]
+   "api",
+   "small"
+  ],
+  "confidence": "medium",
+  "evidence": "Pharma raw materials & intermediates, custom mfg, HPAPI/API white papers; drug product formulation, compounding, packaging",
+  "source": "https://www.richmanchemical.com"
  },
  "ritedose": {
   "domain": "ritedose.com",
   "modalities": [
    "small",
    "device"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Sterile blow-fill-seal unit dose, inhalation, ophthalmic, prefilled syringes; no biologics",
+  "source": "https://www.ritedose.com"
  },
  "rochem international": {
-  "domain": "",
+  "domain": "rochemintl.com",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Supplies APIs (human/vet) plus food and nutrition ingredients from China",
+  "source": "https://www.rochemintl.com"
  },
  "rois": {
   "domain": "roiscdmo.com",
   "modalities": [
+   "mab",
+   "protein",
+   "biosimilar",
    "adc",
    "small",
    "device"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Sterile fill-finish for biologics, biosimilars, vaccines, ADCs; syringes, cartridges, vials; device assembly",
+  "source": "https://www.roiscdmo.com"
  },
  "ropack": {
   "domain": "ropack.com",
   "modalities": [
-   "device",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Solid oral dose manufacturing and blister/bottle packaging; clinical supply (site 403; blurb + search)",
+  "source": "https://www.ropack.com"
  },
  "rottendorf pharma": {
   "domain": "rottendorf.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Global CDMO for oral solid dosages: development, bulk manufacturing, blister/bottle packaging",
+  "source": "https://www.rottendorf.com"
  },
  "sai life sciences": {
   "domain": "sailife.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "adc"
+  ],
+  "confidence": "high",
+  "evidence": "Small molecules and new modalities: peptides, oligos, ADCs; oral, parenteral formulations",
+  "source": "https://www.sailife.com"
  },
  "sentiss pharmaceuticals": {
   "domain": "sentisspharma.com",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Ophthalmic, inhalation (nebulization), otic, nasal drops; no biologics",
+  "source": "https://www.sentisspharma.com"
  },
  "seqens": {
   "domain": "seqens.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "medium",
+  "evidence": "Generic and custom APIs, intermediates, excipients; Pharma CDMO",
+  "source": "https://www.seqens.com"
  },
  "ser n bioscience": {
   "domain": "seranbio.com",
   "modalities": [
-   "small"
-  ]
+   "small",
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Oral solid dosage form development and cGMP drug product; spray drying of biologics offering",
+  "source": "https://www.seranbio.com"
  },
  "sharp": {
   "domain": "sharpservices.com",
   "modalities": [
-   "device",
-   "small"
-  ]
+   "small",
+   "device"
+  ],
+  "confidence": "medium",
+  "evidence": "Sterile vial/syringe/cartridge fill, autoinjector/PFS assembly, commercial & clinical packaging",
+  "source": "https://www.sharpservices.com"
  },
  "sinochem": {
   "domain": "sinochem.com",
-  "modalities": [
-   "api"
-  ]
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Site's life sciences segment is agrochemicals and animal nutrition; no pharma API production stated",
+  "source": "https://www.sinochem.com"
  },
  "sk pharmteco": {
-  "domain": "skpt.com",
+  "domain": "skpharmteco.com",
   "modalities": [
    "api",
    "small",
+   "adc",
    "cell",
    "gene"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Small molecule API/HPAPI, ADC payloads, peptides; cell therapy; AAV/lentivirus vectors and plasmid DNA (skpt.com not reachable)",
+  "source": "https://www.skpharmteco.com"
  },
  "skyepharma": {
   "domain": "skyepharma.fr",
   "modalities": [
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Oral solids: tablets, multilayer, capsules, chewing gum; packaging; bioproduction unit unspecified",
+  "source": "https://www.skyepharma.fr"
  },
  "solvias": {
   "domain": "solvias.com",
   "modalities": [
    "small",
-   "mab",
    "protein",
    "cell",
    "gene"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Analytical expertise: biologics, cell and gene therapies, small molecules; mAbs not named",
+  "source": "https://www.solvias.com"
  },
  "sterling pharma solutions": {
   "domain": "sterlingpharmasolutions.com",
   "modalities": [
    "api",
-   "adc",
-   "small"
-  ]
+   "small",
+   "adc"
+  ],
+  "confidence": "high",
+  "evidence": "Small molecule API, high potency APIs, ADC development/manufacture, long-chain peptides",
+  "source": "https://www.sterlingpharmasolutions.com"
  },
  "steroid s p a": {
   "domain": "steroid.it",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Manufacturer of steroid APIs for 60+ years, custom synthesis",
+  "source": "https://www.steroid.it"
  },
  "steroid": {
   "domain": "steroid.it",
   "modalities": [
    "api"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Over 60 years manufacturer of steroid APIs",
+  "source": "https://www.steroid.it"
  },
  "suanfarma": {
   "domain": "suanfarma.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "CDMO: chemical synthesis, fermentation, flow chemistry for small molecule APIs and intermediates; GMP APIs",
+  "source": "https://www.suanfarma.com"
  },
  "suanfarma cdmo": {
   "domain": "suanfarma.com",
   "modalities": [
-   "api",
-   "small"
-  ]
+   "api"
+  ],
+  "confidence": "high",
+  "evidence": "GMP APIs, chemical synthesis and fermentation, flow chemistry; Portugal/Italy sites",
+  "source": "https://www.suanfarma.com"
  },
  "syngene intl": {
   "domain": "syngeneintl.com",
@@ -778,69 +1106,104 @@
    "api",
    "small",
    "mab",
-   "protein"
-  ]
+   "protein",
+   "adc",
+   "cell",
+   "gene"
+  ],
+  "confidence": "medium",
+  "evidence": "Small molecules; biologics CDMO, mAb accelerator; ADCs, peptides, oligos, CAR-T, pDNA & mRNA",
+  "source": "https://www.syngeneintl.com"
  },
  "tcg green chem": {
   "domain": "tcggreenchem.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "cGMP API manufacturing, complex intermediates and APIs; drug product development listed without detail",
+  "source": "https://www.tcggreenchem.com"
  },
  "tcg greenchem": {
   "domain": "tcggreenchem.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "Complex intermediates and APIs, drug product development, flow chemistry",
+  "source": "https://www.tcggreenchem.com"
  },
  "rosechem": {
-  "domain": "",
-  "modalities": [
-   "api"
-  ]
+  "domain": "rosechemgroup.com",
+  "modalities": [],
+  "confidence": "low",
+  "evidence": "Site returned no content and no third-party info found; offerings unverified",
+  "source": "https://www.rosechemgroup.com"
  },
  "tianyu pharmaq": {
   "domain": "tianyupharm.com",
   "modalities": [
-   "api"
-  ]
+   "api",
+   "small"
+  ],
+  "confidence": "medium",
+  "evidence": "APIs (sartans), intermediates, CDMO and finished formulations; Zhejiang Tianyu Pharmaceutical",
+  "source": "https://www.tianyupharm.com"
  },
  "upperton pharma solutions": {
   "domain": "upperton.com",
   "modalities": [
-   "small"
-  ]
+   "small",
+   "protein"
+  ],
+  "confidence": "medium",
+  "evidence": "Oral, nasal, pulmonary, parenteral dosage forms; spray-dried biologics and small molecules and biologics formulation",
+  "source": "https://www.upperton.com"
  },
  "vetter": {
   "domain": "vetter-pharma.com",
   "modalities": [
-   "mab",
-   "protein",
    "small",
    "device"
-  ]
+  ],
+  "confidence": "medium",
+  "evidence": "Aseptic fill-finish of injectables; autoinjector/injection system assembly; biologics not stated",
+  "source": "https://www.vetter-pharma.com/en/services/"
  },
  "vivabiotech": {
   "domain": "vivabiotech.com",
   "modalities": [
    "api",
-   "small"
-  ]
+   "small",
+   "mab",
+   "protein",
+   "adc"
+  ],
+  "confidence": "medium",
+  "evidence": "Small-molecule API CDMO (Langhua); antibody discovery/expression; platform spans peptides, PROTACs, XDCs",
+  "source": "https://www.vivabiotech.com"
  },
  "wilmington pharmatech": {
   "domain": "wilmingtonpharmatech.com",
   "modalities": [
    "api",
    "small"
-  ]
+  ],
+  "confidence": "high",
+  "evidence": "API & HPAPI development/GMP manufacturing; peptides in custom synthesis",
+  "source": "https://www.wilmingtonpharmatech.com"
  },
  "zhejiang tianyu pharmaceutical": {
   "domain": "tianyupharm.com",
   "modalities": [
-   "api"
-  ]
+   "api",
+   "small"
+  ],
+  "confidence": "high",
+  "evidence": "Site lists APIs, pharma intermediates, finished preparations and CDMO services",
+  "source": "https://www.tianyupharm.com"
  },
  "": {
   "domain": "",

@@ -65,3 +65,20 @@ def person_detail(pid):
 def person_email(pid):
     p = _load()['people'].get(pid)
     return p['email'] if p else ''
+
+
+def norm(name):
+    n = re.sub(r'[^a-z0-9 ]', ' ', (name or '').lower())
+    n = re.sub(r'\b(inc|llc|ltd|limited|corp|corporation|co|company|gmbh|ag|sa|plc|group|pvt|private|the|lp|bv|nv|sas|spa|srl|usa|us)\b', ' ', n)
+    return re.sub(r'\s+', ' ', n).strip()
+
+
+def company_key(directory_id='', company_name=''):
+    """Directory key for a visitor's company: via their directory person if
+    they picked one, else by normalised name."""
+    data = _load()
+    p = data['people'].get(directory_id)
+    if p:
+        return p['company']
+    k = norm(company_name)
+    return k if k in data['companies'] else ''

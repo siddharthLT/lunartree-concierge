@@ -9,11 +9,12 @@ from django.conf import settings
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from . import directory
+from . import directory, recs
 from .models import ConciergeRequest, Visitor
-from .notifications import notify_new_request
+from .notifications import email_new_request, notify_new_request
 
 VALID_TYPES = {choice[0] for choice in ConciergeRequest.TYPE_CHOICES}
 
@@ -39,8 +40,12 @@ def _set_visitor_cookie(response, token):
 
 def landing(request):
     visitor = _current_visitor(request)
+    if not (visitor and visitor.completed) and 'skip' not in request.GET:
+        return redirect('concierge:welcome')
+    known = visitor if visitor and visitor.completed else None
     return render(request, 'concierge/landing.html', {
-        'visitor': visitor if visitor and visitor.completed else None,
+        'visitor': known,
+        'recs': recs.for_visitor(known) if known else None,
     })
 
 
@@ -134,6 +139,7 @@ def ddf_intel(request):
     return render(request, 'concierge/ddf_intel.html')
 
 
+@xframe_options_sameorigin  # the Experience tab embeds this page
 def experience_biolens(request):
     return render(request, 'concierge/experience_biolens.html')
 
@@ -158,4 +164,40 @@ def submit_request(request):
         details=payload.get('details') or {},
     )
     notify_new_request(obj)
+    return JsonResponse({'ok': True, 'id': obj.id})
+
+
+@require_POST
+def search_interest(request):
+    """A visitor tapped one of their ICP searches (or typed their own). Stored as
+    a request and emailed to NOTIFY_EMAIL."""
+    try:
+        payload = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'ok': False, 'error': 'Invalid JSON.'}, status=400)
+    term = str(payload.get('term') or '').strip()[:300]
+    if not term:
+        return JsonResponse({'ok': False, 'error': 'Empty search.'}, status=400)
+
+    visitor = _current_visitor(request)
+    details = {
+        'search': term,
+        'source': 'typed' if payload.get('other') else 'suggested',
+    }
+    if visitor:
+        details.update({
+            'modalities': ', '.join(visitor.modalities),
+            'programs': ', '.join(visitor.phases),
+            'geographies': ', '.join(visitor.geographies),
+        })
+    obj = ConciergeRequest.objects.create(
+        request_type=ConciergeRequest.SEARCH_INTEREST,
+        guest_name=visitor.name if visitor else '',
+        email=visitor.email if visitor else '',
+        organization=visitor.company if visitor else '',
+        role=(visitor.title if visitor else '')[:50],
+        details=details,
+    )
+    notify_new_request(obj)
+    email_new_request(obj)
     return JsonResponse({'ok': True, 'id': obj.id})

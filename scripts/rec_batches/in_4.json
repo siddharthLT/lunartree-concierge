@@ -1,0 +1,312 @@
+[
+ {
+  "key": "alcami",
+  "name": "Alcami",
+  "segment": "CDMO",
+  "domain": "alcami.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Drug product mfg incl. oral solid dose and sterile fill-finish; biologics/CGT mentioned mainly as analytical lab services",
+  "event_blurb": "Alcami is a contract development and manufacturing organization that provides end-to-end outsourcing solutions for pharmaceutical and biotechnology companies, including drug development, testing, manufacturing, and packaging services.",
+  "attendee_titles": [
+   "Business Development Manager",
+   "Vice President, Corporate Sales",
+   "Vice President, Business Development, Drug Product",
+   "Business Development Manager",
+   "VP, Business Development"
+  ]
+ },
+ {
+  "key": "august bioservices at august bio",
+  "name": "August Bioservices at August Bio",
+  "segment": "CDMO",
+  "domain": "augustbio.com",
+  "modalities": [
+   "small",
+   "device"
+  ],
+  "evidence": "Sterile injectable fill-finish; vials, syringes, IV bags, drug-device combination products; no biologics stated",
+  "event_blurb": "August Bioservices is a U.S.-based CDMO specializing in sterile injectable drug development, analytical testing, and commercial manufacturing. From formulation and process development to fill-finish, packaging, and distribution, we provide an integrated, end-to-end solution that accelerates timelines while maintaining the highest standards of quality. Backed by advanced technology, Annex 1-compliant manufacturing, and a collaborative team of industry experts, we help bring innovative therapies from clinical development to commercial production, all from a single, trusted partner.",
+  "attendee_titles": [
+   "Business Development Manager"
+  ]
+ },
+ {
+  "key": "bora biologics",
+  "name": "Bora Biologics",
+  "segment": "CDMO",
+  "domain": "borabiologics.com",
+  "modalities": [
+   "mab",
+   "protein"
+  ],
+  "evidence": "Mammalian and microbial biologics CDMO; antibody-based products, approved biosimilar, proteins (RAPClot)",
+  "event_blurb": "Bora Biologics supports mammalian and microbial biologics programs from cell line development through late-stage and commercial drug substance manufacturing. Our FDA-registered San Diego facility anchors reliable U.S. commercial supply, while our Taiwan site provides agile clinical manufacturing and development support within a globally aligned quality system.\nIn partnership with Bora Pharmaceuticals, we extend that operational control through integrated U.S. drug product manufacturing, inspection, labeling, packaging, and stability services \u2014 enabling a streamlined, governance-aligned develop",
+  "attendee_titles": [
+   "Director of Business Development"
+  ]
+ },
+ {
+  "key": "catachem",
+  "name": "Catachem",
+  "segment": "Supplier",
+  "domain": "catachem.com",
+  "modalities": [],
+  "evidence": "Diagnostic reagents, calibrators; custom lyophilization incl. reagent and protein lyophilization; not a drug CDMO",
+  "event_blurb": "Catachem, Inc. is a U.S.-based ISO 13485 certified developer and manufacturer of specialty diagnostic reagents, custom assay components, and lyophilized products for the in vitro diagnostics (IVD), biotechnology, pharmaceutical, and research markets. Since 1984, we have partnered with organizations ranging from emerging startups to global diagnostic manufacturers, providing end-to-end support from feasibility and formulation development through scale-up, manufacturing, quality control, and regulatory documentation.\nOur core capabilities include custom reagent formulation, lyophilization proces",
+  "attendee_titles": [
+   "Chief Scientific Officer",
+   "General Manager"
+  ]
+ },
+ {
+  "key": "cramsn research",
+  "name": "CRAMSN Research",
+  "segment": "CDMO",
+  "domain": "cramsn.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "APIs plus formulation/manufacturing of finished pharmaceutical products",
+  "event_blurb": "CRAMSN is a leading Contract Research, Development, and Manufacturing Organization (CRO, CDMO, CMO) that offers end-to-end solutions and supports standalone programs with efficiency, quality, and consistency enabling faster go-to-market strategies. As a catalyst for change, we are committed to reducing our carbon footprint through sustainable practices. Our objectives include utilizing green chemistry across our services to minimize our carbon footprint. Solar-powered facilities and maintaining 50% green cover help us move closer to achieving net-zero waste.",
+  "attendee_titles": [
+   "Sr. VP, Head Business Development (North America)"
+  ]
+ },
+ {
+  "key": "dr hotha s life sciences",
+  "name": "Dr. Hotha's Life Sciences",
+  "segment": "CDMO",
+  "domain": "",
+  "modalities": [],
+  "evidence": "No official website found; appears to be a consulting LLC led by Kishore Hotha, not a verifiable CDMO",
+  "event_blurb": "",
+  "attendee_titles": [
+   "president"
+  ]
+ },
+ {
+  "key": "ferndale labs cdmo",
+  "name": "Ferndale Labs CDMO",
+  "segment": "CDMO",
+  "domain": "ferndalelabsmfg.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Turn-key CMC for semi-solid and liquid Rx/OTC drug products (Ferndale, MI); tube/bottle filling",
+  "event_blurb": "",
+  "attendee_titles": [
+   "VP of Marketing"
+  ]
+ },
+ {
+  "key": "fresenius kabi",
+  "name": "Fresenius Kabi",
+  "segment": "CDMO",
+  "domain": "fresenius-kabi.com",
+  "modalities": [
+   "small",
+   "mab",
+   "adc",
+   "protein",
+   "device"
+  ],
+  "evidence": "CMO site: product types Biologics (mAbs, ADCs, GLPs), small molecules; sterile fill-finish incl. prefilled syringes",
+  "event_blurb": "Fresenius Kabi Contract Manufacturing partners with pharmaceutical and biotechnology companies to deliver reliable sterile injectable manufacturing solutions backed by the strength, quality standards, and operational expertise of a global pharmaceutical leader. With manufacturing capabilities across the United States and Europe, we help customers enhance supply security, navigate complex manufacturing challenges, and accelerate commercial success through a partnership-focused approach built on quality, transparency, and dependable execution.",
+  "attendee_titles": [
+   "Vice President CMO, Global Business Development"
+  ]
+ },
+ {
+  "key": "idt biologika",
+  "name": "IDT Biologika",
+  "segment": "CDMO",
+  "domain": "idt-biologika.de",
+  "modalities": [
+   "mab",
+   "protein",
+   "gene",
+   "biosimilar",
+   "cell"
+  ],
+  "evidence": "Proteins, mAbs, vaccines, gene and immune therapeutics, biosimilars, viral vectors for cell and gene therapy, fill-finish",
+  "event_blurb": "IDT Biologika, part of SK bioscience, is a global CDMO providing end-to-end solutions for cell-culture and microbial-based proteins, vaccines, gene and immune therapeutics, biosimilars, monoclonal antibodies and sterile injectables.\nWith more than 100 years of biopharmaceutical experience, we partner with pharmaceutical and biotech companies throughout the entire product lifecycle\u2014from development and technology transfer to clinical and commercial manufacturing.\nOur integrated service offering includes process and analytical development, drug substance manufacturing, aseptic fill-finish, secon",
+  "attendee_titles": [
+   "Global Senior Director Business Development",
+   "Global Sr. Director Business Development"
+  ]
+ },
+ {
+  "key": "kaneka eurogentec",
+  "name": "Kaneka Eurogentec",
+  "segment": "CDMO",
+  "domain": "eurogentec.com",
+  "modalities": [
+   "api",
+   "small",
+   "protein",
+   "gene"
+  ],
+  "evidence": "GMP mRNA, plasmid DNA, oligonucleotides, peptides, recombinant proteins; APIs/starting materials; mAb dev only (no GMP mAb)",
+  "event_blurb": "Kaneka is a Japanese technology-driven chemical company offering custom synthesis services from its Health Care Business Unit positioned as a specialist CDMO partner.\nWe focus on small molecule chemistry with over 40 years of experience in process development, scale-up and manufacturing of Regulatory Starting Materials, GMP intermediates and APIs and support the entire drug lifecycle.\nFrom our 4 research centers and 4 manufacturing sites in Japan and Singapore, we offer a full range of custom synthesis services based on our core technology platforms of chemical syntheses, biocatalytic transfor",
+  "attendee_titles": [
+   "Business Development Manager"
+  ]
+ },
+ {
+  "key": "lonza",
+  "name": "Lonza",
+  "segment": "CDMO",
+  "domain": "lonza.com",
+  "modalities": [
+   "api",
+   "small",
+   "mab",
+   "bispecific",
+   "adc",
+   "protein",
+   "cell",
+   "gene"
+  ],
+  "evidence": "Mammalian/microbial biologics, bioconjugates/ADCs incl. bispecific ADCs, mRNA, CGT, small molecules and HPAPIs",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Sales",
+   "Associate Director-Sales-Drug Product",
+   "Associate Director, Business Development",
+   "Business Development"
+  ]
+ },
+ {
+  "key": "milliporesigma",
+  "name": "Milliporesigma",
+  "segment": "CDMO",
+  "domain": "sigmaaldrich.com",
+  "modalities": [
+   "api",
+   "adc",
+   "gene"
+  ],
+  "evidence": "CDMO: HPAPI and ADC conjugation, small molecule APIs, viral vectors, mRNA, lipids/LNP; mammalian biologics testing only",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business Development Manager",
+   "Applications Specialist"
+  ]
+ },
+ {
+  "key": "pathoquest",
+  "name": "Pathoquest",
+  "segment": "CRO",
+  "domain": "pathoquest.com",
+  "modalities": [
+   "cell",
+   "gene",
+   "protein"
+  ],
+  "evidence": "NGS viral safety QC for cell and gene therapies, vaccines, RNA, mammalian/bacterial-produced proteins",
+  "event_blurb": "PathoQuest is a global CRO that specializes in biopharma Quality Control (QC) based on Next-Generation Sequencing (NGS) for viral safety and genetic characterization. The company\u2019s proprietary NGS-based testing approach delivers actionable QC reports to the industry for cell & gene therapy, vaccines and biologics. \nWith a proven track record, our expert team can support fast and robust QC testing at a GMP grade over two facilities in Europe (Paris, FR) and in the U.S. (Wayne, PA). \nPathoQuest is at the forefront of NGS-based testing solutions that accelerate the commercial availability of biop",
+  "attendee_titles": [
+   "Global Key Account Manager",
+   "Sr. Business Development Manager",
+   "President & CEO"
+  ]
+ },
+ {
+  "key": "procos",
+  "name": "PROCOS",
+  "segment": "CDMO",
+  "domain": "procos.it",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "APIs, advanced intermediates, custom synthesis and generic APIs; HPAPI listed as a service",
+  "event_blurb": "PROCOS S.P.A. is a wholly owned subsidiary of the Japanese company, CBC Co. Ltd Group, specializing in the development, scale-up and production of Active Pharmaceutical Ingredients (APIs), advanced intermediates and related services for the pharmaceutical industry. \nOur core business sectors include custom synthesis and Generic API manufacturing. \nThe manufacturing site is located in Cameri, Italy. This 155,000 sq. meter, cutting-edge multipurpose plant, fully designed under cGMP compliance, has been successfully audited and approved by the main regulatory authorities including AIFA, FDA and P",
+  "attendee_titles": [
+   "Associate Director Business Development North America"
+  ]
+ },
+ {
+  "key": "richman chemical",
+  "name": "Richman Chemical Inc.",
+  "segment": "Supplier",
+  "domain": "richmanchemical.com",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "Custom multi-step organic synthesis, toll manufacturing, pharma raw materials and intermediates sourcing",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Business Development Manager- Custom Synthesis"
+  ]
+ },
+ {
+  "key": "rottendorf pharma",
+  "name": "Rottendorf Pharma GmbH",
+  "segment": "CDMO",
+  "domain": "rottendorf.com",
+  "modalities": [
+   "small"
+  ],
+  "evidence": "Global CDMO for oral solid dosages: development, bulk manufacturing, blister/bottle packaging",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Vice President of Business Development"
+  ]
+ },
+ {
+  "key": "sinochem",
+  "name": "Sinochem Group",
+  "segment": "Supplier",
+  "domain": "sinochem.com",
+  "modalities": [],
+  "evidence": "Site's life sciences segment is agrochemicals and animal nutrition; no pharma API production stated",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Chief Director of the Fluorine Fine Chemicals Department"
+  ]
+ },
+ {
+  "key": "steroid",
+  "name": "Steroid SpA",
+  "segment": "Supplier",
+  "domain": "steroid.it",
+  "modalities": [
+   "api"
+  ],
+  "evidence": "Over 60 years manufacturer of steroid APIs",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Director Sales, Marketing & BD"
+  ]
+ },
+ {
+  "key": "rosechem",
+  "name": "The RoseChem Group",
+  "segment": "Supplier",
+  "domain": "rosechemgroup.com",
+  "modalities": [],
+  "evidence": "Site returned no content and no third-party info found; offerings unverified",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Consultant"
+  ]
+ },
+ {
+  "key": "zhejiang tianyu pharmaceutical",
+  "name": "Zhejiang Tianyu Pharmaceutical Co.,Ltd.",
+  "segment": "Supplier",
+  "domain": "tianyupharm.com",
+  "modalities": [
+   "api",
+   "small"
+  ],
+  "evidence": "Site lists APIs, pharma intermediates, finished preparations and CDMO services",
+  "event_blurb": "",
+  "attendee_titles": [
+   "Sr. Director of Business Development"
+  ]
+ }
+]
