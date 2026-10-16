@@ -28,8 +28,9 @@
     --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
   }
   html.embed .topbar{display:none;}
-  html.embed .app{min-height:0;padding-top:20px;padding-bottom:40px;}
-  html.embed body{background:transparent;}
+  html.embed .app{min-height:0;max-width:none;padding:20px 40px 40px;}
+  html.embed body{background:var(--bg);}
+  @media(max-width:700px){html.embed .app{padding:14px 16px 28px;}}
   *{box-sizing:border-box;}
   [hidden]{display:none;}
   html,body{margin:0;padding:0;}
