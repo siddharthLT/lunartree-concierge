@@ -54,6 +54,8 @@ class Visitor(models.Model):
     modalities = models.JSONField(default=list, blank=True)
     phases = models.JSONField(default=list, blank=True)
     geographies = models.JSONField(default=list, blank=True)
+    strengths = models.TextField(blank=True)
+    exclusions = models.TextField(blank=True)
     completed = models.BooleanField(default=False)
     user_agent = models.CharField(max_length=300, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

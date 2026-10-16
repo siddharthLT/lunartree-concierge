@@ -171,7 +171,7 @@
 (() => {
   'use strict';
 
-  const TOTAL_STEPS = 6;
+  const TOTAL_STEPS = 8;
   const MODALITIES = [
     {id:'api', icon:'💊', label:'APIs'},
     {id:'small', icon:'⚗️', label:'Small molecule'},
@@ -335,7 +335,7 @@
     userSay(picked.length > 3 ? `${lead} +${picked.length - 3}` : lead);
   }
 
-  function askText({placeholder, type = 'text', button = 'Next', validate, prefill = ''}) {
+  function askText({placeholder, type = 'text', button = 'Next', validate, prefill = '', skip = false}) {
     return new Promise(resolve => {
       const f = el('form', 'field');
       f.noValidate = true;
@@ -346,7 +346,15 @@
       const btn = el('button', '', button); btn.type = 'submit';
       f.append(input, btn);
       const err = el('div', 'field-error'); err.hidden = true;
+      let skipBtn = null;
+      if (skip) {
+        skipBtn = el('button', 'pill ghost wide', 'Skip'); skipBtn.type = 'button';
+        skipBtn.addEventListener('click', () => {
+          f.remove(); err.remove(); skipBtn.remove(); userSay('Skip'); resolve('');
+        });
+      }
       chat.append(f, err);
+      if (skipBtn) chat.append(skipBtn);
       scrollDown();
       input.focus({preventScroll: true});
       f.addEventListener('submit', e => {
@@ -354,7 +362,7 @@
         const v = input.value.trim();
         const problem = validate ? validate(v) : (v ? '' : 'Required');
         if (problem) { err.textContent = problem; err.hidden = false; return; }
-        f.remove(); err.remove();
+        f.remove(); err.remove(); if (skipBtn) skipBtn.remove();
         resolve(v);
       });
     });
@@ -417,6 +425,8 @@
       `modality focus: ${labelOf(MODALITIES, info.modalities)}`,
       `programs: ${labelOf(PHASES, info.phases)}`,
       `geographies: ${labelOf(GEOS, info.geos)}`,
+      `strongest case studies/capabilities: ${info.strengths || '—'}`,
+      `cannot partner with: ${info.exclusions || '—'}`,
     ].join(', ');
     try {
       // Race a timeout so a slow send can't hold the visitor on this screen.
@@ -544,15 +554,29 @@
 
     // 6 — geography
     await bot('Where should we look?', 'Pick your regions.');
-    const geos = await askPills(GEOS, {multi: true, skip: true, cta: 'Finish'});
-    const done = await save({geographies: geos, completed: true});
+    const geos = await askPills(GEOS, {multi: true, skip: true});
+    await save({geographies: geos});
     setProgress(6);
+
+    // 7 — strongest case studies / capabilities (optional)
+    await bot('What are your strongest case studies and capabilities?', 'Optional — a line or two is plenty.');
+    const strengths = await askText({placeholder: 'e.g. ADC conjugation at 100L scale', button: 'Next', skip: true, validate: () => ''});
+    if (strengths) userSay(strengths);
+    await save({strengths});
+    setProgress(7);
+
+    // 8 — red lines (optional)
+    await bot('What kinds of companies can you absolutely not partner with?', 'Optional — e.g. conflicts, competitors, regions.');
+    const exclusions = await askText({placeholder: 'e.g. competitors of our anchor client', button: 'Finish', skip: true, validate: () => ''});
+    if (exclusions) userSay(exclusions);
+    const done = await save({exclusions, completed: true});
+    setProgress(8);
 
     const first = (done.first_name || person.name.split(' ')[0] || '').trim();
     const finalEmail = useDirEmail ? (person.email || '') : email;
     const notified = notifyWelcome({
       name: person.name, title, company, domain, email: finalEmail,
-      listed: !!person.id, modalities: mods, phases, geos,
+      listed: !!person.id, modalities: mods, phases, geos, strengths, exclusions,
     });
     await bot(`You’re all set${first ? ', ' + first : ''} ✨`, 'Opening your concierge…');
     await Promise.all([sleep(1400), notified]);

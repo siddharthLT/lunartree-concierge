@@ -110,6 +110,10 @@ def welcome_save(request):
         visitor.phases = _clean_list(payload['phases'], PHASES)
     if 'geographies' in payload:
         visitor.geographies = _clean_list(payload['geographies'], GEOGRAPHIES)
+    if 'strengths' in payload:
+        visitor.strengths = text('strengths', 1000)
+    if 'exclusions' in payload:
+        visitor.exclusions = text('exclusions', 1000)
     if payload.get('completed'):
         visitor.completed = True
     visitor.save()
