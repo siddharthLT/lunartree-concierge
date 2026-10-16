@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Welcome — Lunartree Concierge</title>
+<title>Welcome | Lunartree Concierge</title>
 <link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -394,7 +394,7 @@
           const data = await fetch('/api/welcome/search/?q=' + encodeURIComponent(q)).then(r => r.json()).catch(() => ({results: []}));
           if (mine !== seq) return;
           results.replaceChildren();
-          if (!data.results.length) { results.append(el('div', 'empty', 'No match — try another spelling, or pick “not on the list”.')); return; }
+          if (!data.results.length) { results.append(el('div', 'empty', 'No match. Try another spelling, or pick “not on the list”.')); return; }
           data.results.forEach((p, i) => {
             const b = el('button', 'pill wide'); b.type = 'button';
             b.style.animationDelay = (i * 40) + 'ms';
@@ -417,22 +417,22 @@
   try { emailjs.init({publicKey: EMAILJS_PUBLIC_KEY}); } catch (e) {}
 
   async function notifyWelcome(info) {
-    const labelOf = (list, ids) => ids.map(id => (list.find(o => o.id === id) || {label: id}).label).join(', ') || '—';
+    const labelOf = (list, ids) => ids.map(id => (list.find(o => o.id === id) || {label: id}).label).join(', ') || 'n/a';
     const summary = [
-      `title: ${info.title || '—'}`,
-      `domain: ${info.domain || '—'}`,
+      `title: ${info.title || 'n/a'}`,
+      `domain: ${info.domain || 'n/a'}`,
       `on attendee list: ${info.listed ? 'yes' : 'no'}`,
       `modality focus: ${labelOf(MODALITIES, info.modalities)}`,
       `programs: ${labelOf(PHASES, info.phases)}`,
       `geographies: ${labelOf(GEOS, info.geos)}`,
-      `strongest case studies/capabilities: ${info.strengths || '—'}`,
-      `cannot partner with: ${info.exclusions || '—'}`,
+      `strongest case studies/capabilities: ${info.strengths || 'n/a'}`,
+      `cannot partner with: ${info.exclusions || 'n/a'}`,
     ].join(', ');
     try {
       // Race a timeout so a slow send can't hold the visitor on this screen.
       await Promise.race([
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          subject: 'BioLens Concierge — Welcome questions completed',
+          subject: 'BioLens Concierge: Welcome questions completed',
           guest_name: info.name,
           guest_email: info.email,
           organization: info.company,
@@ -470,7 +470,7 @@
       } catch (e) {}
     }
 
-    // 1 — who
+    // 1: who
     setProgress(0);
     await bot('Hi 👋 Who are you?', 'Find yourself in the attendee list.');
     const hit = await askSearch();
@@ -485,7 +485,7 @@
 
     if (person) {
       title = person.title; segment = person.segment; modalities = person.modalities || [];
-      // 2 — company
+      // 2: company
       await bot('Is this your company?');
       const cOpts = [
         {id: 'yes', label: person.company.name, favicon: person.company.domain ? faviconUrl(person.company.domain) : '', icon: '🏢', side: person.company.domain},
@@ -503,7 +503,7 @@
       }
       setProgress(2);
 
-      // 3 — email
+      // 3: email
       if (person.email) {
         await bot('Is this your email?');
         const [e] = await askPills([
@@ -518,7 +518,7 @@
         userSay('✉️ ' + email);
       }
     } else {
-      // Not on the list — three quick questions.
+      // Not on the list: three quick questions.
       userSay('🙋 Not on the list');
       await bot('No problem. Your name?');
       const name = await askText({placeholder: 'Full name'});
@@ -539,34 +539,34 @@
     });
     setProgress(3);
 
-    // 4 — modality focus (prefilled from research)
+    // 4: modality focus (prefilled from research)
     const prefilled = modalities.length > 0;
     await bot('Your modality focus', prefilled ? 'Pre-filled for ' + company + '. Tweak it.' : 'Pick all that apply.');
     const mods = await askPills(MODALITIES, {multi: true, selected: modalities, skip: true});
     await save({modalities: mods});
     setProgress(4);
 
-    // 5 — program stage
+    // 5: program stage
     await bot('Which programs are you after?', 'Pick all that fit.');
     const phases = await askPills(PHASES, {multi: true, skip: true});
     await save({phases});
     setProgress(5);
 
-    // 6 — geography
+    // 6: geography
     await bot('Where should we look?', 'Pick your regions.');
     const geos = await askPills(GEOS, {multi: true, skip: true});
     await save({geographies: geos});
     setProgress(6);
 
-    // 7 — strongest case studies / capabilities (optional)
-    await bot('What are your strongest case studies and capabilities?', 'Optional — a line or two is plenty.');
+    // 7: strongest case studies / capabilities (optional)
+    await bot('What are your strongest case studies and capabilities?', 'Optional. A line or two is plenty.');
     const strengths = await askText({placeholder: 'e.g. ADC conjugation at 100L scale', button: 'Next', skip: true, validate: () => ''});
     if (strengths) userSay(strengths);
     await save({strengths});
     setProgress(7);
 
-    // 8 — red lines (optional)
-    await bot('What kinds of companies can you absolutely not partner with?', 'Optional — e.g. conflicts, competitors, regions.');
+    // 8: red lines (optional)
+    await bot('What kinds of companies can you absolutely not partner with?', 'Optional, e.g. conflicts, competitors, regions.');
     const exclusions = await askText({placeholder: 'e.g. competitors of our anchor client', button: 'Finish', skip: true, validate: () => ''});
     if (exclusions) userSay(exclusions);
     const done = await save({exclusions, completed: true});

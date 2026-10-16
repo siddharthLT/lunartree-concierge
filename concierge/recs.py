@@ -18,6 +18,12 @@ MODALITY_LABEL = {
     'gene': 'gene therapy', 'editing': 'gene editing', 'radio': 'radiopharmaceuticals',
     'microbiome': 'microbiome', 'device': 'devices', 'digital': 'digital therapeutics',
 }
+MODALITY_TITLE = {
+    'api': 'APIs', 'small': 'Small molecule', 'mab': 'mAbs', 'bispecific': 'Bispecifics', 'adc': 'ADCs',
+    'protein': 'Recombinant protein', 'biosimilar': 'Biosimilars', 'cell': 'Cell therapy',
+    'gene': 'Gene therapy', 'editing': 'Gene editing', 'radio': 'Radiopharma',
+    'microbiome': 'Microbiome', 'device': 'Devices', 'digital': 'Digital',
+}
 GEO_LABEL = {'nam': 'North America', 'eu': 'Europe', 'apac': 'APAC', 'mea': 'MEA', 'anz': 'ANZ'}
 STAGE_LABEL = {'discovery': 'discovery', 'preclinical': 'preclinical', 'phase1': 'Phase 1', 'phase2': 'Phase 2',
                'phase3': 'Phase 3', 'commercial': 'commercial-stage'}
@@ -66,7 +72,7 @@ def _fallback_sessions(visitor):
     for _, s, overlap in scored:
         if len(picks[s['day']]) < 3:
             labels = ', '.join(MODALITY_LABEL[m] for m in sorted(overlap))
-            picks[s['day']].append({**s, 'reason': f'Covers {labels} — the focus you picked.', 'meet': s['known_orgs']})
+            picks[s['day']].append({**s, 'reason': f'Covers {labels}, the focus you picked.', 'meet': s['known_orgs']})
     return picks
 
 
@@ -100,7 +106,16 @@ def for_visitor(visitor):
     for items in picks.values():
         items.sort(key=lambda s: tuple(int(x) for x in s['start'].split(':')))
 
+    pick_ids = {x['id'] for items in picks.values() for x in items}
+    everything = {1: [], 2: []}
+    for sess in _sessions():
+        if sess['day'] in everything:
+            everything[sess['day']].append({**sess, 'picked': sess['id'] in pick_ids})
+    for items in everything.values():
+        items.sort(key=lambda x: tuple(int(n) for n in x['start'].split(':')))
+
     return {
+        'all_sessions': {str(d): v for d, v in everything.items()},
         'personalised': bool(rec),
         'sessions': {str(d): v for d, v in picks.items()},
         'search_terms': [_fill(t, visitor) for t in terms],

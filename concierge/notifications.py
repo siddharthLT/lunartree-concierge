@@ -16,10 +16,10 @@ def email_new_request(request_obj):
     details = request_obj.details or {}
     lines = [
         f"Type: {request_obj.get_request_type_display()}",
-        f"Name: {request_obj.guest_name or '—'}",
-        f"Role: {request_obj.role or '—'}",
-        f"Company: {request_obj.organization or '—'}",
-        f"Email: {request_obj.email or '—'}",
+        f"Name: {request_obj.guest_name or 'n/a'}",
+        f"Role: {request_obj.role or 'n/a'}",
+        f"Company: {request_obj.organization or 'n/a'}",
+        f"Email: {request_obj.email or 'n/a'}",
         "",
     ] + [f"{k.replace('_', ' ').title()}: {v}" for k, v in details.items()]
     subject = f"[Concierge] {request_obj.get_request_type_display()}"
@@ -34,7 +34,7 @@ def email_new_request(request_obj):
 def notify_new_request(request_obj):
     """Best-effort ping to Slack when a new request comes in.
 
-    Never raises — a notification failure should not block the guest-facing
+    Never raises. A notification failure should not block the guest-facing
     request flow. No-ops silently if SLACK_WEBHOOK_URL isn't configured.
     """
     webhook_url = getattr(settings, 'SLACK_WEBHOOK_URL', '')
@@ -43,9 +43,9 @@ def notify_new_request(request_obj):
 
     lines = [
         f"*New request:* {request_obj.get_request_type_display()}",
-        f"*Name:* {request_obj.guest_name or '—'}",
-        f"*Email:* {request_obj.email or '—'}",
-        f"*Company:* {request_obj.organization or '—'}",
+        f"*Name:* {request_obj.guest_name or 'n/a'}",
+        f"*Email:* {request_obj.email or 'n/a'}",
+        f"*Company:* {request_obj.organization or 'n/a'}",
     ]
     for key, value in (request_obj.details or {}).items():
         lines.append(f"*{key.replace('_', ' ').title()}:* {value}")

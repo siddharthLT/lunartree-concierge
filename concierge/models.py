@@ -35,7 +35,7 @@ class ConciergeRequest(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f"{self.get_request_type_display()} — {self.guest_name or 'Guest'} ({self.created_at:%Y-%m-%d %H:%M})"
+        return f"{self.get_request_type_display()} | {self.guest_name or 'Guest'} ({self.created_at:%Y-%m-%d %H:%M})"
 
 
 class Visitor(models.Model):
@@ -65,7 +65,7 @@ class Visitor(models.Model):
         ordering = ['-updated_at']
 
     def __str__(self):
-        return f"{self.name or 'Anonymous'} — {self.company or '?'}"
+        return f"{self.name or 'Anonymous'} | {self.company or '?'}"
 
     @property
     def first_name(self):

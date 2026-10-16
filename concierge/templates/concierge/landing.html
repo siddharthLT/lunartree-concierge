@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token }}">
-<title>BioLens Concierge — Lunartree</title>
+<title>BioLens Concierge | Lunartree</title>
 <link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="su ru ou lu hu init Au Fu Eu Pu Nu zl Ru ju Tu Uu Wu Vu capture getExtension Ou iu Qu calculateEventProperties Zu register register_once register_for_session unregister unregister_for_session Xu Mu Ju getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync th identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset eh shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ku zu createPersonProfile setInternalOrTestUser Yu cu du opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Bu debug Ul $s getPageViewId captureTraceFeedback captureTraceMetric Su".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -434,6 +434,37 @@
   .day-pill small{font-weight:500;color:var(--ink-faint);margin-left:6px;}
   .day-pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
   .day-pill.on small{color:rgba(255,255,255,.65);}
+  .view-toggle{display:inline-flex;padding:4px;border-radius:999px;background:var(--chip,#eef1f5);border:1px solid var(--line);margin-bottom:16px;}
+  .view-toggle button{appearance:none;border:0;cursor:pointer;font:inherit;font-size:14px;font-weight:700;padding:9px 18px;border-radius:999px;background:transparent;color:var(--ink-dim);transition:background .15s,color .15s;}
+  .view-toggle button.on{background:var(--ink);color:#fff;}
+  .sess .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--accent-bright);background:var(--accent-soft);border-radius:999px;padding:3px 10px;margin-bottom:8px;}
+  /* ---------- Attendees ---------- */
+  .att-search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 14px;box-shadow:var(--shadow-card);margin-bottom:14px;}
+  .att-search svg{flex:none;color:var(--ink-faint);}
+  .att-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:14px 0;color:var(--ink);}
+  .att-filters{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+  .chip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .chip-row::-webkit-scrollbar{display:none;}
+  .fchip{flex:none;appearance:none;cursor:pointer;font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);white-space:nowrap;transition:background .15s,color .15s;}
+  .fchip small{color:var(--ink-faint);font-weight:500;margin-left:5px;}
+  .fchip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .fchip.on small{color:rgba(255,255,255,.65);}
+  .att-count{font-size:13px;color:var(--ink-dim);margin:4px 0 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .att-count button{appearance:none;border:0;background:transparent;font:inherit;font-size:13px;font-weight:700;color:var(--accent-bright);cursor:pointer;padding:4px;}
+  .att-list{display:grid;gap:10px;grid-template-columns:1fr;}
+  @media(min-width:700px){.att-list{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1200px){.att-list{grid-template-columns:repeat(3,1fr);}}
+  .att{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow-card);min-width:0;}
+  .att .av{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent-bright);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .att .who{min-width:0;flex:1;}
+  .att h3{margin:0;font-size:15px;line-height:1.25;overflow-wrap:anywhere;}
+  .att .role{font-size:13px;color:var(--ink-dim);margin-top:2px;overflow-wrap:anywhere;}
+  .att .org{font-size:13px;font-weight:600;color:var(--ink);margin-top:6px;overflow-wrap:anywhere;}
+  .att .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+  .att .tag{font-size:11px;font-weight:600;border-radius:999px;padding:3px 9px;background:var(--chip,#eef1f5);color:var(--ink-dim);}
+  .att .tag.seg{background:var(--accent-soft);color:var(--accent-bright);}
+  .att .tag.exh{background:#fff1e8;color:#c2531a;}
+
   .sess-list{display:grid;gap:14px;grid-template-columns:1fr;}
   @media(min-width:900px){.sess-list{grid-template-columns:repeat(2,1fr);}}
   .sess{
@@ -600,6 +631,7 @@
     object-fit:contain;
     display:block;
   }
+
 
   /* ---------- Video ---------- */
   .video-section{margin-top:56px;}
@@ -865,7 +897,7 @@
       </div>
     </div>
 
-    <footer class="app-footer">BioLens · Lunartree — concierge desk is staffed on site</footer>
+    <footer class="app-footer">BioLens · Lunartree. The concierge desk is staffed on site</footer>
   </section>
 
   <!-- DINING RECOMMENDATIONS -->
@@ -874,7 +906,7 @@
       <div class="back-row"><button class="btn-text" onclick="goTo('screen-menu')">&larr; Back to menu</button></div>
       <p class="eyebrow">Dining</p>
       <h1 class="title">Recommendations near the venue</h1>
-      <p class="lede">A short list, curated by the concierge desk — all near the Hyatt.</p>
+      <p class="lede">A short list, curated by the concierge desk, all near the Hyatt.</p>
       <div class="dining-list">
         <div class="dining-item">
           <div class="dining-item-info">
@@ -924,10 +956,37 @@
       {% if recs %}<p class="lede" id="sessions-lede"></p>{% else %}<p class="lede">Tell us what you do and we'll pick the sessions and people worth your time.</p>{% endif %}
     </div>
     {% if recs %}
+    <div class="view-toggle" id="view-toggle" role="tablist">
+      <button type="button" data-view="you" class="on">Sessions for You</button>
+      <button type="button" data-view="all">All Sessions</button>
+    </div>
     <div class="day-toggle" id="day-toggle"></div>
     <div class="sess-list" id="sess-list"></div>
     {% else %}
     <div class="empty-note">We haven't met yet. <br><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer 6 quick questions</a></div>
+    {% endif %}
+  </section>
+
+  <!-- ATTENDEES -->
+  <section id="screen-attendees" class="screen">
+    <div class="tab-head">
+      <p class="eyebrow">CDMO Live · who's here</p>
+      <h1 class="title">Attendees</h1>
+      <p class="lede" id="att-lede">See who is attending and filter by type or focus.</p>
+    </div>
+    {% if visitor %}
+    <label class="att-search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="att-q" type="search" placeholder="Search name, title or company" autocomplete="off" enterkeyhint="search">
+    </label>
+    <div class="att-filters">
+      <div class="chip-row" id="att-seg"></div>
+      <div class="chip-row" id="att-mod"></div>
+    </div>
+    <div class="att-count"><span id="att-n"></span><button type="button" id="att-clear" hidden>Clear filters</button></div>
+    <div class="att-list" id="att-list"></div>
+    {% else %}
+    <div class="empty-note">We haven't met yet. <br><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer a few quick questions</a></div>
     {% endif %}
   </section>
 
@@ -940,7 +999,7 @@
     </div>
     {% if recs %}
     <div class="term-list" id="term-list"></div>
-    <div class="other-box"><input id="other-term" type="text" maxlength="280" placeholder="Other — describe who you want to find" autocomplete="off"><button id="other-send" disabled>Send</button></div>
+    <div class="other-box"><input id="other-term" type="text" maxlength="280" placeholder="Other: describe who you want to find" autocomplete="off"><button id="other-send" disabled>Send</button></div>
     <p class="search-note" id="search-note"></p>
     {% else %}
     <div class="empty-note"><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer 6 quick questions</a></div>
@@ -969,6 +1028,7 @@
 <nav class="tabbar" id="tabbar" aria-label="Sections">
   <button class="tab active" data-tab="home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg><span>Home</span></button>
   <button class="tab" data-tab="sessions" aria-label="Sessions"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="M8 14h3M13 14h3M8 17h3"/></svg><span>Sessions</span></button>
+  <button class="tab" data-tab="attendees" aria-label="Attendees"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.3"/><path d="M2.8 19.5c.4-3.3 3-5.3 6.2-5.3s5.8 2 6.2 5.3"/><path d="M16 5.6a3.1 3.1 0 0 1 0 5.8"/><path d="M18 14.6c1.8.6 3 2.3 3.2 4.9"/></svg><span>Attendees</span></button>
   <button class="tab" data-tab="search" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/><path d="M11 8.2v5.6M8.2 11h5.6"/></svg><span>Search</span></button>
   <button class="tab" data-tab="experience" aria-label="Experience"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2.5"/><path d="M8.5 20.5h7M12 17v3.5"/><path d="m10.2 8.6 4 2.15-4 2.15z"/></svg><span>Experience</span></button>
 </nav>
@@ -1087,8 +1147,8 @@
   }
 
   const TAB_OF = {'screen-menu':'home','screen-dining':'home','screen-confirm':'home',
-                  'screen-sessions':'sessions','screen-search':'search','screen-experience':'experience'};
-  const SCREEN_OF = {home:'screen-menu', sessions:'screen-sessions', search:'screen-search', experience:'screen-experience'};
+                  'screen-sessions':'sessions','screen-attendees':'attendees','screen-search':'search','screen-experience':'experience'};
+  const SCREEN_OF = {home:'screen-menu', sessions:'screen-sessions', attendees:'screen-attendees', search:'screen-search', experience:'screen-experience'};
 
   function goTo(id){
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1097,6 +1157,7 @@
     if(tab){
       document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
     }
+    if(id === 'screen-attendees' && typeof loadAttendees === 'function') loadAttendees();
     if(id === 'screen-experience'){
       const f = document.getElementById('exp-frame');
       if(!f.src) f.src = f.dataset.src;
@@ -1125,7 +1186,7 @@
     });
   });
 
-  // chip selection (single-select per group) — used by the Experience BioLens screen
+  // chip selection (single-select per group), used by the Experience BioLens screen
   document.querySelectorAll('[data-chipgroup]').forEach(group => {
     group.addEventListener('click', e => {
       const chip = e.target.closest('.chip');
@@ -1166,10 +1227,10 @@
         body: JSON.stringify(payload)
       });
     }catch(err){
-      // No backend attached (e.g. standalone preview) — proceed silently.
+      // No backend attached (e.g. standalone preview), proceed silently.
       console.log('Concierge request (offline preview):', payload);
     }
-    sendEmailNotification(`BioLens Concierge — ${type.replace(/_/g, ' ')}`, {
+    sendEmailNotification(`BioLens Concierge: ${type.replace(/_/g, ' ')}`, {
       guest_name: payload.guest_name,
       organization: payload.organization,
       details: details
@@ -1198,22 +1259,31 @@
     return n;
   }
 
+  let sessView = 'you', sessDay = '1';
   function renderSessions(day){
+    sessDay = day;
     const list = document.getElementById('sess-list');
     list.replaceChildren();
     document.querySelectorAll('.day-pill').forEach(p => p.classList.toggle('on', p.dataset.day === day));
-    const items = RECS.sessions[day] || [];
+    const all = sessView === 'all';
+    const items = (all ? RECS.all_sessions : RECS.sessions)[day] || [];
     if(!items.length){
-      list.append(mk('div', 'empty-note', 'No standout sessions for you on this day — use the networking hours on the showfloor.'));
+      list.append(mk('div', 'empty-note', all ? 'No sessions listed for this day.' : 'No standout sessions for you on this day, so use the networking hours on the showfloor.'));
       return;
     }
     items.forEach(s => {
       const card = mk('article', 'sess');
       const meta = mk('div', 'sess-meta');
       meta.append(mk('span', 'sess-time', s.start + '–' + s.end), mk('span', '', s.track));
-      const why = mk('p', 'why');
-      why.append(mk('b', '', 'Why it fits: '), document.createTextNode(s.reason));
-      card.append(meta, mk('h3', '', s.title), why);
+      if(all && s.picked) card.append(mk('span', 'badge', '★ For you'));
+      card.append(meta, mk('h3', '', s.title));
+      if(s.reason){
+        const why = mk('p', 'why');
+        why.append(mk('b', '', 'Why it fits: '), document.createTextNode(s.reason));
+        card.append(why);
+      } else if(all && s.description){
+        card.append(mk('p', 'why', s.description.length > 220 ? s.description.slice(0, 217) + '…' : s.description));
+      }
       if(s.sponsor){
         const sp = mk('div', 'meet', 'Sponsored by');
         sp.append(mk('span', 'o', s.sponsor));
@@ -1239,7 +1309,7 @@
 
   if(RECS){
     document.getElementById('sessions-lede').textContent =
-      RECS.personalised ? 'Picked for {{ visitor.company|escapejs }} — each one comes with the reason it fits.' : 'Picked from the focus you told us about.';
+      RECS.personalised ? 'Picked for {{ visitor.company|escapejs }}. Each one comes with the reason it fits.' : 'Picked from the focus you told us about.';
     const toggle = document.getElementById('day-toggle');
     ['1','2'].forEach(d => {
       const b = mk('button', 'day-pill', 'Day ' + d);
@@ -1248,6 +1318,11 @@
       b.addEventListener('click', () => renderSessions(d));
       toggle.append(b);
     });
+    document.querySelectorAll('#view-toggle button').forEach(b => b.addEventListener('click', () => {
+      sessView = b.dataset.view;
+      document.querySelectorAll('#view-toggle button').forEach(x => x.classList.toggle('on', x === b));
+      renderSessions(sessDay);
+    }));
     const today = new Date().toISOString().slice(0, 10);
     renderSessions(today === '2026-10-21' ? '2' : '1');
 
@@ -1269,18 +1344,18 @@
         if(!data.ok) throw new Error('rejected');
         if(typeof posthog !== 'undefined') posthog.capture('search_interest', {term: term, other: !!other});
         // Same EmailJS path the workspace request uses, so the notification arrives without server SMTP.
-        sendEmailNotification('BioLens Concierge — Search interest', {
+        sendEmailNotification('BioLens Concierge: Search interest', {
           guest_name: '{{ visitor.name|escapejs }}',
           email: '{{ visitor.email|escapejs }}',
           organization: '{{ visitor.company|escapejs }}',
           details: {search: term, source: other ? 'typed' : 'suggested', title: '{{ visitor.title|escapejs }}'}
         });
-        note.textContent = 'Requested — the Lunartree team will follow up with matches.';
+        note.textContent = 'Requested. The Lunartree team will follow up with matches.';
         return true;
       }catch(err){
         btn.disabled = false;
         note.className = 'search-note err';
-        note.textContent = 'Couldn\u2019t send that — please try again.';
+        note.textContent = 'Couldn\u2019t send that. Please try again.';
         return false;
       }
     }
@@ -1307,6 +1382,98 @@
     otherSend.addEventListener('click', submitOther);
     otherInput.addEventListener('keydown', e => { if(e.key === 'Enter') submitOther(); });
   }
+
+  /* ---------- Attendees tab ---------- */
+  {% if visitor %}
+  let ATT = null, attLoading = false;
+  const attState = {q:'', seg:'', mod:'', exh:false};
+  const attEl = {list: document.getElementById('att-list'), n: document.getElementById('att-n'),
+                 clear: document.getElementById('att-clear'), q: document.getElementById('att-q')};
+  const initials = n => n.replace(/^(dr|prof|mr|mrs|ms)\.?\s+/i, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+
+  async function loadAttendees(){
+    if(ATT || attLoading) return;
+    attLoading = true;
+    try{
+      const res = await fetch('{% url "concierge:attendees" %}', {credentials:'same-origin'});
+      const data = await res.json();
+      if(!data.ok) throw new Error('forbidden');
+      ATT = data;
+      buildAttFilters();
+      renderAttendees();
+    }catch(err){
+      attEl.list.replaceChildren(mk('div', 'empty-note', 'Couldn\u2019t load the attendee list. Please refresh and try again.'));
+    }
+    attLoading = false;
+  }
+
+  function chip(row, label, count, active, onClick){
+    const b = mk('button', 'fchip' + (active ? ' on' : ''), label);
+    b.type = 'button';
+    if(count != null) b.append(mk('small', '', String(count)));
+    b.addEventListener('click', onClick);
+    row.append(b);
+  }
+
+  function buildAttFilters(){
+    const segRow = document.getElementById('att-seg'), modRow = document.getElementById('att-mod');
+    segRow.replaceChildren(); modRow.replaceChildren();
+    const people = ATT.people;
+    chip(segRow, 'Everyone', people.length, !attState.seg && !attState.exh, () => { attState.seg = ''; attState.exh = false; buildAttFilters(); renderAttendees(); });
+    const segs = {};
+    people.forEach(p => { segs[p.segment] = (segs[p.segment] || 0) + 1; });
+    Object.keys(segs).sort((a, b) => segs[b] - segs[a]).forEach(sg => {
+      chip(segRow, sg, segs[sg], attState.seg === sg, () => { attState.seg = attState.seg === sg ? '' : sg; buildAttFilters(); renderAttendees(); });
+    });
+    chip(segRow, 'Exhibitors', people.filter(p => p.exhibitor).length, attState.exh, () => { attState.exh = !attState.exh; buildAttFilters(); renderAttendees(); });
+    const mods = {};
+    people.forEach(p => p.mods.forEach(m => { mods[m] = (mods[m] || 0) + 1; }));
+    Object.keys(mods).sort((a, b) => mods[b] - mods[a]).forEach(m => {
+      chip(modRow, ATT.labels[m] || m, mods[m], attState.mod === m, () => { attState.mod = attState.mod === m ? '' : m; buildAttFilters(); renderAttendees(); });
+    });
+  }
+
+  function renderAttendees(){
+    const toks = attState.q.toLowerCase().split(/\s+/).filter(Boolean);
+    const rows = ATT.people.filter(p => {
+      if(attState.seg && p.segment !== attState.seg) return false;
+      if(attState.exh && !p.exhibitor) return false;
+      if(attState.mod && !p.mods.includes(attState.mod)) return false;
+      const hay = (p.name + ' ' + p.title + ' ' + p.company).toLowerCase();
+      return toks.every(t => hay.includes(t));
+    });
+    const filtered = attState.q || attState.seg || attState.mod || attState.exh;
+    attEl.n.textContent = rows.length + (rows.length === 1 ? ' attendee' : ' attendees') + (filtered ? ' match' : '');
+    attEl.clear.hidden = !filtered;
+    attEl.list.replaceChildren();
+    if(!rows.length){
+      attEl.list.append(mk('div', 'empty-note', 'No one matches that. Try a different name or clear a filter.'));
+      return;
+    }
+    rows.forEach(p => {
+      const card = mk('article', 'att');
+      card.append(mk('div', 'av', initials(p.name)));
+      const who = mk('div', 'who');
+      who.append(mk('h3', '', p.name));
+      if(p.title) who.append(mk('div', 'role', p.title));
+      if(p.company) who.append(mk('div', 'org', p.company));
+      const tags = mk('div', 'tags');
+      tags.append(mk('span', 'tag seg', p.segment));
+      if(p.exhibitor) tags.append(mk('span', 'tag exh', 'Exhibitor'));
+      p.mods.slice(0, 3).forEach(m => tags.append(mk('span', 'tag', ATT.labels[m] || m)));
+      who.append(tags);
+      card.append(who);
+      attEl.list.append(card);
+    });
+  }
+
+  attEl.q.addEventListener('input', () => { attState.q = attEl.q.value.trim(); if(ATT) renderAttendees(); });
+  attEl.clear.addEventListener('click', () => {
+    attState.q = ''; attState.seg = ''; attState.mod = ''; attState.exh = false; attEl.q.value = '';
+    buildAttFilters(); renderAttendees();
+  });
+  {% endif %}
+
 
   /* ---------- Video ---------- */
   const biolensVideo = document.getElementById('biolens-video');
@@ -1516,7 +1683,7 @@
     }catch(err){
       console.log('Concierge request (offline preview):', payload);
     }
-    sendEmailNotification('BioLens Concierge — Workspace request', {
+    sendEmailNotification('BioLens Concierge: Workspace request', {
       guest_name: guest.name,
       email: guest.email,
       organization: guest.organization,

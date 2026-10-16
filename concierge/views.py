@@ -68,6 +68,13 @@ def welcome_person(request, pid):
     return JsonResponse({'ok': True, 'person': person})
 
 
+def attendees_api(request):
+    visitor = _current_visitor(request)
+    if not (visitor and visitor.completed):
+        return JsonResponse({'ok': False}, status=403)
+    return JsonResponse({'ok': True, 'people': directory.attendees(), 'labels': recs.MODALITY_TITLE})
+
+
 def _clean_list(values, allowed):
     return [v for v in (values or []) if v in allowed] if isinstance(values, list) else []
 

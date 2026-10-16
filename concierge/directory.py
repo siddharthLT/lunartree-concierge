@@ -112,3 +112,19 @@ def company_key(directory_id='', company_name=''):
         return p['company']
     k = norm(company_name)
     return k if k in data['companies'] else ''
+
+
+def attendees():
+    """Everyone on the list for the Attendees tab. Deliberately no email
+    addresses: this is shown to any recognised visitor."""
+    data = _load()
+    out = []
+    for p in data['people'].values():
+        c = data['companies'][p['company']]
+        out.append({
+            'id': p['id'], 'name': p['name'], 'title': p['title'],
+            'company': c['name'], 'segment': c['segment'],
+            'mods': c['modalities'], 'exhibitor': bool(c.get('exhibitor')),
+        })
+    out.sort(key=lambda a: (a['company'].lower(), a['name'].lower()))
+    return out
