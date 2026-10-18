@@ -3,224 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="csrf-token" content="{{ csrf_token }}">
 <title>Welcome | Lunartree Concierge</title>
 <link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<style>
-  :root{
-    --ink:#0f172a;
-    --ink-dim:#475569;
-    --ink-faint:#94a3b8;
-    --bg:#f1f5f9;
-    --panel:#ffffff;
-    --chip:#e2e8f0;
-    --line:rgba(15,23,42,0.10);
-    --accent:#3654e0;
-    --error:#c23b34;
-    --shadow-card:0 1px 2px rgba(15,23,42,.05), 0 10px 28px -14px rgba(15,23,42,.18);
-  }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  [hidden]{display:none !important;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 45%,#e2e8f0 100%) fixed;
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.4;
-    -webkit-font-smoothing:antialiased;
-    min-height:100vh;
-    min-height:100dvh;
-  }
-  button,input{font:inherit;color:inherit;}
-
-  #particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
-  .app{
-    position:relative;z-index:1;
-    max-width:520px;
-    margin:0 auto;
-    min-height:100dvh;
-    padding:max(20px, env(safe-area-inset-top)) 20px 0;
-    display:flex;
-    flex-direction:column;
-  }
-  .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
-  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:18px;letter-spacing:-0.01em;}
-  .brand img{width:38px;height:38px;border-radius:11px;display:block;background:#fff;padding:3px;border:1px solid var(--line);box-shadow:0 2px 6px rgba(15,23,42,.10), 0 8px 20px -8px rgba(15,23,42,.25);}
-  .event{
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);
-    border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:600;
-  }
-  .progress{height:3px;background:var(--chip);border-radius:3px;overflow:hidden;margin-bottom:36px;}
-  .progress i{display:block;height:100%;width:0;background:var(--ink);border-radius:3px;transition:width .5s cubic-bezier(.2,.8,.2,1);}
-
-  #chat{flex:1;display:flex;flex-direction:column;gap:18px;padding-bottom:40px;}
-
-  /* ---------- Messages ---------- */
-  .msg{animation:rise .45s cubic-bezier(.2,.8,.2,1) both;}
-  @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
-  .msg.bot{font-size:30px;font-weight:800;letter-spacing:-0.03em;line-height:1.12;}
-  .msg.bot .muted{color:var(--ink-faint);}
-  .msg.bot.small{font-size:20px;}
-  .typing{display:inline-flex;gap:5px;padding:10px 0;}
-  .typing i{width:8px;height:8px;border-radius:50%;background:var(--ink-faint);animation:blink 1s infinite ease-in-out;}
-  .typing i:nth-child(2){animation-delay:.15s;}
-  .typing i:nth-child(3){animation-delay:.3s;}
-  @keyframes blink{0%,80%,100%{opacity:.25;transform:scale(.85);}40%{opacity:1;transform:scale(1);}}
-
-  .msg.user{
-    align-self:flex-end;
-    background:var(--ink);color:#fff;
-    border-radius:20px 20px 6px 20px;
-    padding:11px 16px;
-    font-size:15px;font-weight:600;
-    max-width:88%;
-    display:flex;align-items:center;gap:8px;
-  }
-  .msg.user img{width:18px;height:18px;border-radius:4px;background:#fff;}
-
-  /* ---------- Option pills ---------- */
-  .options{display:flex;flex-wrap:wrap;gap:9px;}
-  .options.stack{flex-direction:column;align-items:stretch;}
-  .pill{
-    appearance:none;border:1px solid var(--line);background:var(--panel);
-    border-radius:999px;padding:12px 17px;
-    display:inline-flex;align-items:center;gap:9px;
-    font-size:15px;font-weight:600;letter-spacing:-0.01em;
-    cursor:pointer;
-    box-shadow:var(--shadow-card);
-    animation:rise .4s cubic-bezier(.2,.8,.2,1) both;
-    transition:transform .12s, background .15s, color .15s, border-color .15s;
-    text-align:left;
-  }
-  .pill:active{transform:scale(.97);}
-  .pill .ico{font-size:18px;line-height:1;}
-  .pill .ico-img{width:20px;height:20px;border-radius:5px;display:block;}
-  .pill .side{margin-left:auto;padding-left:10px;font-size:12px;font-weight:500;color:var(--ink-faint);}
-  .pill .sub{font-size:12px;font-weight:500;color:var(--ink-faint);}
-  .pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .pill.on .sub,.pill.on .side{color:rgba(255,255,255,.6);}
-  .pill.on::after{content:'✓';font-size:13px;margin-left:2px;}
-  .pill.wide{justify-content:flex-start;border-radius:18px;padding:13px 16px;}
-  .pill.ghost{background:transparent;box-shadow:none;border-style:dashed;color:var(--ink-dim);}
-  .pill.ghost.on{background:var(--ink);color:#fff;}
-
-  .cta-row{display:flex;gap:10px;margin-top:4px;animation:rise .4s .1s both;}
-  .cta{
-    flex:1;appearance:none;border:0;cursor:pointer;
-    background:var(--ink);color:#fff;
-    border-radius:16px;padding:16px;
-    font-size:15px;font-weight:700;letter-spacing:-0.01em;
-    transition:transform .12s, opacity .15s;
-  }
-  .cta:active{transform:scale(.98);}
-  .cta[disabled]{opacity:.35;cursor:default;}
-  .cta.light{flex:0 0 auto;background:var(--chip);color:var(--ink);padding:16px 20px;}
-
-  /* ---------- Search + text input ---------- */
-  .field{
-    display:flex;align-items:center;gap:10px;
-    background:var(--panel);border:1px solid var(--line);border-radius:18px;
-    padding:0 16px;box-shadow:var(--shadow-card);
-    animation:rise .4s both;
-  }
-  .field:focus-within{border-color:var(--ink);}
-  .field svg{flex:none;color:var(--ink-faint);}
-  .field input{
-    flex:1;min-width:0;border:0;outline:0;background:transparent;
-    padding:17px 0;font-size:16px;font-weight:500; /* 16px stops iOS zoom */
-  }
-  .field button{
-    appearance:none;border:0;background:var(--ink);color:#fff;border-radius:12px;
-    padding:9px 14px;font-weight:700;font-size:14px;cursor:pointer;
-  }
-  .field-error{color:var(--error);font-size:13px;font-weight:500;margin-top:-8px;}
-  .results{display:flex;flex-direction:column;gap:8px;}
-  .avatar{
-    flex:none;width:34px;height:34px;border-radius:50%;
-    background:var(--chip);display:grid;place-items:center;
-    font-size:13px;font-weight:700;color:var(--ink-dim);
-  }
-  .pill.on .avatar{background:rgba(255,255,255,.18);color:#fff;}
-  .who{display:flex;flex-direction:column;min-width:0;line-height:1.25;}
-  .who b{font-weight:700;font-size:15px;}
-  .who span{font-size:12px;font-weight:500;color:var(--ink-faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .empty{font-size:13px;color:var(--ink-faint);padding:2px 4px;}
-
-  @media (prefers-reduced-motion:reduce){
-    *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
-  }
-</style>
+{% include 'concierge/_design.html' %}
 </head>
 <body>
-<div class="app">
-  <div class="topbar">
-    <div class="brand">
-      <img src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="">
-      <span>Lunartree</span>
+{% include 'concierge/_icons.html' %}
+{% include 'concierge/_worldmap.html' %}
+
+<div class="ob" id="ob">
+  <div class="ob-field" aria-hidden="true"><canvas id="ob-canvas"></canvas></div>
+  <header class="ob-bar" id="ob-bar">
+    <div class="ob-bar__inner">
+      <span class="brand">
+        <img class="brand__mark" src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="">
+        <span class="brand__name">Lunartree</span>
+      </span>
+      <span class="desk-chip">CDMO Live</span>
     </div>
-    <span class="event">CDMO Live</span>
-  </div>
-  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
-  <main id="chat" aria-live="polite"></main>
+    <div class="ob-progress" id="ob-progress" hidden>
+      <div class="ob-progress__meta"><span id="ob-step">Step 1 of 8</span><span id="ob-label"></span></div>
+      <div class="ob-segs" id="ob-segs"></div>
+    </div>
+  </header>
+  <main class="ob-main" id="ob-main" tabindex="-1" aria-live="polite"></main>
 </div>
 
 <script>
 (() => {
   'use strict';
 
-  const TOTAL_STEPS = 8;
+  const TOTAL = 8;
+  const STEPS = [
+    {key: 'who', label: 'Your name', q: 'Who are you?'},
+    {key: 'company', label: 'Company', q: 'Which company are you with?'},
+    {key: 'email', label: 'Email', q: 'What’s your email?'},
+    {key: 'modalities', label: 'Modality focus', q: 'Your modality focus'},
+    {key: 'phases', label: 'Programs', q: 'Programs you are after'},
+    {key: 'geos', label: 'Regions', q: 'Regions to look in'},
+    {key: 'strengths', label: 'Strengths', q: 'Strongest case studies and capabilities'},
+    {key: 'exclusions', label: 'Exclusions', q: 'Companies you cannot partner with'},
+  ];
   const MODALITIES = [
-    {id:'api', icon:'💊', label:'APIs'},
-    {id:'small', icon:'⚗️', label:'Small molecule'},
-    {id:'mab', icon:'🛡️', label:'mAbs'},
-    {id:'bispecific', icon:'🔗', label:'Bispecifics'},
-    {id:'adc', icon:'🎯', label:'ADCs'},
-    {id:'protein', icon:'🧪', label:'Recombinant protein'},
-    {id:'biosimilar', icon:'🔁', label:'Biosimilars'},
-    {id:'cell', icon:'🧫', label:'Cell therapy'},
-    {id:'gene', icon:'🧬', label:'Gene therapy'},
-    {id:'editing', icon:'✂️', label:'Gene editing'},
-    {id:'radio', icon:'☢️', label:'Radiopharma'},
-    {id:'microbiome', icon:'🦠', label:'Microbiome'},
-    {id:'device', icon:'🩺', label:'Medical device'},
-    {id:'digital', icon:'📱', label:'Digital therapeutics'},
+    {id:'api', icon:'pill', label:'APIs'},
+    {id:'small', icon:'molecule', label:'Small molecule'},
+    {id:'mab', icon:'antibody', label:'mAbs'},
+    {id:'bispecific', icon:'bispecific', label:'Bispecifics'},
+    {id:'adc', icon:'adc', label:'ADCs'},
+    {id:'protein', icon:'protein', label:'Recombinant protein'},
+    {id:'biosimilar', icon:'biosimilar', label:'Biosimilars'},
+    {id:'cell', icon:'cell', label:'Cell therapy'},
+    {id:'gene', icon:'capsid', label:'Gene therapy'},
+    {id:'editing', icon:'editing', label:'Gene editing'},
+    {id:'radio', icon:'atom', label:'Radiopharma'},
+    {id:'microbiome', icon:'microbe', label:'Microbiome'},
+    {id:'device', icon:'stethoscope', label:'Medical device'},
+    {id:'digital', icon:'phonePulse', label:'Digital therapeutics'},
   ];
   const PHASES = [
-    {id:'discovery', icon:'🔬', label:'Discovery'},
-    {id:'preclinical', icon:'🐭', label:'Preclinical'},
-    {id:'phase1', icon:'1️⃣', label:'Phase 1'},
-    {id:'phase2', icon:'2️⃣', label:'Phase 2'},
-    {id:'phase3', icon:'3️⃣', label:'Phase 3'},
-    {id:'commercial', icon:'🏭', label:'Commercial'},
+    {id:'discovery', icon:'discovery', label:'Discovery'},
+    {id:'preclinical', icon:'flask', label:'Preclinical'},
+    {id:'phase1', icon:'phase1', label:'Phase 1'},
+    {id:'phase2', icon:'phase2', label:'Phase 2'},
+    {id:'phase3', icon:'phase3', label:'Phase 3'},
+    {id:'commercial', icon:'factory', label:'Commercial'},
   ];
   const GEOS = [
-    {id:'nam', icon:'🌎', label:'NAM', sub:'North America'},
-    {id:'eu', icon:'🇪🇺', label:'EU', sub:'Europe'},
-    {id:'apac', icon:'🌏', label:'APAC', sub:'Asia-Pacific'},
-    {id:'mea', icon:'🌍', label:'MEA', sub:'Middle East & Africa'},
-    {id:'anz', icon:'🦘', label:'ANZ', sub:'Australia & NZ'},
+    {id:'nam', code:'NAM', label:'North America'},
+    {id:'eu', code:'EU', label:'Europe'},
+    {id:'apac', code:'APAC', label:'Asia-Pacific'},
+    {id:'mea', code:'MEA', label:'Middle East & Africa'},
+    {id:'anz', code:'ANZ', label:'Australia & NZ'},
   ];
 
-  const chat = document.getElementById('chat');
-  const bar = document.getElementById('bar');
+  const main = document.getElementById('ob-main');
   const SWITCHING = new URLSearchParams(location.search).has('switch');
   const sleep = ms => new Promise(r => setTimeout(r, ms));
-  const state = {fresh: true, person: null};
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const el = (tag, cls, text) => {
-    const n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text != null) n.textContent = text;
-    return n;
+  const S = {
+    step: 0, mode: 'search',   // who step: search | manual
+    person: null, listed: false, fresh: true,
+    name: '', title: '', company: '', domain: '', segment: '', email: '', useDirEmail: false,
+    companyOther: false, emailOther: false,
+    modalities: [], phases: [], geos: [], strengths: '', exclusions: '',
+    query: '', results: null,
   };
+
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cookie = name => (document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)')) || [])[1] || '';
-  const scrollDown = () => window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'smooth'});
-  const setProgress = n => { bar.style.width = (n / TOTAL_STEPS * 100) + '%'; };
   const faviconUrl = d => `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`;
   const initials = n => n.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0].toUpperCase()).join('');
+  const labelOf = (list, ids) => ids.map(id => (list.find(o => o.id === id) || {label: id}).label);
+  const validEmail = v => /^\S+@\S+\.\S+$/.test(v);
 
   async function api(path, body) {
     const opts = body === undefined ? {} : {
@@ -232,211 +109,40 @@
     return res.json().catch(() => ({ok: false}));
   }
 
-  // ---------- chat primitives ----------
-  async function bot(strong, muted, {small = false, hold = 520} = {}) {
-    const m = el('div', 'msg bot' + (small ? ' small' : ''));
-    const dots = el('span', 'typing');
-    dots.append(el('i'), el('i'), el('i'));
-    m.append(dots);
-    chat.append(m);
-    scrollDown();
-    await sleep(hold);
-    m.textContent = '';
-    m.append(document.createTextNode(strong));
-    if (muted) m.append(document.createTextNode(' '), el('span', 'muted', muted));
-    return m;
-  }
-
-  function userSay(text, iconNode) {
-    const m = el('div', 'msg user');
-    if (iconNode) m.append(iconNode);
-    m.append(document.createTextNode(text));
-    chat.append(m);
-    scrollDown();
-  }
-
-  function pillContent(o) {
-    const frag = document.createDocumentFragment();
-    if (o.avatar) frag.append(el('span', 'avatar', o.avatar));
-    if (o.favicon) {
-      const img = el('img', 'ico-img');
-      img.src = o.favicon; img.alt = ''; img.onerror = () => img.remove();
-      frag.append(img);
-    } else if (o.icon) frag.append(el('span', 'ico', o.icon));
-    if (o.title) {
-      const w = el('span', 'who');
-      w.append(el('b', '', o.label), el('span', '', o.title));
-      frag.append(w);
-    } else {
-      frag.append(el('span', '', o.label));
-      if (o.sub) frag.append(el('span', 'sub', o.sub));
+  async function save(fields) {
+    const body = {...fields};
+    if (S.fresh) body.fresh = true;
+    const res = await api('/api/welcome/save/', body);
+    if (res.ok) {
+      S.fresh = false;
+      try { localStorage.setItem('cl_visitor', JSON.stringify({token: res.token, name: res.first_name})); } catch (e) {}
     }
-    if (o.side) frag.append(el('span', 'side', o.side));
-    return frag;
+    return res;
   }
 
-  function makePills(opts, {multi = false, selected = [], stack = false} = {}) {
-    const wrap = el('div', 'options' + (stack ? ' stack' : ''));
-    const chosen = new Set(selected);
-    opts.forEach((o, i) => {
-      const b = el('button', 'pill' + (stack ? ' wide' : '') + (o.ghost ? ' ghost' : ''));
-      b.type = 'button';
-      b.style.animationDelay = (i * 55) + 'ms';
-      b.append(pillContent(o));
-      if (multi && chosen.has(o.id)) b.classList.add('on');
-      b.dataset.id = o.id;
-      wrap.append(b);
-    });
-    return {wrap, chosen};
-  }
-
-  // Single or multi choice. Resolves with array of chosen ids.
-  function askPills(opts, {multi = false, selected = [], stack = false, cta = 'Continue', skip = false, echo} = {}) {
-    return new Promise(resolve => {
-      const {wrap, chosen} = makePills(opts, {multi, selected, stack});
-      chat.append(wrap);
-      let row = null, go = null;
-      const finish = ids => {
-        wrap.remove(); if (row) row.remove();
-        const picked = opts.filter(o => ids.includes(o.id));
-        if (echo) echo(picked); else defaultEcho(picked);
-        resolve(ids);
-      };
-      wrap.addEventListener('click', e => {
-        const b = e.target.closest('.pill'); if (!b) return;
-        const id = b.dataset.id;
-        if (!multi) return finish([id]);
-        chosen.has(id) ? chosen.delete(id) : chosen.add(id);
-        b.classList.toggle('on');
-        go.disabled = !skip && chosen.size === 0;
-        go.textContent = chosen.size ? `${cta} · ${chosen.size}` : cta;
-      });
-      if (multi) {
-        row = el('div', 'cta-row');
-        go = el('button', 'cta', chosen.size ? `${cta} · ${chosen.size}` : cta);
-        go.type = 'button';
-        go.disabled = !skip && chosen.size === 0;
-        go.addEventListener('click', () => finish([...chosen]));
-        row.append(go);
-        if (skip) {
-          const s = el('button', 'cta light', 'Skip'); s.type = 'button';
-          s.addEventListener('click', () => finish([]));
-          row.append(s);
-        }
-        chat.append(row);
-      }
-      scrollDown();
-    });
-  }
-
-  function defaultEcho(picked) {
-    if (!picked.length) return userSay('Skip');
-    const lead = picked.slice(0, 3).map(o => (o.icon ? o.icon + ' ' : '') + o.label).join(', ');
-    userSay(picked.length > 3 ? `${lead} +${picked.length - 3}` : lead);
-  }
-
-  function askText({placeholder, type = 'text', button = 'Next', validate, prefill = '', skip = false}) {
-    return new Promise(resolve => {
-      const f = el('form', 'field');
-      f.noValidate = true;
-      const input = el('input'); input.type = type; input.placeholder = placeholder; input.value = prefill;
-      input.autocomplete = type === 'email' ? 'email' : 'off';
-      if (type === 'email') input.inputMode = 'email';
-      input.autocapitalize = type === 'text' ? 'words' : 'none';
-      const btn = el('button', '', button); btn.type = 'submit';
-      f.append(input, btn);
-      const err = el('div', 'field-error'); err.hidden = true;
-      let skipBtn = null;
-      if (skip) {
-        skipBtn = el('button', 'pill ghost wide', 'Skip'); skipBtn.type = 'button';
-        skipBtn.addEventListener('click', () => {
-          f.remove(); err.remove(); skipBtn.remove(); userSay('Skip'); resolve('');
-        });
-      }
-      chat.append(f, err);
-      if (skipBtn) chat.append(skipBtn);
-      scrollDown();
-      input.focus({preventScroll: true});
-      f.addEventListener('submit', e => {
-        e.preventDefault();
-        const v = input.value.trim();
-        const problem = validate ? validate(v) : (v ? '' : 'Required');
-        if (problem) { err.textContent = problem; err.hidden = false; return; }
-        f.remove(); err.remove(); if (skipBtn) skipBtn.remove();
-        resolve(v);
-      });
-    });
-  }
-
-  // Name search against the attendee directory.
-  function askSearch() {
-    return new Promise(resolve => {
-      const f = el('div', 'field');
-      f.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
-      const input = el('input'); input.type = 'search'; input.placeholder = 'Type your name or company';
-      input.autocomplete = 'off'; input.autocapitalize = 'words'; input.enterKeyHint = 'search';
-      f.append(input);
-      const results = el('div', 'results');
-      const none = el('button', 'pill ghost wide'); none.type = 'button';
-      none.append(el('span', 'ico', '🙋'), el('span', '', "I'm not on the list"));
-      none.style.animationDelay = '200ms';
-      chat.append(f, results, none);
-      scrollDown();
-      input.focus({preventScroll: true});
-
-      let timer = 0, seq = 0;
-      input.addEventListener('input', () => {
-        clearTimeout(timer);
-        const q = input.value.trim();
-        if (q.length < 2) { results.replaceChildren(); return; }
-        timer = setTimeout(async () => {
-          const mine = ++seq;
-          const data = await fetch('/api/welcome/search/?q=' + encodeURIComponent(q)).then(r => r.json()).catch(() => ({results: []}));
-          if (mine !== seq) return;
-          results.replaceChildren();
-          if (!data.results.length) { results.append(el('div', 'empty', 'No match. Try another spelling, or pick “not on the list”.')); return; }
-          data.results.forEach((p, i) => {
-            const b = el('button', 'pill wide'); b.type = 'button';
-            b.style.animationDelay = (i * 40) + 'ms';
-            b.append(pillContent({avatar: initials(p.name), label: p.name, title: [p.title, p.company].filter(Boolean).join(' · ')}));
-            b.addEventListener('click', () => { cleanup(); resolve({id: p.id, name: p.name}); });
-            results.append(b);
-          });
-        }, 160);
-      });
-      none.addEventListener('click', () => { cleanup(); resolve(null); });
-      function cleanup() { f.remove(); results.remove(); none.remove(); }
-    });
-  }
-
-  // ---------- notification ----------
-  // Same EmailJS mechanism as the workspace request on the home page.
+  // ---------- notification (same EmailJS path as the concierge requests) ----------
   const EMAILJS_PUBLIC_KEY = '0ocTm7GezyqScofEq';
   const EMAILJS_SERVICE_ID = 'service_3pw84b6';
   const EMAILJS_TEMPLATE_ID = 'template_gink26n';
   try { emailjs.init({publicKey: EMAILJS_PUBLIC_KEY}); } catch (e) {}
 
   async function notifyWelcome(info) {
-    const labelOf = (list, ids) => ids.map(id => (list.find(o => o.id === id) || {label: id}).label).join(', ') || 'n/a';
+    const list = (arr, opts) => labelOf(opts, arr).join(', ') || 'n/a';
     const summary = [
       `title: ${info.title || 'n/a'}`,
       `domain: ${info.domain || 'n/a'}`,
       `on attendee list: ${info.listed ? 'yes' : 'no'}`,
-      `modality focus: ${labelOf(MODALITIES, info.modalities)}`,
-      `programs: ${labelOf(PHASES, info.phases)}`,
-      `geographies: ${labelOf(GEOS, info.geos)}`,
+      `modality focus: ${list(info.modalities, MODALITIES)}`,
+      `programs: ${list(info.phases, PHASES)}`,
+      `geographies: ${labelOf(GEOS, info.geos).join(', ') || 'n/a'}`,
       `strongest case studies/capabilities: ${info.strengths || 'n/a'}`,
       `cannot partner with: ${info.exclusions || 'n/a'}`,
     ].join(', ');
     try {
-      // Race a timeout so a slow send can't hold the visitor on this screen.
       await Promise.race([
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
           subject: 'BioLens Concierge: Welcome questions completed',
-          guest_name: info.name,
-          guest_email: info.email,
-          organization: info.company,
-          details_summary: summary,
+          guest_name: info.name, guest_email: info.email, organization: info.company, details_summary: summary,
         }),
         sleep(4000),
       ]);
@@ -445,21 +151,403 @@
     }
   }
 
-  // ---------- persistence ----------
-  async function save(fields) {
-    const body = {...fields};
-    if (state.fresh) { body.fresh = true; }
-    const res = await api('/api/welcome/save/', body);
-    if (res.ok) {
-      state.fresh = false;
-      try { localStorage.setItem('cl_visitor', JSON.stringify({token: res.token, name: res.first_name})); } catch (e) {}
-    }
-    return res;
+  // ---------- chrome ----------
+  const bar = document.getElementById('ob-bar');
+  const progress = document.getElementById('ob-progress');
+  const segs = document.getElementById('ob-segs');
+  segs.innerHTML = Array.from({length: TOTAL}, () => '<i></i>').join('');
+  window.addEventListener('scroll', () => { bar.dataset.scrolled = window.scrollY > 4 ? 'true' : 'false'; }, {passive: true});
+
+  function setProgress(step) {
+    progress.hidden = false;
+    document.getElementById('ob-step').innerHTML = `Step <b>${step + 1}</b> of ${TOTAL}`;
+    document.getElementById('ob-label').textContent = STEPS[step].label;
+    [...segs.children].forEach((s, i) => {
+      s.dataset.on = i <= step ? 'true' : 'false';
+      s.dataset.now = i === step ? 'true' : 'false';
+    });
   }
 
-  // ---------- the conversation ----------
-  async function run() {
-    // Cookie missing but localStorage remembers us (e.g. cookies purged)? Restore silently.
+  // ---------- summaries of answered steps ----------
+  function replyFor(i) {
+    const key = STEPS[i].key;
+    if (key === 'who') return `<span class="reply">${esc(S.name)}</span>`;
+    if (key === 'company') {
+      const fav = S.domain && !S.companyOther ? `<img src="${faviconUrl(S.domain)}" alt="" width="16" height="16" onerror="this.remove()">` : ico('organisation', 16);
+      return `<span class="reply">${fav}${esc(S.company)}</span>`;
+    }
+    if (key === 'email') return `<span class="reply">${ico('mail', 16)}${esc(S.useDirEmail ? S.person.email : S.email)}</span>`;
+    const pick = (arr, opts) => {
+      if (!arr.length) return '<span class="reply reply--muted">Skipped</span>';
+      const o = labelOf(opts, arr);
+      const icons = arr.slice(0, 3).map(id => ico((opts.find(x => x.id === id) || {}).icon || 'check', 16)).join('');
+      return `<span class="reply"><span class="reply__icons">${icons}</span>${esc(o.join(', '))}</span>`;
+    };
+    if (key === 'modalities') return pick(S.modalities, MODALITIES);
+    if (key === 'phases') return pick(S.phases, PHASES);
+    if (key === 'geos') return `<span class="reply${S.geos.length ? '' : ' reply--muted'}">${S.geos.length ? esc(labelOf(GEOS, S.geos).join(', ')) : 'Skipped'}</span>`;
+    if (key === 'strengths') return `<span class="reply${S.strengths ? '' : ' reply--muted'}">${S.strengths ? esc(S.strengths) : 'Skipped'}</span>`;
+    return `<span class="reply${S.exclusions ? '' : ' reply--muted'}">${S.exclusions ? esc(S.exclusions) : 'Skipped'}</span>`;
+  }
+
+  function summaries() {
+    let out = '';
+    for (let i = 0; i < S.step; i++) {
+      out += `<div class="qa"><div class="qa__q"><span>${esc(STEPS[i].q)}</span><button type="button" class="qa__edit" data-edit="${i}" aria-label="Change: ${esc(STEPS[i].label)}">Change</button></div>${replyFor(i)}</div>`;
+    }
+    return out;
+  }
+
+  // ---------- question bodies ----------
+  function chipHtml(o, on) {
+    return `<button type="button" class="chip" data-id="${o.id}" aria-pressed="${on}">${o.icon ? ico(o.icon, 18) : ''}<span>${esc(o.label)}</span><span class="chip__check">${on ? ico('check', 16) : ''}</span></button>`;
+  }
+
+  function actions(primary, count, withSkip) {
+    return `<div class="q__actions"><button type="button" class="btn btn--primary" id="go">${primary}${count ? ` <span class="count">${count}</span>` : ''}</button>${withSkip ? '<button type="button" class="btn btn--quiet" id="skip">Skip</button>' : ''}</div>`;
+  }
+
+  function whoBody() {
+    if (S.mode === 'manual') {
+      return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">Hi <span class="wave">${ico('hand', 24)}</span> Who are you?<span class="hint">Tell us who you are.</span></h1></div>
+        <div><label class="field-label" for="f-name">Your full name</label><div class="field"><input id="f-name" class="field__input field__input--plain" autocomplete="name" autocapitalize="words" value="${esc(S.name)}"></div></div>
+        <div class="q__actions"><button type="button" class="btn btn--primary" id="go" disabled>Continue</button><button type="button" class="btn btn--quiet" id="back-list">Back to the list</button></div></section>`;
+    }
+    return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">Hi <span class="wave">${ico('hand', 24)}</span> Who are you?<span class="hint">Find yourself in the attendee list.</span></h1></div>
+      <div class="field">${ico('search', 20, 'field__lead')}<input id="f-search" class="field__input" type="search" placeholder="Type your name or company" autocomplete="off" autocapitalize="words" enterkeyhint="search" value="${esc(S.query)}" data-empty="${S.query ? 'false' : 'true'}"></div>
+      <div id="results" class="results"></div>
+      <button type="button" class="option option--quiet" id="not-listed"><span class="option__icon">${ico('userPlus', 18)}</span><span class="option__main">I’m not on the list</span>${ico('chevronRight', 18, 'option__chev')}</button></section>`;
+  }
+
+  function companyBody() {
+    if (S.listed && !S.companyOther) {
+      const c = S.person.company;
+      const fav = c.domain ? `<img src="${faviconUrl(c.domain)}" alt="" width="20" height="20" onerror="this.remove()">` : ico('organisation', 18);
+      return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">Is this your company?</h1></div>
+        <div class="options">
+          <button type="button" class="option" data-company="yes"><span class="option__icon">${fav}</span><span class="option__main">${esc(c.name || 'Not listed')}</span>${c.domain ? `<span class="option__aside mono">${esc(c.domain)}</span>` : ''}</button>
+          <button type="button" class="option option--quiet" data-company="other"><span class="option__icon">${ico('pencil', 18)}</span><span class="option__main">Other</span>${ico('chevronRight', 18, 'option__chev')}</button>
+        </div></section>`;
+    }
+    return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">Which company are you with?</h1></div>
+      <div><label class="field-label" for="f-company">Company name</label><div class="field"><input id="f-company" class="field__input field__input--plain" autocomplete="organization" autocapitalize="words" value="${esc(S.company)}"></div></div>
+      <div class="q__actions"><button type="button" class="btn btn--primary" id="go" disabled>Continue</button></div></section>`;
+  }
+
+  function emailBody() {
+    if (S.listed && S.person.email && !S.emailOther) {
+      return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">Is this your email?</h1></div>
+        <div class="options">
+          <button type="button" class="option" data-email="yes"><span class="option__icon">${ico('mail', 18)}</span><span class="option__main clamp-1">${esc(S.person.email)}</span></button>
+          <button type="button" class="option option--quiet" data-email="other"><span class="option__icon">${ico('pencil', 18)}</span><span class="option__main">Use another</span>${ico('chevronRight', 18, 'option__chev')}</button>
+        </div></section>`;
+    }
+    return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">What’s your email?</h1></div>
+      <div><label class="field-label" for="f-email">Work email</label><div class="field"><input id="f-email" class="field__input field__input--plain" type="email" inputmode="email" autocomplete="email" autocapitalize="none" value="${esc(S.email)}"></div><div class="field-error" id="email-err" hidden>${ico('info', 14)} Enter an email like name@company.com</div></div>
+      <div class="q__actions"><button type="button" class="btn btn--primary" id="go" disabled>Continue</button></div></section>`;
+  }
+
+  function chipsBody(title, hint, opts, selected, grid) {
+    return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">${esc(title)}<span class="hint">${esc(hint)}</span></h1></div>
+      <div class="${grid ? 'grid-2' : 'chips'}" id="chips">${opts.map(o => chipHtml(o, selected.includes(o.id))).join('')}</div>
+      ${actions('Continue', selected.length || '', true)}</section>`;
+  }
+
+  function geosBody() {
+    return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">Where should we look?<span class="hint">Pick your regions.</span></h1></div>
+      <div class="regionmap"><svg id="map" viewBox="-8 -8 ${MAP_W + 16} ${MAP_H + 16}" aria-hidden="true"></svg>
+        <div class="regionmap__legend"><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:8px;background:var(--teal)"></span> Selected</span><span class="mono" id="map-n">${S.geos.length} of 5</span></div></div>
+      <div class="chips" id="chips">${GEOS.map(g => `<button type="button" class="chip region-chip" data-id="${g.id}" aria-pressed="${S.geos.includes(g.id)}"><span class="code">${g.code}</span><span class="name">${esc(g.label)}</span><span class="chip__check">${S.geos.includes(g.id) ? ico('check', 16) : ''}</span></button>`).join('')}</div>
+      ${actions('Continue', S.geos.length || '', true)}</section>`;
+  }
+
+  function textBody(title, hint, id, value, placeholder, primary) {
+    return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">${esc(title)}<span class="hint">${esc(hint)}</span></h1></div>
+      <div><label class="field-label" for="${id}">Optional</label><textarea id="${id}" class="textarea" maxlength="1000" placeholder="${esc(placeholder)}">${esc(value)}</textarea></div>
+      <div class="q__actions"><button type="button" class="btn btn--primary" id="go">${primary}</button><button type="button" class="btn btn--quiet" id="skip">Skip</button></div></section>`;
+  }
+
+  // ---------- render ----------
+  function render() {
+    const i = S.step;
+    setProgress(i);
+    const key = STEPS[i].key;
+    let body = '';
+    if (key === 'who') body = whoBody();
+    else if (key === 'company') body = companyBody();
+    else if (key === 'email') body = emailBody();
+    else if (key === 'modalities') body = chipsBody('Your modality focus', S.modalities.length && S.listed ? 'Pre-filled for ' + S.company + '. Tweak it.' : 'Pick all that fit.', MODALITIES, S.modalities, false);
+    else if (key === 'phases') body = chipsBody('Which programs are you after?', 'Pick all that fit.', PHASES, S.phases, true);
+    else if (key === 'geos') body = geosBody();
+    else if (key === 'strengths') body = textBody('What are your strongest case studies and capabilities?', 'A line or two is plenty.', 'f-strengths', S.strengths, 'e.g. ADC conjugation at 100 L scale', 'Continue');
+    else body = textBody('What kinds of companies can you absolutely not partner with?', 'For example conflicts, competitors or regions.', 'f-exclusions', S.exclusions, 'e.g. competitors of an anchor client', 'Finish');
+    main.innerHTML = summaries() + body;
+    bind(key);
+    const t = document.getElementById('q-title');
+    if (t && S.step > 0) t.scrollIntoView({block: 'start', behavior: REDUCED ? 'auto' : 'smooth'});
+  }
+
+  function goto(step) { S.step = step; render(); }
+
+  main.addEventListener('click', e => {
+    const edit = e.target.closest('[data-edit]');
+    if (!edit) return;
+    const i = +edit.dataset.edit;
+    if (i === 0) { S.mode = 'search'; S.query = ''; S.results = null; S.person = null; S.listed = false; S.companyOther = false; S.emailOther = false; S.useDirEmail = false; }
+    if (i === 1) S.companyOther = false;
+    if (i === 2) S.emailOther = false;
+    goto(i);
+  });
+
+  function bind(key) {
+    const go = document.getElementById('go');
+    const skip = document.getElementById('skip');
+    if (key === 'who') {
+      if (S.mode === 'manual') {
+        const f = document.getElementById('f-name');
+        const sync = () => { go.disabled = !f.value.trim(); };
+        f.addEventListener('input', sync); sync();
+        const submit = () => {
+          const v = f.value.trim(); if (!v) return;
+          S.name = v; S.person = {id: '', name: v}; S.listed = false; S.title = ''; S.segment = ''; S.domain = '';
+          goto(1);
+        };
+        go.addEventListener('click', submit);
+        f.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+        document.getElementById('back-list').addEventListener('click', () => { S.mode = 'search'; render(); });
+        f.focus({preventScroll: true});
+      } else {
+        bindSearch();
+      }
+    } else if (key === 'company') {
+      if (S.listed && !S.companyOther) {
+        main.querySelectorAll('[data-company]').forEach(b => b.addEventListener('click', () => {
+          if (b.dataset.company === 'yes') {
+            S.company = S.person.company.name || ''; S.domain = S.person.company.domain || '';
+            S.modalities = S.person.modalities || []; S.segment = S.person.segment; S.title = S.person.title;
+            goto(2);
+          } else { S.companyOther = true; render(); }
+        }));
+      } else {
+        const f = document.getElementById('f-company');
+        const sync = () => { go.disabled = !f.value.trim(); };
+        f.addEventListener('input', sync); sync();
+        const submit = () => {
+          const v = f.value.trim(); if (!v) return;
+          if (S.companyOther) { S.modalities = []; S.domain = ''; S.segment = ''; }
+          S.company = v; goto(2);
+        };
+        go.addEventListener('click', submit);
+        f.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+        f.focus({preventScroll: true});
+      }
+    } else if (key === 'email') {
+      if (S.listed && S.person.email && !S.emailOther) {
+        main.querySelectorAll('[data-email]').forEach(b => b.addEventListener('click', async () => {
+          if (b.dataset.email === 'yes') { S.useDirEmail = true; await persistIdentity(); goto(3); }
+          else { S.emailOther = true; S.useDirEmail = false; render(); }
+        }));
+      } else {
+        const f = document.getElementById('f-email');
+        const err = document.getElementById('email-err');
+        const sync = () => { go.disabled = !f.value.trim(); if (validEmail(f.value.trim())) { err.hidden = true; f.removeAttribute('aria-invalid'); } };
+        f.addEventListener('input', sync); sync();
+        const submit = async () => {
+          const v = f.value.trim();
+          if (!validEmail(v)) { err.hidden = false; f.setAttribute('aria-invalid', 'true'); return; }
+          S.email = v; S.useDirEmail = false; await persistIdentity(); goto(3);
+        };
+        go.addEventListener('click', submit);
+        f.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+        f.focus({preventScroll: true});
+      }
+    } else if (key === 'modalities' || key === 'phases') {
+      bindChips(S[key], arr => { S[key] = arr; }, async () => { await save({[key]: S[key]}); goto(S.step + 1); });
+    } else if (key === 'geos') {
+      drawMap();
+      bindChips(S.geos, arr => { S.geos = arr; drawMap(); const n = document.getElementById('map-n'); if (n) n.textContent = arr.length + ' of 5'; }, async () => { await save({geographies: S.geos}); goto(S.step + 1); });
+      document.getElementById('map').addEventListener('click', e => {
+        const code = e.target.dataset && e.target.dataset.r;
+        if (!code) return;
+        main.querySelector(`.chip[data-id="${GEOS.find(g => g.code === code).id}"]`).click();
+      });
+    } else if (key === 'strengths') {
+      const f = document.getElementById('f-strengths');
+      go.addEventListener('click', async () => { S.strengths = f.value.trim(); await save({strengths: S.strengths}); goto(S.step + 1); });
+      skip.addEventListener('click', async () => { S.strengths = ''; await save({strengths: ''}); goto(S.step + 1); });
+    } else {
+      const f = document.getElementById('f-exclusions');
+      const finish = v => { S.exclusions = v; finishFlow(); };
+      go.addEventListener('click', () => finish(f.value.trim()));
+      skip.addEventListener('click', () => finish(''));
+    }
+  }
+
+  function bindChips(current, onChange, onNext) {
+    const go = document.getElementById('go');
+    const skip = document.getElementById('skip');
+    const chosen = new Set(current);
+    const sync = () => {
+      const n = chosen.size;
+      go.innerHTML = 'Continue' + (n ? ` <span class="count">${n}</span>` : '');
+    };
+    main.querySelector('#chips').addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      const id = b.dataset.id;
+      const on = !chosen.has(id);
+      on ? chosen.add(id) : chosen.delete(id);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.querySelector('.chip__check').innerHTML = on ? ico('check', 16) : '';
+      onChange([...chosen]); sync();
+    });
+    go.addEventListener('click', onNext);
+    skip.addEventListener('click', () => { chosen.clear(); onChange([]); onNext(); });
+  }
+
+  // ---------- who: search ----------
+  function bindSearch() {
+    const input = document.getElementById('f-search');
+    const results = document.getElementById('results');
+    let timer = 0, seq = 0;
+    const hl = (text, q) => {
+      let out = esc(text);
+      q.toLowerCase().split(/\s+/).filter(Boolean).forEach(t => {
+        out = out.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
+      });
+      return out;
+    };
+    const paint = (q, data) => {
+      if (!data) { results.innerHTML = ''; return; }
+      if (!data.length) {
+        results.innerHTML = `<div class="empty">${ico('search', 28, 'empty__art')}<div class="empty__title">No match</div><div class="empty__body">Try another spelling, or pick “I’m not on the list”.</div></div>`;
+        return;
+      }
+      results.innerHTML = `<div class="results__meta">${data.length} ${data.length === 1 ? 'match' : 'matches'}</div><div class="list">` + data.map(p =>
+        `<button type="button" class="row result" data-id="${esc(p.id)}"><span class="avatar">${esc(initials(p.name))}</span><span class="row__main"><span class="row__title">${hl(p.name, q)}</span><span class="row__sub">${hl([p.title, p.company].filter(Boolean).join(' · '), q)}</span></span>${ico('chevronRight', 18, 'row__chev')}</button>`).join('') + '</div>';
+    };
+    const run = async q => {
+      const mine = ++seq;
+      const data = await fetch('/api/welcome/search/?q=' + encodeURIComponent(q)).then(r => r.json()).catch(() => ({results: []}));
+      if (mine !== seq) return;
+      S.results = data.results;
+      paint(q, data.results);
+    };
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      S.query = input.value;
+      input.dataset.empty = input.value ? 'false' : 'true';
+      const q = input.value.trim();
+      if (q.length < 2) { seq++; S.results = null; paint(q, null); return; }
+      timer = setTimeout(() => run(q), 160);
+    });
+    if (S.query.trim().length >= 2 && S.results) paint(S.query.trim(), S.results);
+    results.addEventListener('click', async e => {
+      const b = e.target.closest('.result'); if (!b) return;
+      const hit = S.results.find(p => String(p.id) === b.dataset.id);
+      b.disabled = true;
+      const res = await api('/api/welcome/person/' + encodeURIComponent(hit.id) + '/');
+      if (!res.person) { b.disabled = false; return; }
+      S.person = res.person; S.listed = true; S.name = hit.name; S.title = res.person.title;
+      S.companyOther = false; S.emailOther = false; S.useDirEmail = false;
+      goto(1);
+    });
+    document.getElementById('not-listed').addEventListener('click', () => { S.mode = 'manual'; S.name = ''; render(); });
+    if (!S.query) input.focus({preventScroll: true});
+  }
+
+  async function persistIdentity() {
+    await save({
+      name: S.name, title: S.title, company: S.company, company_domain: S.domain, segment: S.segment,
+      directory_id: (S.person && S.person.id) || '', email: S.email, use_directory_email: S.useDirEmail,
+    });
+  }
+
+  // ---------- region map ----------
+  const PARSED = MAP_DOTS.split(';').map(t => { const [x, y, r] = t.split(','); return [+x, +y, MAP_CODES[+r] || null]; });
+  function drawMap() {
+    const svg = document.getElementById('map'); if (!svg) return;
+    const sel = new Set(S.geos.map(id => GEOS.find(g => g.id === id).code));
+    svg.innerHTML = PARSED.map(([x, y, r]) => {
+      const on = r && sel.has(r);
+      return `<circle cx="${x}" cy="${y}" r="${on ? 4.4 : 3.5}" fill="${on ? 'var(--teal)' : r ? '#C9D0D1' : '#E3E7E8'}"${r ? ` data-r="${r}" style="cursor:pointer"` : ''}/>`;
+    }).join('');
+  }
+
+  // ---------- finish ----------
+  let prepDone = Promise.resolve();
+  async function finishFlow() {
+    renderPreparing();
+    const done = await save({exclusions: S.exclusions, completed: true});
+    const notified = notifyWelcome({
+      name: S.name, title: S.title, company: S.company, domain: S.domain,
+      email: S.useDirEmail ? (S.person.email || '') : S.email, listed: S.listed,
+      modalities: S.modalities, phases: S.phases, geos: S.geos, strengths: S.strengths, exclusions: S.exclusions,
+    });
+    await Promise.all([prepDone, notified]);
+    location.replace('/');
+  }
+
+  function renderPreparing() {
+    progress.hidden = true;
+    document.querySelector('.ob-field').style.display = 'none';
+    const focus = labelOf(MODALITIES, S.modalities).join(' · ');
+    const scope = [...labelOf(PHASES, S.phases), ...S.geos.map(id => GEOS.find(g => g.id === id).code)].join(' · ');
+    const steps = [
+      {label: 'Confirming your profile', detail: [S.name, S.company].filter(Boolean).join(' · ')},
+      {label: `Picking sessions for ${S.company || 'you'}`, detail: focus},
+      {label: 'Building searches around what you do', detail: scope},
+      {label: 'Setting up your concierge desk', detail: 'CDMO Live Americas · Boston'},
+    ];
+    main.innerHTML = `<div class="prep" aria-busy="true">
+      <div class="prep__art"><svg id="prep-art" viewBox="0 0 400 168" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="width:100%;height:100%;display:block"></svg></div>
+      <div class="prep__head"><span class="eyebrow eyebrow--muted">CDMO Live</span><h1 class="t-h1">Preparing your visit</h1></div>
+      <div class="steps" id="prep-steps">${steps.map((s, i) => `<div class="step" data-state="${i === 0 ? 'active' : 'idle'}"><span class="step__mark">${ico(i === 0 ? 'open' : 'open', 20)}</span><div><div class="step__label">${esc(s.label)}</div>${s.detail ? `<div class="step__detail">${esc(s.detail)}</div>` : ''}</div></div>`).join('')}</div>
+      <div class="bar" aria-hidden="true"><i id="prep-bar" style="width:6%"></i></div></div>`;
+    window.scrollTo(0, 0);
+    drawArt(0);
+    const beat = REDUCED ? 450 : 900;
+    const els = [...document.querySelectorAll('#prep-steps .step')];
+    prepDone = new Promise(resolve => {
+      steps.forEach((_, n) => setTimeout(() => {
+        els[n].dataset.state = 'done'; els[n].querySelector('.step__mark').innerHTML = ico('resolved', 20);
+        if (els[n + 1]) els[n + 1].dataset.state = 'active';
+        document.getElementById('prep-bar').style.width = Math.round((n + 1) / steps.length * 100) + '%';
+        drawArt(n + 1);
+      }, beat * (n + 1)));
+      setTimeout(resolve, beat * steps.length + 650);
+    });
+  }
+
+  // a small node network that fills in as the steps complete
+  const NODES = [[40,120],[90,60],[130,110],[180,40],[200,90],[240,130],[270,60],[300,100],[340,40],[360,120],[150,150],[320,150]];
+  const EDGES = [[0,1],[1,2],[2,4],[1,3],[3,4],[4,5],[4,6],[6,7],[7,8],[7,9],[5,7],[2,10],[7,11],[8,6]];
+  function drawArt(stage) {
+    const svg = document.getElementById('prep-art'); if (!svg) return;
+    const shown = EDGES.slice(0, Math.ceil(EDGES.length * Math.min(1, (stage + 0.35) / 4)));
+    const used = i => shown.some(e => e.includes(i));
+    svg.innerHTML = shown.map(([a, b]) => `<line x1="${NODES[a][0]}" y1="${NODES[a][1]}" x2="${NODES[b][0]}" y2="${NODES[b][1]}" stroke="var(--teal)" stroke-width="1.2" opacity=".7"/>`).join('') +
+      NODES.map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${used(i) ? 4 : 2.2}" fill="${used(i) ? 'var(--teal-deep)' : 'var(--ink-3)'}"/>`).join('');
+  }
+
+  // ---------- dot field behind the first screens ----------
+  (function field() {
+    const c = document.getElementById('ob-canvas'); if (!c) return;
+    const w = c.clientWidth || window.innerWidth, h = 620, dpr = window.devicePixelRatio || 1;
+    c.width = w * dpr; c.height = h * dpr;
+    const g = c.getContext('2d'); g.scale(dpr, dpr);
+    g.fillStyle = '#C9D0D1';
+    for (let x = 12; x < w; x += 28) for (let y = 12; y < h; y += 28) { g.beginPath(); g.arc(x, y, 1, 0, 6.3); g.fill(); }
+    const pts = [[0.78,0.1],[0.9,0.2],[0.72,0.28],[0.86,0.36],[0.6,0.18]];
+    g.strokeStyle = 'rgba(7,142,147,.35)'; g.fillStyle = '#078E93'; g.lineWidth = 1;
+    pts.forEach(([a, b], i) => {
+      const x = a * w, y = b * h;
+      if (i) { g.beginPath(); g.moveTo(pts[i - 1][0] * w, pts[i - 1][1] * h); g.lineTo(x, y); g.stroke(); }
+      g.beginPath(); g.arc(x, y, 2.4, 0, 6.3); g.fill();
+    });
+  })();
+
+  // ---------- boot ----------
+  (async function boot() {
     if (!SWITCHING) {
       try {
         const saved = JSON.parse(localStorage.getItem('cl_visitor') || 'null');
@@ -469,123 +557,9 @@
         }
       } catch (e) {}
     }
-
-    // 1: who
-    setProgress(0);
-    await bot('Hi 👋 Who are you?', 'Find yourself in the attendee list.');
-    const hit = await askSearch();
-    let person = null, company, domain = '', segment = '', email = '', useDirEmail = false, modalities = [], title = '';
-
-    if (hit) {
-      userSay(hit.name);
-      const res = await api('/api/welcome/person/' + encodeURIComponent(hit.id) + '/');
-      person = res.person;
-    }
-    setProgress(1);
-
-    if (person) {
-      title = person.title; segment = person.segment; modalities = person.modalities || [];
-      // 2: company
-      await bot('Is this your company?');
-      const cOpts = [
-        {id: 'yes', label: person.company.name, favicon: person.company.domain ? faviconUrl(person.company.domain) : '', icon: '🏢', side: person.company.domain},
-        {id: 'other', label: 'Other', icon: '✏️', ghost: true},
-      ];
-      const [c] = await askPills(cOpts, {stack: true, echo: () => {}});
-      if (c === 'yes') {
-        company = person.company.name; domain = person.company.domain;
-        userSay(company, domain ? Object.assign(el('img'), {src: faviconUrl(domain)}) : null);
-      } else {
-        await bot('Which company?', '', {small: true, hold: 300});
-        company = await askText({placeholder: 'Company name'});
-        modalities = []; domain = ''; segment = '';
-        userSay(company);
-      }
-      setProgress(2);
-
-      // 3: email
-      if (person.email) {
-        await bot('Is this your email?');
-        const [e] = await askPills([
-          {id: 'yes', label: person.email, icon: '✉️'},
-          {id: 'other', label: 'Use another', icon: '✏️', ghost: true},
-        ], {stack: true, echo: picked => picked[0].id === 'yes' ? userSay('✉️ Yes, that’s me') : null});
-        if (e === 'yes') useDirEmail = true;
-      }
-      if (!useDirEmail) {
-        await bot('Your work email?', '', {small: !!person.email});
-        email = await askText({placeholder: 'name@company.com', type: 'email', validate: v => /^\S+@\S+\.\S+$/.test(v) ? '' : 'Enter a valid email'});
-        userSay('✉️ ' + email);
-      }
-    } else {
-      // Not on the list: three quick questions.
-      userSay('🙋 Not on the list');
-      await bot('No problem. Your name?');
-      const name = await askText({placeholder: 'Full name'});
-      userSay(name);
-      person = {id: '', name};
-      await bot('Your company?');
-      company = await askText({placeholder: 'Company name'});
-      userSay(company);
-      await bot('Your work email?');
-      email = await askText({placeholder: 'name@company.com', type: 'email', validate: v => /^\S+@\S+\.\S+$/.test(v) ? '' : 'Enter a valid email'});
-      userSay('✉️ ' + email);
-      setProgress(2);
-    }
-
-    await save({
-      name: person.name, title, company, company_domain: domain, segment,
-      directory_id: person.id || '', email, use_directory_email: useDirEmail,
-    });
-    setProgress(3);
-
-    // 4: modality focus (prefilled from research)
-    const prefilled = modalities.length > 0;
-    await bot('Your modality focus', prefilled ? 'Pre-filled for ' + company + '. Tweak it.' : 'Pick all that apply.');
-    const mods = await askPills(MODALITIES, {multi: true, selected: modalities, skip: true});
-    await save({modalities: mods});
-    setProgress(4);
-
-    // 5: program stage
-    await bot('Which programs are you after?', 'Pick all that fit.');
-    const phases = await askPills(PHASES, {multi: true, skip: true});
-    await save({phases});
-    setProgress(5);
-
-    // 6: geography
-    await bot('Where should we look?', 'Pick your regions.');
-    const geos = await askPills(GEOS, {multi: true, skip: true});
-    await save({geographies: geos});
-    setProgress(6);
-
-    // 7: strongest case studies / capabilities (optional)
-    await bot('What are your strongest case studies and capabilities?', 'Optional. A line or two is plenty.');
-    const strengths = await askText({placeholder: 'e.g. ADC conjugation at 100L scale', button: 'Next', skip: true, validate: () => ''});
-    if (strengths) userSay(strengths);
-    await save({strengths});
-    setProgress(7);
-
-    // 8: red lines (optional)
-    await bot('What kinds of companies can you absolutely not partner with?', 'Optional, e.g. conflicts, competitors, regions.');
-    const exclusions = await askText({placeholder: 'e.g. competitors of our anchor client', button: 'Finish', skip: true, validate: () => ''});
-    if (exclusions) userSay(exclusions);
-    const done = await save({exclusions, completed: true});
-    setProgress(8);
-
-    const first = (done.first_name || person.name.split(' ')[0] || '').trim();
-    const finalEmail = useDirEmail ? (person.email || '') : email;
-    const notified = notifyWelcome({
-      name: person.name, title, company, domain, email: finalEmail,
-      listed: !!person.id, modalities: mods, phases, geos, strengths, exclusions,
-    });
-    await bot(`You’re all set${first ? ', ' + first : ''} ✨`, 'Opening your concierge…');
-    await Promise.all([sleep(1400), notified]);
-    location.replace('/');
-  }
-
-  run();
+    render();
+  })();
 })();
 </script>
-{% include 'concierge/_particles.html' %}
 </body>
 </html>

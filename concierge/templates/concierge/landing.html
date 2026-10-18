@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="csrf-token" content="{{ csrf_token }}">
 <title>BioLens Concierge | Lunartree</title>
 <link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
@@ -14,1695 +14,673 @@
         person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
     })
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+{% include 'concierge/_design.html' %}
 <style>
-  :root{
-    --ink:#0f172a;
-    --ink-dim:#475569;
-    --ink-faint:#94a3b8;
-    --bg:#f1f5f9;
-    --panel:#ffffff;
-    --panel-hover:#f8fafc;
-    --line:rgba(15,23,42,0.10);
-    --line-strong:rgba(15,23,42,0.18);
-    --accent:#3654e0;
-    --accent-bright:#2643c2;
-    --accent-soft:rgba(54,84,224,0.08);
-    --error:#c23b34;
-    --radius:16px;
-    --radius-sm:10px;
-    --shadow-card:0 1px 2px rgba(24,23,15,.04), 0 10px 28px -14px rgba(24,23,15,.14);
-    --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
-  }
-
-  body{background:linear-gradient(180deg,#ffffff 0%,#f1f5f9 45%,#e2e8f0 100%) fixed;}
-  #particles-bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
-  #particles-bg canvas{display:block;}
-  .brand-logo{
-    width:38px;height:38px;border-radius:11px;display:block;
-    background:#fff;padding:3px;
-    border:1px solid var(--line);
-    box-shadow:0 2px 6px rgba(15,23,42,.10), 0 8px 20px -8px rgba(15,23,42,.25);
-  }
-  *{box-sizing:border-box;}
-  [hidden]{display:none;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    font-weight:400;
-    min-height:100vh;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{background:var(--accent);color:#ffffff;}
-
-  .app{
-    position:relative;z-index:1;
-    max-width:1120px;
-    margin:0 auto;
-    min-height:100vh;
-    padding:40px 28px 80px;
-    display:flex;
-    flex-direction:column;
-  }
-  .narrow{max-width:480px;width:100%;margin:0 auto;}
-  .medium{max-width:720px;width:100%;margin:0 auto;}
-
-  /* ---------- Top bar ---------- */
-  .topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    row-gap:10px;
-    margin-bottom:56px;
-  }
-  .topbar .brand-left{
-    display:flex;align-items:center;gap:10px;
-  }
-  .topbar img.logo{
-    width:38px;height:38px;
-    border-radius:11px;
-    display:block;
-    background:#fff;padding:3px;
-    border:1px solid var(--line);
-    box-shadow:0 2px 6px rgba(15,23,42,.10), 0 8px 20px -8px rgba(15,23,42,.25);
-  }
-  .topbar .brand-name{
-    font-weight:700;
-    font-size:17px;
-    color:var(--ink);
-    letter-spacing:-0.01em;
-  }
-  .topbar .pill{
-    font-size:11px;
-    color:var(--ink-dim);
-    border:1px solid var(--line);
-    border-radius:999px;
-    padding:6px 14px;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-  }
-
-  /* ---------- Screens ---------- */
-  .screen{display:none;flex:1;flex-direction:column;animation:fade .5s ease;}
-  .screen.active{display:flex;}
-  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-
-  .eyebrow{
-    font-size:11px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--accent-bright);
-    margin:0 0 10px;
-    font-weight:600;
-  }
-  h1.title{
-    font-weight:800;
-    font-size:30px;
-    margin:0 0 14px;
-    color:var(--ink);
-    letter-spacing:-0.03em;
-  }
-  p.lede{
-    color:var(--ink-dim);
-    font-size:15.5px;
-    max-width:52ch;
-    margin:0 0 32px;
-  }
-
-  /* ---------- Splash ---------- */
-  #screen-splash{align-items:center;justify-content:center;text-align:center;}
-  #screen-splash .rings{
-    width:56px;height:56px;border-radius:50%;
-    border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    margin-bottom:28px;
-    position:relative;
-  }
-  #screen-splash .rings::before{
-    content:"";
-    position:absolute;inset:-1px;
-    border-radius:50%;
-    border:1px solid transparent;
-    border-top-color:var(--accent);
-    animation:spin 1.4s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
-  #screen-splash .status{
-    font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);
-  }
-
-  /* ---------- Intake ---------- */
-  .field{margin-bottom:22px;}
-  .field label{
-    display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-faint);margin-bottom:10px;
-  }
-  input[type=text], input[type=email], input[type=number], select, textarea{
-    width:100%;
-    background:transparent;
-    border:none;
-    border-bottom:1px solid var(--line);
-    border-radius:0;
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    font-size:17px;
-    padding:10px 2px;
-    outline:none;
-    -webkit-appearance:none;
-    appearance:none;
-    transition:border-color .2s ease;
-  }
-  textarea{resize:vertical;min-height:70px;font-size:15px;}
-  input::placeholder, textarea::placeholder{color:var(--ink-faint);}
-  input:focus, select:focus, textarea:focus{border-bottom-color:var(--accent);}
-  select{
-    appearance:none;
-    -webkit-appearance:none;
-    background-image:linear-gradient(45deg, transparent 50%, var(--accent) 50%), linear-gradient(135deg, var(--accent) 50%, transparent 50%);
-    background-position: calc(100% - 6px) 18px, calc(100% - 1px) 18px;
-    background-size:6px 6px, 6px 6px;
-    background-repeat:no-repeat;
-    padding-right:20px;
-  }
-  select option{background:#ffffff;color:var(--ink);}
-
-  .radio-row{display:flex;gap:10px;flex-wrap:wrap;}
-  .chip{
-    border:1px solid var(--line);
-    padding:9px 18px;
-    font-size:14px;
-    border-radius:999px;
-    cursor:pointer;
-    color:var(--ink-dim);
-    transition:all .15s ease;
-    user-select:none;
-  }
-  .chip:hover{border-color:var(--accent);color:var(--ink);}
-  .chip.selected{background:var(--accent);border-color:var(--accent);color:#ffffff;font-weight:500;}
-
-  .actions{margin-top:auto;padding-top:28px;display:flex;gap:14px;align-items:center;}
-  button{
-    font-family:'Inter',sans-serif;
-    cursor:pointer;
-  }
-  .btn{
-    background:transparent;
-    border:1px solid var(--line-strong);
-    color:var(--ink);
-    padding:13px 28px;
-    font-size:13px;
-    letter-spacing:.08em;
-    border-radius:999px;
-    transition:all .2s ease;
-  }
-  .btn:hover{border-color:var(--accent);color:var(--accent-bright);}
-  .btn:disabled{opacity:.35;cursor:not-allowed;}
-  .btn.primary{background:var(--accent);border-color:var(--accent);color:#ffffff;font-weight:500;}
-  .btn.primary:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:#ffffff;}
-  .btn-text{
-    background:none;border:none;color:var(--ink-faint);
-    font-size:13px;letter-spacing:.04em;
-    padding:8px 4px;
-  }
-  .btn-text:hover{color:var(--accent-bright);}
-  .error-msg{color:var(--error);font-size:13px;margin-top:-10px;margin-bottom:18px;display:none;}
-
-  /* ---------- Menu grid ---------- */
-  .menu-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:10px;
-  }
-  @media(max-width:900px){.menu-grid{grid-template-columns:repeat(2, 1fr);}}
-
-  .menu-card.hidden-card{display:none;}
-
-  a.menu-card{
-    color:inherit;
-    text-decoration:none;
-  }
-  .menu-card{
-    position:relative;
-    border:1px solid var(--line-strong);
-    background:var(--panel);
-    padding:16px 16px 14px;
-    border-radius:var(--radius);
-    cursor:pointer;
-    box-shadow:var(--shadow-card);
-    transition:transform .4s cubic-bezier(.16,1,.3,1), border-color .35s ease, background-color .35s ease, box-shadow .4s ease;
-    text-align:left;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    overflow:hidden;
-    isolation:isolate;
-  }
-  .menu-card::before{
-    content:"";
-    position:absolute;inset:0;
-    background:radial-gradient(140px 100px at 24% 0%, var(--accent-soft), transparent 70%);
-    opacity:0;
-    transition:opacity .4s ease;
-    z-index:-1;
-  }
-  .menu-card:hover{
-    transform:translateY(-5px);
-    border-color:var(--accent);
-    background:var(--panel-hover);
-    box-shadow:var(--shadow-card-hover);
-  }
-  .menu-card:hover::before{opacity:1;}
-  .menu-card:active{transform:translateY(-2px);}
-
-  .menu-card .icon-wrap{
-    width:36px;height:36px;
-    border-radius:10px;
-    border:1px solid var(--line);
-    background:#f5f3ee;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--ink-dim);
-    transition:transform .45s cubic-bezier(.16,1,.3,1), border-color .3s ease, background-color .3s ease;
-  }
-  .menu-card:hover .icon-wrap{
-    transform:scale(1.14) rotate(-6deg);
-    border-color:rgba(54,84,224,.35);
-    background:var(--accent-soft);
-  }
-  .menu-card .icon-img{
-    width:22px;height:22px;
-    object-fit:contain;
-    display:block;
-  }
-  .menu-card .label{
-    font-size:14px;
-    font-weight:600;
-    color:var(--ink);
-    letter-spacing:-0.01em;
-  }
-  .menu-card .sub{
-    font-size:12px;
-    color:var(--ink-faint);
-    line-height:1.4;
-  }
-  .menu-hero{margin-bottom:32px;}
-  .menu-title{font-size:34px;margin-bottom:6px;}
-
-  .conference-badges{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:20px;
-  }
-  .conference-logo{
-    height:60px;
-    padding:0 22px;
-    border-radius:12px;
-    background:#fff;
-    border:1px solid var(--line);
-    box-shadow:var(--shadow-card);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .conference-logo img{
-    height:38px;
-    width:auto;
-    max-width:170px;
-    object-fit:contain;
-    display:block;
-  }
-
-  .conference-banner{
-    margin-bottom:28px;
-    border-radius:20px;
-    overflow:hidden;
-    border:1px solid var(--line);
-    box-shadow:var(--shadow-card);
-    aspect-ratio:3/1;
-  }
-  .conference-banner img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:50% 58%;
-  }
-  .conference-strip{
-    display:none;
-    align-items:center;
-    gap:8px;
-    align-self:flex-start;
-    margin-bottom:18px;
-    padding:8px 14px;
-    border-radius:999px;
-    background:#fff;
-    border:1px solid var(--line);
-    box-shadow:var(--shadow-card);
-    font-size:12px;
-    font-weight:600;
-    color:var(--ink);
-    letter-spacing:.01em;
-  }
-  .conference-strip i{width:8px;height:8px;border-radius:50%;background:#ea6a33;display:block;}
-  .conference-strip span{color:var(--ink-dim);font-weight:500;}
-  h1.welcome-name{
-    font-size:clamp(44px,8vw,76px);
-    line-height:1.02;
-    letter-spacing:-0.04em;
-    margin:0 0 10px;
-  }
-  @media(max-width:640px){
-    .conference-banner{display:none;}
-    .conference-strip{display:inline-flex;}
-  }
-
-
-  /* ---------- Tab navigation ---------- */
-  .tabbar{
-    position:fixed;z-index:20;
-    left:0;right:0;bottom:0;
-    display:flex;justify-content:space-around;align-items:stretch;
-    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
-    background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
-    border-top:1px solid var(--line);
-  }
-  .tab{
-    appearance:none;border:0;background:transparent;cursor:pointer;
-    flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
-    padding:6px 4px;border-radius:14px;
-    color:var(--ink-faint);font-family:inherit;font-size:10.5px;font-weight:600;letter-spacing:.01em;
-    transition:color .15s, background .15s;
-  }
-  .tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-  .tab.active{color:var(--ink);}
-  .tab.active svg{stroke:var(--accent);}
-  .tab:active{background:var(--accent-soft);}
-  .app{padding-bottom:110px;}
-  @media(min-width:900px){
-    .tabbar{
-      top:0;right:auto;bottom:0;width:92px;
-      flex-direction:column;justify-content:flex-start;align-items:stretch;gap:6px;
-      padding:104px 10px 20px;
-      border-top:0;border-right:1px solid var(--line);
-    }
-    .tab{flex:0 0 auto;padding:12px 4px;font-size:11px;}
-    .app{margin-left:92px;max-width:none;padding-left:48px;padding-right:48px;padding-bottom:80px;}
-    .app > *{max-width:1120px;margin-left:auto;margin-right:auto;width:100%;}
-    .app > .screen{max-width:1120px;}
-    .app > #screen-experience{max-width:none;margin:0;width:auto;}
-  }
-
-  /* ---------- Sessions / Search / Experience ---------- */
-  .tab-head{margin-bottom:22px;}
-  .tab-head .title{font-size:clamp(30px,5vw,44px);margin-bottom:8px;}
-  .tab-head .lede{margin-bottom:0;}
-  .day-toggle{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
-  .day-pill{
-    appearance:none;cursor:pointer;font:inherit;font-size:14px;font-weight:700;
-    padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);
-    box-shadow:var(--shadow-card);transition:background .15s,color .15s;
-  }
-  .day-pill small{font-weight:500;color:var(--ink-faint);margin-left:6px;}
-  .day-pill.on{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .day-pill.on small{color:rgba(255,255,255,.65);}
-  .view-toggle{display:inline-flex;padding:4px;border-radius:999px;background:var(--chip,#eef1f5);border:1px solid var(--line);margin-bottom:16px;}
-  .view-toggle button{appearance:none;border:0;cursor:pointer;font:inherit;font-size:14px;font-weight:700;padding:9px 18px;border-radius:999px;background:transparent;color:var(--ink-dim);transition:background .15s,color .15s;}
-  .view-toggle button.on{background:var(--ink);color:#fff;}
-  .sess .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--accent-bright);background:var(--accent-soft);border-radius:999px;padding:3px 10px;margin-bottom:8px;}
-  /* ---------- Attendees ---------- */
-  .att-search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 14px;box-shadow:var(--shadow-card);margin-bottom:14px;}
-  .att-search svg{flex:none;color:var(--ink-faint);}
-  .att-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:14px 0;color:var(--ink);}
-  .att-filters{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
-  .chip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-  .chip-row::-webkit-scrollbar{display:none;}
-  .fchip{flex:none;appearance:none;cursor:pointer;font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);white-space:nowrap;transition:background .15s,color .15s;}
-  .fchip small{color:var(--ink-faint);font-weight:500;margin-left:5px;}
-  .fchip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
-  .fchip.on small{color:rgba(255,255,255,.65);}
-  .att-count{font-size:13px;color:var(--ink-dim);margin:4px 0 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
-  .att-count button{appearance:none;border:0;background:transparent;font:inherit;font-size:13px;font-weight:700;color:var(--accent-bright);cursor:pointer;padding:4px;}
-  .att-list{display:grid;gap:10px;grid-template-columns:1fr;}
-  @media(min-width:700px){.att-list{grid-template-columns:repeat(2,1fr);}}
-  @media(min-width:1200px){.att-list{grid-template-columns:repeat(3,1fr);}}
-  .att{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow-card);min-width:0;}
-  .att .av{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent-bright);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
-  .att .who{min-width:0;flex:1;}
-  .att h3{margin:0;font-size:15px;line-height:1.25;overflow-wrap:anywhere;}
-  .att .role{font-size:13px;color:var(--ink-dim);margin-top:2px;overflow-wrap:anywhere;}
-  .att .org{font-size:13px;font-weight:600;color:var(--ink);margin-top:6px;overflow-wrap:anywhere;}
-  .att .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
-  .att .tag{font-size:11px;font-weight:600;border-radius:999px;padding:3px 9px;background:var(--chip,#eef1f5);color:var(--ink-dim);}
-  .att .tag.seg{background:var(--accent-soft);color:var(--accent-bright);}
-  .att .tag.exh{background:#fff1e8;color:#c2531a;}
-
-  .sess-list{display:grid;gap:14px;grid-template-columns:1fr;}
-  @media(min-width:900px){.sess-list{grid-template-columns:repeat(2,1fr);}}
-  .sess{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:18px 18px 16px;box-shadow:var(--shadow-card);
-    display:flex;flex-direction:column;gap:10px;
-  }
-  .sess-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--ink-faint);font-weight:600;}
-  .sess-time{color:var(--ink);background:var(--accent-soft);border-radius:999px;padding:4px 10px;}
-  .sess h3{margin:0;font-size:18px;line-height:1.25;letter-spacing:-0.02em;font-weight:700;}
-  .sess .why{margin:0;font-size:14px;color:var(--ink-dim);line-height:1.5;}
-  .sess .why b{color:var(--accent-bright);font-weight:700;}
-  .sess .meet{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--ink-faint);font-weight:600;}
-  .sess .meet span.o{color:var(--ink);background:#f1f5f9;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:600;}
-  .sess a.open{
-    align-self:flex-start;margin-top:2px;text-decoration:none;
-    font-size:13px;font-weight:700;color:#fff;background:var(--ink);
-    padding:10px 16px;border-radius:12px;
-  }
-  .empty-note{font-size:14px;color:var(--ink-dim);background:#fff;border:1px dashed var(--line-strong);border-radius:var(--radius);padding:18px;}
-  .cta-link{display:inline-block;margin-top:12px;font-weight:700;color:#fff;background:var(--ink);padding:11px 18px;border-radius:12px;text-decoration:none;font-size:14px;}
-
-  .term-list{display:grid;gap:12px;grid-template-columns:1fr;max-width:720px;}
-  .term{
-    appearance:none;text-align:left;cursor:pointer;font:inherit;
-    display:flex;align-items:center;gap:12px;
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:16px;box-shadow:var(--shadow-card);color:var(--ink);
-    transition:transform .12s,border-color .15s;
-  }
-  .term:active{transform:scale(.99);}
-  .term .t-ico{flex:none;width:38px;height:38px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;font-size:18px;}
-  .term .t-txt{flex:1;font-size:15px;font-weight:600;line-height:1.35;letter-spacing:-0.01em;}
-  .term .t-state{flex:none;font-size:12px;font-weight:700;color:var(--ink-faint);}
-  .term.sent{border-color:var(--accent);}
-  .term.sent .t-state{color:var(--accent-bright);}
-  .term[disabled]{cursor:default;}
-  .other-box{
-    display:flex;gap:8px;max-width:720px;margin-top:2px;
-    background:#fff;border:1px dashed var(--line-strong);border-radius:var(--radius);padding:10px 10px 10px 14px;align-items:center;
-  }
-  .other-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:8px 0;}
-  .other-box button{appearance:none;border:0;background:var(--ink);color:#fff;font:inherit;font-size:14px;font-weight:700;padding:11px 16px;border-radius:12px;cursor:pointer;}
-  .other-box button[disabled]{opacity:.4;cursor:default;}
-  .search-note{font-size:13px;color:var(--ink-faint);margin:12px 2px 0;min-height:20px;}
-  .search-note.err{color:var(--error);}
-  /* Experience: full-bleed, fills the viewport minus the nav */
-  #screen-experience{
-    position:fixed;z-index:5;top:0;left:0;right:0;
-    bottom:calc(66px + env(safe-area-inset-bottom));
-    max-width:none;margin:0;padding:0;animation:none;background:#fff;
-  }
-  #screen-experience .frame-wrap{flex:1;display:flex;border:0;border-radius:0;box-shadow:none;background:#fff;min-height:0;}
-  #screen-experience iframe{display:block;flex:1;width:100%;height:100%;min-height:0;border:0;}
-  @media(min-width:900px){
-    #screen-experience{left:92px;bottom:0;}
-  }
-
-  /* ---------- Dining list ---------- */
-  .dining-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-  .dining-item{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    padding:18px 20px;
-    border-radius:var(--radius);
-    border:1px solid var(--line);
-    background:var(--surface, #fff);
-  }
-  .dining-item-info{display:flex;flex-direction:column;gap:4px;}
-  .dining-item-category{
-    font-size:11.5px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--ink-faint);
-  }
-  .dining-item-name{
-    font-size:17px;
-    font-weight:500;
-    color:var(--ink);
-  }
-  .dining-item .btn{
-    padding:10px 22px;
-    font-size:12.5px;
-    white-space:nowrap;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-  }
-  @media (max-width:520px){
-    .dining-item{flex-direction:column;align-items:flex-start;gap:12px;}
-    .dining-item .btn{align-self:stretch;justify-content:center;}
-  }
-
-  /* ---------- Confirmation ---------- */
-  #screen-confirm{align-items:center;text-align:center;justify-content:center;}
-  .check{
-    width:52px;height:52px;border-radius:50%;
-    border:1px solid var(--accent);
-    display:flex;align-items:center;justify-content:center;
-    margin-bottom:22px;
-    color:var(--accent-bright);
-  }
-  .confirm-detail{
-    color:var(--ink-faint);
-    font-size:14px;
-    margin-top:6px;
-  }
-
-  .back-row{margin-bottom:20px;}
-
-  footer.app-footer{
-    text-align:center;
-    color:var(--ink-faint);
-    font-size:11.5px;
-    letter-spacing:.08em;
-    margin-top:40px;
-  }
-
-  /* ---------- Trusted by ---------- */
-  .trusted-section{margin-top:56px;}
-  .trusted-label{
-    text-align:center;
-    font-size:12.5px;
-    font-weight:600;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--ink-dim);
-    margin:0 0 28px;
-  }
-  .trusted-logos{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:center;
-    gap:18px 20px;
-  }
-  .trusted-logo{
-    height:80px;
-    padding:0 30px;
-    border-radius:14px;
-    background:#fff;
-    border:1px solid var(--line);
-    box-shadow:var(--shadow-card);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:.9;
-    transition:opacity .3s ease, transform .3s ease;
-  }
-  .trusted-logo:hover{
-    opacity:1;
-    transform:translateY(-2px);
-  }
-  .trusted-logo img{
-    height:42px;
-    width:auto;
-    max-width:150px;
-    object-fit:contain;
-    display:block;
-  }
-
-
-  /* ---------- Video ---------- */
-  .video-section{margin-top:56px;}
-  .video-wrap{
-    position:relative;
-    width:100%;
-    border-radius:var(--radius);
-    overflow:hidden;
-    border:1px solid var(--line);
-    background:#000;
-    aspect-ratio:16/9;
-  }
-  .video-wrap video{
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-  }
-  .video-wrap:fullscreen{
-    width:100vw;height:100vh;border-radius:0;
-    display:flex;align-items:center;justify-content:center;
-  }
-  .video-wrap:-webkit-full-screen{
-    width:100vw;height:100vh;border-radius:0;
-  }
-  .video-wrap:fullscreen video,
-  .video-wrap:-webkit-full-screen video{
-    object-fit:contain;
-  }
-  .video-mute-btn, .video-fullscreen-btn, .video-play-btn{
-    position:absolute;
-    bottom:16px;
-    width:42px;height:42px;
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,0.18);
-    background:rgba(10,10,12,0.6);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-    color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;
-    transition:transform .25s cubic-bezier(.16,1,.3,1), background-color .25s ease, border-color .25s ease;
-  }
-  .video-mute-btn{right:16px;}
-  .video-fullscreen-btn{right:66px;}
-  .video-play-btn{left:16px;}
-  .video-mute-btn:hover, .video-fullscreen-btn:hover, .video-play-btn:hover{
-    transform:scale(1.08);
-    background:rgba(54,84,224,0.45);
-    border-color:rgba(54,84,224,.6);
-  }
-  .video-mute-btn svg, .video-fullscreen-btn svg, .video-play-btn svg{width:18px;height:18px;}
-
-  /* ---------- Workspace modal ---------- */
-  .modal-overlay{
-    position:fixed;inset:0;
-    background:rgba(24,23,15,0.45);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-    display:flex;align-items:center;justify-content:center;
-    padding:20px;
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .3s ease;
-    z-index:100;
-  }
-  .modal-overlay.open{opacity:1;pointer-events:auto;}
-  .modal-panel{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:36px 32px 32px;
-    max-width:440px;
-    width:100%;
-    position:relative;
-    box-shadow:0 30px 70px -20px rgba(24,23,15,.35);
-    transform:translateY(14px) scale(.98);
-    transition:transform .35s cubic-bezier(.16,1,.3,1);
-    max-height:88vh;
-    overflow-y:auto;
-  }
-  .modal-overlay.open .modal-panel{transform:translateY(0) scale(1);}
-  .modal-close{
-    position:absolute;top:16px;right:16px;
-    background:none;border:none;color:var(--ink-faint);
-    font-size:20px;line-height:1;cursor:pointer;
-    width:30px;height:30px;
-    display:flex;align-items:center;justify-content:center;
-    border-radius:8px;
-    transition:all .2s ease;
-  }
-  .modal-close:hover{color:var(--ink);background:rgba(24,23,15,.06);}
-
-  .modal-dial{
-    display:flex;align-items:center;justify-content:center;
-    position:relative;
-    width:64px;height:64px;
-    margin:0 auto 22px;
-  }
-  .modal-dial svg circle{transition:stroke-dashoffset .5s cubic-bezier(.16,1,.3,1);}
-  .modal-dial-label{
-    position:absolute;
-    font-size:12px;font-weight:600;color:var(--ink-dim);
-    letter-spacing:.02em;
-  }
-
-  .modal-step{display:none;}
-  .modal-step.active{display:block;animation:fade .4s ease;}
-  .modal-title{
-    font-weight:700;font-size:20px;letter-spacing:-0.01em;
-    margin:0 0 22px;text-align:center;color:var(--ink);
-  }
-  .modal-actions{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
-
-  .challenge-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:6px;}
-  .challenge-card{
-    display:flex;align-items:center;gap:14px;
-    border:1px solid var(--line);
-    background:#f9f8f5;
-    padding:13px 15px;
-    border-radius:var(--radius-sm);
-    cursor:pointer;
-    transition:all .25s ease;
-  }
-  .challenge-card:hover{border-color:var(--line-strong);background:var(--panel-hover);}
-  .challenge-card.selected{border-color:var(--accent);background:var(--accent-soft);}
-  .challenge-card .icon-wrap{
-    width:34px;height:34px;
-    border-radius:9px;
-    border:1px solid var(--line);
-    background:#ffffff;
-    display:flex;align-items:center;justify-content:center;
-    color:var(--ink-dim);
-    flex-shrink:0;
-    transition:all .25s ease;
-  }
-  .challenge-card .icon-wrap svg{width:16px;height:16px;}
-  .challenge-card.selected .icon-wrap{
-    color:var(--accent-bright);
-    border-color:rgba(54,84,224,.4);
-    background:#ffffff;
-  }
-  .challenge-card .label{font-size:14px;font-weight:500;color:var(--ink);}
-
-  /* ---------- Mobile ---------- */
-  @media(max-width:600px){
-    .app{padding:28px 18px 60px;}
-    .topbar{margin-bottom:36px;}
-    .menu-title{font-size:26px;}
-    h1.title{font-size:24px;}
-    p.lede{font-size:14.5px;}
-    .menu-card{padding:14px 14px 12px;}
-    .modal-panel{padding:28px 20px 24px;max-height:85vh;}
-    .modal-title{font-size:18px;}
-    .modal-actions{flex-wrap:wrap;gap:10px;}
-    .trusted-section{margin-top:40px;}
-    .video-section{margin-top:40px;}
-    .trusted-logos{gap:14px 14px;}
-    .trusted-logo{height:60px;padding:0 20px;}
-    .trusted-logo img{height:30px;max-width:110px;}
-    .video-mute-btn, .video-fullscreen-btn, .video-play-btn{width:38px;height:38px;bottom:12px;}
-    .video-mute-btn{right:12px;}
-    .video-fullscreen-btn{right:58px;}
-    .video-play-btn{left:12px;}
-    .conference-logo{height:48px;padding:0 16px;}
-    .conference-logo img{height:28px;max-width:130px;}
-  }
+  /* landing-specific layout on top of the shared design tokens */
+  .page[hidden]{display:none!important;}
+  a.row,a.row:hover{text-decoration:none;}
+  .speaker > span:last-child{min-width:0;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;min-height:36px;margin:0 0 var(--s-3) -6px;padding:0 6px;border-radius:var(--r-sm);color:var(--ink-2);font-weight:500;font-size:var(--fs-meta);}
+  .back-link:hover{background:var(--surface-2);color:var(--ink);}
+  .home-links{margin-top:var(--s-3);}
+  .switch{color:var(--teal-deep);font-size:var(--fs-meta);font-weight:500;}
+  .empty-cta{margin-top:var(--s-3);}
+  .exp-page{position:fixed;z-index:5;top:calc(var(--appbar-h) + env(safe-area-inset-top,0px));left:0;right:0;bottom:calc(var(--tabbar-h) + env(safe-area-inset-bottom,0px));background:#fff;}
+  .exp-page iframe{display:block;width:100%;height:100%;border:0;}
+  @media(min-width:900px){.exp-page{top:0;left:var(--side-w);bottom:0;}}
+  .player video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#f2f2f2;}
+  .player__controls{justify-content:flex-end;}
+  .seg-wrap{margin-bottom:var(--s-4);}
+  .count-note{font-family:var(--font-mono);}
+  .att-row .row__chev,.att-row .li{flex:none;}
+  .li{width:40px;height:40px;border-radius:var(--r-sm);border:1px solid var(--line);display:grid;place-items:center;color:var(--teal-deep);background:var(--canvas);transition:background-color var(--d-1) var(--ease),border-color var(--d-1) var(--ease);}
+  .li:hover{background:var(--teal-50);border-color:var(--teal);}
+  .person.row{align-items:flex-start;}
+  .search-note{margin-top:var(--s-3);}
+  .sess-sub{font-size:var(--fs-meta);color:var(--ink-2);}
+  .sheet__body .textarea{margin-top:var(--s-2);}
+  .logo-wall img{object-fit:contain;}
+  .chips--wrap{margin-top:var(--s-3);}
+  .hide-d{display:inline;}
+  @media(min-width:900px){.hide-d{display:none;}}
 </style>
 </head>
 <body>
-<div class="app">
+{% include 'concierge/_icons.html' %}
 
-  <div class="topbar">
-    <div class="brand-left">
-      <img class="logo" src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="Lunartree">
-      <span class="brand-name">BioLens · Lunartree</span>
+<div class="shell">
+
+  <!-- desktop side navigation -->
+  <aside class="sidenav" aria-label="Primary">
+    <span class="brand">
+      <img class="brand__mark" src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="">
+      <span class="brand__name">BioLens<span class="sep"> · </span>Lunartree</span>
+    </span>
+    <div class="sidenav__event">
+      <span class="eyebrow">CDMO Live Americas</span>
+      <span class="t-label">Boston · 20–21 Oct 2026</span>
     </div>
-    <span class="pill">Concierge desk</span>
-  </div>
-
-  <!-- SPLASH -->
-  <section id="screen-splash" class="screen active">
-    <div class="rings"></div>
-    <div class="status">Preparing your visit</div>
-  </section>
-
-  <!-- MENU -->
-  <section id="screen-menu" class="screen">
-    <div class="menu-hero">
-      <div class="conference-banner"><img src="https://pharmasource.global/wp-content/uploads/2024/09/Untitled-design-26.png" alt="CDMO Live Americas"></div>
-      <div class="conference-strip"><i></i>CDMO Live Americas <span>· Boston</span></div>
-      {% if visitor %}<h1 class="title welcome-name">Welcome, {{ visitor.first_name }} 👋</h1>{% else %}<p class="eyebrow">Welcome to Lunartree Concierge</p>{% endif %}
-      <{% if visitor %}p{% else %}h1{% endif %} class="title menu-title"{% if visitor %} style="font-weight:600;color:var(--ink-dim);font-size:22px;"{% endif %}>How may we assist you?</{% if visitor %}p{% else %}h1{% endif %}>
-      <p class="lede" style="margin-bottom:0;">Request your pick and we'll take it from there</p>
-      {% if visitor %}<a href="{% url 'concierge:welcome' %}?switch=1" style="font-size:12px;color:var(--ink-faint);">Not {{ visitor.first_name }}? Switch</a>{% endif %}
-    </div>
-
-    <div class="menu-grid">
-      <a class="menu-card hidden-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20coffee%20for%20my%20booth." target="_blank" rel="noopener">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Hot%20beverage/3D/hot_beverage_3d.png" alt=""></div>
-        <div class="label">Ask for a coffee</div>
-        <div class="sub">Brewed to order, brought to you</div>
-      </a>
-      <a class="menu-card" href="https://wa.me/917871044448?text=I%20want%20to%20request%20bagels%20for%20my%20booth." target="_blank" rel="noopener">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Bagel/3D/bagel_3d.png" alt=""></div>
-        <div class="label">Ask for bagels</div>
-        <div class="sub">A morning bite, your way</div>
-      </a>
-      <a class="menu-card hidden-card" href="https://wa.me/917871044448?text=I%20want%20to%20book%20a%20seat%20at%20Eddie%20Merlot%27s." target="_blank" rel="noopener">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Fork%20and%20knife%20with%20plate/3D/fork_and_knife_with_plate_3d.png" alt=""></div>
-        <div class="label">Book a seat at Eddie Merlot's</div>
-        <div class="sub">Reserve a table nearby</div>
-      </a>
-      <div class="menu-card" onclick="goTo('screen-dining')">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Compass/3D/compass_3d.png" alt=""></div>
-        <div class="label">Dining recommendations</div>
-        <div class="sub">Curated picks near the venue</div>
-      </div>
-      <a class="menu-card" href="https://lunarwave-creative-dev.lunartree.workers.dev/biolens" target="_blank" rel="noopener">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Microscope/3D/microscope_3d.png" alt=""></div>
-        <div class="label">View BioLens</div>
-        <div class="sub">An overview of the platform</div>
-      </a>
-      <a class="menu-card hidden-card" href="{% url 'concierge:experience_biolens' %}" target="_blank" rel="noopener">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Desktop%20computer/3D/desktop_computer_3d.png" alt=""></div>
-        <div class="label">Experience BioLens</div>
-        <div class="sub">See it running, live</div>
-      </a>
-      <div class="menu-card hidden-card" onclick="openWorkspaceModal()">
-        <div class="icon-wrap"><img class="icon-img" src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Briefcase/3D/briefcase_3d.png" alt=""></div>
-        <div class="label">Request your workspace</div>
-        <div class="sub">A desk, set up before you arrive</div>
-      </div>
-    </div>
-
-    <div class="video-section">
-      <div class="video-wrap">
-        <video id="biolens-video" src="https://res.cloudinary.com/dnscrocre/video/upload/v1792063817/BioLens_for_CDMOs_-_film_v5_narrated_f6slcw.mp4" autoplay muted loop playsinline webkit-playsinline="true" disablepictureinpicture disableremoteplayback></video>
-        <button class="video-play-btn" onclick="toggleVideoPlay()" aria-label="Pause video" id="video-play-btn">
-          <svg id="icon-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
-          <svg id="icon-play" style="display:none" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5-13-7.5Z" fill="currentColor"/></svg>
-        </button>
-        <button class="video-mute-btn" onclick="toggleVideoMute()" aria-label="Unmute video" id="video-mute-btn">
-          <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m16 9 4 6M20 9l-4 6"/></svg>
-          <svg id="icon-unmuted" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"/></svg>
-        </button>
-        <button class="video-fullscreen-btn" onclick="toggleVideoFullscreen()" aria-label="Expand to fullscreen" id="video-fullscreen-btn">
-          <svg id="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-          <svg id="icon-collapse" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3v3a2 2 0 0 1-2 2H4"/><path d="M15 3v3a2 2 0 0 0 2 2h3"/><path d="M4 15h3a2 2 0 0 1 2 2v3"/><path d="M20 15h-3a2 2 0 0 0-2 2v3"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="trusted-section">
-      <p class="trusted-label">Trusted by</p>
-      <div class="trusted-logos">
-        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEPg0H4eWg4ePInN0ovTpjAu65ac4ZEFGqXFsoxkZx2A&s=10" alt="Synthego" loading="lazy"></div>
-        <div class="trusted-logo"><img src="https://download.logo.wine/logo/Lonza_Group/Lonza_Group-Logo.wine.png" alt="Lonza" loading="lazy"></div>
-        <div class="trusted-logo"><img src="https://www.cphi-online.com/company/instapill-private-limited/c476395th_S44209741.jpg" alt="InstaPill" loading="lazy"></div>
-        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEFYCfSRW8nU6KYQgY5vadNHi3dk7MEqKDHXiRinB7xI1LC1Pk81G9AlMm&s=10" alt="Optima" loading="lazy"></div>
-        <div class="trusted-logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7rAtWxMl1UBtiZI141IkeiyKpxKacvexvdHxu6Qz2kA&s=10" alt="Stevanato Group" loading="lazy"></div>
-        <div class="trusted-logo"><img src="https://shilpabio.com/wp-content/uploads/2021/10/shilpabio_logo_color_@2x-1.png" alt="Shilpa Biologicals" loading="lazy"></div>
-      </div>
-    </div>
-
-    <footer class="app-footer">BioLens · Lunartree. The concierge desk is staffed on site</footer>
-  </section>
-
-  <!-- DINING RECOMMENDATIONS -->
-  <section id="screen-dining" class="screen">
-    <div class="medium">
-      <div class="back-row"><button class="btn-text" onclick="goTo('screen-menu')">&larr; Back to menu</button></div>
-      <p class="eyebrow">Dining</p>
-      <h1 class="title">Recommendations near the venue</h1>
-      <p class="lede">A short list, curated by the concierge desk, all near the Hyatt.</p>
-      <div class="dining-list">
-        <div class="dining-item">
-          <div class="dining-item-info">
-            <span class="dining-item-category">Sushi</span>
-            <span class="dining-item-name">Sakana Sushi &amp; Japanese Cuisine</span>
-          </div>
-          <a class="btn" href="https://maps.app.goo.gl/MJkeBFsVo9iH7T9bA" target="_blank" rel="noopener">View map</a>
-        </div>
-        <div class="dining-item">
-          <div class="dining-item-info">
-            <span class="dining-item-category">Burgers, sliders &amp; cocktails</span>
-            <span class="dining-item-name">Tavern on George</span>
-          </div>
-          <a class="btn" href="https://maps.app.goo.gl/W6F8C8Y34jSAbfaDA" target="_blank" rel="noopener">View map</a>
-        </div>
-        <div class="dining-item">
-          <div class="dining-item-info">
-            <span class="dining-item-category">Steak</span>
-            <span class="dining-item-name">Stage Left Steak</span>
-          </div>
-          <a class="btn" href="https://maps.app.goo.gl/mrf3LnEmLmNgNdzw7" target="_blank" rel="noopener">View map</a>
-        </div>
-        <div class="dining-item">
-          <div class="dining-item-info">
-            <span class="dining-item-category">Coffee &amp; tea</span>
-            <span class="dining-item-name">Khyber Coffee &amp; Tea House</span>
-          </div>
-          <a class="btn" href="https://maps.app.goo.gl/3LJYcy6Lj5GHWe2Q7" target="_blank" rel="noopener">View map</a>
-        </div>
-        <div class="dining-item">
-          <div class="dining-item-info">
-            <span class="dining-item-category">Mexican</span>
-            <span class="dining-item-name">Fat Cactus Cantina</span>
-          </div>
-          <a class="btn" href="https://maps.app.goo.gl/tUKqL3xhTtXPwSgV7" target="_blank" rel="noopener">View map</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- SESSIONS -->
-  <section id="screen-sessions" class="screen">
-    <div class="tab-head">
-      <p class="eyebrow">CDMO Live · 20–21 Oct</p>
-      <h1 class="title">Your sessions</h1>
-      {% if recs %}<p class="lede" id="sessions-lede"></p>{% else %}<p class="lede">Tell us what you do and we'll pick the sessions and people worth your time.</p>{% endif %}
-    </div>
-    {% if recs %}
-    <div class="view-toggle" id="view-toggle" role="tablist">
-      <button type="button" data-view="you" class="on">Sessions for You</button>
-      <button type="button" data-view="all">All Sessions</button>
-    </div>
-    <div class="day-toggle" id="day-toggle"></div>
-    <div class="sess-list" id="sess-list"></div>
-    {% else %}
-    <div class="empty-note">We haven't met yet. <br><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer 6 quick questions</a></div>
-    {% endif %}
-  </section>
-
-  <!-- ATTENDEES -->
-  <section id="screen-attendees" class="screen">
-    <div class="tab-head">
-      <p class="eyebrow">CDMO Live · who's here</p>
-      <h1 class="title">Attendees</h1>
-      <p class="lede" id="att-lede">See who is attending and filter by type or focus.</p>
-    </div>
+    <nav>
+      <button class="navitem" data-tab="home" aria-current="page"><span data-ico="home"></span>Home</button>
+      <button class="navitem" data-tab="sessions"><span data-ico="calendar"></span>Sessions</button>
+      <button class="navitem" data-tab="attendees"><span data-ico="users"></span>Attendees</button>
+      <button class="navitem" data-tab="search"><span data-ico="discover"></span>Search</button>
+      <button class="navitem" data-tab="experience"><span data-ico="monitorPlay"></span>Experience</button>
+    </nav>
     {% if visitor %}
-    <label class="att-search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="att-q" type="search" placeholder="Search name, title or company" autocomplete="off" enterkeyhint="search">
-    </label>
-    <div class="att-filters">
-      <div class="chip-row" id="att-seg"></div>
-      <div class="chip-row" id="att-mod"></div>
+    <div class="sidenav__foot">
+      <div class="who">
+        <span class="avatar avatar--sm" id="who-av"></span>
+        <div style="min-width:0">
+          <div class="t-label clamp-1">{{ visitor.name }}</div>
+          <div class="t-meta clamp-1">{{ visitor.company }}</div>
+        </div>
+      </div>
+      <a class="switch" href="{% url 'concierge:welcome' %}?switch=1">Not {{ visitor.first_name }}? Switch</a>
     </div>
-    <div class="att-count"><span id="att-n"></span><button type="button" id="att-clear" hidden>Clear filters</button></div>
-    <div class="att-list" id="att-list"></div>
-    {% else %}
-    <div class="empty-note">We haven't met yet. <br><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer a few quick questions</a></div>
     {% endif %}
-  </section>
+  </aside>
 
-  <!-- SEARCH -->
-  <section id="screen-search" class="screen">
-    <div class="tab-head">
-      <p class="eyebrow">Programs &amp; partners</p>
-      <h1 class="title">Who should you meet?</h1>
-      {% if recs %}<p class="lede">Searches built around what you do. Tap one and we'll run it for you.</p>{% else %}<p class="lede">Answer a few questions and we'll suggest searches built around what you do.</p>{% endif %}
-    </div>
-    {% if recs %}
-    <div class="term-list" id="term-list"></div>
-    <div class="other-box"><input id="other-term" type="text" maxlength="280" placeholder="Other: describe who you want to find" autocomplete="off"><button id="other-send" disabled>Send</button></div>
-    <p class="search-note" id="search-note"></p>
-    {% else %}
-    <div class="empty-note"><a class="cta-link" href="{% url 'concierge:welcome' %}">Answer 6 quick questions</a></div>
-    {% endif %}
-  </section>
+  <div class="content">
+    <header class="appbar" id="appbar">
+      <span class="brand">
+        <img class="brand__mark" src="https://researchmap.vercel.app/static/branding/lunartree-icon.png" alt="">
+        <span class="brand__name">BioLens<span class="sep"> · </span>Lunartree</span>
+      </span>
+      <span class="desk-chip">Concierge desk</span>
+    </header>
 
-  <!-- EXPERIENCE -->
-  <section id="screen-experience" class="screen">
-    <div class="frame-wrap"><iframe id="exp-frame" title="Experience BioLens" data-src="{% url 'concierge:experience_biolens' %}?embed=1"></iframe></div>
-  </section>
+    <main id="main" tabindex="-1">
 
-  <!-- CONFIRMATION -->
-  <section id="screen-confirm" class="screen">
-    <div class="check">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg>
-    </div>
-    <h1 class="title" id="confirm-title">Request received</h1>
-    <p class="lede" id="confirm-detail" style="margin:0 auto 28px;text-align:center;">We'll be right with you.</p>
-    <div class="actions" style="margin:0;">
-      <button class="btn" onclick="goTo('screen-menu')">Back to menu</button>
-    </div>
-  </section>
+      <!-- HOME -->
+      <section class="page" id="page-home" data-page="home">
+        <span class="event-line"><b>CDMO Live Americas</b> · Boston</span>
+        <div class="welcome">
+          {% if visitor %}
+          <h1 class="t-h1">Welcome, {{ visitor.first_name }} <span class="wave" data-ico="hand" data-size="24"></span></h1>
+          <p class="t-meta"><a class="switch" href="{% url 'concierge:welcome' %}?switch=1">Not {{ visitor.first_name }}? Switch</a></p>
+          {% else %}
+          <h1 class="t-h1">Welcome to the concierge desk</h1>
+          <p class="t-meta"><a class="switch" href="{% url 'concierge:welcome' %}">Tell us who you are</a> for picks built around what you do.</p>
+          {% endif %}
+        </div>
 
+        <section class="section" style="margin-top:0">
+          <div class="section-head">
+            <h2 class="t-h2">How may we assist you?</h2>
+            <p class="t-meta">Request your pick and we’ll take it from there</p>
+          </div>
+          <div class="list">
+            <button class="row request-row" data-request="bagels">
+              <span class="tile-icon" data-ico="bagel" data-size="22"></span>
+              <span class="row__main"><span class="row__title">Ask for bagels</span><span class="row__sub">A morning bite, your way</span></span>
+              <span class="row__chev" data-ico="chevronRight" data-size="18"></span>
+            </button>
+            <button class="row request-row" data-goto="dining">
+              <span class="tile-icon" data-ico="utensils" data-size="22"></span>
+              <span class="row__main"><span class="row__title">Dining recommendations</span><span class="row__sub">Curated picks near the venue</span></span>
+              <span class="row__chev" data-ico="chevronRight" data-size="18"></span>
+            </button>
+            <a class="row request-row" href="https://lunarwave-creative-dev.lunartree.workers.dev/biolens" target="_blank" rel="noopener" data-track="view_biolens">
+              <span class="tile-icon" data-ico="lens" data-size="22"></span>
+              <span class="row__main"><span class="row__title">View BioLens</span><span class="row__sub">An overview of the platform</span></span>
+              <span class="row__chev" data-ico="arrowUpRight" data-size="18"></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="player" id="player">
+            <video id="biolens-video" src="https://res.cloudinary.com/dnscrocre/video/upload/v1792063817/BioLens_for_CDMOs_-_film_v5_narrated_f6slcw.mp4" autoplay muted loop playsinline webkit-playsinline="true" disablepictureinpicture disableremoteplayback></video>
+            <div class="player__controls">
+              <button class="pbtn" id="vbtn-play" aria-label="Pause video"></button>
+              <button class="pbtn" id="vbtn-mute" aria-label="Unmute video"></button>
+              <button class="pbtn" id="vbtn-full" aria-label="Expand to fullscreen"></button>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider-dots" aria-hidden="true"></div>
+
+        <section>
+          <div class="section-head"><span class="eyebrow eyebrow--muted">Trusted by</span></div>
+          <div class="logo-wall">
+            <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEPg0H4eWg4ePInN0ovTpjAu65ac4ZEFGqXFsoxkZx2A&s=10" alt="Synthego" loading="lazy"></div>
+            <div><img src="https://download.logo.wine/logo/Lonza_Group/Lonza_Group-Logo.wine.png" alt="Lonza" loading="lazy"></div>
+            <div><img src="https://www.cphi-online.com/company/instapill-private-limited/c476395th_S44209741.jpg" alt="InstaPill" loading="lazy"></div>
+            <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEFYCfSRW8nU6KYQgY5vadNHi3dk7MEqKDHXiRinB7xI1LC1Pk81G9AlMm&s=10" alt="Optima" loading="lazy"></div>
+            <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7rAtWxMl1UBtiZI141IkeiyKpxKacvexvdHxu6Qz2kA&s=10" alt="Stevanato Group" loading="lazy"></div>
+            <div><img src="https://shilpabio.com/wp-content/uploads/2021/10/shilpabio_logo_color_@2x-1.png" alt="Shilpa Biologicals" loading="lazy"></div>
+          </div>
+        </section>
+        <p class="foot">The concierge desk is staffed on site</p>
+      </section>
+
+      <!-- DINING -->
+      <section class="page" id="page-dining" data-page="dining" hidden>
+        <button class="back-link" data-goto="home"><span data-ico="chevronLeft" data-size="16"></span>Home</button>
+        <div class="page-head">
+          <span class="eyebrow">Dining</span>
+          <h1 class="t-h1">Recommendations near the venue</h1>
+          <p class="t-meta">A short list near the Sheraton Boston Back Bay, curated by the concierge desk.</p>
+        </div>
+        <div class="list">
+          <a class="row" href="https://maps.app.goo.gl/xLdJU47Hm629SCFu7" target="_blank" rel="noopener"><span class="row__main"><span class="row__title">Zuma Boston</span><span class="row__sub">Japanese &amp; sushi</span></span><span class="row__chev" data-ico="arrowUpRight" data-size="18"></span></a>
+          <a class="row" href="https://maps.app.goo.gl/sd6oP2jDH9YR3n267" target="_blank" rel="noopener"><span class="row__main"><span class="row__title">Eataly</span><span class="row__sub">Italian</span></span><span class="row__chev" data-ico="arrowUpRight" data-size="18"></span></a>
+          <a class="row" href="https://maps.app.goo.gl/NyHr6XXZvc5ztzKG6" target="_blank" rel="noopener"><span class="row__main"><span class="row__title">Earls Kitchen</span><span class="row__sub">Burgers &amp; steak</span></span><span class="row__chev" data-ico="arrowUpRight" data-size="18"></span></a>
+          <a class="row" href="https://maps.app.goo.gl/o7FpRgZHSuErEjK5A" target="_blank" rel="noopener"><span class="row__main"><span class="row__title">Flour Bakery Cafe</span><span class="row__sub">Quick bites &amp; coffee</span></span><span class="row__chev" data-ico="arrowUpRight" data-size="18"></span></a>
+        </div>
+      </section>
+
+      <!-- SESSIONS -->
+      <section class="page" id="page-sessions" data-page="sessions" hidden>
+        <div class="page-head">
+          <span class="eyebrow">CDMO Live · 20–21 Oct</span>
+          <h1 class="t-h1">Your sessions</h1>
+          <p class="t-meta" id="sessions-lede">{% if recs %}{% else %}Tell us what you do and we’ll pick the sessions and people worth your time.{% endif %}</p>
+        </div>
+        {% if recs %}
+        <div class="seg seg-wrap" id="view-seg" role="group" aria-label="Session view">
+          <button class="seg__item" data-view="you" aria-pressed="true">Sessions for You</button>
+          <button class="seg__item" data-view="all" aria-pressed="false">All Sessions</button>
+        </div>
+        <div class="controls-bar" id="controls-bar">
+          <div class="controls-bar__row">
+            <div class="daytabs" id="daytabs"></div>
+            <button class="btn btn--sm filter-btn" id="filter-open" aria-label="Filter sessions"><span data-ico="filter" data-size="18"></span><span class="lbl">Filter</span><span class="dotcount" id="filter-n" hidden></span></button>
+          </div>
+        </div>
+        <div class="active-filters" id="active-filters" hidden></div>
+        <div class="result-line" id="result-line"></div>
+        <div class="timeline" id="timeline"></div>
+        {% else %}
+        <div class="empty"><span class="empty__art" data-ico="calendar" data-size="32"></span><div class="empty__title">We haven’t met yet</div><div class="empty__body">Answer a few quick questions and we’ll pick the sessions worth your time.</div><a class="btn btn--primary" href="{% url 'concierge:welcome' %}">Get started</a></div>
+        {% endif %}
+      </section>
+
+      <!-- ATTENDEES -->
+      <section class="page" id="page-attendees" data-page="attendees" hidden>
+        <div class="page-head">
+          <span class="eyebrow">CDMO Live · who’s here</span>
+          <h1 class="t-h1">Attendees</h1>
+          <p class="t-meta">See who is attending and filter by type or focus.</p>
+        </div>
+        {% if visitor %}
+        <div class="field">
+          <span class="field__lead" data-ico="search" data-size="20"></span>
+          <input id="att-q" class="field__input" type="search" placeholder="Search name, title or company" autocomplete="off" enterkeyhint="search" data-empty="true">
+        </div>
+        <div class="controls" style="margin-top:var(--s-4)">
+          <div class="facet"><span class="facet__label">Type</span><div class="chips chips--scroll" id="att-seg"></div></div>
+          <div class="facet"><span class="facet__label">Focus</span><div class="chips chips--scroll" id="att-mod"></div></div>
+        </div>
+        <div class="result-line"><span id="att-n"></span><button class="link-btn" id="att-clear" hidden>Clear filters</button></div>
+        <div class="list people-list" id="att-list"></div>
+        {% else %}
+        <div class="empty"><span class="empty__art" data-ico="users" data-size="32"></span><div class="empty__title">We haven’t met yet</div><div class="empty__body">Answer a few quick questions to see who is attending.</div><a class="btn btn--primary" href="{% url 'concierge:welcome' %}">Get started</a></div>
+        {% endif %}
+      </section>
+
+      <!-- SEARCH -->
+      <section class="page" id="page-search" data-page="search" hidden>
+        <div class="page-head">
+          <span class="eyebrow">Programs &amp; partners</span>
+          <h1 class="t-h1">Who should you meet?</h1>
+          <p class="t-meta">{% if recs %}Searches built around what you do. Tap one and we’ll run it for you.{% else %}Answer a few questions and we’ll suggest searches built around what you do.{% endif %}</p>
+        </div>
+        {% if recs %}
+        <div class="result-line"><span id="search-count"></span><span class="legend"><span class="tag tag--match"><span data-ico="check" data-size="12"></span></span>Matches your answers</span></div>
+        <div class="list search-list" id="term-list"></div>
+        <div class="compose">
+          <label class="field-label" for="other-term">Something else?</label>
+          <div class="compose__row">
+            <textarea id="other-term" class="textarea" rows="1" maxlength="280" placeholder="Describe who you want to find"></textarea>
+            <button class="btn btn--primary" id="other-send" disabled>Send</button>
+          </div>
+        </div>
+        {% else %}
+        <div class="empty"><span class="empty__art" data-ico="discover" data-size="32"></span><div class="empty__title">We haven’t met yet</div><div class="empty__body">Answer a few quick questions and we’ll suggest searches.</div><a class="btn btn--primary" href="{% url 'concierge:welcome' %}">Get started</a></div>
+        {% endif %}
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="exp-page" id="page-experience" data-page="experience" hidden>
+        <iframe id="exp-frame" title="Experience BioLens" data-src="{% url 'concierge:experience_biolens' %}?embed=1"></iframe>
+      </section>
+    </main>
+  </div>
 </div>
 
 <nav class="tabbar" id="tabbar" aria-label="Sections">
-  <button class="tab active" data-tab="home" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg><span>Home</span></button>
-  <button class="tab" data-tab="sessions" aria-label="Sessions"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="M8 14h3M13 14h3M8 17h3"/></svg><span>Sessions</span></button>
-  <button class="tab" data-tab="attendees" aria-label="Attendees"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.3"/><path d="M2.8 19.5c.4-3.3 3-5.3 6.2-5.3s5.8 2 6.2 5.3"/><path d="M16 5.6a3.1 3.1 0 0 1 0 5.8"/><path d="M18 14.6c1.8.6 3 2.3 3.2 4.9"/></svg><span>Attendees</span></button>
-  <button class="tab" data-tab="search" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/><path d="M11 8.2v5.6M8.2 11h5.6"/></svg><span>Search</span></button>
-  <button class="tab" data-tab="experience" aria-label="Experience"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2.5"/><path d="M8.5 20.5h7M12 17v3.5"/><path d="m10.2 8.6 4 2.15-4 2.15z"/></svg><span>Experience</span></button>
+  <button class="tab" data-tab="home" aria-current="page"><span data-ico="home" data-size="22"></span><span>Home</span></button>
+  <button class="tab" data-tab="sessions"><span data-ico="calendar" data-size="22"></span><span>Sessions</span></button>
+  <button class="tab" data-tab="attendees"><span data-ico="users" data-size="22"></span><span>Attendees</span></button>
+  <button class="tab" data-tab="search"><span data-ico="discover" data-size="22"></span><span>Search</span></button>
+  <button class="tab" data-tab="experience"><span data-ico="monitorPlay" data-size="22"></span><span>Experience</span></button>
 </nav>
 
-<!-- WORKSPACE REQUEST MODAL -->
-<div class="modal-overlay" id="workspace-overlay">
-  <div class="modal-panel">
-    <button class="modal-close" onclick="closeWorkspaceModal()" aria-label="Close">&times;</button>
-
-    <div class="modal-dial">
-      <svg width="64" height="64" viewBox="0 0 64 64">
-        <circle cx="32" cy="32" r="28" fill="none" stroke="var(--line)" stroke-width="4"/>
-        <circle id="dial-progress" cx="32" cy="32" r="28" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" transform="rotate(-90 32 32)"/>
-      </svg>
-      <span class="modal-dial-label" id="dial-label">1/3</span>
-    </div>
-
-    <div class="modal-step active" data-step="1">
-      <h2 class="modal-title">Let's predict your next RFP</h2>
-      <div class="field">
-        <label for="ws-name">Your name</label>
-        <input type="text" id="ws-name" placeholder="e.g. Jordan Ellis" autocomplete="name">
-      </div>
-      <div class="error-msg" id="ws-err-name">Please tell us your name to continue.</div>
-      <div class="field">
-        <label for="ws-email">Your email</label>
-        <input type="email" id="ws-email" placeholder="e.g. jordan@lunartree.bio" autocomplete="email">
-      </div>
-      <div class="error-msg" id="ws-err-email">Please enter a valid email to continue.</div>
-      <div class="modal-actions">
-        <span></span>
-        <button class="btn primary" onclick="wsNext(1)">Continue</button>
-      </div>
-    </div>
-
-    <div class="modal-step" data-step="2">
-      <h2 class="modal-title">Let's predict your next RFP</h2>
-      <div class="field">
-        <label for="ws-company">Company / organization</label>
-        <input type="text" id="ws-company" placeholder="e.g. Lunartree Bio" autocomplete="organization">
-      </div>
-      <div class="error-msg" id="ws-err-company">Please tell us your company to continue.</div>
-      <div class="modal-actions">
-        <button class="btn-text" onclick="wsBack(2)">Back</button>
-        <button class="btn primary" onclick="wsNext(2)">Continue</button>
-      </div>
-    </div>
-
-    <div class="modal-step" data-step="3">
-      <h2 class="modal-title">Let's predict your next RFP</h2>
-      <div class="challenge-grid" id="challenge-grid">
-        <div class="challenge-card" data-value="Finding New RFPs">
-          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><circle cx="11" cy="14" r="3"/><path d="m15 18-1.5-1.5"/></svg></div>
-          <div class="label">Finding New RFPs</div>
-        </div>
-        <div class="challenge-card" data-value="Asset R&D">
-          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L5.5 17a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 8.5V3"/><path d="M7.5 14h9"/></svg></div>
-          <div class="label">Asset R&D</div>
-        </div>
-        <div class="challenge-card" data-value="Program Tracking">
-          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="4" width="17" height="17" rx="2"/><path d="m7.5 12.5 2.5 2.5 6-6"/></svg></div>
-          <div class="label">Program Tracking</div>
-        </div>
-        <div class="challenge-card" data-value="Conference Intelligence">
-          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="m7 12 3-3 2.5 2.5L17 7"/></svg></div>
-          <div class="label">Conference Intelligence</div>
-        </div>
-        <div class="challenge-card" data-value="GTM & Outreach">
-          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11 20 4l-6 17-3-7-8-3Z"/></svg></div>
-          <div class="label">GTM &amp; Outreach</div>
-        </div>
-      </div>
-      <div class="error-msg" id="ws-err-challenge">Please choose one to continue.</div>
-      <div class="modal-actions">
-        <button class="btn-text" onclick="wsBack(3)">Back</button>
-        <button class="btn primary" onclick="wsSubmit()">Submit request</button>
-      </div>
-    </div>
-
-    <div class="modal-step" data-step="done">
-      <div class="check" style="margin:0 auto 18px;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12l6 6L20 6"/></svg>
-      </div>
-      <h2 class="modal-title">Your workspace is being prepared</h2>
-      <p class="lede" style="text-align:center;margin:0 auto 8px;">Someone from our team will have it ready shortly.</p>
-      <div class="modal-actions" style="justify-content:center;">
-        <button class="btn" onclick="closeWorkspaceModal()">Done</button>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div id="overlay-root"></div>
 
 {% if recs %}{{ recs|json_script:"recs-data" }}{% endif %}
+{% if profile %}{{ profile|json_script:"profile-data" }}{% endif %}
+
 <script>
+(() => {
+  'use strict';
   const API_ENDPOINT = '{% url "concierge:submit_request" %}';
   const EMAILJS_PUBLIC_KEY = '0ocTm7GezyqScofEq';
   const EMAILJS_SERVICE_ID = 'service_3pw84b6';
   const EMAILJS_TEMPLATE_ID = 'template_gink26n';
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  try { emailjs.init({publicKey: EMAILJS_PUBLIC_KEY}); } catch (e) {}
+  const VISITOR = {name: '{{ visitor.name|escapejs }}', company: '{{ visitor.company|escapejs }}', email: '{{ visitor.email|escapejs }}', title: '{{ visitor.title|escapejs }}'};
+  const capture = (ev, props) => { try { if (typeof posthog !== 'undefined') posthog.capture(ev, props || {}); } catch (e) {} };
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+  const initials = n => n.replace(/^(dr|prof|mr|mrs|ms)\.?\s+/i, '').split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0].toUpperCase()).join('');
 
-  async function sendEmailNotification(subject, fields){
-    const detailsSummary = Object.entries(fields.details || {})
-      .map(([key, value]) => `${key}: ${value}`)
-      .join(', ');
-    try{
+  // fill every [data-ico] placeholder with the shared icon sprite
+  const fillIcons = root => $$('[data-ico]', root).forEach(n => {
+    const html = ico(n.dataset.ico, +n.dataset.size || 20);
+    if (n.tagName === 'SPAN' && !n.classList.length) { n.outerHTML = html; return; }
+    if (n.classList.contains('navitem') || n.classList.contains('tab')) return;
+    n.insertAdjacentHTML('afterbegin', html); n.removeAttribute('data-ico');
+  });
+  // plain spans without classes (nav items) become the svg itself
+  $$('.navitem [data-ico]').forEach(n => { n.outerHTML = ico(n.dataset.ico, 20); });
+  $$('.tab [data-ico]').forEach(n => { n.outerHTML = ico(n.dataset.ico, 22); });
+  fillIcons(document);
+  const homeNav = $('.navitem[data-tab="home"]'); if (homeNav && !$('svg', homeNav)) homeNav.insertAdjacentHTML('afterbegin', ico('home', 20));
+
+  const whoAv = $('#who-av'); if (whoAv) whoAv.textContent = initials(VISITOR.name);
+
+  /* ---------- navigation ---------- */
+  const TABS = ['home', 'sessions', 'attendees', 'search', 'experience'];
+  let current = 'home';
+  function show(page) {
+    current = page;
+    $$('.page, .exp-page').forEach(p => { p.hidden = p.dataset.page !== page; });
+    const tab = page === 'dining' ? 'home' : page;
+    $$('.tab, .navitem').forEach(t => { if (t.dataset.tab === tab) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current'); });
+    if (page === 'experience') { const f = $('#exp-frame'); if (!f.src) f.src = f.dataset.src; }
+    if (page === 'attendees') loadAttendees();
+    window.scrollTo({top: 0});
+    try { history.replaceState(null, '', page === 'home' ? location.pathname : '#' + page); } catch (e) {}
+    if (TABS.includes(page)) capture('tab_open', {tab: page});
+  }
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-tab]'); if (t && (t.matches('.tab, .navitem'))) { show(t.dataset.tab); return; }
+    const g = e.target.closest('[data-goto]'); if (g) show(g.dataset.goto);
+  });
+
+  const appbar = $('#appbar');
+  window.addEventListener('scroll', () => { appbar.dataset.scrolled = window.scrollY > 4 ? 'true' : 'false'; }, {passive: true});
+
+  /* ---------- toast ---------- */
+  function toast(msg) {
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = ico('check', 18) + '<span>' + esc(msg) + '</span><span class="toast-spacer"></span>';
+    $('#toasts').append(t);
+    setTimeout(() => t.remove(), 4200);
+  }
+
+  /* ---------- sheet ---------- */
+  function openSheet({title, subtitle, icon, body, footer, onMount}) {
+    const root = $('#overlay-root');
+    root.innerHTML = `<div class="scrim" data-close></div>
+      <div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(title)}">
+        <div class="sheet__head">
+          ${icon ? `<span class="tile-icon">${ico(icon, 22)}</span>` : ''}
+          <div class="sheet__title"><h2 class="t-h3">${esc(title)}</h2>${subtitle ? `<p class="t-meta">${esc(subtitle)}</p>` : ''}</div>
+          <button class="icon-btn" data-close aria-label="Close">${ico('close', 20)}</button>
+        </div>
+        <div class="sheet__body">${body}</div>
+        ${footer ? `<div class="sheet__foot">${footer}</div>` : ''}
+      </div>`;
+    document.body.style.overflow = 'hidden';
+    root.addEventListener('click', e => { if (e.target.closest('[data-close]')) closeSheet(); });
+    onMount && onMount(root);
+  }
+  function closeSheet() { $('#overlay-root').innerHTML = ''; document.body.style.overflow = ''; }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+  /* ---------- requests ---------- */
+  async function sendEmailNotification(subject, fields) {
+    const detailsSummary = Object.entries(fields.details || {}).map(([k, v]) => `${k}: ${v}`).join(', ');
+    try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        subject: subject,
-        guest_name: fields.guest_name || '',
-        guest_email: fields.email || '',
-        organization: fields.organization || '',
-        details_summary: detailsSummary
+        subject, guest_name: fields.guest_name || '', guest_email: fields.email || '',
+        organization: fields.organization || '', details_summary: detailsSummary,
       });
-    }catch(err){
-      console.log('Email notification failed (non-blocking):', err);
-    }
+    } catch (err) { console.log('Email notification failed (non-blocking):', err); }
   }
 
-  const TAB_OF = {'screen-menu':'home','screen-dining':'home','screen-confirm':'home',
-                  'screen-sessions':'sessions','screen-attendees':'attendees','screen-search':'search','screen-experience':'experience'};
-  const SCREEN_OF = {home:'screen-menu', sessions:'screen-sessions', attendees:'screen-attendees', search:'screen-search', experience:'screen-experience'};
-
-  function goTo(id){
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    const tab = TAB_OF[id];
-    if(tab){
-      document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-    }
-    if(id === 'screen-attendees' && typeof loadAttendees === 'function') loadAttendees();
-    if(id === 'screen-experience'){
-      const f = document.getElementById('exp-frame');
-      if(!f.src) f.src = f.dataset.src;
-    }
-    window.scrollTo({top:0, behavior:'smooth'});
-  }
-
-  function showTab(tab){
-    goTo(SCREEN_OF[tab]);
-    try{ history.replaceState(null, '', tab === 'home' ? location.pathname : '#' + tab); }catch(e){}
-    if(typeof posthog !== 'undefined') posthog.capture('tab_open', {tab: tab});
-  }
-  document.getElementById('tabbar').addEventListener('click', e => {
-    const t = e.target.closest('.tab');
-    if(t) showTab(t.dataset.tab);
-  });
-
-  // PostHog: track which concierge option people pick
-  document.querySelectorAll('.menu-grid .menu-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const label = card.querySelector('.label');
-      posthog.capture('menu_card_click', {
-        card: label ? label.textContent.trim() : null,
-        href: card.tagName === 'A' ? card.href : null
-      });
+  const REQUESTS = {
+    bagels: {title: 'Ask for bagels', body: 'A morning bite, your way', icon: 'bagel',
+             wa: note => 'https://wa.me/917871044448?text=' + encodeURIComponent('I want to request bagels for my booth.' + (note ? ' Note: ' + note : ''))},
+  };
+  $$('[data-request]').forEach(b => b.addEventListener('click', () => {
+    const r = REQUESTS[b.dataset.request];
+    openSheet({
+      title: r.title, subtitle: r.body, icon: r.icon,
+      body: `<label class="field-label" for="req-note">Note for the concierge desk <span class="t-muted">(optional)</span></label>
+        <textarea id="req-note" class="textarea" maxlength="280" rows="3"></textarea>
+        <p class="field-help">The concierge desk is staffed on site.</p>`,
+      footer: `<button class="btn btn--quiet" data-close>Cancel</button><button class="btn btn--primary" id="req-send">Send request</button>`,
+      onMount: root => {
+        $('#req-note', root).focus();
+        $('#req-send', root).addEventListener('click', () => {
+          const note = $('#req-note', root).value.trim();
+          capture('request_sent', {type: b.dataset.request});
+          window.open(r.wa(note), '_blank', 'noopener');
+          $('.sheet__body', root).innerHTML = `<div class="sheet-success">${ico('resolved', 28)}<h3 class="t-h3">Almost there</h3><p class="t-meta">We opened WhatsApp with your request. Send the message there and the desk will take it from here.</p></div>`;
+          $('.sheet__foot', root).innerHTML = '<button class="btn btn--primary" data-close>Done</button>';
+        });
+      },
     });
-  });
+  }));
+  $$('[data-track]').forEach(a => a.addEventListener('click', () => capture(a.dataset.track)));
 
-  // chip selection (single-select per group), used by the Experience BioLens screen
-  document.querySelectorAll('[data-chipgroup]').forEach(group => {
-    group.addEventListener('click', e => {
-      const chip = e.target.closest('.chip');
-      if(!chip) return;
-      group.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-      chip.classList.add('selected');
-    });
-  });
-
-  function getChipValue(groupName){
-    const group = document.querySelector(`[data-chipgroup="${groupName}"]`);
-    const sel = group ? group.querySelector('.chip.selected') : null;
-    return sel ? sel.dataset.value : '';
+  /* ---------- video ---------- */
+  const vid = $('#biolens-video'), player = $('#player');
+  const vPlay = $('#vbtn-play'), vMute = $('#vbtn-mute'), vFull = $('#vbtn-full');
+  function vIcons() {
+    vPlay.innerHTML = ico(vid.paused ? 'play' : 'pause', 20); vPlay.setAttribute('aria-label', vid.paused ? 'Play video' : 'Pause video');
+    vMute.innerHTML = ico(vid.muted ? 'volumeOff' : 'volumeOn', 20); vMute.setAttribute('aria-label', vid.muted ? 'Unmute video' : 'Mute video');
+    const fs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    vFull.innerHTML = ico(fs ? 'minimize' : 'maximize', 20); vFull.setAttribute('aria-label', fs ? 'Exit fullscreen' : 'Expand to fullscreen');
   }
-
-  function valOf(id){
-    const el = document.getElementById(id);
-    return el ? el.value.trim() : '';
-  }
-
-  async function submitAction(type, details, confirmMessage, guest){
-    guest = guest || {};
-    const payload = {
-      type: type,
-      guest_name: guest.name || '',
-      organization: guest.organization || '',
-      role: guest.role || '',
-      details: details
-    };
-    posthog.capture('request_submitted', { type: type, ...details });
-    try{
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-      const headers = {'Content-Type':'application/json'};
-      if(csrfToken){ headers['X-CSRFToken'] = csrfToken; }
-      await fetch(API_ENDPOINT, {
-        method:'POST',
-        headers: headers,
-        body: JSON.stringify(payload)
-      });
-    }catch(err){
-      // No backend attached (e.g. standalone preview), proceed silently.
-      console.log('Concierge request (offline preview):', payload);
-    }
-    sendEmailNotification(`BioLens Concierge: ${type.replace(/_/g, ' ')}`, {
-      guest_name: payload.guest_name,
-      organization: payload.organization,
-      details: details
-    });
-    document.getElementById('confirm-title').textContent = 'Request received';
-    document.getElementById('confirm-detail').textContent = confirmMessage;
-    goTo('screen-confirm');
-  }
-
-  // splash -> home (or the tab named in the URL hash)
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const tab = location.hash.slice(1);
-      showTab(SCREEN_OF[tab] ? tab : 'home');
-    }, 900);
+  vPlay.addEventListener('click', () => { vid.paused ? vid.play() : vid.pause(); capture('video_play_toggled', {playing: !vid.paused}); });
+  vMute.addEventListener('click', () => { vid.muted = !vid.muted; vIcons(); capture('video_mute_toggled', {muted: vid.muted}); });
+  vFull.addEventListener('click', () => {
+    const fs = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!fs) {
+      const req = player.requestFullscreen || player.webkitRequestFullscreen;
+      if (req) req.call(player).catch(() => {}); else if (vid.webkitEnterFullscreen) vid.webkitEnterFullscreen();
+      vid.muted = false;
+      if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(() => {});
+    } else if (document.exitFullscreen) document.exitFullscreen(); else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    capture('video_fullscreen_toggled', {fullscreen: !fs});
   });
+  ['play', 'pause', 'volumechange'].forEach(ev => vid.addEventListener(ev, vIcons));
+  ['fullscreenchange', 'webkitfullscreenchange'].forEach(ev => document.addEventListener(ev, () => {
+    vIcons();
+    if (!(document.fullscreenElement || document.webkitFullscreenElement) && screen.orientation && screen.orientation.unlock) { try { screen.orientation.unlock(); } catch (e) {} }
+  }));
+  vIcons();
 
-  // ---------- Sessions tab ----------
-  const recsEl = document.getElementById('recs-data');
+  /* ---------- sessions ---------- */
+  const recsEl = $('#recs-data');
   const RECS = recsEl ? JSON.parse(recsEl.textContent) : null;
+  const PROFILE = $('#profile-data') ? JSON.parse($('#profile-data').textContent) : {modalities: [], phases: [], geographies: []};
 
-  function mk(tag, cls, text){
-    const n = document.createElement(tag);
-    if(cls) n.className = cls;
-    if(text != null) n.textContent = text;
-    return n;
-  }
+  if (RECS) {
+    $('#sessions-lede').textContent = RECS.personalised
+      ? 'Picked for {{ visitor.company|escapejs }}. Each one comes with the reason it fits.'
+      : 'Picked from the focus you told us about.';
+    const pickById = {};
+    ['1', '2'].forEach(d => (RECS.sessions[d] || []).forEach(s => { pickById[s.id] = s; }));
+    const SV = {view: 'you', day: '1', q: '', tracks: new Set(), speakers: new Set(), orgs: new Set(), tod: new Set()};
+    const startMin = s => { const [h, m] = s.start.split(':').map(Number); return h * 60 + m; };
+    const dur = s => { const [h, m] = s.end.split(':').map(Number); return h * 60 + m - startMin(s); };
+    const base = day => (SV.view === 'all' ? (RECS.all_sessions[day] || []).map(s => ({...s, reason: (pickById[s.id] || {}).reason || '', meet: (pickById[s.id] || {}).meet || s.meet || []})) : (RECS.sessions[day] || []).map(s => ({...s, picked: true})));
+    const orgsOf = s => [...new Set([...(s.speakers || []).map(p => p.org).filter(Boolean), s.sponsor].filter(Boolean))];
+    const matches = (s, skip) => {
+      if (SV.q) {
+        const hay = (s.title + ' ' + s.track + ' ' + (s.description || '') + ' ' + (s.speakers || []).map(p => p.name + ' ' + p.org).join(' ') + ' ' + orgsOf(s).join(' ')).toLowerCase();
+        if (!SV.q.toLowerCase().split(/\s+/).filter(Boolean).every(t => hay.includes(t))) return false;
+      }
+      if (skip !== 'tracks' && SV.tracks.size && !SV.tracks.has(s.track)) return false;
+      if (skip !== 'speakers' && SV.speakers.size && !(s.speakers || []).some(p => SV.speakers.has(p.name))) return false;
+      if (skip !== 'orgs' && SV.orgs.size && !orgsOf(s).some(o => SV.orgs.has(o))) return false;
+      if (skip !== 'tod' && SV.tod.size && !SV.tod.has(startMin(s) < 720 ? 'am' : 'pm')) return false;
+      return true;
+    };
+    const nFilters = () => SV.tracks.size + SV.speakers.size + SV.orgs.size + SV.tod.size + (SV.q ? 1 : 0);
 
-  let sessView = 'you', sessDay = '1';
-  function renderSessions(day){
-    sessDay = day;
-    const list = document.getElementById('sess-list');
-    list.replaceChildren();
-    document.querySelectorAll('.day-pill').forEach(p => p.classList.toggle('on', p.dataset.day === day));
-    const all = sessView === 'all';
-    const items = (all ? RECS.all_sessions : RECS.sessions)[day] || [];
-    if(!items.length){
-      list.append(mk('div', 'empty-note', all ? 'No sessions listed for this day.' : 'No standout sessions for you on this day, so use the networking hours on the showfloor.'));
-      return;
+    function renderDayTabs() {
+      $('#daytabs').innerHTML = ['1', '2'].map(d => `<button class="daytab" data-day="${d}" aria-pressed="${SV.day === d}"><span class="d">Day ${d}</span><span class="n">${base(d).filter(s => matches(s)).length}</span><span class="date">${esc(RECS.dates[d])}</span></button>`).join('');
     }
-    items.forEach(s => {
-      const card = mk('article', 'sess');
-      const meta = mk('div', 'sess-meta');
-      meta.append(mk('span', 'sess-time', s.start + '–' + s.end), mk('span', '', s.track));
-      if(all && s.picked) card.append(mk('span', 'badge', '★ For you'));
-      card.append(meta, mk('h3', '', s.title));
-      if(s.reason){
-        const why = mk('p', 'why');
-        why.append(mk('b', '', 'Why it fits: '), document.createTextNode(s.reason));
-        card.append(why);
-      } else if(all && s.description){
-        card.append(mk('p', 'why', s.description.length > 220 ? s.description.slice(0, 217) + '…' : s.description));
-      }
-      if(s.sponsor){
-        const sp = mk('div', 'meet', 'Sponsored by');
-        sp.append(mk('span', 'o', s.sponsor));
-        card.append(sp);
-      }
-      if(s.speakers && s.speakers.length){
-        const spk = mk('div', 'meet', 'Speaking:');
-        s.speakers.slice(0, 4).forEach(p => spk.append(mk('span', 'o', p.org ? p.name + ' · ' + p.org : p.name)));
-        card.append(spk);
-      }
-      if(s.meet && s.meet.length){
-        const meet = mk('div', 'meet', 'Find:');
-        s.meet.forEach(o => meet.append(mk('span', 'o', o)));
-        card.append(meet);
-      }
-      const a = mk('a', 'open', 'Open session ↗');
-      a.href = s.link; a.target = '_blank'; a.rel = 'noopener';
-      a.addEventListener('click', () => { if(typeof posthog !== 'undefined') posthog.capture('session_open', {id: s.id, title: s.title}); });
-      card.append(a);
-      list.append(card);
-    });
-  }
 
-  if(RECS){
-    document.getElementById('sessions-lede').textContent =
-      RECS.personalised ? 'Picked for {{ visitor.company|escapejs }}. Each one comes with the reason it fits.' : 'Picked from the focus you told us about.';
-    const toggle = document.getElementById('day-toggle');
-    ['1','2'].forEach(d => {
-      const b = mk('button', 'day-pill', 'Day ' + d);
-      b.append(mk('small', '', RECS.dates[d]));
-      b.dataset.day = d;
-      b.addEventListener('click', () => renderSessions(d));
-      toggle.append(b);
+    function renderSessions() {
+      renderDayTabs();
+      const items = base(SV.day).filter(s => matches(s));
+      const n = nFilters();
+      const badge = $('#filter-n'); badge.hidden = !n; badge.textContent = n;
+      const chips = [];
+      SV.tracks.forEach(v => chips.push(['tracks', v])); SV.speakers.forEach(v => chips.push(['speakers', v]));
+      SV.orgs.forEach(v => chips.push(['orgs', v])); SV.tod.forEach(v => chips.push(['tod', v]));
+      if (SV.q) chips.push(['q', '“' + SV.q + '”']);
+      const af = $('#active-filters'); af.hidden = !chips.length;
+      af.innerHTML = chips.map(([k, v]) => `<button class="chip chip--sm chip--remove" data-rm="${k}" data-v="${esc(k === 'q' ? SV.q : v)}">${esc(k === 'tod' ? (v === 'am' ? 'Morning' : 'Afternoon') : v)}<span class="x">${ico('close', 14)}</span></button>`).join('') + (chips.length > 1 ? '<button class="link-btn" id="af-clear">Clear all</button>' : '');
+      $('#result-line').innerHTML = `<span><b>${items.length}</b> ${items.length === 1 ? 'session' : 'sessions'} · Day ${SV.day}, ${esc(RECS.dates[SV.day])}</span>`;
+      const tl = $('#timeline');
+      if (!items.length) {
+        tl.innerHTML = `<div class="empty"><span class="empty__art">${ico('calendar', 32)}</span><div class="empty__title">${SV.view === 'you' && !n ? 'No sessions picked for Day ' + SV.day : 'No sessions match'}</div><div class="empty__body">${SV.view === 'you' && !n ? 'Browse the full agenda for ' + esc(RECS.dates[SV.day]) + ' under All Sessions.' : 'Try clearing a filter.'}</div>${SV.view === 'you' && !n ? '<button class="btn" id="to-all">Open all sessions</button>' : ''}</div>`;
+        return;
+      }
+      const slots = [];
+      items.forEach(s => { const last = slots[slots.length - 1]; if (last && last.start === s.start) last.items.push(s); else slots.push({start: s.start, items: [s]}); });
+      tl.innerHTML = slots.map(sl => `<div class="slot" data-single="${sl.items.length === 1}"><div class="slot__time">${esc(sl.start)}</div><div class="slot__items">${sl.items.map(sessionCard).join('')}</div></div>`).join('');
+      fillIcons(tl);
+    }
+
+    function sessionCard(s) {
+      const speakers = (s.speakers || []).slice(0, 4).map(p => `<span class="speaker"><span class="avatar avatar--sm">${esc(initials(p.name))}</span><span>${esc(p.name)}${p.org ? ` <span class="org">${esc(p.org)}</span>` : ''}</span></span>`).join('');
+      const meet = (s.meet || []).map(o => `<span class="org-chip">${ico('organisation', 14)}${esc(o)}</span>`).join('');
+      const why = s.reason
+        ? `<div class="why"><span class="why__label">${ico('check', 14)}Why it fits</span><p class="why__text" data-clamped="${s.reason.length > 110}">${esc(s.reason)}</p>${s.reason.length > 110 ? '<button class="why__more" data-more>Show more</button>' : ''}</div>`
+        : (SV.view === 'all' && s.description ? `<p class="t-sm t-muted">${esc(s.description.length > 220 ? s.description.slice(0, 217) + '…' : s.description)}</p>` : '');
+      return `<article class="card session">
+        <div class="session__meta"><span class="session__time">${esc(s.start)}–${esc(s.end)}</span><span class="session__dur">${dur(s)} min</span><span class="track"><b>${esc(s.track)}</b></span>${s.picked ? `<span class="pick-tag">${ico('check', 14)}Picked for you</span>` : ''}</div>
+        <h3 class="session__title">${esc(s.title)}</h3>
+        ${why}
+        <div class="people">
+          ${s.sponsor ? `<div class="people__row"><span class="people__label">Sponsor</span><div class="people__items"><span class="org-chip">${ico('organisation', 14)}${esc(s.sponsor)}</span></div></div>` : ''}
+          ${speakers ? `<div class="people__row"><span class="people__label">Speaking</span><div class="people__items">${speakers}</div></div>` : ''}
+          ${meet ? `<div class="people__row"><span class="people__label">Find</span><div class="people__items">${meet}</div></div>` : ''}
+        </div>
+        <div class="session__actions"><a class="btn btn--sm" href="${esc(s.link)}" target="_blank" rel="noopener" data-session="${esc(s.id)}">Open session ${ico('arrowUpRight', 14)}</a></div>
+      </article>`;
+    }
+
+    $('#view-seg').addEventListener('click', e => {
+      const b = e.target.closest('[data-view]'); if (!b) return;
+      SV.view = b.dataset.view;
+      $$('#view-seg .seg__item').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+      renderSessions();
     });
-    document.querySelectorAll('#view-toggle button').forEach(b => b.addEventListener('click', () => {
-      sessView = b.dataset.view;
-      document.querySelectorAll('#view-toggle button').forEach(x => x.classList.toggle('on', x === b));
-      renderSessions(sessDay);
-    }));
+    $('#daytabs').addEventListener('click', e => { const b = e.target.closest('[data-day]'); if (b) { SV.day = b.dataset.day; renderSessions(); } });
+    $('#timeline').addEventListener('click', e => {
+      if (e.target.closest('#to-all')) { $('#view-seg [data-view="all"]').click(); return; }
+      const more = e.target.closest('[data-more]');
+      if (more) { const t = more.previousElementSibling; const open = t.dataset.clamped === 'true'; t.dataset.clamped = open ? 'false' : 'true'; more.textContent = open ? 'Show less' : 'Show more'; return; }
+      const a = e.target.closest('[data-session]'); if (a) capture('session_open', {id: a.dataset.session});
+    });
+    $('#active-filters').addEventListener('click', e => {
+      if (e.target.closest('#af-clear')) { SV.q = ''; SV.tracks.clear(); SV.speakers.clear(); SV.orgs.clear(); SV.tod.clear(); renderSessions(); return; }
+      const b = e.target.closest('[data-rm]'); if (!b) return;
+      if (b.dataset.rm === 'q') SV.q = ''; else SV[b.dataset.rm].delete(b.dataset.v);
+      renderSessions();
+    });
+
+    $('#filter-open').addEventListener('click', () => {
+      const draft = {q: SV.q, tracks: new Set(SV.tracks), speakers: new Set(SV.speakers), orgs: new Set(SV.orgs), tod: new Set(SV.tod)};
+      const dayItems = base(SV.day);
+      const matchesDraft = (s, skip) => {
+        const keep = {q: SV.q, tracks: SV.tracks, speakers: SV.speakers, orgs: SV.orgs, tod: SV.tod};
+        SV.q = draft.q; SV.tracks = draft.tracks; SV.speakers = draft.speakers; SV.orgs = draft.orgs; SV.tod = draft.tod;
+        const r = matches(s, skip);
+        Object.assign(SV, keep);
+        return r;
+      };
+      const groups = () => {
+        const g = (key, title, entries) => entries.length ? `<div class="filter-group"><div class="filter-group__title">${title}</div><div class="check-list">${entries.map(([v, label, sub, n]) => `<button class="check-row" role="checkbox" aria-checked="${draft[key].has(v)}" data-g="${key}" data-v="${esc(v)}"${n === 0 && !draft[key].has(v) ? ' disabled' : ''}><span class="check-box">${draft[key].has(v) ? ico('check', 14) : ''}</span><span class="lbl">${esc(label)}${sub ? `<small>${esc(sub)}</small>` : ''}</span><span class="n">${n}</span></button>`).join('')}</div></div>` : '';
+        const count = (skip, pred) => dayItems.filter(s => matchesDraft(s, skip) && pred(s)).length;
+        const tracks = [...new Set(dayItems.map(s => s.track))].sort().map(t => [t, t, '', count('tracks', s => s.track === t)]);
+        const spk = new Map(); dayItems.forEach(s => (s.speakers || []).forEach(p => spk.set(p.name, p.org || '')));
+        const speakers = [...spk].sort((a, b) => a[0].localeCompare(b[0])).map(([n, o]) => [n, n, o, count('speakers', s => (s.speakers || []).some(p => p.name === n))]);
+        const orgs = [...new Set(dayItems.flatMap(orgsOf))].sort().map(o => [o, o, '', count('orgs', s => orgsOf(s).includes(o))]);
+        const tod = [['am', 'Morning', 'Before 12:00', count('tod', s => startMin(s) < 720)], ['pm', 'Afternoon', 'From 12:00', count('tod', s => startMin(s) >= 720)]];
+        return g('tracks', 'Track', tracks) + g('speakers', 'Speaker', speakers) + g('orgs', 'Organisation', orgs) + g('tod', 'Time of day', tod);
+      };
+      const total = () => dayItems.filter(s => matchesDraft(s)).length;
+      openSheet({
+        title: 'Filter sessions',
+        body: `<div class="field" style="margin:var(--s-2) 0 var(--s-2)"><span class="field__lead">${ico('search', 18)}</span><input id="fs-q" class="field__input" placeholder="Search titles, speakers, companies" value="${esc(SV.q)}" data-empty="${SV.q ? 'false' : 'true'}"></div><div id="fs-groups">${groups()}</div>`,
+        footer: `<button class="btn btn--quiet" id="fs-clear">Clear all</button><button class="btn btn--primary" id="fs-show">Show ${total()} ${total() === 1 ? 'session' : 'sessions'}</button>`,
+        onMount: root => {
+          const refresh = () => { $('#fs-groups', root).innerHTML = groups(); const t = total(); $('#fs-show', root).textContent = `Show ${t} ${t === 1 ? 'session' : 'sessions'}`; };
+          $('#fs-groups', root).addEventListener('click', e => {
+            const b = e.target.closest('.check-row'); if (!b || b.disabled) return;
+            const set = draft[b.dataset.g]; set.has(b.dataset.v) ? set.delete(b.dataset.v) : set.add(b.dataset.v);
+            const sc = $('.sheet__body', root).scrollTop; refresh(); $('.sheet__body', root).scrollTop = sc;
+          });
+          $('#fs-q', root).addEventListener('input', e => { draft.q = e.target.value.trim(); e.target.dataset.empty = e.target.value ? 'false' : 'true'; refresh(); });
+          $('#fs-clear', root).addEventListener('click', () => { draft.q = ''; draft.tracks.clear(); draft.speakers.clear(); draft.orgs.clear(); draft.tod.clear(); $('#fs-q', root).value = ''; refresh(); });
+          $('#fs-show', root).addEventListener('click', () => {
+            SV.q = draft.q; SV.tracks = draft.tracks; SV.speakers = draft.speakers; SV.orgs = draft.orgs; SV.tod = draft.tod;
+            closeSheet(); renderSessions();
+          });
+        },
+      });
+    });
+
     const today = new Date().toISOString().slice(0, 10);
-    renderSessions(today === '2026-10-21' ? '2' : '1');
+    SV.day = today === '2026-10-21' ? '2' : '1';
+    renderSessions();
 
-    // ---------- Search tab ----------
-    const termList = document.getElementById('term-list');
-    const note = document.getElementById('search-note');
-    const ICONS = ['🎯', '🧬', '🌎', '🏭', '🤝'];
+    /* ---------- search tab ---------- */
+    const TERM_ICONS = ['target', 'molecule', 'globe', 'factory', 'network'];
+    const MOD_LABEL = {api:'APIs', small:'Small molecule', mab:'mAbs', bispecific:'Bispecifics', adc:'ADCs', protein:'Recombinant protein', biosimilar:'Biosimilars', cell:'Cell therapy', gene:'Gene therapy', editing:'Gene editing', radio:'Radiopharma', microbiome:'Microbiome', device:'Medical device', digital:'Digital therapeutics'};
+    const PH_LABEL = {discovery:'Discovery', preclinical:'Preclinical', phase1:'Phase 1', phase2:'Phase 2', phase3:'Phase 3', commercial:'Commercial'};
+    const GEO_LABEL = {nam:'North America', eu:'Europe', apac:'Asia-Pacific', mea:'Middle East & Africa', anz:'Australia & NZ'};
+    const matchTags = term => {
+      const t = term.toLowerCase(), out = [];
+      PROFILE.modalities.forEach(m => { const l = MOD_LABEL[m]; if (l && t.includes(l.toLowerCase().replace('radiopharma', 'radio'))) out.push(l); });
+      PROFILE.phases.forEach(p => { const l = PH_LABEL[p]; if (l && t.includes(l.toLowerCase())) out.push(l); });
+      PROFILE.geographies.forEach(g => { const l = GEO_LABEL[g]; if (l && (t.includes(l.toLowerCase()) || t.includes(({nam:'us', eu:'eu', apac:'apac', mea:'mea', anz:'anz'})[g]))) out.push(l); });
+      return [...new Set(out)];
+    };
+    $('#search-count').textContent = RECS.search_terms.length + ' searches';
+    const termList = $('#term-list');
+    termList.innerHTML = RECS.search_terms.map((term, i) => {
+      const tags = matchTags(term);
+      return `<div class="row search-item" data-i="${i}"><span class="tile-icon">${ico(TERM_ICONS[i % TERM_ICONS.length], 22)}</span><div class="row__main"><div class="search-item__text">${esc(term)}</div>
+        <div class="search-item__foot"><div class="tags">${tags.map(t => `<span class="tag tag--match">${ico('check', 12)}${esc(t)}</span>`).join('')}</div><button class="btn btn--sm" data-run>Run it ${ico('arrowRight', 14)}</button></div></div></div>`;
+    }).join('');
 
-    async function sendInterest(term, other, btn, stateEl){
-      note.className = 'search-note'; note.textContent = '';
+    async function sendInterest(term, other, btn) {
       btn.disabled = true;
-      try{
-        const csrf = document.querySelector('meta[name="csrf-token"]').content;
-        const res = await fetch('{% url "concierge:search_interest" %}', {
-          method:'POST', headers:{'Content-Type':'application/json','X-CSRFToken':csrf},
-          body: JSON.stringify({term: term, other: !!other})
-        });
+      try {
+        const csrf = $('meta[name="csrf-token"]').content;
+        const res = await fetch('{% url "concierge:search_interest" %}', {method: 'POST', headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrf}, body: JSON.stringify({term, other: !!other})});
         const data = await res.json();
-        if(!data.ok) throw new Error('rejected');
-        if(typeof posthog !== 'undefined') posthog.capture('search_interest', {term: term, other: !!other});
-        // Same EmailJS path the workspace request uses, so the notification arrives without server SMTP.
-        sendEmailNotification('BioLens Concierge: Search interest', {
-          guest_name: '{{ visitor.name|escapejs }}',
-          email: '{{ visitor.email|escapejs }}',
-          organization: '{{ visitor.company|escapejs }}',
-          details: {search: term, source: other ? 'typed' : 'suggested', title: '{{ visitor.title|escapejs }}'}
+        if (!data.ok) throw new Error('rejected');
+        capture('search_interest', {term, other: !!other});
+        // Same EmailJS path as the other concierge requests; the popup doesn't wait on it beyond a short race.
+        const mail = sendEmailNotification('BioLens Concierge: Search interest', {guest_name: VISITOR.name, email: VISITOR.email, organization: VISITOR.company, details: {search: term, source: other ? 'typed' : 'suggested', title: VISITOR.title, company: VISITOR.company}});
+        await Promise.race([mail, new Promise(r => setTimeout(r, 3000))]);
+        openSheet({
+          title: 'Request received', icon: 'resolved',
+          body: `<div class="sheet-success"><p class="t-body">We’ve received your request and will get back to you${VISITOR.email ? ' at <b>' + esc(VISITOR.email) + '</b>' : ''} on this soon.</p><div class="banner">${ico('target', 18)}<div>${esc(term)}</div></div></div>`,
+          footer: '<button class="btn btn--primary" data-close>Done</button>',
         });
-        note.textContent = 'Requested. The Lunartree team will follow up with matches.';
         return true;
-      }catch(err){
+      } catch (err) {
         btn.disabled = false;
-        note.className = 'search-note err';
-        note.textContent = 'Couldn\u2019t send that. Please try again.';
+        toast('Couldn’t send that. Please try again.');
         return false;
       }
     }
-
-    RECS.search_terms.forEach((term, i) => {
-      const b = mk('button', 'term');
-      b.append(mk('span', 't-ico', ICONS[i % ICONS.length]), mk('span', 't-txt', term));
-      const state = mk('span', 't-state', 'Run it');
-      b.append(state);
-      b.addEventListener('click', async () => {
-        if(await sendInterest(term, false, b)){ b.classList.add('sent'); state.textContent = 'Requested ✓'; }
-      });
-      termList.append(b);
+    termList.addEventListener('click', async e => {
+      const b = e.target.closest('[data-run]'); if (!b) return;
+      const row = b.closest('.search-item');
+      if (await sendInterest(RECS.search_terms[+row.dataset.i], false, b)) { b.classList.add('btn--done'); b.innerHTML = ico('check', 14) + 'Requested'; row.dataset.state = 'sent'; }
     });
-
-    const otherInput = document.getElementById('other-term');
-    const otherSend = document.getElementById('other-send');
-    otherInput.addEventListener('input', () => { otherSend.disabled = !otherInput.value.trim(); });
-    const submitOther = async () => {
-      const v = otherInput.value.trim();
-      if(!v) return;
-      if(await sendInterest(v, true, otherSend)){ otherInput.value = ''; otherSend.disabled = true; }
-    };
-    otherSend.addEventListener('click', submitOther);
-    otherInput.addEventListener('keydown', e => { if(e.key === 'Enter') submitOther(); });
+    const otherInput = $('#other-term'), otherSend = $('#other-send');
+    otherInput.addEventListener('input', () => { otherSend.disabled = !otherInput.value.trim(); otherInput.style.height = 'auto'; otherInput.style.height = Math.min(otherInput.scrollHeight, 180) + 'px'; });
+    otherSend.addEventListener('click', async () => {
+      const v = otherInput.value.trim(); if (!v) return;
+      if (await sendInterest(v, true, otherSend)) { otherInput.value = ''; otherSend.disabled = true; otherInput.style.height = 'auto'; }
+    });
   }
 
-  /* ---------- Attendees tab ---------- */
+  /* ---------- attendees ---------- */
   {% if visitor %}
   let ATT = null, attLoading = false;
-  const attState = {q:'', seg:'', mod:'', exh:false};
-  const attEl = {list: document.getElementById('att-list'), n: document.getElementById('att-n'),
-                 clear: document.getElementById('att-clear'), q: document.getElementById('att-q')};
-  const initials = n => n.replace(/^(dr|prof|mr|mrs|ms)\.?\s+/i, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
-
-  async function loadAttendees(){
-    if(ATT || attLoading) return;
+  const AS = {q: '', seg: '', mod: '', exh: false};
+  async function loadAttendees() {
+    if (ATT || attLoading) return;
     attLoading = true;
-    try{
-      const res = await fetch('{% url "concierge:attendees" %}', {credentials:'same-origin'});
+    $('#att-list').innerHTML = Array.from({length: 5}, () => '<div class="row"><span class="skel" style="width:40px;height:40px;border-radius:50%"></span><div class="row__main"><span class="skel" style="height:16px;width:55%"></span><span class="skel" style="height:14px;width:80%"></span></div></div>').join('');
+    try {
+      const res = await fetch('{% url "concierge:attendees" %}', {credentials: 'same-origin'});
       const data = await res.json();
-      if(!data.ok) throw new Error('forbidden');
+      if (!data.ok) throw new Error('forbidden');
       ATT = data;
-      buildAttFilters();
       renderAttendees();
-    }catch(err){
-      attEl.list.replaceChildren(mk('div', 'empty-note', 'Couldn\u2019t load the attendee list. Please refresh and try again.'));
+    } catch (err) {
+      $('#att-list').innerHTML = `<div class="empty"><div class="empty__title">Couldn’t load the attendee list</div><div class="empty__body">Please refresh and try again.</div></div>`;
     }
     attLoading = false;
   }
-
-  function chip(row, label, count, active, onClick){
-    const b = mk('button', 'fchip' + (active ? ' on' : ''), label);
-    b.type = 'button';
-    if(count != null) b.append(mk('small', '', String(count)));
-    b.addEventListener('click', onClick);
-    row.append(b);
-  }
-
-  function buildAttFilters(){
-    const segRow = document.getElementById('att-seg'), modRow = document.getElementById('att-mod');
-    segRow.replaceChildren(); modRow.replaceChildren();
+  const attMatch = (p, skip) => {
+    if (skip !== 'seg' && AS.seg && p.segment !== AS.seg) return false;
+    if (skip !== 'seg' && AS.exh && !p.exhibitor) return false;
+    if (skip !== 'mod' && AS.mod && !p.mods.includes(AS.mod)) return false;
+    const toks = AS.q.toLowerCase().split(/\s+/).filter(Boolean);
+    if (toks.length) { const hay = (p.name + ' ' + p.title + ' ' + p.company).toLowerCase(); if (!toks.every(t => hay.includes(t))) return false; }
+    return true;
+  };
+  const hl = text => {
+    let out = esc(text);
+    AS.q.toLowerCase().split(/\s+/).filter(Boolean).forEach(t => { out = out.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>'); });
+    return out;
+  };
+  function renderAttendees() {
     const people = ATT.people;
-    chip(segRow, 'Everyone', people.length, !attState.seg && !attState.exh, () => { attState.seg = ''; attState.exh = false; buildAttFilters(); renderAttendees(); });
-    const segs = {};
-    people.forEach(p => { segs[p.segment] = (segs[p.segment] || 0) + 1; });
-    Object.keys(segs).sort((a, b) => segs[b] - segs[a]).forEach(sg => {
-      chip(segRow, sg, segs[sg], attState.seg === sg, () => { attState.seg = attState.seg === sg ? '' : sg; buildAttFilters(); renderAttendees(); });
-    });
-    chip(segRow, 'Exhibitors', people.filter(p => p.exhibitor).length, attState.exh, () => { attState.exh = !attState.exh; buildAttFilters(); renderAttendees(); });
-    const mods = {};
-    people.forEach(p => p.mods.forEach(m => { mods[m] = (mods[m] || 0) + 1; }));
-    Object.keys(mods).sort((a, b) => mods[b] - mods[a]).forEach(m => {
-      chip(modRow, ATT.labels[m] || m, mods[m], attState.mod === m, () => { attState.mod = attState.mod === m ? '' : m; buildAttFilters(); renderAttendees(); });
-    });
+    const segOrder = ['CDMO', 'CRO', 'Supplier', 'Pharma/Biotech', 'Equipment', 'Non-pharma', 'Unverified'];
+    const segCounts = {}; people.filter(p => attMatch(p, 'seg')).forEach(p => { segCounts[p.segment] = (segCounts[p.segment] || 0) + 1; });
+    const chip = (label, n, on, attrs) => `<button class="chip" ${attrs} aria-pressed="${on}"${n === 0 && !on ? ' disabled' : ''}>${esc(label)}<span class="chip__count">${n}</span>${on ? `<span class="chip__check">${ico('check', 14)}</span>` : ''}</button>`;
+    $('#att-seg').innerHTML = chip('Everyone', people.filter(p => attMatch(p, 'seg')).length, !AS.seg && !AS.exh, 'data-seg=""') +
+      segOrder.filter(s => segCounts[s]).map(s => chip(s, segCounts[s], AS.seg === s, `data-seg="${esc(s)}"`)).join('') +
+      chip('Exhibitors', people.filter(p => attMatch(p, 'seg') && p.exhibitor).length, AS.exh, 'data-exh="1"');
+    const modCounts = {}; people.filter(p => attMatch(p, 'mod')).forEach(p => p.mods.forEach(m => { modCounts[m] = (modCounts[m] || 0) + 1; }));
+    $('#att-mod').innerHTML = Object.keys(modCounts).sort((a, b) => modCounts[b] - modCounts[a]).map(m => chip(ATT.labels[m] || m, modCounts[m], AS.mod === m, `data-mod="${m}"`)).join('');
+    const rows = people.filter(p => attMatch(p));
+    const filtered = AS.q || AS.seg || AS.mod || AS.exh;
+    $('#att-n').innerHTML = `<b>${rows.length}</b> ${rows.length === 1 ? 'attendee' : 'attendees'}${filtered ? ' match' : ''}`;
+    $('#att-clear').hidden = !filtered;
+    const list = $('#att-list');
+    if (!rows.length) { list.innerHTML = `<div class="empty"><span class="empty__art">${ico('users', 32)}</span><div class="empty__title">No one matches that</div><div class="empty__body">Try a different name or clear a filter.</div></div>`; return; }
+    list.innerHTML = rows.map(p => `<div class="row person att-row">
+      <span class="avatar">${esc(initials(p.name))}${p.exhibitor ? '<span class="avatar__mark"></span>' : ''}</span>
+      <div class="person__body"><div class="person__name">${hl(p.name)}</div>${p.title ? `<div class="person__title">${hl(p.title)}</div>` : ''}
+        ${p.company ? `<div class="person__org">${ico('organisation', 14)}${hl(p.company)}</div>` : ''}
+        <div class="tags"><span class="tag tag--type">${esc(p.segment)}</span>${p.exhibitor ? '<span class="tag tag--mark">Exhibitor</span>' : ''}${p.mods.slice(0, 3).map(m => `<span class="tag">${esc(ATT.labels[m] || m)}</span>`).join('')}</div></div>
+      ${p.linkedin ? `<a class="li" href="${esc(p.linkedin)}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of ${esc(p.name)}" title="LinkedIn profile" data-li="${esc(p.id)}">${ico('briefcase', 18)}</a>` : ''}
+    </div>`).join('');
   }
-
-  function renderAttendees(){
-    const toks = attState.q.toLowerCase().split(/\s+/).filter(Boolean);
-    const rows = ATT.people.filter(p => {
-      if(attState.seg && p.segment !== attState.seg) return false;
-      if(attState.exh && !p.exhibitor) return false;
-      if(attState.mod && !p.mods.includes(attState.mod)) return false;
-      const hay = (p.name + ' ' + p.title + ' ' + p.company).toLowerCase();
-      return toks.every(t => hay.includes(t));
-    });
-    const filtered = attState.q || attState.seg || attState.mod || attState.exh;
-    attEl.n.textContent = rows.length + (rows.length === 1 ? ' attendee' : ' attendees') + (filtered ? ' match' : '');
-    attEl.clear.hidden = !filtered;
-    attEl.list.replaceChildren();
-    if(!rows.length){
-      attEl.list.append(mk('div', 'empty-note', 'No one matches that. Try a different name or clear a filter.'));
-      return;
-    }
-    rows.forEach(p => {
-      const card = mk('article', 'att');
-      card.append(mk('div', 'av', initials(p.name)));
-      const who = mk('div', 'who');
-      who.append(mk('h3', '', p.name));
-      if(p.title) who.append(mk('div', 'role', p.title));
-      if(p.company) who.append(mk('div', 'org', p.company));
-      const tags = mk('div', 'tags');
-      tags.append(mk('span', 'tag seg', p.segment));
-      if(p.exhibitor) tags.append(mk('span', 'tag exh', 'Exhibitor'));
-      p.mods.slice(0, 3).forEach(m => tags.append(mk('span', 'tag', ATT.labels[m] || m)));
-      who.append(tags);
-      card.append(who);
-      attEl.list.append(card);
-    });
-  }
-
-  attEl.q.addEventListener('input', () => { attState.q = attEl.q.value.trim(); if(ATT) renderAttendees(); });
-  attEl.clear.addEventListener('click', () => {
-    attState.q = ''; attState.seg = ''; attState.mod = ''; attState.exh = false; attEl.q.value = '';
-    buildAttFilters(); renderAttendees();
+  $('#att-q').addEventListener('input', e => { AS.q = e.target.value.trim(); e.target.dataset.empty = e.target.value ? 'false' : 'true'; if (ATT) renderAttendees(); });
+  $('#att-seg').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b || b.disabled) return;
+    if (b.hasAttribute('data-exh')) AS.exh = !AS.exh; else { AS.seg = b.dataset.seg === AS.seg ? '' : b.dataset.seg; if (!AS.seg) AS.exh = false; }
+    renderAttendees();
   });
+  $('#att-mod').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b || b.disabled) return; AS.mod = AS.mod === b.dataset.mod ? '' : b.dataset.mod; renderAttendees(); });
+  $('#att-clear').addEventListener('click', () => { AS.q = ''; AS.seg = ''; AS.mod = ''; AS.exh = false; $('#att-q').value = ''; $('#att-q').dataset.empty = 'true'; renderAttendees(); });
+  $('#att-list').addEventListener('click', e => { const a = e.target.closest('[data-li]'); if (a) capture('attendee_linkedin', {id: a.dataset.li}); });
+  {% else %}
+  function loadAttendees() {}
   {% endif %}
 
-
-  /* ---------- Video ---------- */
-  const biolensVideo = document.getElementById('biolens-video');
-  const videoWrap = document.querySelector('.video-wrap');
-
-  // Some browsers don't reliably reflect the `hidden` attribute on <svg>
-  // elements via the `.hidden` property, so toggle display explicitly.
-  function showIcon(id, show){
-    document.getElementById(id).style.display = show ? '' : 'none';
-  }
-
-  function updateMuteIcons(){
-    showIcon('icon-muted', !biolensVideo.muted);
-    showIcon('icon-unmuted', biolensVideo.muted);
-    document.getElementById('video-mute-btn').setAttribute(
-      'aria-label', biolensVideo.muted ? 'Unmute video' : 'Mute video'
-    );
-  }
-
-  function toggleVideoMute(){
-    biolensVideo.muted = !biolensVideo.muted;
-    updateMuteIcons();
-    posthog.capture('video_mute_toggled', { muted: biolensVideo.muted });
-  }
-
-  biolensVideo.addEventListener('loadeddata', () => {
-    biolensVideo.play().catch(() => {});
-  });
-
-  function updatePlayIcons(){
-    showIcon('icon-pause', !biolensVideo.paused);
-    showIcon('icon-play', biolensVideo.paused);
-    document.getElementById('video-play-btn').setAttribute(
-      'aria-label', biolensVideo.paused ? 'Play video' : 'Pause video'
-    );
-  }
-
-  function toggleVideoPlay(){
-    if(biolensVideo.paused){
-      biolensVideo.play().catch(() => {});
-    }else{
-      biolensVideo.pause();
-    }
-    posthog.capture('video_play_toggled', { paused: biolensVideo.paused });
-  }
-
-  biolensVideo.addEventListener('play', updatePlayIcons);
-  biolensVideo.addEventListener('pause', updatePlayIcons);
-
-  function isVideoFullscreen(){
-    return !!(document.fullscreenElement || document.webkitFullscreenElement);
-  }
-
-  function updateFullscreenIcon(){
-    const fs = isVideoFullscreen();
-    showIcon('icon-expand', !fs);
-    showIcon('icon-collapse', fs);
-    document.getElementById('video-fullscreen-btn').setAttribute(
-      'aria-label', fs ? 'Exit fullscreen' : 'Expand to fullscreen'
-    );
-  }
-
-  function toggleVideoFullscreen(){
-    if(!isVideoFullscreen()){
-      const request = videoWrap.requestFullscreen || videoWrap.webkitRequestFullscreen;
-      if(request){
-        request.call(videoWrap).catch(() => {});
-      }else if(biolensVideo.webkitEnterFullscreen){
-        // iOS Safari only supports fullscreen on the <video> element itself.
-        biolensVideo.webkitEnterFullscreen();
-      }
-      biolensVideo.muted = false;
-      updateMuteIcons();
-      if(screen.orientation && screen.orientation.lock){
-        screen.orientation.lock('landscape').catch(() => {});
-      }
-      posthog.capture('video_fullscreen_toggled', { fullscreen: true });
-    }else{
-      if(document.exitFullscreen){ document.exitFullscreen(); }
-      else if(document.webkitExitFullscreen){ document.webkitExitFullscreen(); }
-      posthog.capture('video_fullscreen_toggled', { fullscreen: false });
-    }
-  }
-
-  function handleFullscreenChange(){
-    updateFullscreenIcon();
-    if(!isVideoFullscreen() && screen.orientation && screen.orientation.unlock){
-      try{ screen.orientation.unlock(); }catch(err){}
-    }
-  }
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-
-  /* ---------- Workspace request modal ---------- */
-  const WS_TOTAL_STEPS = 3;
-  let wsChallenge = '';
-  const wsOverlay = document.getElementById('workspace-overlay');
-  const wsDialCircumference = 2 * Math.PI * 28;
-
-  function isValidEmail(value){
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  }
-
-  function openWorkspaceModal(){
-    posthog.capture('workspace_modal_opened');
-    wsChallenge = '';
-    document.getElementById('ws-name').value = '';
-    document.getElementById('ws-email').value = '';
-    document.getElementById('ws-company').value = '';
-    document.getElementById('ws-err-name').style.display = 'none';
-    document.getElementById('ws-err-email').style.display = 'none';
-    document.getElementById('ws-err-company').style.display = 'none';
-    document.getElementById('ws-err-challenge').style.display = 'none';
-    document.querySelectorAll('.challenge-card').forEach(c => c.classList.remove('selected'));
-    showWsStep(1);
-    wsOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => document.getElementById('ws-name').focus(), 300);
-  }
-
-  function closeWorkspaceModal(){
-    wsOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function showWsStep(step){
-    document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
-    document.querySelector(`.modal-step[data-step="${step}"]`).classList.add('active');
-    updateWsDial(step);
-  }
-
-  function updateWsDial(step){
-    const circle = document.getElementById('dial-progress');
-    const label = document.getElementById('dial-label');
-    circle.style.strokeDasharray = wsDialCircumference;
-    if(step === 'done'){
-      circle.style.strokeDashoffset = 0;
-      label.textContent = '';
-      return;
-    }
-    const progress = step / WS_TOTAL_STEPS;
-    circle.style.strokeDashoffset = wsDialCircumference * (1 - progress);
-    label.textContent = `${step}/${WS_TOTAL_STEPS}`;
-  }
-
-  function wsNext(fromStep){
-    if(fromStep === 1){
-      let valid = true;
-      if(!valOf('ws-name')){
-        document.getElementById('ws-err-name').style.display = 'block';
-        valid = false;
-      }else{
-        document.getElementById('ws-err-name').style.display = 'none';
-      }
-      if(!isValidEmail(valOf('ws-email'))){
-        document.getElementById('ws-err-email').style.display = 'block';
-        valid = false;
-      }else{
-        document.getElementById('ws-err-email').style.display = 'none';
-      }
-      if(!valid) return;
-      showWsStep(2);
-      setTimeout(() => document.getElementById('ws-company').focus(), 300);
-    }else if(fromStep === 2){
-      if(!valOf('ws-company')){
-        document.getElementById('ws-err-company').style.display = 'block';
-        return;
-      }
-      document.getElementById('ws-err-company').style.display = 'none';
-      showWsStep(3);
-    }
-  }
-
-  function wsBack(fromStep){
-    showWsStep(fromStep - 1);
-  }
-
-  document.querySelectorAll('.challenge-card').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.challenge-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      wsChallenge = card.dataset.value;
-      document.getElementById('ws-err-challenge').style.display = 'none';
-    });
-  });
-
-  async function wsSubmit(){
-    if(!wsChallenge){
-      document.getElementById('ws-err-challenge').style.display = 'block';
-      return;
-    }
-    const guest = { name: valOf('ws-name'), email: valOf('ws-email'), organization: valOf('ws-company'), role: '' };
-    const payload = {
-      type: 'workspace_request',
-      guest_name: guest.name,
-      email: guest.email,
-      organization: guest.organization,
-      role: guest.role,
-      details: { challenge: wsChallenge }
-    };
-    posthog.capture('workspace_request_submitted', { challenge: wsChallenge });
-    try{
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-      const headers = {'Content-Type':'application/json'};
-      if(csrfToken){ headers['X-CSRFToken'] = csrfToken; }
-      await fetch(API_ENDPOINT, { method:'POST', headers, body: JSON.stringify(payload) });
-    }catch(err){
-      console.log('Concierge request (offline preview):', payload);
-    }
-    sendEmailNotification('BioLens Concierge: Workspace request', {
-      guest_name: guest.name,
-      email: guest.email,
-      organization: guest.organization,
-      details: { challenge: wsChallenge }
-    });
-    showWsStep('done');
-  }
-
-  document.getElementById('ws-name').addEventListener('keydown', e => { if(e.key === 'Enter') wsNext(1); });
-  document.getElementById('ws-email').addEventListener('keydown', e => { if(e.key === 'Enter') wsNext(1); });
-  document.getElementById('ws-company').addEventListener('keydown', e => { if(e.key === 'Enter') wsNext(2); });
-
-  wsOverlay.addEventListener('click', e => {
-    if(e.target === wsOverlay) closeWorkspaceModal();
-  });
-  document.addEventListener('keydown', e => {
-    if(e.key === 'Escape' && wsOverlay.classList.contains('open')) closeWorkspaceModal();
-  });
+  const hash = location.hash.slice(1);
+  show($('#page-' + hash) ? hash : 'home');
+})();
 </script>
-{% include 'concierge/_particles.html' %}
 </body>
 </html>

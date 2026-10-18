@@ -46,6 +46,7 @@ def landing(request):
     return render(request, 'concierge/landing.html', {
         'visitor': known,
         'recs': recs.for_visitor(known) if known else None,
+        'profile': {'modalities': known.modalities, 'phases': known.phases, 'geographies': known.geographies} if known else None,
     })
 
 
