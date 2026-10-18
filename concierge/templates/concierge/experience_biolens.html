@@ -7,29 +7,29 @@
 <link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>if(new URLSearchParams(location.search).has('embed'))document.documentElement.classList.add('embed');</script>
 <style>
   :root{
-    --ink:#18170f;
-    --ink-dim:#68665c;
-    --ink-faint:#8f8c80;
-    --bg:#f0eee8;
+    --ink:#292D2E;
+    --ink-dim:#5D6668;
+    --ink-faint:#8C9597;
+    --bg:#FFFFFF;
     --panel:#ffffff;
-    --panel-hover:#fbfaf7;
-    --line:rgba(24,23,15,0.10);
-    --line-strong:rgba(24,23,15,0.18);
-    --accent:#3654e0;
-    --accent-bright:#2643c2;
-    --accent-soft:rgba(54,84,224,0.08);
-    --radius:16px;
-    --radius-sm:10px;
-    --shadow-card:0 1px 2px rgba(24,23,15,.04), 0 10px 28px -14px rgba(24,23,15,.14);
-    --shadow-card-hover:0 18px 40px -16px rgba(24,23,15,.20);
+    --panel-hover:#F7F8F8;
+    --line:#D8DDDE;
+    --line-strong:#B7BFC0;
+    --accent:#035F62;
+    --accent-bright:#035F62;
+    --accent-soft:#F0F9F9;
+    --radius:12px;
+    --radius-sm:8px;
+    --shadow-card:0 1px 2px rgba(3,95,98,.06);
+    --shadow-card-hover:0 8px 24px -14px rgba(3,95,98,.28);
   }
   html.embed .topbar{display:none;}
   html.embed .app{min-height:0;max-width:none;padding:20px 40px 40px;}
-  html.embed body{background:var(--bg);}
+  html.embed body{background:#fff;}
   @media(max-width:700px){html.embed .app{padding:14px 16px 28px;}}
   *{box-sizing:border-box;}
   [hidden]{display:none;}
@@ -37,7 +37,7 @@
   body{
     background:var(--bg);
     color:var(--ink);
-    font-family:'Inter',sans-serif;
+    font-family:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
     font-weight:400;
     min-height:100vh;
     line-height:1.55;
@@ -75,7 +75,7 @@
 
   .hero{margin:36px 0 32px;}
   .eyebrow{
-    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
     color:var(--accent-bright);margin:0 0 10px;font-weight:600;
   }
   h1.title{
@@ -168,7 +168,7 @@
     display:flex;align-items:center;gap:8px;
     padding:14px 18px;
     border-bottom:1px solid var(--line);
-    background:#f9f8f5;
+    background:#F7F8F8;
   }
   .mock-stage .mock-dot{width:9px;height:9px;border-radius:50%;background:var(--line-strong);}
   .mock-stage .mock-chrome-label{
@@ -236,8 +236,8 @@
 
   /* ---------- Shared: pulse a CTA to prompt the next action ---------- */
   @keyframes ctaPulse{
-    0%, 100% { box-shadow: 0 0 0 0 rgba(54,84,224,.32); }
-    50% { box-shadow: 0 0 0 7px rgba(54,84,224,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(7,142,147,.32); }
+    50% { box-shadow: 0 0 0 7px rgba(7,142,147,0); }
   }
   .search-suggestion-card, .cdmo-write-btn, .cdmo-send-btn:not([hidden]),
   .ci-question-card, .ci-download-btn, .crm-add-btn{
@@ -305,7 +305,7 @@
   .search-acc-body{max-height:0;overflow:hidden;transition:max-height 280ms ease;}
   .search-acc-body-inner{padding:0 18px 4px;border-top:1px solid var(--line);}
   .search-acc-evidence{
-    background:#f3f2ee;border-radius:10px;padding:11px 14px;font-size:13px;color:var(--ink);
+    background:#F2F2F2;border-radius:10px;padding:11px 14px;font-size:13px;color:var(--ink);
     margin:16px 0 18px;
   }
   .search-acc-label{
@@ -428,7 +428,7 @@
     padding:6px 12px;border-radius:999px;
   }
   .cdmo-assignee-chip{
-    display:inline-flex;align-items:center;gap:8px;background:#f3f2ee;border-radius:999px;
+    display:inline-flex;align-items:center;gap:8px;background:#F2F2F2;border-radius:999px;
     padding:4px 12px 4px 4px;font-size:12.5px;color:var(--ink-dim);font-weight:600;
   }
   .cdmo-assignee-chip .avatar{
@@ -439,7 +439,7 @@
   .cdmo-about-title{font-size:16px;font-weight:800;color:var(--ink);margin:0 0 12px;}
   .cdmo-pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
   .cdmo-info-pill{
-    display:inline-flex;align-items:center;gap:6px;background:#f3f2ee;border-radius:999px;
+    display:inline-flex;align-items:center;gap:6px;background:#F2F2F2;border-radius:999px;
     padding:7px 14px;font-size:12.5px;color:var(--ink-dim);font-weight:600;
   }
 
@@ -504,7 +504,7 @@
   .cdmo-field label{display:block;font-size:12.5px;color:var(--ink-faint);margin-bottom:6px;}
   .cdmo-field-box{
     border:1px solid var(--line-strong);border-radius:12px;padding:12px 16px;font-size:14px;color:var(--ink);
-    background:#f9f8f5;display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:#F7F8F8;display:flex;align-items:center;justify-content:space-between;gap:8px;
   }
   .cdmo-field-box span:last-child{color:var(--ink-faint);}
   .cdmo-field input{
@@ -684,7 +684,7 @@
   .crm-sf-logo{font-weight:800;font-size:14.5px;white-space:nowrap;}
   .crm-sf-tabs{font-size:12.5px;color:#b9c6dc;}
 
-  .crm-sf-subtabs{display:flex;gap:4px;padding:0 16px;background:#f3f2ee;border-bottom:1px solid var(--line);}
+  .crm-sf-subtabs{display:flex;gap:4px;padding:0 16px;background:#F2F2F2;border-bottom:1px solid var(--line);}
   .crm-sf-subtab{
     background:none;border:none;border-bottom:2px solid transparent;
     padding:12px 14px;font-size:13px;font-weight:600;color:var(--ink-faint);
@@ -701,7 +701,7 @@
   .crm-sf-list-head, .crm-sf-contacts-head{
     display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;
     font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-faint);
-    padding:8px 12px;background:#f9f8f5;border:1px solid var(--line);border-bottom:none;border-radius:8px 8px 0 0;
+    padding:8px 12px;background:#F7F8F8;border:1px solid var(--line);border-bottom:none;border-radius:8px 8px 0 0;
   }
   .crm-sf-contacts-head{grid-template-columns:1.3fr 1.5fr 1.6fr 0.8fr;}
   .crm-sf-row{
