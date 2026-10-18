@@ -582,8 +582,14 @@
         const data = await res.json();
         if (!data.ok) throw new Error('rejected');
         capture('search_interest', {term, other: !!other});
-        sendEmailNotification('BioLens Concierge: Search interest', {guest_name: VISITOR.name, email: VISITOR.email, organization: VISITOR.company, details: {search: term, source: other ? 'typed' : 'suggested', title: VISITOR.title}});
-        toast('Requested. The Lunartree team will follow up with matches.');
+        // Same EmailJS path as the other concierge requests; the popup doesn't wait on it beyond a short race.
+        const mail = sendEmailNotification('BioLens Concierge: Search interest', {guest_name: VISITOR.name, email: VISITOR.email, organization: VISITOR.company, details: {search: term, source: other ? 'typed' : 'suggested', title: VISITOR.title, company: VISITOR.company}});
+        await Promise.race([mail, new Promise(r => setTimeout(r, 3000))]);
+        openSheet({
+          title: 'Request received', icon: 'resolved',
+          body: `<div class="sheet-success"><p class="t-body">We’ve received your request and will get back to you${VISITOR.email ? ' at <b>' + esc(VISITOR.email) + '</b>' : ''} on this soon.</p><div class="banner">${ico('target', 18)}<div>${esc(term)}</div></div></div>`,
+          footer: '<button class="btn btn--primary" data-close>Done</button>',
+        });
         return true;
       } catch (err) {
         btn.disabled = false;
