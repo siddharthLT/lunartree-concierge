@@ -22,9 +22,9 @@ class Command(BaseCommand):
                                       modalities=c.get('modalities', []), exhibitor=c.get('exhibitor', False))
                      for k, c in raw['companies'].items()]
         people = [DirectoryPerson(id=p['id'], name=p['name'], title=p.get('title', ''), company_id=p['company'],
-                                  email=p.get('email', '')) for p in raw['people']]
+                                  email=p.get('email', ''), linkedin=p.get('linkedin', '')) for p in raw['people']]
         DirectoryCompany.objects.bulk_create(companies, update_conflicts=True, unique_fields=['key'],
                                              update_fields=['name', 'segment', 'domain', 'modalities', 'exhibitor'])
         DirectoryPerson.objects.bulk_create(people, update_conflicts=True, unique_fields=['id'],
-                                            update_fields=['name', 'title', 'company', 'email'])
+                                            update_fields=['name', 'title', 'company', 'email', 'linkedin'])
         self.stdout.write(self.style.SUCCESS(f'Loaded {len(companies)} companies, {len(people)} people.'))

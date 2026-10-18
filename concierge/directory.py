@@ -11,6 +11,10 @@ from pathlib import Path
 DATA_PATH = Path(__file__).resolve().parent / 'data' / 'cdmo_live_directory.json'
 
 
+# Segments offered in the /welcome "who are you" search. Everyone else in the
+# directory (pharma/biotech, non-pharma, ...) only shows on the Attendees tab.
+WELCOME_SEGMENTS = {'CDMO', 'CRO', 'Supplier'}
+
 _cache = None
 
 
@@ -21,7 +25,8 @@ def _from_db():
                  for c in DirectoryCompany.objects.all()}
     if not companies:
         return None
-    people = {p.id: {'id': p.id, 'name': p.name, 'title': p.title, 'company': p.company_id, 'email': p.email}
+    people = {p.id: {'id': p.id, 'name': p.name, 'title': p.title, 'company': p.company_id, 'email': p.email,
+                             'linkedin': p.linkedin}
               for p in DirectoryPerson.objects.all()}
     return companies, people
 
@@ -48,7 +53,8 @@ def _load():
     if not loaded:
         return {'companies': {}, 'people': {}, 'index': []}
     companies, people = loaded
-    index = [(pid, f"{p['name']} {companies[p['company']]['name']}".lower()) for pid, p in people.items()]
+    index = [(pid, f"{p['name']} {companies[p['company']]['name']}".lower()) for pid, p in people.items()
+             if companies[p['company']]['segment'] in WELCOME_SEGMENTS]
     _cache = {'companies': companies, 'people': people, 'index': index}
     return _cache
 
@@ -125,6 +131,7 @@ def attendees():
             'id': p['id'], 'name': p['name'], 'title': p['title'],
             'company': c['name'], 'segment': c['segment'],
             'mods': c['modalities'], 'exhibitor': bool(c.get('exhibitor')),
+            'linkedin': p.get('linkedin', ''),
         })
     out.sort(key=lambda a: (a['company'].lower(), a['name'].lower()))
     return out

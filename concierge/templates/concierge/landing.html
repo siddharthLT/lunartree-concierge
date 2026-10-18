@@ -460,6 +460,8 @@
   .att h3{margin:0;font-size:15px;line-height:1.25;overflow-wrap:anywhere;}
   .att .role{font-size:13px;color:var(--ink-dim);margin-top:2px;overflow-wrap:anywhere;}
   .att .org{font-size:13px;font-weight:600;color:var(--ink);margin-top:6px;overflow-wrap:anywhere;}
+  .att .li-btn{flex:none;width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--accent-bright);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .15s,color .15s;}
+  .att .li-btn:hover,.att .li-btn:active{background:var(--accent);color:#fff;border-color:var(--accent);}
   .att .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
   .att .tag{font-size:11px;font-weight:600;border-radius:999px;padding:3px 9px;background:var(--chip,#eef1f5);color:var(--ink-dim);}
   .att .tag.seg{background:var(--accent-soft);color:var(--accent-bright);}
@@ -1463,6 +1465,15 @@
       p.mods.slice(0, 3).forEach(m => tags.append(mk('span', 'tag', ATT.labels[m] || m)));
       who.append(tags);
       card.append(who);
+      if(p.linkedin){
+        const a = mk('a', 'li-btn');
+        a.href = p.linkedin; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', 'LinkedIn profile of ' + p.name);
+        a.title = 'LinkedIn profile';
+        a.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/><path d="M3 13h18"/><path d="M10.5 13v1.6h3V13"/></svg>';
+        a.addEventListener('click', () => { if(typeof posthog !== 'undefined') posthog.capture('attendee_linkedin', {id: p.id}); });
+        card.append(a);
+      }
       attEl.list.append(card);
     });
   }

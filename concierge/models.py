@@ -95,6 +95,7 @@ class DirectoryPerson(models.Model):
     title = models.CharField(max_length=300, blank=True)
     company = models.ForeignKey(DirectoryCompany, on_delete=models.CASCADE, related_name='people')
     email = models.CharField(max_length=254, blank=True)
+    linkedin = models.URLField(max_length=300, blank=True)
 
     class Meta:
         verbose_name_plural = 'directory people'

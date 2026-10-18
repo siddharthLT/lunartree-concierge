@@ -20,10 +20,36 @@ OUT = ROOT / 'concierge' / 'data' / 'cdmo_live_directory.json'
 
 # Audience: companies that sell into outsourcing. Pharma/biotech outsourcers
 # are the buyers (the programs), non-pharma is noise.
-KEEP_SEGMENTS = {'CDMO', 'CRDMO', 'CRO', 'Reagents / Formulation Supplier'}
+# Everyone goes into the directory (Attendees tab). Only the WELCOME_SEGMENTS
+# labels are offered in the /welcome "who are you" search (see directory.py).
+KEEP_SEGMENTS = {'CDMO', 'CRDMO', 'CRO', 'Reagents / Formulation Supplier',
+                 'Pharma / Biotech (Outsourcer)', 'Non-Pharma (Legal/HR/Tech/AI/Consulting/Other)',
+                 'Instruments / Equipment / Packaging', 'Unverified - needs check'}
 SEGMENT_LABEL = {
     'CDMO': 'CDMO', 'CRDMO': 'CDMO', 'CRO': 'CRO',
     'Reagents / Formulation Supplier': 'Supplier',
+    'Pharma / Biotech (Outsourcer)': 'Pharma/Biotech',
+    'Non-Pharma (Legal/HR/Tech/AI/Consulting/Other)': 'Non-pharma',
+    'Instruments / Equipment / Packaging': 'Equipment',
+    'Unverified - needs check': 'Unverified',
+}
+OUTSOURCING_SEGMENTS = {'CDMO', 'CRO', 'Supplier'}
+# Company names missing from the sheet
+# Some rows have a blank company. Recover it from the email domain or, failing
+# that, a hand-checked name from the job line; the rest stay unlisted (one
+# pseudo-company per person, so strangers are never grouped together).
+NAME_BY_DOMAIN = {
+    'augustbio.com': 'August Bioservices at August Bio', 'cytovance.com': 'Cytovance Biologics',
+    'rentschler-biopharma.com': 'Rentschler Biopharma SE', 'boryung.com': 'Boryung',
+    'flammagroup.com': 'Flamma', 'fresenius-kabi.com': 'Fresenius Kabi', 'kindevadd.com': 'Kindeva Drug Delivery',
+    'haizhoupharm.com': 'Haizhou Pharma', 'wilmingtonpharmatech.com': 'Wilmington PharmaTech',
+    'solvias.com': 'Solvias',
+}
+NAME_BY_PERSON = {
+    'Christian Phillips': 'Fennec Pharmaceuticals', 'Jeffrey Williams': 'Tonix Pharmaceuticals',
+    'Robert Braden': 'Kindeva Drug Delivery', 'Thomas Demaria': 'Alfasigma',
+    'Hengguang Li': 'Haizhou Pharma', 'James Ferri': 'Occam Systems',
+    'Mihir Shukla': 'Biopharma Consulting Solutions (BCS)', 'JC Bonner': 'The One When',
 }
 
 FREE_MAIL = {'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com', 'aol.com'}
@@ -58,6 +84,11 @@ def infer_modalities(text):
     return [m for m, pats in MODALITY_KEYWORDS.items() if any(re.search(p, t) for p in pats)]
 
 
+def linkedin_url(v):
+    v = (str(v) if v else '').strip()
+    return v if v.startswith('https://www.linkedin.com/in/') else ''
+
+
 def main():
     wb = openpyxl.load_workbook(SRC, read_only=True)
     rows = list(wb['Attendees'].iter_rows(values_only=True))
@@ -73,9 +104,15 @@ def main():
     for p in people:
         if p['Segment'] not in KEEP_SEGMENTS:
             continue
-        key = norm(p['company'])
+        email_raw = (p.get('Work Email (Apollo)') or '').strip().lower()
+        company = (p['company'] or '').strip()
+        if not company:
+            domain_guess = email_raw.split('@')[1] if '@' in email_raw else ''
+            company = NAME_BY_DOMAIN.get(domain_guess) or NAME_BY_PERSON.get(p['name'].strip(), '')
+        pid = str(int(p['profile_id'])) if p.get('profile_id') else f"x{len(out_people)}"
+        key = norm(company) or f'unlisted-{pid}'
         c = companies.setdefault(key, {
-            'name': p['company'], 'segment': SEGMENT_LABEL[p['Segment']],
+            'name': company, 'segment': SEGMENT_LABEL[p['Segment']],
             'notes': p.get('Sub-type / Notes') or '', 'domains': collections.Counter(),
         })
         email = (p.get('Work Email (Apollo)') or '').strip().lower()
@@ -86,26 +123,30 @@ def main():
         else:
             email = ''
         out_people.append({
-            'id': str(int(p['profile_id'])) if p.get('profile_id') else f"x{len(out_people)}",
+            'id': pid,
             'name': p['name'].strip(), 'title': (p.get('job_title') or '').strip(),
-            'company': key, 'email': email,
+            'company': key, 'email': email, 'linkedin': linkedin_url(p.get('LinkedIn URL (Apollo)')),
         })
 
     out_companies = {}
     for key, c in companies.items():
         ex = exhibitors.get(key) or next((v for k, v in exhibitors.items() if k and (k in key or key in k)), None)
         blob = ' '.join(filter(None, [c['notes'], (ex or {}).get('Sub-type / Notes'), (ex or {}).get('summary')]))
-        e = enrich.get(key, {})
+        e = enrich.get(key, {}) if key else {}
+        domain = e.get('domain') or (c['domains'].most_common(1)[0][0] if c['domains'] else '')
         out_companies[key] = {
             'name': e.get('name') or c['name'],
             'segment': c['segment'],
-            'domain': e.get('domain') or (c['domains'].most_common(1)[0][0] if c['domains'] else ''),
-            'modalities': e.get('modalities') if 'modalities' in e else infer_modalities(blob),
+            'domain': domain,
+            # Modality research only covers the outsourcing segments; don't guess for the rest.
+            'modalities': e.get('modalities') if 'modalities' in e else (
+                infer_modalities(blob) if c['segment'] in OUTSOURCING_SEGMENTS else []),
             'exhibitor': bool(ex),
         }
 
+    out_path = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps({'companies': out_companies, 'people': out_people}, separators=(',', ':')))
+    out_path.write_text(json.dumps({'companies': out_companies, 'people': out_people}, separators=(',', ':')))
     n_dom = sum(1 for c in out_companies.values() if c['domain'])
     n_mod = sum(1 for c in out_companies.values() if c['modalities'])
     print(f"{len(out_people)} people, {len(out_companies)} companies, {n_dom} with domain, {n_mod} with modalities", file=sys.stderr)
