@@ -28,6 +28,8 @@ NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL', 'siddharth@lunartree.bio')
 # The Turnstile site key is public and the same in every environment.
 ACCOUNT_SETUP_API_URL = os.environ.get('ACCOUNT_SETUP_API_URL', '').rstrip('/')
 TURNSTILE_SITE_KEY = os.environ.get('TURNSTILE_SITE_KEY', '0x4AAAAAABh31E0o4i6ILrpm')
+# 'interaction-only' keeps the widget invisible unless Cloudflare needs a challenge; use 'always' to see it while testing.
+TURNSTILE_APPEARANCE = os.environ.get('TURNSTILE_APPEARANCE', 'interaction-only')
 EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')

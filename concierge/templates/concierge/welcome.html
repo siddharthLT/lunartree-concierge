@@ -487,10 +487,11 @@
     if (!ACCT || !slot) return;
     const mount = () => {
       if (!window.turnstile) return false;
-      S.cf = '';
+      S.cf = ''; console.log('Turnstile: widget mounted');
       S.cfWidget = window.turnstile.render(slot, {
-        sitekey: ACCT.siteKey, appearance: 'interaction-only', retry: 'auto', 'refresh-expired': 'auto',
-        callback: t => { S.cf = t; }, 'expired-callback': () => { S.cf = ''; }, 'error-callback': () => { S.cf = ''; },
+        sitekey: ACCT.siteKey, appearance: ACCT.appearance || 'interaction-only', retry: 'auto', 'refresh-expired': 'auto',
+        callback: t => { S.cf = t; console.log('Turnstile: token received'); }, 'expired-callback': () => { S.cf = ''; console.log('Turnstile: token expired'); },
+        'error-callback': code => { S.cf = ''; console.log('Turnstile error:', code); },
       });
       return true;
     };

@@ -55,7 +55,7 @@ def welcome(request):
     visitor = _current_visitor(request)
     if visitor and visitor.completed and 'switch' not in request.GET:
         return redirect('concierge:landing')
-    account_setup = {'url': settings.ACCOUNT_SETUP_API_URL, 'siteKey': settings.TURNSTILE_SITE_KEY} if settings.ACCOUNT_SETUP_API_URL else None
+    account_setup = {'url': settings.ACCOUNT_SETUP_API_URL, 'siteKey': settings.TURNSTILE_SITE_KEY, 'appearance': settings.TURNSTILE_APPEARANCE} if settings.ACCOUNT_SETUP_API_URL else None
     return render(request, 'concierge/welcome.html', {'account_setup': account_setup})
 
 
