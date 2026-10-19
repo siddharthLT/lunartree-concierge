@@ -23,6 +23,11 @@ SLACK_WEBHOOK_URL = os.environ.get('SLACK_WEBHOOK_URL', '')
 # Email notifications for new requests / search interests. With EMAIL_HOST unset
 # mail goes to the console log only — set EMAIL_* in production for real delivery.
 NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL', 'siddharth@lunartree.bio')
+
+# BioLens account setup (POST {ACCOUNT_SETUP_API_URL}/account-setup/requests). Empty = feature off.
+# The Turnstile site key is public and the same in every environment.
+ACCOUNT_SETUP_API_URL = os.environ.get('ACCOUNT_SETUP_API_URL', '').rstrip('/')
+TURNSTILE_SITE_KEY = os.environ.get('TURNSTILE_SITE_KEY', '0x4AAAAAABh31E0o4i6ILrpm')
 EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')

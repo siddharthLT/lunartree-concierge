@@ -8,6 +8,7 @@
 <link rel="icon" type="image/png" href="https://researchmap.vercel.app/static/branding/lunartree-icon.png">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 {% include 'concierge/_design.html' %}
+{% if account_setup %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>{% endif %}
 </head>
 <body>
 {% include 'concierge/_icons.html' %}
@@ -31,9 +32,11 @@
   <main class="ob-main" id="ob-main" tabindex="-1" aria-live="polite"></main>
 </div>
 
+{% if account_setup %}{{ account_setup|json_script:"account-setup-config" }}{% endif %}
 <script>
 (() => {
   'use strict';
+  const ACCT = document.getElementById('account-setup-config') ? JSON.parse(document.getElementById('account-setup-config').textContent) : null;
 
   const TOTAL = 8;
   const STEPS = [
@@ -89,7 +92,7 @@
     name: '', title: '', company: '', domain: '', segment: '', email: '', useDirEmail: false,
     companyOther: false, emailOther: false,
     modalities: [], phases: [], geos: [], strengths: '', exclusions: '',
-    query: '', results: null,
+    query: '', results: null, cf: '', cfWidget: null,
   };
 
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -264,6 +267,7 @@
   function textBody(title, hint, id, value, placeholder, primary) {
     return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">${esc(title)}<span class="hint">${esc(hint)}</span></h1></div>
       <div><label class="field-label" for="${id}">Optional</label><textarea id="${id}" class="textarea" maxlength="1000" placeholder="${esc(placeholder)}">${esc(value)}</textarea></div>
+      ${id === 'f-exclusions' ? '<div id="ts-slot"></div>' : ''}
       <div class="q__actions"><button type="button" class="btn btn--primary" id="go">${primary}</button><button type="button" class="btn btn--quiet" id="skip">Skip</button></div></section>`;
   }
 
@@ -377,6 +381,7 @@
       skip.addEventListener('click', async () => { S.strengths = ''; await save({strengths: ''}); goto(S.step + 1); });
     } else {
       const f = document.getElementById('f-exclusions');
+      mountTurnstile();
       const finish = v => { S.exclusions = v; finishFlow(); };
       go.addEventListener('click', () => finish(f.value.trim()));
       skip.addEventListener('click', () => finish(''));
@@ -473,6 +478,56 @@
     }).join('');
   }
 
+  // ---------- BioLens account request ----------
+  // Posted straight from the browser (the Turnstile token is solved on this page). Never blocks the visitor:
+  // if the widget or the backend is unavailable the welcome flow still completes.
+  const FREE_MAIL = ['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','aol.com','proton.me','protonmail.com','live.com','msn.com','me.com'];
+  function mountTurnstile() {
+    const slot = document.getElementById('ts-slot');
+    if (!ACCT || !slot) return;
+    const mount = () => {
+      if (!window.turnstile) return false;
+      S.cf = '';
+      S.cfWidget = window.turnstile.render(slot, {
+        sitekey: ACCT.siteKey, appearance: 'interaction-only', retry: 'auto', 'refresh-expired': 'auto',
+        callback: t => { S.cf = t; }, 'expired-callback': () => { S.cf = ''; }, 'error-callback': () => { S.cf = ''; },
+      });
+      return true;
+    };
+    if (!mount()) { const t = setInterval(() => { if (mount()) clearInterval(t); }, 300); setTimeout(() => clearInterval(t), 8000); }
+  }
+  const waitFor = async (cond, ms) => { const end = Date.now() + ms; while (!cond() && Date.now() < end) await sleep(150); return cond(); };
+
+  async function submitAccountRequest(email) {
+    if (!ACCT) return;
+    const domainOf = e => (e.split('@')[1] || '').toLowerCase();
+    let domain = (S.domain || '').toLowerCase();
+    if (!domain && email && !FREE_MAIL.includes(domainOf(email))) domain = domainOf(email);
+    if (!S.name || !email || !S.company || domain.length < 3) { console.log('Account request skipped: missing name, email, company or company domain.'); return; }
+    try { if (localStorage.getItem('cl_acct_req') === email) return; } catch (e) {}   // one request per person per browser
+    if (!(await waitFor(() => S.cf, 5000))) { console.log('Account request skipped: no Turnstile token.'); return; }
+    const body = {
+      cf_turnstile_token: S.cf,
+      name: S.name.slice(0, 100), email, company: S.company.slice(0, 200), company_domain: domain.slice(0, 255),
+      title: (S.title || '').slice(0, 200), segment: (S.segment || '').slice(0, 100),
+      modalities: S.modalities, phases: S.phases, geographies: S.geos,
+      strengths: (S.strengths || '').slice(0, 2000), exclusions: (S.exclusions || '').slice(0, 2000),
+      directory_id: ((S.person && S.person.id) || '').slice(0, 100), completed: true,
+      user_agent: navigator.userAgent.slice(0, 1000),
+    };
+    try {
+      const res = await Promise.race([
+        fetch(ACCT.url + '/account-setup/requests', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}),
+        sleep(8000).then(() => null),
+      ]);
+      if (res && res.status === 202) { try { localStorage.setItem('cl_acct_req', email); } catch (e) {} }
+      else console.log('Account request not accepted:', res ? res.status : 'timeout');
+      try { if (typeof posthog !== 'undefined') posthog.capture('account_request', {status: res ? res.status : 'timeout'}); } catch (e) {}
+    } catch (err) {
+      console.log('Account request failed (non-blocking):', err);
+    }
+  }
+
   // ---------- finish ----------
   let prepDone = Promise.resolve();
   async function finishFlow() {
@@ -483,7 +538,8 @@
       email: S.useDirEmail ? (S.person.email || '') : S.email, listed: S.listed,
       modalities: S.modalities, phases: S.phases, geos: S.geos, strengths: S.strengths, exclusions: S.exclusions,
     });
-    await Promise.all([prepDone, notified]);
+    const finalEmail = S.useDirEmail ? (S.person.email || '') : S.email;
+    await Promise.all([prepDone, notified, submitAccountRequest(finalEmail)]);
     location.replace('/');
   }
 
