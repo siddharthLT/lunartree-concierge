@@ -30,6 +30,7 @@
     </div>
   </header>
   <main class="ob-main" id="ob-main" tabindex="-1" aria-live="polite"></main>
+  {% if account_setup %}<div id="ts-slot" style="display:flex;justify-content:center"></div>{% endif %}
 </div>
 
 {% if account_setup %}{{ account_setup|json_script:"account-setup-config" }}{% endif %}
@@ -267,7 +268,6 @@
   function textBody(title, hint, id, value, placeholder, primary) {
     return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">${esc(title)}<span class="hint">${esc(hint)}</span></h1></div>
       <div><label class="field-label" for="${id}">Optional</label><textarea id="${id}" class="textarea" maxlength="1000" placeholder="${esc(placeholder)}">${esc(value)}</textarea></div>
-      ${id === 'f-exclusions' ? '<div id="ts-slot"></div>' : ''}
       <div class="q__actions"><button type="button" class="btn btn--primary" id="go">${primary}</button><button type="button" class="btn btn--quiet" id="skip">Skip</button></div></section>`;
   }
 
@@ -381,7 +381,6 @@
       skip.addEventListener('click', async () => { S.strengths = ''; await save({strengths: ''}); goto(S.step + 1); });
     } else {
       const f = document.getElementById('f-exclusions');
-      mountTurnstile();
       const finish = v => { S.exclusions = v; finishFlow(); };
       go.addEventListener('click', () => finish(f.value.trim()));
       skip.addEventListener('click', () => finish(''));
@@ -495,7 +494,7 @@
       });
       return true;
     };
-    if (!mount()) { const t = setInterval(() => { if (mount()) clearInterval(t); }, 300); setTimeout(() => clearInterval(t), 8000); }
+    if (!mount()) { const t = setInterval(() => { if (mount()) clearInterval(t); }, 300); setTimeout(() => clearInterval(t), 30000); }
   }
   const waitFor = async (cond, ms) => { const end = Date.now() + ms; while (!cond() && Date.now() < end) await sleep(150); return cond(); };
 
@@ -505,10 +504,10 @@
     let domain = (S.domain || '').toLowerCase();
     if (!domain && email && !FREE_MAIL.includes(domainOf(email))) domain = domainOf(email);
     if (!S.name || !email || !S.company || domain.length < 3) { console.log('Account request skipped: missing name, email, company or company domain.'); return; }
-    try { if (localStorage.getItem('cl_acct_req') === email) { console.log('Account request skipped: already sent for this email.'); return; } } catch (e) {}   // one request per person per browser
-    if (!(await waitFor(() => S.cf, 5000))) { console.log('Account request skipped: no Turnstile token.'); return; }
+    // One request per email per browser; a shared device can still send for any number of different emails.
+    const sentEmails = () => { try { const v = JSON.parse(localStorage.getItem('cl_acct_req') || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } };
+    if (sentEmails().includes(email)) { console.log('Account request skipped: already sent for this email.'); return; }
     const body = {
-      cf_turnstile_token: S.cf,
       name: S.name.slice(0, 100), email, company: S.company.slice(0, 200), company_domain: domain.slice(0, 255),
       title: (S.title || '').slice(0, 200), segment: (S.segment || '').slice(0, 100),
       modalities: S.modalities, phases: S.phases, geographies: S.geos,
@@ -516,16 +515,25 @@
       directory_id: ((S.person && S.person.id) || '').slice(0, 100), completed: true,
       user_agent: navigator.userAgent.slice(0, 1000),
     };
-    try {
-      const res = await Promise.race([
-        fetch(ACCT.url + '/account-setup/requests', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}),
-        sleep(8000).then(() => null),
-      ]);
-      if (res && res.status === 202) { try { localStorage.setItem('cl_acct_req', email); } catch (e) {} }
-      else console.log('Account request not accepted:', res ? res.status : 'timeout');
-      try { if (typeof posthog !== 'undefined') posthog.capture('account_request', {status: res ? res.status : 'timeout'}); } catch (e) {}
-    } catch (err) {
-      console.log('Account request failed (non-blocking):', err);
+    // Tokens are single-use, so a 400 (expired or already used) gets one retry with a fresh one.
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      if (!(await waitFor(() => S.cf, 20000))) { console.log('Account request skipped: no Turnstile token.'); return; }
+      body.cf_turnstile_token = S.cf;
+      S.cf = '';
+      let res = null;
+      try {
+        res = await Promise.race([
+          fetch(ACCT.url + '/account-setup/requests', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}),
+          sleep(8000).then(() => null),
+        ]);
+      } catch (err) {
+        console.log('Account request failed (non-blocking):', err);
+      }
+      try { if (typeof posthog !== 'undefined') posthog.capture('account_request', {status: res ? res.status : 'error', attempt}); } catch (e) {}
+      if (res && res.status === 202) { try { localStorage.setItem('cl_acct_req', JSON.stringify([...sentEmails(), email])); } catch (e) {} return; }
+      console.log('Account request not accepted:', res ? res.status : 'no response');
+      if (!res || res.status !== 400 || !window.turnstile || S.cfWidget == null) return;
+      window.turnstile.reset(S.cfWidget);
     }
   }
 
@@ -614,6 +622,8 @@
         }
       } catch (e) {}
     }
+    // Mounted once, outside #ob-main, so the token is ready long before Finish and survives every re-render.
+    mountTurnstile();
     render();
   })();
 })();
