@@ -505,7 +505,7 @@
     let domain = (S.domain || '').toLowerCase();
     if (!domain && email && !FREE_MAIL.includes(domainOf(email))) domain = domainOf(email);
     if (!S.name || !email || !S.company || domain.length < 3) { console.log('Account request skipped: missing name, email, company or company domain.'); return; }
-    try { if (localStorage.getItem('cl_acct_req') === email) return; } catch (e) {}   // one request per person per browser
+    try { if (localStorage.getItem('cl_acct_req') === email) { console.log('Account request skipped: already sent for this email.'); return; } } catch (e) {}   // one request per person per browser
     if (!(await waitFor(() => S.cf, 5000))) { console.log('Account request skipped: no Turnstile token.'); return; }
     const body = {
       cf_turnstile_token: S.cf,
