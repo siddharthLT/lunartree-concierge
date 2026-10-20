@@ -504,7 +504,9 @@
     let domain = (S.domain || '').toLowerCase();
     if (!domain && email && !FREE_MAIL.includes(domainOf(email))) domain = domainOf(email);
     if (!S.name || !email || !S.company || domain.length < 3) { console.log('Account request skipped: missing name, email, company or company domain.'); return; }
-    try { if (localStorage.getItem('cl_acct_req') === email) { console.log('Account request skipped: already sent for this email.'); return; } } catch (e) {}   // one request per person per browser
+    // One request per email per browser; a shared device can still send for any number of different emails.
+    const sentEmails = () => { try { const v = JSON.parse(localStorage.getItem('cl_acct_req') || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } };
+    if (sentEmails().includes(email)) { console.log('Account request skipped: already sent for this email.'); return; }
     const body = {
       name: S.name.slice(0, 100), email, company: S.company.slice(0, 200), company_domain: domain.slice(0, 255),
       title: (S.title || '').slice(0, 200), segment: (S.segment || '').slice(0, 100),
@@ -528,7 +530,7 @@
         console.log('Account request failed (non-blocking):', err);
       }
       try { if (typeof posthog !== 'undefined') posthog.capture('account_request', {status: res ? res.status : 'error', attempt}); } catch (e) {}
-      if (res && res.status === 202) { try { localStorage.setItem('cl_acct_req', email); } catch (e) {} return; }
+      if (res && res.status === 202) { try { localStorage.setItem('cl_acct_req', JSON.stringify([...sentEmails(), email])); } catch (e) {} return; }
       console.log('Account request not accepted:', res ? res.status : 'no response');
       if (!res || res.status !== 400 || !window.turnstile || S.cfWidget == null) return;
       window.turnstile.reset(S.cfWidget);
