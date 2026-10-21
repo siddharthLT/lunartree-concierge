@@ -11,10 +11,6 @@ from pathlib import Path
 DATA_PATH = Path(__file__).resolve().parent / 'data' / 'cdmo_live_directory.json'
 
 
-# Segments offered in the /welcome "who are you" search. Everyone else in the
-# directory (pharma/biotech, non-pharma, ...) only shows on the Attendees tab.
-WELCOME_SEGMENTS = {'CDMO', 'CRO', 'Supplier'}
-
 _cache = None
 
 
@@ -53,8 +49,8 @@ def _load():
     if not loaded:
         return {'companies': {}, 'people': {}, 'index': []}
     companies, people = loaded
-    index = [(pid, f"{p['name']} {companies[p['company']]['name']}".lower()) for pid, p in people.items()
-             if companies[p['company']]['segment'] in WELCOME_SEGMENTS]
+    # Everyone in the directory is searchable in /welcome, whatever their segment.
+    index = [(pid, f"{p['name']} {companies[p['company']]['name']}".lower()) for pid, p in people.items()]
     _cache = {'companies': companies, 'people': people, 'index': index}
     return _cache
 
