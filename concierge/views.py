@@ -81,6 +81,21 @@ def _clean_list(values, allowed):
     return [v for v in (values or []) if v in allowed] if isinstance(values, list) else []
 
 
+def _clean_modalities(values):
+    """Known modality ids plus at most one free-text entry stored as "other:<text>"
+    (a niche modality the chips don't cover). No separate column, so no migration."""
+    if not isinstance(values, list):
+        return []
+    out = [v for v in values if v in MODALITIES]
+    for v in values:
+        if isinstance(v, str) and v.startswith('other:'):
+            txt = ' '.join(''.join(ch for ch in v[6:] if ch.isprintable()).split())[:80]
+            if len(txt) >= 2:
+                out.append('other:' + txt)
+            break
+    return out
+
+
 @require_POST
 def welcome_save(request):
     """Upsert the visitor. Called after each answered step so a half-finished
@@ -114,7 +129,7 @@ def welcome_save(request):
         except ValidationError:
             return JsonResponse({'ok': False, 'error': 'Invalid email.'}, status=400)
     if 'modalities' in payload:
-        visitor.modalities = _clean_list(payload['modalities'], MODALITIES)
+        visitor.modalities = _clean_modalities(payload['modalities'])
     if 'phases' in payload:
         visitor.phases = _clean_list(payload['phases'], PHASES)
     if 'geographies' in payload:
@@ -199,7 +214,7 @@ def search_interest(request):
     }
     if visitor:
         details.update({
-            'modalities': ', '.join(visitor.modalities),
+            'modalities': ', '.join(('Other: ' + m[6:]) if m.startswith('other:') else m for m in visitor.modalities),
             'programs': ', '.join(visitor.phases),
             'geographies': ', '.join(visitor.geographies),
         })

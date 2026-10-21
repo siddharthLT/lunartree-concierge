@@ -92,7 +92,7 @@
     person: null, listed: false, fresh: true,
     name: '', title: '', company: '', domain: '', segment: '', email: '', useDirEmail: false,
     companyOther: false, emailOther: false,
-    modalities: [], phases: [], geos: [], strengths: '', exclusions: '',
+    modalities: [], modOther: '', phases: [], geos: [], strengths: '', exclusions: '',
     query: '', results: null, cf: '', cfWidget: null,
   };
 
@@ -100,7 +100,9 @@
   const cookie = name => (document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)')) || [])[1] || '';
   const faviconUrl = d => `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`;
   const initials = n => n.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0].toUpperCase()).join('');
-  const labelOf = (list, ids) => ids.map(id => (list.find(o => o.id === id) || {label: id}).label);
+  const labelOf = (list, ids) => ids.map(id => /^other:/.test(id) ? id.slice(6) : (list.find(o => o.id === id) || {label: id}).label);
+  // the picked modality chips plus the free-text one, stored as "other:<text>"
+  const modsAll = () => S.modalities.concat(S.modOther ? ['other:' + S.modOther] : []);
   const validEmail = v => /^\S+@\S+\.\S+$/.test(v);
 
   async function api(path, body) {
@@ -187,7 +189,12 @@
       const icons = arr.slice(0, 3).map(id => ico((opts.find(x => x.id === id) || {}).icon || 'check', 16)).join('');
       return `<span class="reply"><span class="reply__icons">${icons}</span>${esc(o.join(', '))}</span>`;
     };
-    if (key === 'modalities') return pick(S.modalities, MODALITIES);
+    if (key === 'modalities') {
+      const all = modsAll();
+      if (!all.length) return '<span class="reply reply--muted">Skipped</span>';
+      const icons = S.modalities.slice(0, 3).map(id => ico((MODALITIES.find(x => x.id === id) || {}).icon || 'check', 16)).join('') || ico('pencil', 16);
+      return `<span class="reply"><span class="reply__icons">${icons}</span>${esc(labelOf(MODALITIES, all).join(', '))}</span>`;
+    }
     if (key === 'phases') return pick(S.phases, PHASES);
     if (key === 'geos') return `<span class="reply${S.geos.length ? '' : ' reply--muted'}">${S.geos.length ? esc(labelOf(GEOS, S.geos).join(', ')) : 'Skipped'}</span>`;
     if (key === 'strengths') return `<span class="reply${S.strengths ? '' : ' reply--muted'}">${S.strengths ? esc(S.strengths) : 'Skipped'}</span>`;
@@ -251,10 +258,11 @@
       <div class="q__actions"><button type="button" class="btn btn--primary" id="go" disabled>Continue</button></div></section>`;
   }
 
-  function chipsBody(title, hint, opts, selected, grid) {
+  function chipsBody(title, hint, opts, selected, grid, extra) {
     return `<section class="q"><div class="q__head"><h1 class="q__title" id="q-title" tabindex="-1">${esc(title)}<span class="hint">${esc(hint)}</span></h1></div>
       <div class="${grid ? 'grid-2' : 'chips'}" id="chips">${opts.map(o => chipHtml(o, selected.includes(o.id))).join('')}</div>
-      ${actions('Continue', selected.length || '', true)}</section>`;
+      ${extra || ''}
+      ${actions('Continue', (selected.length + (extra && S.modOther ? 1 : 0)) || '', true)}</section>`;
   }
 
   function geosBody() {
@@ -280,7 +288,8 @@
     if (key === 'who') body = whoBody();
     else if (key === 'company') body = companyBody();
     else if (key === 'email') body = emailBody();
-    else if (key === 'modalities') body = chipsBody('Your modality focus', S.modalities.length && S.listed ? 'Pre-filled for ' + S.company + '. Tweak it.' : 'Pick all that fit.', MODALITIES, S.modalities, false);
+    else if (key === 'modalities') body = chipsBody('Your modality focus', S.modalities.length && S.listed ? 'Pre-filled for ' + S.company + '. Tweak it.' : 'Pick all that fit.', MODALITIES, S.modalities, false,
+      `<div class="other-mod"><label class="field-label" for="f-other-mod">Not listed? Add your own modality</label><div class="field"><input id="f-other-mod" class="field__input field__input--plain" maxlength="80" autocomplete="off" placeholder="e.g. exosomes, mRNA-LNP, PROTACs" value="${esc(S.modOther)}"></div></div>`);
     else if (key === 'phases') body = chipsBody('Which programs are you after?', 'Pick all that fit.', PHASES, S.phases, true);
     else if (key === 'geos') body = geosBody();
     else if (key === 'strengths') body = textBody('What are your strongest case studies and capabilities?', 'A line or two is plenty.', 'f-strengths', S.strengths, 'e.g. ADC conjugation at 100 L scale', 'Continue');
@@ -297,7 +306,7 @@
     const edit = e.target.closest('[data-edit]');
     if (!edit) return;
     const i = +edit.dataset.edit;
-    if (i === 0) { S.mode = 'search'; S.query = ''; S.results = null; S.person = null; S.listed = false; S.companyOther = false; S.emailOther = false; S.useDirEmail = false; }
+    if (i === 0) { S.mode = 'search'; S.query = ''; S.results = null; S.person = null; S.listed = false; S.companyOther = false; S.emailOther = false; S.useDirEmail = false; S.modOther = ''; }
     if (i === 1) S.companyOther = false;
     if (i === 2) S.emailOther = false;
     goto(i);
@@ -338,7 +347,7 @@
         f.addEventListener('input', sync); sync();
         const submit = () => {
           const v = f.value.trim(); if (!v) return;
-          if (S.companyOther) { S.modalities = []; S.domain = ''; S.segment = ''; }
+          if (S.companyOther) { S.modalities = []; S.modOther = ''; S.domain = ''; S.segment = ''; }
           S.company = v; goto(2);
         };
         go.addEventListener('click', submit);
@@ -365,7 +374,18 @@
         f.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
         f.focus({preventScroll: true});
       }
-    } else if (key === 'modalities' || key === 'phases') {
+    } else if (key === 'modalities') {
+      const other = document.getElementById('f-other-mod');
+      const goBtn = document.getElementById('go');
+      const recount = () => {
+        const n = S.modalities.length + (S.modOther ? 1 : 0);
+        goBtn.innerHTML = 'Continue' + (n ? ` <span class="count">${n}</span>` : '');
+      };
+      other.addEventListener('input', () => { S.modOther = other.value.replace(/\s+/g, ' ').trim().slice(0, 80); recount(); });
+      bindChips(S.modalities, arr => { S.modalities = arr; recount(); },
+        async () => { await save({modalities: modsAll()}); goto(S.step + 1); },
+        () => { S.modOther = ''; other.value = ''; });
+    } else if (key === 'phases') {
       bindChips(S[key], arr => { S[key] = arr; }, async () => { await save({[key]: S[key]}); goto(S.step + 1); });
     } else if (key === 'geos') {
       drawMap();
@@ -387,7 +407,7 @@
     }
   }
 
-  function bindChips(current, onChange, onNext) {
+  function bindChips(current, onChange, onNext, onSkip) {
     const go = document.getElementById('go');
     const skip = document.getElementById('skip');
     const chosen = new Set(current);
@@ -402,10 +422,10 @@
       on ? chosen.add(id) : chosen.delete(id);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
       b.querySelector('.chip__check').innerHTML = on ? ico('check', 16) : '';
-      onChange([...chosen]); sync();
+      sync(); onChange([...chosen]);
     });
     go.addEventListener('click', onNext);
-    skip.addEventListener('click', () => { chosen.clear(); onChange([]); onNext(); });
+    skip.addEventListener('click', () => { chosen.clear(); if (onSkip) onSkip(); onChange([]); onNext(); });
   }
 
   // ---------- who: search ----------
@@ -510,7 +530,7 @@
     const body = {
       name: S.name.slice(0, 100), email, company: S.company.slice(0, 200), company_domain: domain.slice(0, 255),
       title: (S.title || '').slice(0, 200), segment: (S.segment || '').slice(0, 100),
-      modalities: S.modalities, phases: S.phases, geographies: S.geos,
+      modalities: modsAll().map(m => /^other:/.test(m) ? 'Other: ' + m.slice(6) : m), phases: S.phases, geographies: S.geos,
       strengths: (S.strengths || '').slice(0, 2000), exclusions: (S.exclusions || '').slice(0, 2000),
       directory_id: ((S.person && S.person.id) || '').slice(0, 100), completed: true,
       user_agent: navigator.userAgent.slice(0, 1000),
@@ -545,7 +565,7 @@
     const notified = notifyWelcome({
       name: S.name, title: S.title, company: S.company, domain: S.domain,
       email: S.useDirEmail ? (S.person.email || '') : S.email, listed: S.listed,
-      modalities: S.modalities, phases: S.phases, geos: S.geos, strengths: S.strengths, exclusions: S.exclusions,
+      modalities: modsAll(), phases: S.phases, geos: S.geos, strengths: S.strengths, exclusions: S.exclusions,
     });
     const finalEmail = S.useDirEmail ? (S.person.email || '') : S.email;
     await Promise.all([prepDone, notified, submitAccountRequest(finalEmail)]);
@@ -555,7 +575,7 @@
   function renderPreparing() {
     progress.hidden = true;
     document.querySelector('.ob-field').style.display = 'none';
-    const focus = labelOf(MODALITIES, S.modalities).join(' · ');
+    const focus = labelOf(MODALITIES, modsAll()).join(' · ');
     const scope = [...labelOf(PHASES, S.phases), ...S.geos.map(id => GEOS.find(g => g.id === id).code)].join(' · ');
     const steps = [
       {label: 'Confirming your profile', detail: [S.name, S.company].filter(Boolean).join(' · ')},

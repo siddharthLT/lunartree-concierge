@@ -81,7 +81,8 @@ def _fallback_terms(visitor):
     geo = '{geo}'
     stage = '{stage} '
     for m in visitor.modalities[:4]:
-        terms.append(f'{stage}{MODALITY_LABEL.get(m, m)} biotechs in {geo} outsourcing CMC')
+        label = m[6:] if m.startswith('other:') else MODALITY_LABEL.get(m, m)
+        terms.append(f'{stage}{label} biotechs in {geo} outsourcing CMC')
     if not terms:
         terms.append(f'{stage}biotechs in {geo} looking for a CDMO partner')
     return terms
