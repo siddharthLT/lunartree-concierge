@@ -41,7 +41,7 @@ def build_payload(visitor, turnstile_token):
 
 
 def send(payload):
-    """(status, body) from the backend; status 0 when it couldn't be reached."""
+    """(status, body) from the backend; status 0 and the error text when it couldn't be reached."""
     req = urllib.request.Request(
         f'{settings.ACCOUNT_SETUP_API_URL}/account-setup/requests',
         data=json.dumps(payload).encode(), method='POST',
@@ -52,7 +52,7 @@ def send(payload):
     except urllib.error.HTTPError as err:
         status, body = err.code, err.read(2000).decode('utf-8', 'replace')
     except (urllib.error.URLError, TimeoutError, OSError) as err:
-        status, body = 0, str(err)
+        status, body = 0, f'{type(err).__name__}: {err}'
     # Never log the token or the person's details, just the outcome.
     log = logger.info if status == 202 else logger.warning
     log('account request for visitor email domain %s: %s %s', payload['email'].split('@')[-1], status, body[:300])

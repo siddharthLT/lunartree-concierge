@@ -163,8 +163,8 @@ def account_request(request):
     payload = account_setup.build_payload(visitor, token)
     if not payload:
         return JsonResponse({'ok': False, 'error': 'Missing name, email, company or company domain.'}, status=400)
-    status, _ = account_setup.send(payload)
-    return JsonResponse({'ok': status == 202, 'status': status})
+    status, body = account_setup.send(payload)
+    return JsonResponse({'ok': status == 202, 'status': status, 'detail': '' if status == 202 else body[:300]})
 
 
 @require_POST
