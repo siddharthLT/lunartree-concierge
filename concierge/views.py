@@ -12,7 +12,7 @@ from django.shortcuts import redirect
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from . import directory, recs
+from . import account_setup, directory, recs
 from .models import ConciergeRequest, Visitor
 from .notifications import email_new_request, notify_new_request
 
@@ -55,8 +55,8 @@ def welcome(request):
     visitor = _current_visitor(request)
     if visitor and visitor.completed and 'switch' not in request.GET:
         return redirect('concierge:landing')
-    account_setup = {'url': settings.ACCOUNT_SETUP_API_URL, 'siteKey': settings.TURNSTILE_SITE_KEY, 'appearance': settings.TURNSTILE_APPEARANCE} if settings.ACCOUNT_SETUP_API_URL else None
-    return render(request, 'concierge/welcome.html', {'account_setup': account_setup})
+    turnstile = {'siteKey': settings.TURNSTILE_SITE_KEY, 'appearance': settings.TURNSTILE_APPEARANCE} if settings.ACCOUNT_SETUP_API_URL else None
+    return render(request, 'concierge/welcome.html', {'account_setup': turnstile})
 
 
 def welcome_search(request):
@@ -145,6 +145,26 @@ def welcome_save(request):
     response = JsonResponse({'ok': True, 'token': visitor.token, 'first_name': visitor.first_name})
     _set_visitor_cookie(response, visitor.token)
     return response
+
+
+@require_POST
+def account_request(request):
+    """Forward the finished welcome profile to BioLens. The browser supplies only the
+    Turnstile token it solved; everything else comes from the saved Visitor."""
+    if not settings.ACCOUNT_SETUP_API_URL:
+        return JsonResponse({'ok': False, 'error': 'Account setup is off.'}, status=404)
+    try:
+        token = str(json.loads(request.body).get('cf_turnstile_token') or '')
+    except (json.JSONDecodeError, AttributeError):
+        token = ''
+    visitor = _current_visitor(request)
+    if not (visitor and visitor.completed and token):
+        return JsonResponse({'ok': False, 'error': 'Finish the welcome questions first.'}, status=400)
+    payload = account_setup.build_payload(visitor, token)
+    if not payload:
+        return JsonResponse({'ok': False, 'error': 'Missing name, email, company or company domain.'}, status=400)
+    status, _ = account_setup.send(payload)
+    return JsonResponse({'ok': status == 202, 'status': status})
 
 
 @require_POST

@@ -498,8 +498,8 @@
   }
 
   // ---------- BioLens account request ----------
-  // Posted straight from the browser (the Turnstile token is solved on this page). Never blocks the visitor:
-  // if the widget or the backend is unavailable the welcome flow still completes.
+  // The Turnstile token is solved on this page and forwarded to Django, which posts to BioLens. Never blocks the
+  // visitor: if the widget or the backend is unavailable the welcome flow still completes.
   const FREE_MAIL = ['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','aol.com','proton.me','protonmail.com','live.com','msn.com','me.com'];
   function mountTurnstile() {
     const slot = document.getElementById('ts-slot');
@@ -527,30 +527,23 @@
     // One request per email per browser; a shared device can still send for any number of different emails.
     const sentEmails = () => { try { const v = JSON.parse(localStorage.getItem('cl_acct_req') || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } };
     if (sentEmails().includes(email)) { console.log('Account request skipped: already sent for this email.'); return; }
-    const body = {
-      name: S.name.slice(0, 100), email, company: S.company.slice(0, 200), company_domain: domain.slice(0, 255),
-      title: (S.title || '').slice(0, 200), segment: (S.segment || '').slice(0, 100),
-      modalities: modsAll().map(m => /^other:/.test(m) ? 'Other: ' + m.slice(6) : m), phases: S.phases, geographies: S.geos,
-      strengths: (S.strengths || '').slice(0, 2000), exclusions: (S.exclusions || '').slice(0, 2000),
-      directory_id: ((S.person && S.person.id) || '').slice(0, 100), completed: true,
-      user_agent: navigator.userAgent.slice(0, 1000),
-    };
     // Tokens are single-use, so a 400 (expired or already used) gets one retry with a fresh one.
+    // Django builds the payload from the saved visitor and posts it to BioLens; we only forward the token.
     for (let attempt = 1; attempt <= 2; attempt++) {
       if (!(await waitFor(() => S.cf, 20000))) { console.log('Account request skipped: no Turnstile token.'); return; }
-      body.cf_turnstile_token = S.cf;
+      const token = S.cf;
       S.cf = '';
       let res = null;
       try {
         res = await Promise.race([
-          fetch(ACCT.url + '/account-setup/requests', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}),
-          sleep(8000).then(() => null),
+          api('/api/welcome/account-request/', {cf_turnstile_token: token}),
+          sleep(35000).then(() => null),
         ]);
       } catch (err) {
         console.log('Account request failed (non-blocking):', err);
       }
       try { if (typeof posthog !== 'undefined') posthog.capture('account_request', {status: res ? res.status : 'error', attempt}); } catch (e) {}
-      if (res && res.status === 202) { try { localStorage.setItem('cl_acct_req', JSON.stringify([...sentEmails(), email])); } catch (e) {} return; }
+      if (res && res.ok) { try { localStorage.setItem('cl_acct_req', JSON.stringify([...sentEmails(), email])); } catch (e) {} return; }
       console.log('Account request not accepted:', res ? res.status : 'no response');
       if (!res || res.status !== 400 || !window.turnstile || S.cfWidget == null) return;
       window.turnstile.reset(S.cfWidget);

@@ -10,6 +10,7 @@ urlpatterns = [
     path('api/welcome/search/', views.welcome_search, name='welcome_search'),
     path('api/welcome/person/<str:pid>/', views.welcome_person, name='welcome_person'),
     path('api/welcome/save/', views.welcome_save, name='welcome_save'),
+    path('api/welcome/account-request/', views.account_request, name='account_request'),
     path('api/welcome/restore/', views.welcome_restore, name='welcome_restore'),
     path('ddf-intel/', views.ddf_intel, name='ddf_intel'),
     path('experience-biolens/', views.experience_biolens, name='experience_biolens'),
